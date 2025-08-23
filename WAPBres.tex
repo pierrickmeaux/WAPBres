@@ -18,7 +18,7 @@
 
 
 \begin{document}
-	
+
 
 %\title{Notes: On the Resilience Order of Weightwise Almost Perfectly Balanced Functions}
 \title{Notes: On the Resilience Order of W(A)PB Functions}
@@ -27,61 +27,61 @@
 %\subtitle{}
 
 
-	
+
 	\titlerunning{On the Resilience Order of W(A)PB Functions}
 	\author{
 		\mbox{Pierrick M\'eaux\orcidID{0000-0001-5733-4341}}
 	}
-	
+
 	\authorrunning{ P. M\'eaux}
-	
+
 	\institute{
 University of Luxembourg, Luxembourg\\	\email{pierrick.meaux@uni.lu}
 }
 
-	
 
-	
-	
-	
+
+
+
+
 	%----------------------------------------------------------------
 	\maketitle
-	
-	
+
+
 
  \setcounter{page}{1}
- 
+
 \begin{abstract}
 
 
-	
+
 %\keywords{Boolean functions, algebraic immunity, symmetric functions, HWBF}
 \end{abstract}
- 
-\section{Introduction.} 
 
-	
+\section{Introduction.}
+
+
 \section{Preliminaries.}
 
 
-We denote by $[1,n]$ the set of all integers from $1$ to $n$, \ie $\{1,\ldots,n\}$.  
-For readability, we use the notation $+$ instead of $\oplus$ for addition in $\F_2$.  
-For a vector $v \in \F_2^n$, we denote its Hamming weight by $\w(v)$, defined as $\w(v) = |\{ i \in [n] \mid v_i = 1 \}|$.  
-%For two vectors $v, w \in \F_2^n$, we denote their Hamming distance by $\hd(v,w)$, given by $\hd(v,w) = \w(v + w)$.  
-%Throughout this article, $\log$ denotes the base-2 logarithm.  
+We denote by $[1,n]$ the set of all integers from $1$ to $n$, \ie $\{1,\ldots,n\}$.
+For readability, we use the notation $+$ instead of $\oplus$ for addition in $\F_2$.
+For a vector $v \in \F_2^n$, we denote its Hamming weight by $\w(v)$, defined as $\w(v) = |\{ i \in [n] \mid v_i = 1 \}|$.
+%For two vectors $v, w \in \F_2^n$, we denote their Hamming distance by $\hd(v,w)$, given by $\hd(v,w) = \w(v + w)$.
+%Throughout this article, $\log$ denotes the base-2 logarithm.
 
 
 
 %\subsection{Generalities on Boolean functions and cryptographic criteria}
 
 
-%In this section, we review fundamental concepts of Boolean functions and define their key cryptographic properties.  
-%For a more in-depth discussion on Boolean functions and their cryptographic properties, we refer to the book~\cite{Carlet20}.  
+%In this section, we review fundamental concepts of Boolean functions and define their key cryptographic properties.
+%For a more in-depth discussion on Boolean functions and their cryptographic properties, we refer to the book~\cite{Carlet20}.
 
 
 %\begin{definition}[Boolean Function]\label{def:bool_f}
-%	A Boolean function $f$ in $n$ variables (an $n$-variable Boolean function) is a function from $\F_2^n$ to $\F_2$. 
-%	The set of all Boolean functions in $n$ variables is denoted by $\BN$. 
+%	A Boolean function $f$ in $n$ variables (an $n$-variable Boolean function) is a function from $\F_2^n$ to $\F_2$.
+%	The set of all Boolean functions in $n$ variables is denoted by $\BN$.
 %\end{definition}
 
 
@@ -94,8 +94,8 @@ For a vector $v \in \F_2^n$, we denote its Hamming weight by $\w(v)$, defined as
 %	where $a_I\in \F_2$.
 %	\begin{itemize}
 %		\item The algebraic degree of $f$ is: $\degg(f)= \max_{\{I \; | \; a_I=1\}}|I|$ (with the convention that $\degg(0)=0$).
-%		\item Any term $\prod_{i\in I}x_i$ in such an ANF is called a monomial and its degree equals $|I|$.		
-%	\end{itemize}	
+%		\item Any term $\prod_{i\in I}x_i$ in such an ANF is called a monomial and its degree equals $|I|$.
+%	\end{itemize}
 %\end{definition}
 
 
@@ -110,22 +110,22 @@ For a vector $v \in \F_2^n$, we denote its Hamming weight by $\w(v)$, defined as
 %	The algebraic immunity of a Boolean function $f\in \BN$, denoted as $\AI(f)$, is defined as:
 %	\[ \AI(f) = \min_{g \neq 0}\{ \degg(g) \; | \; fg = 0 \; \text{or} \; (f + 1)g = 0 \}{,} \]
 %	where $\degg(g)$ is the algebraic degree of $g$.
-%	The function $g$ is called an annihilator of $f$ (or $f + 1$). 
+%	The function $g$ is called an annihilator of $f$ (or $f + 1$).
 	%	Additionally we denote $\AN(f) = \min_{g \neq 0}\{ \degg(g) \; | \; fg = 0\}$.
 %\end{definition}
 
 
 
 %\begin{definition}[Balancedness]\label{def:balancedness}
-%	A Boolean function $f\in \BN$ 
-%	is said to be balanced if and only if $|\supp(f)|=|\supp(f+1)|=2^{n-1}$, 
+%	A Boolean function $f\in \BN$
+%	is said to be balanced if and only if $|\supp(f)|=|\supp(f+1)|=2^{n-1}$,
 %	where the support of $f$ denotes the set $\{x \in \F_2^n, \text{ such that } f(x)=1\}$.
 %\end{definition}
 
 %\begin{definition}[Nonlinearity] \label{def:nl}
 %	The nonlinearity $\NL (f)$ of a Boolean function $f\in \BN$, where $n$ is a positive integer, is the minimum Hamming distance between $f$ and all the affine functions in $\BN$:
 %	\[ \NL(f) = \min_{g,\, \degg(g)\leq 1} \{ d_H(f,g) \}{,} \]
-%	with $d_H(f,g) = \#\{ x \in \F_2^n \;|\; f(x) \neq g(x) \}$ the Hamming distance between $f$ and $g$, and $g(x)=a\cdot x+\varepsilon$; $a\in \F_2^n, \varepsilon\in \F_2$ (where $\cdot$ is an inner product in $\F_2^n$). 
+%	with $d_H(f,g) = \#\{ x \in \F_2^n \;|\; f(x) \neq g(x) \}$ the Hamming distance between $f$ and $g$, and $g(x)=a\cdot x+\varepsilon$; $a\in \F_2^n, \varepsilon\in \F_2$ (where $\cdot$ is an inner product in $\F_2^n$).
 %\end{definition}
 
 
@@ -144,12 +144,12 @@ For a vector $v \in \F_2^n$, we denote its Hamming weight by $\w(v)$, defined as
 \end{definition}
 
 \begin{definition}[Resilience]\label{def:res}
-	A Boolean function $f\in \Bn{n}$ is said to be $t$-resilient if for all $a\in \F_2^n$ such that $0\le \w(a)\le t$ we have $\wt{f}(a)=0$. 
+	A Boolean function $f\in \Bn{n}$ is said to be $t$-resilient if for all $a\in \F_2^n$ such that $0\le \w(a)\le t$ we have $\wt{f}(a)=0$.
 \end{definition}
 
 \begin{definition}[Corrector]\label{def:corr}
-	A Boolean function $f\in \Bn{n}$ is said to be a $t$-corrector if for all $0\le k \le t$ it satisfies: 
-	\[\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)=0.\] 
+	A Boolean function $f\in \Bn{n}$ is said to be a $t$-corrector if for all $0\le k \le t$ it satisfies:
+	\[\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)=0.\]
 \end{definition}
 
 
@@ -158,13 +158,13 @@ For a vector $v \in \F_2^n$, we denote its Hamming weight by $\w(v)$, defined as
 
 
 
-\begin{definition}[Slices of the Boolean hypercube]\label{def:slices}  
-	For $k \in [0,n]$, we define the $k$-th slice of the $n$-dimensional Boolean hypercube as the set $\Ekn{k}{n} = \{x \in \F_2^n \mid \w(x) = k\}$.  
-\end{definition}  
+\begin{definition}[Slices of the Boolean hypercube]\label{def:slices}
+	For $k \in [0,n]$, we define the $k$-th slice of the $n$-dimensional Boolean hypercube as the set $\Ekn{k}{n} = \{x \in \F_2^n \mid \w(x) = k\}$.
+\end{definition}
 
-According to Definition~\ref{def:slices}, the Boolean hypercube is partitioned into $n+1$ slices, where each slice consists of vectors sharing the same Hamming weight.  
-We refer to properties that hold slice-wise as weightwise properties. 
-The $n$-variable symmetric Boolean functions are precisely those that are constant on each slice.  
+According to Definition~\ref{def:slices}, the Boolean hypercube is partitioned into $n+1$ slices, where each slice consists of vectors sharing the same Hamming weight.
+We refer to properties that hold slice-wise as weightwise properties.
+The $n$-variable symmetric Boolean functions are precisely those that are constant on each slice.
 
 
 
@@ -172,41 +172,41 @@ The $n$-variable symmetric Boolean functions are precisely those that are consta
 	Let $f\in \Bn{n}$, $S \subset \F_2^n$, its Walsh transform restricted to $S$ at $a \in \F_2^n$ is defined as:
 	\[  \wt{f,S} (a) = \sum_{x\in S} (-1)^{f(x)+ax}.\]
 	For $S=\Ekn{k}{n}$ we denote $\wt{f,\Ekn{k}{n}} (a)$ by $\wtk{f}{k}(a)$, and for $a= 0_{n}$ we denote $\wtk{f}{k}(a)$ as $\wtk{f}{k}$.
-	
+
 \end{definition}
 
 
 \begin{definition}[Weightwise (Almost) Perfectly Balanced Function (WPB and WAPB)\cite{TOSC:CarMeaRot17}]\label{def:WPB}
 	Let $m\in \N^*$ and $f$ be a Boolean function in $n=2^m$ variables. It will be called weightwise perfectly balanced (WPB) if, for every $k\in[1,n-1]$, $f$ is balanced on the slice $k$, that is $\forall k \in [1,n-1], |\suppk{k}(f)|=\binom{n}{k}/2$, and:
-	\[f(0,\cdots,0)=0,\quad \text{ and } \quad f(1,\cdots,1)=1.\]	
+	\[f(0,\cdots,0)=0,\quad \text{ and } \quad f(1,\cdots,1)=1.\]
 	The set of WPB functions in $2^m$ variables is denoted by $\WPB{m}$.
-	
-	%	When $n$ is not a power of $2$, some other weights than $k=0$ and $n$ give slices of odd cardinality, in this case we call $f\in \Bn{n}$ weightwise almost perfectly balanced (WAPB) if: 
-	When $n$ is not a power of $2$, some other weights than $k=0$ and $n$ give slices of odd cardinality. We consider the generalization for any $n\in \N^*$, in this case we call $f\in \Bn{n}$ weightwise almost perfectly balanced (WAPB) if: 
+
+	%	When $n$ is not a power of $2$, some other weights than $k=0$ and $n$ give slices of odd cardinality, in this case we call $f\in \Bn{n}$ weightwise almost perfectly balanced (WAPB) if:
+	When $n$ is not a power of $2$, some other weights than $k=0$ and $n$ give slices of odd cardinality. We consider the generalization for any $n\in \N^*$, in this case we call $f\in \Bn{n}$ weightwise almost perfectly balanced (WAPB) if:
 	\[|\suppk{k}(f)|= \left \{
 	\begin{array}{l l}
 	|\Ekn{k}{n}|/2  & \text{ if } |\Ekn{k}{n}| \text{ is even, } \\
 	(|\Ekn{k}{n}|\pm 1)/2  & \text{ if }  |\Ekn{k}{n}| \text{ is odd.}
 	\end{array}\right.\]
-	The set of WAPB functions in $n$ variables is denoted $\WAPB{n}$.	
-	
+	The set of WAPB functions in $n$ variables is denoted $\WAPB{n}$.
+
 \end{definition}
 
 
 
 
 \begin{Prop}[WAPB functions and restricted Walsh transform]\label{prop:WAPBWalsh}
-	
+
 	Let $n\in \N^*$, $f\in \Bn{n}$ is WAPB if and only if:
-	\[\forall k \in [0,n], \, \wtk{f}{k}(0_n)=   
+	\[\forall k \in [0,n], \, \wtk{f}{k}(0_n)=
 	\left \{
 	\begin{array}{l l}
 	0  & \text{ if } |\Ekn{k}{n}| \text{ is even, } \\
 	\pm 1 & \text{ if }  |\Ekn{k}{n}| \text{ is odd.}
-	\end{array}\right. \] 
+	\end{array}\right. \]
 	If $n=2^m$ with $m\in \N^*$, $f\in \Bn{n}$ is WPB if and only if:
-	\[\wtk{f}{0}=1, \quad \wtk{f}{n}=-1, \text{ and } \quad \forall k \in [1,n-1] \,  \wtk{f}{k}=0. \] 
-	
+	\[\wtk{f}{0}=1, \quad \wtk{f}{n}=-1, \text{ and } \quad \forall k \in [1,n-1] \,  \wtk{f}{k}=0. \]
+
 \end{Prop}
 
 
@@ -214,14 +214,14 @@ The $n$-variable symmetric Boolean functions are precisely those that are consta
 We use Krawtchouk polynomials and some of their properties to prove one of our results, we give the necessary preliminaries here and refer to \eg ~\cite{book:MacSlo78} for more details.
 
 \begin{definition}[Krawtchouk Polynomials]\label{def:Kraw}
-	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j}$. 
+	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j}$.
 	%	Krawtchouk polynomials are characterized by the generating series: $ \displaystyle (1+z)^{n-x} (1-z)^x=\sum_{k=0}^\infty \kraw{k}{x}{n} z^k$.
 \end{definition}
 
 
 \begin{Prop}[Krawtchouk polynomials relation]\label{prop:Kr}
 	Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
-\begin{itemize}	
+\begin{itemize}
 	\item $\kraw{k}{\ell}{n}$ is the value of the restricted Walsh transform on $\Ekn{k}{n}$ of any $n$ variable linear function $a\cdot \ell$ such that $\w(a)=\ell$,
 	\item $\kraw{k}{n-\ell}{n}=(-1)^k \kraw{k}{\ell}{n}$,
 	\item $\kraw{n-k}{x}{n}=(-1)^x \kraw{k}{x}{n}$,
@@ -250,16 +250,16 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
 	\item If $n$ is even: for $0\le k \le t$,
 		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
-	\end{itemize} 
-	
-	
-	
-	
+	\end{itemize}
+
+
+
+
 \end{proposition}
 \begin{proof}
-	
-We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$. 
-From Definition~\ref{def:corr}, $f$ is a $t$-corrector if $A_k=0$ for $k\in [0,t]$. 
+
+We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$.
+From Definition~\ref{def:corr}, $f$ is a $t$-corrector if $A_k=0$ for $k\in [0,t]$.
 %\[A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a).\]
 We rewrite $A_k$:
 \begin{align*}
@@ -292,15 +292,15 @@ The reformulation of $t$-corrector is sufficient to show that WPB functions are 
 	Let $m\in \N^*$ and $n=2^m$, if $f$ is an $n$-variable WPB function then $f$ is $0$-corrector, $f$ is not $1$-corrector, $f$ is $0$-resilient and not $1$-resilient.
 \end{theorem}
 \begin{proof}
-	By definition (Definition~\ref{def:WPB}) a WPB function is balanced, hence $0$-corrector and $0$-resilient. 
-	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}. 
-	
+	By definition (Definition~\ref{def:WPB}) a WPB function is balanced, hence $0$-corrector and $0$-resilient.
+	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
+
 	Using Proposition~\ref{prop:WalsCorr} we have:
 	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{1}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{1}{\ell}{n} \, ( \wtk{f}{\ell} - \wtk{f}{n-\ell}).\]
 	Since $f$ is WPB, using Property~\ref{prop:WAPBWalsh} we obtain:
 	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=0+2\kraw{1}{0}{n}=2n\ne 0,\]
 	hence $f$ is not $1$-corrector by Proposition~\ref{prop:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
-	
+
 \end{proof}
 
 We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+f$ with $f\in \WPB{m}$, hence all $2^m$-variable WAPB functions are $0$-resilient and not $1$-resilient.
@@ -333,20 +333,20 @@ We can extend the bound of the correction order to $\WAPB{n}$ when $\w(n)=2$, us
 \end{itemize}
 }
 
-Reformulation. 
+Reformulation.
 
 \begin{definition}\label{def:restWalshVect}
 Let $n\in \N^*$ and $f\in \BN$, we define its restricted Walsh vector, denoted by $\rwv{f}$, in $\Z^{n+1}$ as:
 \[\rwv{f}=(\wtk{f}{0},\wtk{f}{1},\cdots,\wtk{f}{n-1},\wtk{f}{n})\]
-	
+
 \end{definition}
 
 
 \begin{definition}\label{def:KrMat}
-	Let $n\in \N^*$ and $k\in \N$ such that $k\le n$, we define the Krawchouk matrix 
+	Let $n\in \N^*$ and $k\in \N$ such that $k\le n$, we define the Krawchouk matrix
 	$\KrM{n}{k}\in 	\Z^{(n+1)\times (k+1)}$ as:
 	\[\forall i \in [0,n], j\in [0,k], \quad \KrM{n}{k}_{i,j}=\kraw{j}{i}{n}.\]
-	
+
 \end{definition}
 
 With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
@@ -355,13 +355,13 @@ With these notations, using the development of Proposition~\ref{prop:WalsCorr} w
 For a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the non null coefficients are the ones such that $k\preceq n$.
 
 
-We can prove that for $\w(n)=1$ (the case of WPB functions) the WAPB functions cannot be $1$-corrector 
+We can prove that for $\w(n)=1$ (the case of WPB functions) the WAPB functions cannot be $1$-corrector
 (that is $\rwv{f} \cdot \KrM{n}{1}$
 $\neq 0_2$), and for
  $\w(n)=2$
-  (the case of WAPB functions in $2^r +2^s$ variables) the WAPB functions 
- cannot be $2$-corrector (that is $\rwv{f} \cdot \KrM{n}{2} \ne 0_3$). 
-We would like to prove or disprove that $n$-variable WAPB functions are not $\w(n)$-corrector. 
+  (the case of WAPB functions in $2^r +2^s$ variables) the WAPB functions
+ cannot be $2$-corrector (that is $\rwv{f} \cdot \KrM{n}{2} \ne 0_3$).
+We would like to prove or disprove that $n$-variable WAPB functions are not $\w(n)$-corrector.
 
 The results for $\w(n)=1$ and $\w(n)=2$ comes from the value of the matrix $\KrM{n}{n}$, but could we deduce more knowing that the matrix is invertible?
 
@@ -369,10 +369,10 @@ The results for $\w(n)=1$ and $\w(n)=2$ comes from the value of the matrix $\KrM
 
 \pmnote{
 
- WAPB in $n$ variable have $2^\w(n)$ restricted Walsh values that belongs to $\{-1,1\}$. 
+ WAPB in $n$ variable have $2^\w(n)$ restricted Walsh values that belongs to $\{-1,1\}$.
 
- 
-  So far the best resilience order known for a WAPB function is $\w(n)-1$. 
+
+  So far the best resilience order known for a WAPB function is $\w(n)-1$.
 }
 
 
@@ -381,21 +381,21 @@ The results for $\w(n)=1$ and $\w(n)=2$ comes from the value of the matrix $\KrM
 
 Let us ave a look on the expression of an integer at the power $r$ when we write it in binary:
 \[a^r=(\sum_{i=1}^{t} b_i 2^{k_i})^r\]
-If we develop this expression we can rewrite it as a multivariate polynomial in the $b_i$. 
+If we develop this expression we can rewrite it as a multivariate polynomial in the $b_i$.
 I give the example for $t=2$:
 \[a^0=1, \quad a^1= b_1 2^{k_1}+ b_2 2^{k_2},\quad a^r= b_1 2^{2k_1} + b_1 b_2 2\cdot  2^{k_1+k_2} + b_2 2^{2k_2}.\]
 
-The expression will make appear all combinations of the $b_i$ having between $1$ and $r$ $b_i$s. Each one of these monomials of degree between $1$ and $r$ is associated to a coefficient, say $c_b$. 
+The expression will make appear all combinations of the $b_i$ having between $1$ and $r$ $b_i$s. Each one of these monomials of degree between $1$ and $r$ is associated to a coefficient, say $c_b$.
 
 Then, when we consider the $-1$ and $+1$ combinations to obtain $0$, it means we split $\F_2^t$ in two sets of size $2^{t-1}$, $S_1$ and $S_2$ such that:
 \[\sum_{b\in S_1} (\sum_{i=1}^{t} b_i 2^{k_i})^r =  \sum_{b\in S_2} (\sum_{i=1}^{t} b_i 2^{k_i})^r.\]
 
 We can verify that when $t<r$, taking $S_1$ as the set of vectors of odd Hamming weight and $S_2$ the set of vectors of even Hamming weight each term $c_b$ appears the same number of times in each sum: the monomials of degree between $1$ and $r$ are equal to $1$ the same number of times over $S_1$ than over $S_2$. It is sufficient to guarantee the equality of the two sums.
 
-When $t=r$, the situation changes: there is the monomial of degree $t$: $\prod_{i=1}^t b_i$, and this one takes the value $1$ only for one element: $1_t$. For all other monomials, they take the value $1$ on the same number of elements in $S_1$ than in $S_2$. 
-Accordingly, the two sums differ from a term $c_{1_t}$. 
+When $t=r$, the situation changes: there is the monomial of degree $t$: $\prod_{i=1}^t b_i$, and this one takes the value $1$ only for one element: $1_t$. For all other monomials, they take the value $1$ on the same number of elements in $S_1$ than in $S_2$.
+Accordingly, the two sums differ from a term $c_{1_t}$.
 
-This explain why taking $S_1$ and $S_2$ as odd and even Hamming weight element work to create $t-1$-corrector that are not $t$-corrector. 
+This explain why taking $S_1$ and $S_2$ as odd and even Hamming weight element work to create $t-1$-corrector that are not $t$-corrector.
 I am not sure it allows to conclude they do not exist: we could do another partition of $\F_2^t$ as $S_1$ and $S_2$ such that $|S_1|=|S_2|$ where we compensate the $c_b$s. We have that $c_{1_t}$ will appear only once, so in only one of the two sums, the total number of terms appearing is odd when $r=t$.
 
 
@@ -436,5 +436,10 @@ I am not sure it allows to conclude they do not exist: we could do another parti
 \bibliography{add}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fi
+
+\appendix
+\pmnote{Martin: I add our work with Chunlei here. The proof covers only half of the statement for now: From left to a middle statement.\\ I believe the same middle statement can be reached from the right hand side of the equivalence to complete the proof.}
+\section{Equivalence to the conjecture.}
+\include{conjecture_equivalence.tex}
 
 \end{document}

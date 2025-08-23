@@ -19,6 +19,7 @@
 \usepackage[usenames, dvipsnames]{xcolor}
 \usepackage[sort,nocompress]{cite}
 \usepackage{colortbl}
+\usepackage{mathtools}
 \usepackage{multirow}
 \usepackage{lscape}
 \usepackage{amsmath}
@@ -27,6 +28,7 @@
 \let\endproof\relax
 \usepackage{amsthm,amsfonts,amssymb}
 \usepackage{hyperref}
+\usepackage{cleveref}
 \usepackage{pdflscape}
 
 
@@ -163,7 +165,7 @@
 \newcommand{\CWD}[2]{\mathcal{CWD}^{#1}_{#2}}
 \newcommand{\Ekn}[2]{\mathsf{E}_{#1,#2}}
 \newcommand{\Code}[3]{\mathsf{P}_{#1,#2,#3}}
-\newcommand{\wt}[1]{W_{#1}} 
+\newcommand{\wt}[1]{W_{#1}}
 
 
 \newcommand{\DistWkn}[2]{\mathfrak{W}_{#1,#2}}
@@ -188,11 +190,11 @@
 \newcommand{\Span}{\mathsf{Span}}
 \newcommand{\rank}{\mathsf{rank}}
 %Walsh transform
-%\newcommand{\wt}[1]{W_{#1}} 
+%\newcommand{\wt}[1]{W_{#1}}
 %\newcommand{\wtmf}[1]{W_f({#1})}
 %restricted Walsh transform W_k,a (f)
-\newcommand{\wtk}[2]{\mathcal{W}_{#1,#2}} 
-\newcommand{\KrM}[2]{\matK^{#1,#2}} 
+\newcommand{\wtk}[2]{\mathcal{W}_{#1,#2}}
+\newcommand{\KrM}[2]{\matK^{#1,#2}}
 
 
 %gates
@@ -215,9 +217,9 @@
 \newcommand{\MMCSr}{\textsf{MM-CSrev}}
 
 
-\newcommand{\xorlk}[2]{{\mathsf{XOR}}_{#1}  \mathsf{M}_{#2}} 
-\newcommand{\xormaj}[2]{{\mathsf{XOR}}_{#1}  \mathsf{MAJ}_{#2}} 
-%\newcommand{\xorthr}[3]{{\mathsf{XOR}}_{#1}  \mathsf{T}_{{#2},{#3}}} 
+\newcommand{\xorlk}[2]{{\mathsf{XOR}}_{#1}  \mathsf{M}_{#2}}
+\newcommand{\xormaj}[2]{{\mathsf{XOR}}_{#1}  \mathsf{MAJ}_{#2}}
+%\newcommand{\xorthr}[3]{{\mathsf{XOR}}_{#1}  \mathsf{T}_{{#2},{#3}}}
 \newcommand{\xorthr}[3]{{\mathsf{XOR}}_{#1}+\mathsf{T}_{{#2},{#3}}}
 
 \newcommand{\thr}[2]{\mathsf{T}_{{#1},{#2}}}
@@ -249,10 +251,10 @@
 \floatname{algorithm}{Construction}% Update algorithm name
    \begin{algorithm}[#1]%
   }{\end{algorithm}}
- 
+
 \algnewcommand\algorithmicparfor{\textbf{par-for}}
 \algdef{S}[FOR]{ParFor}[1]{\algorithmicparfor\ #1\ \algorithmicdo}
- 
+
 %latin
 
 \newcommand{\ie}{\textit{i.e.} }
