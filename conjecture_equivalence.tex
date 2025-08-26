@@ -124,6 +124,55 @@ for $i = 0, \ldots, t-1$.
     \end{equation*}
     This concludes the proof that
     $$\sum_{k \in \mathcal{K}} v_k \cdot K_i(k, n) = 0 \implies \sum_{k \in \mathcal{K}} k^mv_k \cdot K_{i-m}(k, n) = 0.$$
+
+        Let us now prove first that
+    $$\sum_{k \in \mathcal{K}} k^iv_k = 0 \implies \sum_{k \in \mathcal{K}} k^mv_k \cdot K_{i-m}(k, n) = 0,$$ for $i = 0, \ldots, t-1$ and for any $m = 0, \ldots, i$. We will proceed by induction.
+
+    \underline{Initialization.}
+
+    Let $m = i$, then $\sum_{k \in \mathcal{K}} k^iv_k \cdot K_{i - i}(k, n) = \sum_{k \in \mathcal{K}} k^iv_k \cdot K_{0}(k, n) = \sum_{k \in \mathcal{K}} k^iv_k = 0$.
+
+    Let $m = i - 1$, then
+    \begin{equation*}
+        \begin{split}
+            \sum_{k \in \mathcal{K}} k^{i-1}v_k \cdot K_{i - (i-1)}(k, n) &= \sum_{k \in \mathcal{K}} k^{i-1}v_k \cdot K_{1}(k, n)\\ &= \sum_{k \in \mathcal{K}} k^iv_k \cdot (n - 2k)\\ &= n\sum_{k \in \mathcal{K}} \Big( k^{i-1}v_k \Big) - 2\underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^iv_k \Big)}}.
+        \end{split}
+    \end{equation*}
+    Finally we have $\sum_{k \in \mathcal{K}} k^{i-1}v_k = 0$, for all $i = 1, \ldots, t-1$.
+
+    Let $m = i - 2$, then $\sum_{k \in \mathcal{K}} k^{i-2}v_k \cdot K_{i - (i-2)}(k, n) = \sum_{k \in \mathcal{K}} k^{i-2}v_k \cdot K_{2}(k, n)$. We apply \cref{eq:fact1} to further develop this to
+    \begin{equation*}
+        \begin{split}
+            \sum_{k \in \mathcal{K}} k^{i-2}v_k \cdot K_{2}(k, n) &= \sum_{k \in \mathcal{K}} \Big( k^{i-2}v_k \Big( \frac{1}{2}(n - 2k)K_1(k, n) - \frac{1}{2}(n - 2)K_0(k, n) \Big)\Big)\\
+            &= \frac{n}{2}\sum_{k \in \mathcal{K}} \Big( k^{i-2}v_k \cdot K_1(k, n) \Big) - \sum_{k \in \mathcal{K}} \Big( k^{i-1}v_k \cdot K_1(k,n) \Big) - (\frac{n}{2}-1)\sum_{k \in \mathcal{K}} \Big( k^{i-2}v_k \Big).
+        \end{split}
+    \end{equation*}
+    for all $i = 2, \ldots, t-1$.
+    From the previous step $m +1 = i - 1$ we had seen that $\sum_{k \in \mathcal{K}} k^{i-1}v_k \cdot K_1(k, n) = 0\quad \forall i\in \{1, \ldots, t-1\}$. As such, using both this and our initial condition we determine that some quantities nullify and we can rewrite the last expression of our development to
+
+    \begin{equation*}
+    \begin{split}
+        &\sum_{k \in \mathcal{K}} k^{i-2}v_k \cdot K_{2}(k, n)\\
+        &= \frac{n}{2}\underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^{i-2}v_k \cdot K_1(k, n) \Big)}} - \underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^{i-1}v_k \cdot K_1(k,n) \Big)}} - (\frac{n}{2}-1)\underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^{i-2}v_k \Big)}} = 0.
+    \end{split}
+    \end{equation*}
+
+    Let us reformulate \cref{eq:fact1} below
+    \begin{equation}\label{eq:fact2}
+        2kK_i(k, n) = nK_i(k, n) - (i+1)K_{i+1}(k, n) - (n - i + 1)K_{i-1}(k, n)
+    \end{equation}
+
+    \mgnote{I reworked the equality we used to prove the first half of the equivalence in order to expose a $k^{m-1}$ as well as a $K_{i-(m-1)}(k,n)$. I believe the second implication should be proved decreasingly. I'd appreciate feedback.}
+    \underline{Induction.} We want to prove that if the proposition is true for $m$, then it is also true for $m -1$. We start from the initial condition and use \cref{eq:fact2} instantly
+    \begin{equation*}
+        \begin{split}
+            0 &= \sum_{k \in \mathcal{K}}k^mv_k \cdot K_{i - m}(v, k)\\
+            &= \sum_{k \in \mathcal{K}} \Big( k^mv_k \Big( n\frac{1}{2k} \cdot K_{i -m}(k, n) - \frac{1}{2k}(i+1)K_{i-(m-1)}(k,n) - \frac{1}{2k}(n-i-m)K_{i-(m+1)}(k,n) \Big)\Big)\\
+            &= \frac{n}{2} \underset{=0}{\underline{\sum_{k \in \mathcal{K}}\Big( k^{m-1}v_k \cdot K_{i-m}}} \Big) - \frac{i+1}{2}\sum_{k \in \mathcal{K}}\Big( k^{m-1}v_k \cdot K_{i-(m-1)}(k,n)\Big)\\ &- \frac{n - i - m}{2}\sum_{k \in \mathcal{K}} \Big( k^{m-1}v_k \cdot K_{i-(m+1)}(k,n) \Big)\\
+        \end{split}
+    \end{equation*}
+
+    \mgnote{I think the leftmost quantity is equal to zero from the initial condition. Do you think this method has potential to end in a complete proof?}
 \end{proof}
 
 
