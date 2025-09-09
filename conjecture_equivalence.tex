@@ -50,7 +50,7 @@ for $i = 0, \ldots, t-1$.
     \begin{equation*}
     \begin{split}
         0 &= \sum_{k \in \mathcal{K}} v_k \cdot \Big( (n - 2k)K_{i-1}(k, n) - (n - i)K_{i-2}(k, n) \Big)\\
-        & = n \underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( v_k \cdot K_{i-1}(k, n) \Big)}} - 2\sum_{k \in \mathcal{K}} \Big( kv_k \cdot K_{i-1}(k, n) \Big)\\& - (n-i)\underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( v_k \cdot K_{i-2}(k, n) \Big)}}\\
+        & = n \eqzero{\sum_{k \in \mathcal{K}} \Big( v_k \cdot K_{i-1}(k, n) \Big)} - 2\sum_{k \in \mathcal{K}} \Big( kv_k \cdot K_{i-1}(k, n) \Big)\\& - (n-i)\eqzero{\sum_{k \in \mathcal{K}} \Big( v_k \cdot K_{i-2}(k, n) \Big)}\\
         &= -2\sum_{k \in \mathcal{K}} kv_k \cdot K_{i-1}(k, n) = \sum_{k \in \mathcal{K}} k^1v_k \cdot K_{i-1}(k, n) = 0,
     \end{split}
     \end{equation*}
@@ -83,7 +83,7 @@ for $i = 0, \ldots, t-1$.
     Thus it follows that
     \begin{equation*}
         \begin{split}
-            0 &= n \underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( kv_k \cdot K_{i-2}(k, n) \Big)}} - 2\sum_{k \in \mathcal{K}} \Big( k^2v_k \cdot K_{i-2}(k, n) \Big)\\& - (n - i - 1)\underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( kv_k \cdot K_{i-3}(k, n) \Big)}}\\
+            0 &= n \eqzero{\sum_{k \in \mathcal{K}} \Big( kv_k \cdot K_{i-2}(k, n) \Big)} - 2\sum_{k \in \mathcal{K}} \Big( k^2v_k \cdot K_{i-2}(k, n) \Big)\\& - (n - i - 1)\eqzero{\sum_{k \in \mathcal{K}} \Big( kv_k \cdot K_{i-3}(k, n) \Big)}\\
             &= - 2\sum_{k \in \mathcal{K}} \Big( k^2v_k \cdot K_{i-2}(k, n) \Big) = \sum_{k \in \mathcal{K}} \Big( k^2v_k \cdot K_{i-2}(k, n) \Big) = 0,
         \end{split}
     \end{equation*}
@@ -115,10 +115,10 @@ for $i = 0, \ldots, t-1$.
     \end{equation*}
     for $i = m+2, \ldots t-1$.
 
-    We know that from the step $m-1$, $\sum_{k \in \mathcal{K}} k^mv_k \cdot K_{i - (m+1)}(k, n) = 0$. We also know from the step $m-1$ that for $i = m+3, \ldots, t-1$, $\sum_{k \in \mathcal{K}} k^mv_k \cdot K_{i - (m+2)}(k, n) = 0$. For $i = m + 2$, we end up with $\sum_{k \in \mathcal{K}} k^mv_k \cdot K_0(k, n) = \sum_{k \in \mathcal{K}} k^mv_k$. Since $0 = \sum_{k \in \mathcal{K}} k^{m-1}v_k \cdot K_1(k, n) = \sum_{k \in \mathcal{K}} k^{m-1}v_k \cdot (n - 2k)$, we develop one more time to $n\underset{=0}{\underline{\sum_{k \in \mathcal{K}} k^{m-1}v_k}} - 2\sum_{k \in \mathcal{K}}k^mv_k$. Indeed, $\sum_{k \in \mathcal{K}}k^mv_k = 0$ and $\sum_{k \in \mathcal{K}} \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big) = 0$. Thus it follows that
+    We know that from the step $m-1$, $\sum_{k \in \mathcal{K}} k^mv_k \cdot K_{i - (m+1)}(k, n) = 0$. We also know from the step $m-1$ that for $i = m+3, \ldots, t-1$, $\sum_{k \in \mathcal{K}} k^mv_k \cdot K_{i - (m+2)}(k, n) = 0$. For $i = m + 2$, we end up with $\sum_{k \in \mathcal{K}} k^mv_k \cdot K_0(k, n) = \sum_{k \in \mathcal{K}} k^mv_k$. Since $0 = \sum_{k \in \mathcal{K}} k^{m-1}v_k \cdot K_1(k, n) = \sum_{k \in \mathcal{K}} k^{m-1}v_k \cdot (n - 2k)$, we develop one more time to $n\eqzero{\sum_{k \in \mathcal{K}} k^{m-1}v_k} - 2\sum_{k \in \mathcal{K}}k^mv_k$. Indeed, $\sum_{k \in \mathcal{K}}k^mv_k = 0$ and $\sum_{k \in \mathcal{K}} \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big) = 0$. Thus it follows that
     \begin{equation*}
     \begin{split}
-        & = n \underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^mv_k \cdot K_{i - (m+1)}(k, n) \Big)}} - 2\sum_{k \in \mathcal{K}} \Big( k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) \Big)\\& - (n - i - m)\underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big)}}\\
+        & = n \eqzero{\sum_{k \in \mathcal{K}} \Big( k^mv_k \cdot K_{i - (m+1)}(k, n) \Big)} - 2\sum_{k \in \mathcal{K}} \Big( k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) \Big)\\& - (n - i - m)\eqzero{\sum_{k \in \mathcal{K}} \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big)}\\
         &= -2\sum_{k \in \mathcal{K}} k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) = \sum_{k \in \mathcal{K}} k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) = 0
     \end{split}
     \end{equation*}
@@ -135,7 +135,7 @@ for $i = 0, \ldots, t-1$.
     Let $m = i - 1$, then
     \begin{equation*}
         \begin{split}
-            \sum_{k \in \mathcal{K}} k^{i-1}v_k \cdot K_{i - (i-1)}(k, n) &= \sum_{k \in \mathcal{K}} k^{i-1}v_k \cdot K_{1}(k, n)\\ &= \sum_{k \in \mathcal{K}} k^iv_k \cdot (n - 2k)\\ &= n\sum_{k \in \mathcal{K}} \Big( k^{i-1}v_k \Big) - 2\underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^iv_k \Big)}}.
+            \sum_{k \in \mathcal{K}} k^{i-1}v_k \cdot K_{i - (i-1)}(k, n) &= \sum_{k \in \mathcal{K}} k^{i-1}v_k \cdot K_{1}(k, n)\\ &= \sum_{k \in \mathcal{K}} k^iv_k \cdot (n - 2k)\\ &= n\sum_{k \in \mathcal{K}} \Big( k^{i-1}v_k \Big) - 2\eqzero{\sum_{k \in \mathcal{K}} \Big( k^iv_k \Big)}.
         \end{split}
     \end{equation*}
     Finally we have $\sum_{k \in \mathcal{K}} k^{i-1}v_k = 0$, for all $i = 1, \ldots, t-1$.
@@ -153,7 +153,7 @@ for $i = 0, \ldots, t-1$.
     \begin{equation*}
     \begin{split}
         &\sum_{k \in \mathcal{K}} k^{i-2}v_k \cdot K_{2}(k, n)\\
-        &= \frac{n}{2}\underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^{i-2}v_k \cdot K_1(k, n) \Big)}} - \underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^{i-1}v_k \cdot K_1(k,n) \Big)}} - (\frac{n}{2}-1)\underset{=0}{\underline{\sum_{k \in \mathcal{K}} \Big( k^{i-2}v_k \Big)}} = 0.
+        &= \frac{n}{2}\eqzero{\sum_{k \in \mathcal{K}} \Big( k^{i-2}v_k \cdot K_1(k, n) \Big)} - \eqzero{\sum_{k \in \mathcal{K}} \Big( k^{i-1}v_k \cdot K_1(k,n) \Big)} - (\frac{n}{2}-1)\eqzero{\sum_{k \in \mathcal{K}} \Big( k^{i-2}v_k \Big)} = 0.
     \end{split}
     \end{equation*}
 
@@ -167,8 +167,8 @@ for $i = 0, \ldots, t-1$.
     \begin{equation*}
         \begin{split}
             0 &= \sum_{k \in \mathcal{K}}k^mv_k \cdot K_{i - m}(v, k)\\
-            &= \sum_{k \in \mathcal{K}} \Big( k^mv_k \Big( n\frac{1}{2k} \cdot K_{i -m}(k, n) - \frac{1}{2k}(i+1)K_{i-(m-1)}(k,n) - \frac{1}{2k}(n-i-m)K_{i-(m+1)}(k,n) \Big)\Big)\\
-            &= \frac{n}{2} \underset{=0}{\underline{\sum_{k \in \mathcal{K}}\Big( k^{m-1}v_k \cdot K_{i-m}}} \Big) - \frac{i+1}{2}\sum_{k \in \mathcal{K}}\Big( k^{m-1}v_k \cdot K_{i-(m-1)}(k,n)\Big)\\ &- \frac{n - i - m}{2}\sum_{k \in \mathcal{K}} \Big( k^{m-1}v_k \cdot K_{i-(m+1)}(k,n) \Big)\\
+            &= \sum_{k \in \mathcal{K}} \Big( k^mv_k \Big( n\frac{1}{2k} \cdot K_{i - m}(k, n) - \frac{1}{2k}(i - m + 1)K_{i - (m - 1)}(k,n) - \frac{1}{2k}(n- i + m + 1)K_{i-(m+1)}(k,n) \Big)\Big)\\
+            &= \frac{n}{2} \eqzero{\sum_{k \in \mathcal{K}}\Big( k^{m-1}v_k \cdot K_{i-m}\Big)} - \frac{i+1}{2}\sum_{k \in \mathcal{K}}\Big( k^{m-1}v_k \cdot K_{i-(m-1)}(k,n)\Big)\\ &- \frac{n - i - m}{2}\sum_{k \in \mathcal{K}} \Big( k^{m-1}v_k \cdot K_{i-(m+1)}(k,n) \Big)\\
         \end{split}
     \end{equation*}
 
