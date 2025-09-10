@@ -156,8 +156,9 @@ for $i = 0, \ldots, t-1$.
         &= \frac{n}{2}\eqzero{\sumK \Big( k^{i-2}v_k \cdot K_1(k, n) \Big)} - \eqzero{\sumK \Big( k^{i-1}v_k \cdot K_1(k,n) \Big)} - \frac{n}{2}\eqzero{\sumK \Big( k^{i-2}v_k \Big)} = 0.
     \end{split}
     \end{equation*}
+    The base step is done.
 
-    \underline{Induction.} We want to prove that if the proposition is true for $m$, then it is also true for $m - 1$.
+    \underline{Induction.} We want to prove that if the proposition is true for $m$, then it is also true for $m - 1$. Using \cref{eq:fact1}, we develop the relation to
     \begin{equation*}
         \begin{split}
             & \sumK k^{m-1}v_k \cdot K_{i-(m-1)}(k,n)\\
