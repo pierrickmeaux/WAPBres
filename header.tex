@@ -27,7 +27,7 @@
 \let\proof\relax
 \let\endproof\relax
 \usepackage{amsthm,amsfonts,amssymb}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
 \usepackage{pdflscape}
 
@@ -268,3 +268,5 @@
 
 % Writes = 0 under the line of #1
 \newcommand{\eqzero}[1]{\underset{=0}{\underline{#1}}}
+% Macro for sum of k in K for the proof to gain readability.
+\newcommand{\sumK}{\sum_{k \in \mathcal{K}}}
