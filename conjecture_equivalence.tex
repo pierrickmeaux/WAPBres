@@ -31,8 +31,14 @@ for $i = 0, \ldots, t-1$.
 \end{proposition}
 
 \begin{proof}
-    Let us prove first that
-    $$\sumK v_k \cdot K_i(k, n) = 0 \implies \sumK k^mv_k \cdot K_{i-m}(k, n) = 0,$$ for $i = 0, \ldots, t-1$ and for any $m = 0, \ldots, i$. We will proceed by induction.
+    We will conduct this proof in two halves, trying to prove equivalence from both sides to a common statement.
+
+    \textbf{First part.}
+
+    Let us begin by proving
+    $$\sumK v_k \cdot K_i(k, n) = 0 \Longleftrightarrow \sumK k^mv_k \cdot K_{i-m}(k, n) = 0,$$ for $i = 0, \ldots, t-1$ and for any $m = 0, \ldots, i$.
+
+    To prove the left to right implication, we will proceed by induction.
 
     \underline{Initialization.}
 
@@ -64,6 +70,7 @@ for $i = 0, \ldots, t-1$.
             \sumK kv_k \cdot K_{t-2}(k, n) = 0.\\
         \end{cases}
     \end{equation*}
+    The next step is unnecessary to the formality of the proof but we estimate it emphasizes the key relations used in the induction step and might help the reader.
 
     Let $m = 2$. We know from $m - 1 = 1$ that $\sumK kv_k \cdot K_{i-1}(k, n) = 0$. It follows that
     $$
@@ -124,9 +131,13 @@ for $i = 0, \ldots, t-1$.
     \end{equation*}
     This concludes the proof that
     $$\sumK v_k \cdot K_i(k, n) = 0 \implies \sumK k^mv_k \cdot K_{i-m}(k, n) = 0.$$
+    The right to left implication that $\sumK k^mv_k \cdot K_{i-m}(k, n) = 0 \implies \sumK v_k \cdot K_i(k, n) = 0$ is a trivial instance where $m = 0$. As such, we can conclude that
+    $$\sumK v_k \cdot K_i(k, n) = 0 \Longleftrightarrow \sumK k^mv_k \cdot K_{i-m}(k, n) = 0.$$
 
-        Let us now prove first that
-    $$\sumK k^iv_k = 0 \implies \sumK k^mv_k \cdot K_{i-m}(k, n) = 0,$$ for $i = 0, \ldots, t-1$ and for any $m = 0, \ldots, i$. We will proceed by induction.
+    \textbf{Second part.}
+
+    Let us now focus on the second half of the proof to prove
+    $$\sumK k^iv_k = 0 \Longleftrightarrow \sumK k^mv_k \cdot K_{i-m}(k, n) = 0,$$ for $i = 0, \ldots, t-1$ and for any $m = 0, \ldots, i$. To prove the left to right implication we will proceed by induction.
 
     \underline{Initialization.}
 
@@ -139,6 +150,8 @@ for $i = 0, \ldots, t-1$.
         \end{split}
     \end{equation*}
     Finally we have $\sumK k^{i-1}v_k = 0$, for all $i = 1, \ldots, t-1$.
+
+    The next step is unnecessary to the formality of the proof but we estimate it emphasizes the key relations used in the induction step and might help the reader.
 
     Let $m = i - 2$, then $\sumK k^{i-2}v_k \cdot K_{i - (i-2)}(k, n) = \sumK k^{i-2}v_k \cdot K_{2}(k, n)$. We apply \cref{eq:fact1} to further develop this to
     \begin{equation*}
@@ -180,7 +193,9 @@ for $i = 0, \ldots, t-1$.
         \end{split}
     \end{equation*}
     The induction step is done. We proved that $\sumK k^iv_k = 0 \implies \sumK k^mv_k\cdot K_{i-m}(k,n) = 0$.
-    We use both implications proved here to conclude that $\sumK v_kK_i(k,n) = 0 \Longleftrightarrow \sumK k^iv_k = 0$.
+    The right to left implication that $\sumK k^mv_k \cdot K_{i-m}(k, n) = 0 \implies \sumK k^iv_k = 0$ is a trivial instance where $m = i$. As such, we can conclude that
+    $$\sumK k^iv_k = 0 \Longleftrightarrow \sumK k^mv_k \cdot K_{i-m}(k, n) = 0.$$
+    We use both equivalences proved here to conclude that $\sumK v_kK_i(k,n) = 0 \Longleftrightarrow \sumK k^iv_k = 0$.
 \end{proof}
 
 
