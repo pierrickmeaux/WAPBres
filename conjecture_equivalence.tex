@@ -20,15 +20,15 @@ Let
 It follows that $|\mathcal{K}| = 2^t$. Hence the conjecture is equivalent to
 
 \begin{equation}\label{eq:statement}
-    \sumK v_k \cdot K_i(k, n) = 0, \quad i = 0, \ldots, t-1.
+    \text{for } i \in [0, t-1], \sumK v_k \cdot K_i(k, n) = 0.
 \end{equation}
 
 We want to prove an equivalence to the conjecture as formulated in \cref{prop:equivalence} below.
 \begin{proposition}\label{prop:equivalence}
     The following two statements are equivalent:
     \begin{itemize}
-        \item For any positive integer $n$, $\sumK v_k \cdot K_i(k, n) = 0$ for $i = 0, \ldots, t-1$.
-        \item $\sumK k^iv_k= 0$ for $i = 0, \ldots, t-1$.
+        \item For any positive integer $n$ and for $i \in [0, t-1], \sumK v_k \cdot K_i(k, n) = 0$.
+        \item For $i \in [0,t-1], \sumK k^iv_k= 0$.
     \end{itemize}
 \end{proposition}
 
@@ -37,8 +37,14 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
 
     \textbf{First part.}
 
-    Let us begin by proving
-    $$\sumK v_k \cdot K_i(k, n) = 0 \Longleftrightarrow \sumK k^mv_k \cdot K_{i-m}(k, n) = 0,$$ for $i = 0, \ldots, t-1$ and for any $m = 0, \ldots, i$.
+    Let us begin by proving that
+    \begin{equation*}
+        \begin{split}
+            \text{for } i \in [0, t-1], \quad &\sumK v_k \cdot K_i(k, n) = 0\\
+            \Longleftrightarrow\\
+            \text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k \cdot K_{i-m}(k, n) = 0,
+        \end{split}
+    \end{equation*}
 
     To prove the left to right implication, we will proceed by induction.
 
@@ -52,7 +58,7 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
     $$
     From Proposition 4, statement 2 of \cite{DCC:DalMaiSar06}, we know that
     \begin{equation}\label{eq:fact1}
-        (i+1)K_{i+1}(k, n) = (n - 2k)K_i(k,n) - (n - i + 1)K_{i-1}(k,n), \forall i = 1, \ldots, n - 1.
+        (i+1)K_{i+1}(k, n) = (n - 2k)K_i(k,n) - (n - i + 1)K_{i-1}(k,n), \quad i \in [1, n - 1].
     \end{equation}
     We make use of \cref{eq:fact1} to obtain
     \begin{equation*}
@@ -62,7 +68,7 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
         &= -2\sumK kv_k \cdot K_{i-1}(k, n) = \sumK k^1v_k \cdot K_{i-1}(k, n) = 0,
     \end{split}
     \end{equation*}
-    for $i = 2, \ldots, t-1$. For the same values of $i$ we can build the following $t-2$ equations:
+    for $i \in [2, t-1]$. For the same values of $i$ we can build the following $t-2$ equations:
 
     \begin{equation*}
         \begin{cases}
@@ -85,9 +91,9 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
         & = n \sumK \Big( kv_k \cdot K_{i-2}(k, n) \Big) - 2\sumK \Big( k^2v_k \cdot K_{i-2}(k, n) \Big)\\& - (n - i - 1)\sumK \Big( kv_k \cdot K_{i-3}(k, n) \Big),
     \end{split}
     \end{equation*}
-    for $i = 3, \ldots, t - 1$.
+    for $i \in [3, t - 1]$.
 
-    We showed that for $m - 1 = 1$, $\sumK kv_k \cdot K_{i-2}(k,n) = 0$ for $i = 3, \ldots, t-1$. And $\sumK kv_k \cdot K_{i-3}(k,n) = 0$ for $i = 4, \ldots, t-1$. For $i = 3$, $\sumK kv_k \cdot K_0(k, n) = \sumK kv_k$. Since $0 = \sumK v_k \cdot K_1(k, n) = \sumK v_k \cdot(n - 2k) = n\underset{=0}{\underline{\sumK v_k}} -2\sumK kv_k$, we can conclude that $ kv_k = 0$.
+    We showed that for $m - 1 = 1$, $\sumK kv_k \cdot K_{i-2}(k,n) = 0$ for $i \in [3, t-1]$. And $\sumK kv_k \cdot K_{i-3}(k,n) = 0$ for $i \in [4, t-1]$. For $i = 3$, $\sumK kv_k \cdot K_0(k, n) = \sumK kv_k$. Since $0 = \sumK v_k \cdot K_1(k, n) = \sumK v_k \cdot(n - 2k) = n\eqzero{\sumK v_k} -2\sumK kv_k$, we can conclude that $ kv_k = 0$.
 
     Thus it follows that
     \begin{equation*}
@@ -96,7 +102,7 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
             &= - 2\sumK \Big( k^2v_k \cdot K_{i-2}(k, n) \Big) = \sumK \Big( k^2v_k \cdot K_{i-2}(k, n) \Big) = 0,
         \end{split}
     \end{equation*}
-    for $i = 3, \ldots, t-1$. For the same values of $i$ we can build the following $t-3$ equations:
+    for $i \in [3, t-1]$. For the same values of $i$ we can build the following $t-3$ equations:
 
     \begin{equation*}
         \begin{cases}
@@ -122,9 +128,9 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
         & = n \sumK \Big( k^mv_k \cdot K_{i - (m+1)}(k, n) \Big) - 2\sumK \Big( k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) \Big)\\& - (n - i - m)\sumK \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big),
     \end{split}
     \end{equation*}
-    for $i = m+2, \ldots t-1$.
+    for $i \in [m+2, t-1]$.
 
-    We know that from the step $m-1$, $\sumK k^mv_k \cdot K_{i - (m+1)}(k, n) = 0$. We also know from the step $m-1$ that for $i = m+3, \ldots, t-1$, $\sumK k^mv_k \cdot K_{i - (m+2)}(k, n) = 0$. For $i = m + 2$, we end up with $\sumK k^mv_k \cdot K_0(k, n) = \sumK k^mv_k$. Since $0 = \sumK k^{m-1}v_k \cdot K_1(k, n) = \sumK k^{m-1}v_k \cdot (n - 2k)$, we develop one more time to $n\eqzero{\sumK k^{m-1}v_k} - 2\sumK k^mv_k$. Indeed, $\sumK k^mv_k = 0$ and $\sumK \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big) = 0$. Thus it follows that
+    We know that from the step $m-1$, $\sumK k^mv_k \cdot K_{i - (m+1)}(k, n) = 0$. We also know from the step $m-1$ that for $i \in [m+3, t-1]$, $\sumK k^mv_k \cdot K_{i - (m+2)}(k, n) = 0$. For $i = m + 2$, we end up with $\sumK k^mv_k \cdot K_0(k, n) = \sumK k^mv_k$. Since $0 = \sumK k^{m-1}v_k \cdot K_1(k, n) = \sumK k^{m-1}v_k \cdot (n - 2k)$, we develop one more time to $n\eqzero{\sumK k^{m-1}v_k} - 2\sumK k^mv_k$. Indeed, $\sumK k^mv_k = 0$ and $\sumK \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big) = 0$. Thus it follows that
     \begin{equation*}
     \begin{split}
         & = n \eqzero{\sumK \Big( k^mv_k \cdot K_{i - (m+1)}(k, n) \Big)} - 2\sumK \Big( k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) \Big)\\& - (n - i - m)\eqzero{\sumK \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big)}\\
@@ -132,14 +138,32 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
     \end{split}
     \end{equation*}
     This concludes the proof that
-    $$\sumK v_k \cdot K_i(k, n) = 0 \implies \sumK k^mv_k \cdot K_{i-m}(k, n) = 0.$$
-    The right to left implication that $\sumK k^mv_k \cdot K_{i-m}(k, n) = 0 \implies \sumK v_k \cdot K_i(k, n) = 0$ is a trivial instance where $m = 0$. As such, we can conclude that
-    $$\sumK v_k \cdot K_i(k, n) = 0 \Longleftrightarrow \sumK k^mv_k \cdot K_{i-m}(k, n) = 0.$$
+    \begin{equation*}
+        \begin{split}
+            \text{for } i \in [0, t-1], \quad &\sumK v_k \cdot K_i(k, n) = 0\\
+            \implies\\
+            \text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k \cdot K_{i-m}(k, n) = 0,
+        \end{split}
+    \end{equation*}
+    The right to left implication that $\text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad \sumK k^mv_k \cdot K_{i-m}(k, n) = 0 \implies \text{for } i \in [0, t-1], \quad \sumK v_k \cdot K_i(k, n) = 0$ is a trivial instance where $m = 0$. As such, we can conclude that
+    \begin{equation*}
+        \begin{split}
+            \text{for } i \in [0, t-1], \quad &\sumK v_k \cdot K_i(k, n) = 0\\
+            \Longleftrightarrow\\
+            \text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k \cdot K_{i-m}(k, n) = 0,
+        \end{split}
+    \end{equation*}
 
     \textbf{Second part.}
 
     Let us now focus on the second half of the proof to prove
-    $$\sumK k^iv_k = 0 \Longleftrightarrow \sumK k^mv_k \cdot K_{i-m}(k, n) = 0,$$ for $i = 0, \ldots, t-1$ and for any $m = 0, \ldots, i$. To prove the left to right implication we will proceed by induction.
+    \begin{equation*}
+        \begin{split}
+            \text{for } i \in [0, t-1], \quad &\sumK k^iv_k = 0\\
+            \Longleftrightarrow\\
+            \text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k \cdot K_{i-m}(k, n) = 0,
+        \end{split}
+    \end{equation*}
 
     \underline{Initialization.}
 
@@ -151,7 +175,7 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
             \sumK k^{i-1}v_k \cdot K_{i - (i-1)}(k, n) &= \sumK k^{i-1}v_k \cdot K_{1}(k, n)\\ &= \sumK k^iv_k \cdot (n - 2k)\\ &= n\sumK \Big( k^{i-1}v_k \Big) - 2\eqzero{\sumK \Big( k^iv_k \Big)}.
         \end{split}
     \end{equation*}
-    Finally we have $\sumK k^{i-1}v_k = 0$, for all $i = 1, \ldots, t-1$.
+    Finally we have $\sumK k^{i-1}v_k = 0$, for all $i \in [1, t-1]$.
 
     The next step is unnecessary to the formality of the proof but we estimate it emphasizes the key relations used in the induction step and might help the reader.
 
@@ -162,8 +186,8 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
             &= \frac{n}{2}\sumK \Big( k^{i-2}v_k \cdot K_1(k, n) \Big) - \sumK \Big( k^{i-1}v_k \cdot K_1(k,n) \Big) - \frac{n}{2}\sumK \Big( k^{i-2}v_k \Big),
         \end{split}
     \end{equation*}
-    for all $i = 2, \ldots, t-1$.
-    From the previous step $m + 1 = i - 1$ we had seen that $\sumK k^{i-1}v_k \cdot K_1(k, n) = 0\quad \forall i\in \{1, \ldots, t-1\}$. From the step before where $m + 2 = i$, we also know that $\sumK \Big( k^{i-2}v_k \Big) = 0$. As such, we determine that some quantities nullify and we can rewrite the last expression of our development to
+    for $i \in [2, t-1]$.
+    From the previous step $m + 1 = i - 1$ we had seen that $\sumK k^{i-1}v_k \cdot K_1(k, n) = 0\text{ for } i \in [1, t-1]$. From the step before where $m + 2 = i$, we also know that $\sumK \Big( k^{i-2}v_k \Big) = 0$. As such, we determine that some quantities nullify and we can rewrite the last expression of our development to
 
     \begin{equation*}
     \begin{split}
@@ -194,16 +218,37 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
             &= 0.
         \end{split}
     \end{equation*}
-    The induction step is done. We proved that $\sumK k^iv_k = 0 \implies \sumK k^mv_k\cdot K_{i-m}(k,n) = 0$.
-    The right to left implication that $\sumK k^mv_k \cdot K_{i-m}(k, n) = 0 \implies \sumK k^iv_k = 0$ is a trivial instance where $m = i$. As such, we can conclude that
-    $$\sumK k^iv_k = 0 \Longleftrightarrow \sumK k^mv_k \cdot K_{i-m}(k, n) = 0.$$
-    We use both equivalences proved here to conclude that $\sumK v_kK_i(k,n) = 0 \Longleftrightarrow \sumK k^iv_k = 0$.
+    The induction step is done. This concludes the proof that
+    \begin{equation*}
+        \begin{split}
+            \text{for } i \in [0, t-1], \quad &\sumK k^iv_k = 0\\
+            \implies\\
+            \text{ for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k\cdot K_{i-m}(k,n) = 0.
+        \end{split}
+    \end{equation*}
+    The right to left implication that $\text{for } i \in [0, t-1] \text{ and for} m \in [0, i], \sumK k^mv_k \cdot K_{i-m}(k, n) = 0 \implies \text{for } i \in [0, t-1], \sumK k^iv_k = 0$ is a trivial instance where $m = i$. As such, we can conclude that
+
+    \begin{equation*}
+        \begin{split}
+            \text{for } i \in [0, t-1], \quad &\sumK k^iv_k = 0\\
+            \implies\\
+            \text{ for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k\cdot K_{i-m}(k,n) = 0.
+        \end{split}
+    \end{equation*}
+    We use both equivalences proved here to conclude that
+    \begin{equation*}
+        \begin{split}
+            \text{for } i \in [0, t-1], \quad &\sumK v_kK_i(k,n) = 0\\
+            \Longleftrightarrow\\
+            \text{ for } i \in [0, t-1], \quad &\sumK \sumK k^iv_k = 0.
+        \end{split}
+    \end{equation*}
 \end{proof}
 
 
 As such, we can reformulate the initial condition as
 \begin{equation}\label{eq:general}
-    \sumK k^iv_k = 0.
+    \text{for } i \in [0, t-1], \quad \sumK k^iv_k = 0.
 \end{equation}
 
 For $i = 0, \ldots t$, we can build the following system using \cref{eq:general} repeatedly.

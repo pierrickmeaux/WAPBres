@@ -266,7 +266,9 @@
 \newcommand{\eg}{\textit{e.g.} }
 \newcommand{\ea}{\textit{et al.} }
 
-% Writes = 0 under the line of #1
-\newcommand{\eqzero}[1]{\underset{=0}{\underline{#1}}}
+% Writes a horizontal line with label "= 0" under #1
+%\newcommand{\eqzero}[1]{\underset{=0}{\underline{#1}}}
+% Writes a horizontal bracket with label "= 0" under #1
+\newcommand{\eqzero}[1]{\underbrace{#1}_{=0}}
 % Macro for sum of k in K for the proof to gain readability.
 \newcommand{\sumK}{\sum_{k \in \mathcal{K}}}
