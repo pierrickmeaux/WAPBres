@@ -1,34 +1,33 @@
 The conjecture of $t$-correcting WAPB functions states that for any $n$ such that $wt(n) = t$, there exists a vector $v \in \{0, \pm 1\}^{n+1}$ where $v_k = 0$ when $\binom{n}{k}$ is even, such that
 $$
-v \cdot \Gamma = (v_0, v_1, \ldots, v_n)
+v \cdot \KrM{n}{n} = (v_0, v_1, \ldots, v_n)
 \begin{bmatrix}
     \\
-    K_i(k, n) \\
+    \kraw{k}{\ell}{n}\\
     \\
-\end{bmatrix} = (\underset{\operatorname{0}}{0}, \underset{\operatorname{1}}{0}, \ldots, \underset{\operatorname{t - 1}}{0}, X, X, \ldots, X),
+\end{bmatrix} = (\underset{\operatorname{0}}{0}, \underset{\operatorname{1}}{0}, \ldots, \underset{\operatorname{t - 1}}{0}, X, X, \ldots, X).
 $$
-where $K_i(k,n)$ is the Krawtchouk polynomial of degree $i$ evaluated in $k$ and where $\Gamma$ is the $(n+1) \times (n + 1)$ Krawtchouk matrix which rows and columns are respectively indexed by $k$ and $i$.
 
 Let
 \begin{equation*}
 \begin{split}
-    \mathcal{K} &= \{0 \leq k \leq n | \binom{n}{k} \text{ is odd}\}\\
-    &=\{0 \leq k \leq n | \text{ supp}(k) \subseteq \text{supp}(n)\}.
+    \mathcal{L} &= \{0 \leq \ell \leq n | \binom{n}{\ell} \text{ is odd}\}\\
+    &=\{0 \leq k \leq n | \text{ supp}(\ell) \subseteq \text{supp}(\ell)\}.
 \end{split}
 \end{equation*}
 
-It follows that $|\mathcal{K}| = 2^t$. Hence the conjecture is equivalent to
+It follows that $|\mathcal{L}| = 2^t$. Hence the conjecture is equivalent to
 
 \begin{equation}\label{eq:statement}
-    \text{for } i \in [0, t-1], \sumK v_k \cdot K_i(k, n) = 0.
+    \text{for } i \in [0, t-1], \sumK v_k \cdot \kraw{k}{\ell}{n} = 0.
 \end{equation}
 
 We want to prove an equivalence to the conjecture as formulated in \cref{prop:equivalence} below.
 \begin{proposition}\label{prop:equivalence}
     The following two statements are equivalent:
     \begin{itemize}
-        \item For any positive integer $n$ and for $i \in [0, t-1], \sumK v_k \cdot K_i(k, n) = 0$.
-        \item For $i \in [0,t-1], \sumK k^iv_k= 0$.
+        \item For any positive integer $n$ and for $k \in [0, t-1], \sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$.
+        \item For $k \in [0,t-1], \sumK \ell^kv_\ell= 0$.
     \end{itemize}
 \end{proposition}
 
@@ -40,9 +39,9 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
     Let us begin by proving that
     \begin{equation*}
         \begin{split}
-            \text{for } i \in [0, t-1], \quad &\sumK v_k \cdot K_i(k, n) = 0\\
+            \text{for } k \in [0, t-1], \quad &\sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0\\
             \Longleftrightarrow\\
-            \text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k \cdot K_{i-m}(k, n) = 0,
+            \text{for } k \in [0, t-1] \text{ and for } m \in [0, k], \quad &\sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = 0,
         \end{split}
     \end{equation*}
 
@@ -50,66 +49,69 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
 
     \underline{Initialization.}
 
-    Let $m = 0$. $\sumK k^0v_k \cdot K_{i-0}(k, n) = \sumK v_k \cdot K_i(k, n) = 0$ from the starting condition.
+    Let $m = 0$. $\sumK \ell^0v_\ell \cdot \kraw{k-0}{\ell}{n} = \sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$ from the starting condition.
 
-    Let $m = 1$. We know from $m - 1 = 0$ that $\sumK v_k \cdot K_i(k, n) = 0$. It follows that
+    Let $m = 1$. We know from $m - 1 = 0$ that $\sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$. It follows that
     $$
-    0 = \sumK v_k \cdot K_i(k, n) = i\sumK v_k \cdot K_i(k, n) = \sumK v_k \cdot iK_i(k, n).
+    0 = \sumK v_\ell \cdot \kraw{k}{\ell}{n} = k\sumK v_\ell \cdot \kraw{k}{\ell}{n} = \sumK v_\ell \cdot k\kraw{k}{\ell}{n}.
     $$
     From Proposition 4, statement 2 of \cite{DCC:DalMaiSar06}, we know that
     \begin{equation}\label{eq:fact1}
-        (i+1)K_{i+1}(k, n) = (n - 2k)K_i(k,n) - (n - i + 1)K_{i-1}(k,n), \quad i \in [1, n - 1].
+        (k+1)\kraw{k+1}{\ell}{n} = (n-2\ell)\kraw{k}{\ell}{n} - (n-k+1)\kraw{k-1}{\ell}{n}, \quad k \in [1, n-1].
     \end{equation}
     We make use of \cref{eq:fact1} to obtain
     \begin{equation*}
     \begin{split}
-        0 &= \sumK v_k \cdot \Big( (n - 2k)K_{i-1}(k, n) - (n - i)K_{i-2}(k, n) \Big)\\
-        & = n \eqzero{\sumK \Big( v_k \cdot K_{i-1}(k, n) \Big)} - 2\sumK \Big( kv_k \cdot K_{i-1}(k, n) \Big)\\& - (n-i)\eqzero{\sumK \Big( v_k \cdot K_{i-2}(k, n) \Big)}\\
-        &= -2\sumK kv_k \cdot K_{i-1}(k, n) = \sumK k^1v_k \cdot K_{i-1}(k, n) = 0,
+        0 &= \sumK v_\ell \cdot \Big( (n - 2\ell)\kraw{k-1}{\ell}{n} - (n - k)\kraw{k-2}{\ell}{n} \Big)\\
+        & = n \eqzero{\sumK \Big( v_\ell \cdot \kraw{k-1}{\ell}{n} \Big)} - 2\sumK \Big( \ell v_\ell \cdot \kraw{k-1}{\ell}{n} \Big)\\& - (n-k)\eqzero{\sumK \Big( v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)}\\
+        &= -2\sumK \ell v_\ell \cdot \kraw{k-1}{\ell}{n} = \sumK \ell^1v_\ell \cdot \kraw{k-1}{\ell}{n} = 0,
     \end{split}
     \end{equation*}
-    for $i \in [2, t-1]$. For the same values of $i$ we can build the following $t-2$ equations:
+    for $k \in [2, t-1]$. For the same values of $k$ we can build the following $t-2$ equations:
 
     \begin{equation*}
         \begin{cases}
-            \sumK kv_k \cdot K_1(k, n) = 0\\
-            \sumK kv_k \cdot K_2(k, n) = 0\\
+            \sumK \ell v_\ell \cdot \kraw{1}{\ell}{n} = 0\\
+            \sumK \ell v_\ell \cdot \kraw{2}{\ell}{n} = 0\\
             \ldots\\
-            \sumK kv_k \cdot K_{t-2}(k, n) = 0.\\
+            \sumK \ell v_\ell \cdot \kraw{t-2}{\ell}{n} = 0.\\
         \end{cases}
     \end{equation*}
     The next step is unnecessary to the formality of the proof but we estimate it emphasizes the key relations used in the induction step and might help the reader.
 
-    Let $m = 2$. We know from $m - 1 = 1$ that $\sumK kv_k \cdot K_{i-1}(k, n) = 0$. It follows that
+    Let $m = 2$. We know from $m - 1 = 1$ that $\sumK \ell v_\ell \cdot \kraw{k-1}{\ell}{n} = 0$. It follows that
     $$
-    0 = (i-1)\sumK kv_k \cdot K_{i-1}(k, n) = \sumK kv_k \cdot (i-1)K_{i-1}(k, n) = 0.
+    0 = (k-1)\sumK \ell v_\ell \cdot \kraw{k-1}{\ell}{n} = \sumK \ell v_\ell \cdot (k-1)\kraw{k-1}{\ell}{n} = 0.
     $$
     Using \cref{eq:fact1} we obtain
     \begin{equation*}
     \begin{split}
-        0 &= \sumK kv_k \cdot \Big( (n - 2k)K_{i-2}(k, n) - (n - i - 1)K_{i-3}(k, n) \Big)\\
-        & = n \sumK \Big( kv_k \cdot K_{i-2}(k, n) \Big) - 2\sumK \Big( k^2v_k \cdot K_{i-2}(k, n) \Big)\\& - (n - i - 1)\sumK \Big( kv_k \cdot K_{i-3}(k, n) \Big),
+        0 &= \sumK \ell v_\ell \cdot \Big( (n - 2\ell)\kraw{k-2}{\ell}{n} - (n - k - 1)\kraw{k-3}{\ell}{n} \Big)\\
+        & = n \sumK \Big( \ell v_\ell \cdot \kraw{k-2}{\ell}{n} \Big) - 2\sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)\\& - (n - k - 1)\sumK \Big( \ell v_\ell \cdot \kraw{k-3}{\ell}{n} \Big),
     \end{split}
     \end{equation*}
-    for $i \in [3, t - 1]$.
+    for $k \in [3, t - 1]$.
 
-    We showed that for $m - 1 = 1$, $\sumK kv_k \cdot K_{i-2}(k,n) = 0$ for $i \in [3, t-1]$. And $\sumK kv_k \cdot K_{i-3}(k,n) = 0$ for $i \in [4, t-1]$. For $i = 3$, $\sumK kv_k \cdot K_0(k, n) = \sumK kv_k$. Since $0 = \sumK v_k \cdot K_1(k, n) = \sumK v_k \cdot(n - 2k) = n\eqzero{\sumK v_k} -2\sumK kv_k$, we can conclude that $ kv_k = 0$.
+    We showed that for $m - 1 = 1$, $\sumK \ell v_\ell \cdot \kraw{k-2}{\ell}{n} = 0$ for $k \in [3, t-1]$.
+    And $\sumK \ell v_\ell \cdot \kraw{k-3}{\ell}{n} = 0$ for $k \in [4, t-1]$.
+    For $k = 3$, $\sumK \ell v_\ell \cdot \kraw{0}{\ell}{n} = \sumK \ell v_\ell$.
+    Since $0 = \sumK v_\ell \cdot \kraw{1}{\ell}{n} = \sumK v_\ell \cdot(n - 2\ell) = n\eqzero{\sumK v_\ell} -2\sumK \ell v_\ell$, we can conclude that $\sumK\ell v_\ell = 0$.
 
     Thus it follows that
     \begin{equation*}
         \begin{split}
-            0 &= n \eqzero{\sumK \Big( kv_k \cdot K_{i-2}(k, n) \Big)} - 2\sumK \Big( k^2v_k \cdot K_{i-2}(k, n) \Big)\\& - (n - i - 1)\eqzero{\sumK \Big( kv_k \cdot K_{i-3}(k, n) \Big)}\\
-            &= - 2\sumK \Big( k^2v_k \cdot K_{i-2}(k, n) \Big) = \sumK \Big( k^2v_k \cdot K_{i-2}(k, n) \Big) = 0,
+            0 &= n \eqzero{\sumK \Big( \ell v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)} - 2\sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)\\& - (n - k - 1)\eqzero{\sumK \Big( \ell v_\ell \cdot \kraw{k-3}{\ell}{n} \Big)}\\
+            &= -2\sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big) = \sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big) = 0,
         \end{split}
     \end{equation*}
-    for $i \in [3, t-1]$. For the same values of $i$ we can build the following $t-3$ equations:
+    for $k \in [3, t-1]$. For the same values of $k$ we can build the following $t-3$ equations:
 
     \begin{equation*}
         \begin{cases}
-            \sumK kv_k \cdot K_1(k, n) = 0\\
-            \sumK kv_k \cdot K_2(k, n) = 0\\
+            \sumK \ell v_\ell \cdot \kraw{1}{\ell}{n} = 0\\
+            \sumK \ell v_\ell \cdot \kraw{2}{\ell}{n} = 0\\
             \ldots\\
-            \sumK kv_k \cdot K_{t-3}(k, n) = 0\\
+            \sumK \ell v_\ell \cdot \kraw{t-3}{\ell}{n} = 0\\
         \end{cases}
     \end{equation*}
     The base step is done.
@@ -117,40 +119,46 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
     \underline{Induction.} We want to show that if the initial statement is true for $m$, then it is also true for $m+1$. From the starting assumption we have
 
     $$
-    0 = \sumK k^mv_k \cdot K_{i-m}(k, n) = (i-m)\sumK k^mv_k \cdot K_{i-m}(k, n) = \sumK k^mv_k \cdot (i-m)K_{i-m}(k, n).
+    0 = \sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = (k-m)\sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = \sumK \ell^mv_\ell \cdot (k-m)\kraw{k-m}{\ell}{n}.
     $$
 
     Using \cref{eq:fact1}, we develop this further to
 
     \begin{equation*}
     \begin{split}
-        0 &= \sumK k^mv_k \cdot \Big( (n - 2k)K_{i - (m+1)}(k, n) - (n - i - m)K_{i - (m + 2)}(k, n) \Big)\\
-        & = n \sumK \Big( k^mv_k \cdot K_{i - (m+1)}(k, n) \Big) - 2\sumK \Big( k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) \Big)\\& - (n - i - m)\sumK \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big),
+        0 &= \sumK \ell^mv_\ell \cdot \Big( (n - 2\ell)\kraw{k-(m+1)}{\ell}{n} - (n - k - m)\kraw{k-(m+2)}{\ell}{n} \Big)\\
+        & = n \sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big) - 2\sumK \Big( \ell^{m+1}v_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big)\\& - (n - k - m)\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+2)}{\ell}{n} \Big),
     \end{split}
     \end{equation*}
-    for $i \in [m+2, t-1]$.
+    for $k \in [m+2, t-1]$.
 
-    We know that from the step $m-1$, $\sumK k^mv_k \cdot K_{i - (m+1)}(k, n) = 0$. We also know from the step $m-1$ that for $i \in [m+3, t-1]$, $\sumK k^mv_k \cdot K_{i - (m+2)}(k, n) = 0$. For $i = m + 2$, we end up with $\sumK k^mv_k \cdot K_0(k, n) = \sumK k^mv_k$. Since $0 = \sumK k^{m-1}v_k \cdot K_1(k, n) = \sumK k^{m-1}v_k \cdot (n - 2k)$, we develop one more time to $n\eqzero{\sumK k^{m-1}v_k} - 2\sumK k^mv_k$. Indeed, $\sumK k^mv_k = 0$ and $\sumK \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big) = 0$. Thus it follows that
+    We know that from the step $m-1$, $\sumK \ell^mv_\ell \cdot \kraw{k-(m+1)}{\ell}{n} = 0$.
+    and that for $k \in [m+3, t-1]$, $\sumK \ell^mv_\ell \cdot \kraw{k-(m+2)}{\ell}{n} = 0$.
+    For $k = m + 2$, we end up with $\sumK \ell^mv_\ell \cdot \kraw{0}{\ell}{n} = \sumK \ell^mv_\ell$. Since $0 = \sumK \ell^{m-1}v_\ell \cdot \kraw{1}{\ell}{n} = \sumK \ell^{m-1}v_\ell \cdot (n - 2\ell)$,
+    we develop one more time to $n\eqzero{\sumK \ell^{m-1}v_\ell} - 2\sumK \ell^mv_\ell$.
+    Indeed, $\sumK \ell^mv_\ell = 0$ and $\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+2)}{\ell}{n} \Big) = 0$.
+    Thus it follows that
     \begin{equation*}
     \begin{split}
-        & = n \eqzero{\sumK \Big( k^mv_k \cdot K_{i - (m+1)}(k, n) \Big)} - 2\sumK \Big( k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) \Big)\\& - (n - i - m)\eqzero{\sumK \Big( k^mv_k \cdot K_{i - (m+2)}(k, n) \Big)}\\
-        &= -2\sumK k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) = \sumK k^{m+1}v_k \cdot K_{i - (m+1)}(k, n) = 0
+        & = n \eqzero{\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big)} - 2\sumK \Big( \ell^{m+1}v_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big)\\& - (n - k - m)\eqzero{\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+2)}{\ell}{n} \Big)}\\
+        &= -2\sumK \ell^{m+1}v_\ell \cdot \kraw{k_(m+1)}{\ell}{n} = \sumK \ell^{m+1}v_\ell \cdot \kraw{k-(m+1)}{\ell}{n} = 0
     \end{split}
     \end{equation*}
     This concludes the proof that
     \begin{equation*}
         \begin{split}
-            \text{for } i \in [0, t-1], \quad &\sumK v_k \cdot K_i(k, n) = 0\\
+            \text{for } k \in [0, t-1], \quad &\sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0\\
             \implies\\
-            \text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k \cdot K_{i-m}(k, n) = 0,
+            \text{for } k \in [0, t-1] \text{ and for } m \in [0, k], \quad &\sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = 0,
         \end{split}
     \end{equation*}
-    The right to left implication that $\text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad \sumK k^mv_k \cdot K_{i-m}(k, n) = 0 \implies \text{for } i \in [0, t-1], \quad \sumK v_k \cdot K_i(k, n) = 0$ is a trivial instance where $m = 0$. As such, we can conclude that
+    The right to left implication that $\text{for } k \in [0, t-1] \text{ and for } m \in [0, k], \quad \sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = 0 \implies \text{for } k \in [0, t-1], \quad \sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$ is a trivial instance where $m = 0$.
+    As such, we can conclude that
     \begin{equation*}
         \begin{split}
-            \text{for } i \in [0, t-1], \quad &\sumK v_k \cdot K_i(k, n) = 0\\
+            \text{for } k \in [0, t-1], \quad &\sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0\\
             \Longleftrightarrow\\
-            \text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k \cdot K_{i-m}(k, n) = 0,
+            \text{for } k \in [0, t-1] \text{ and for } m \in [0, k], \quad &\sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = 0,
         \end{split}
     \end{equation*}
 
@@ -159,40 +167,44 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
     Let us now focus on the second half of the proof to prove
     \begin{equation*}
         \begin{split}
-            \text{for } i \in [0, t-1], \quad &\sumK k^iv_k = 0\\
+            \text{for } k \in [0, t-1], \quad &\sumK \ell^kv_\ell = 0\\
             \Longleftrightarrow\\
-            \text{for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k \cdot K_{i-m}(k, n) = 0,
+            \text{for } k \in [0, t-1] \text{ and for } m \in [0, k], \quad &\sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = 0,
         \end{split}
     \end{equation*}
 
     \underline{Initialization.}
 
-    Let $m = i$, then $\sumK k^iv_k \cdot K_{i - i}(k, n) = \sumK k^iv_k \cdot K_{0}(k, n) = \sumK k^iv_k = 0$.
+    Let $m = k$, then $\sumK \ell^kv_\ell \cdot \kraw{k-k}{\ell}{n} = \sumK \ell^kv_\ell \cdot \kraw{0}{\ell}{n} = \sumK \ell^kv_\ell = 0$.
 
-    Let $m = i - 1$, then
+    Let $m = k - 1$, then
     \begin{equation*}
         \begin{split}
-            \sumK k^{i-1}v_k \cdot K_{i - (i-1)}(k, n) &= \sumK k^{i-1}v_k \cdot K_{1}(k, n)\\ &= \sumK k^iv_k \cdot (n - 2k)\\ &= n\sumK \Big( k^{i-1}v_k \Big) - 2\eqzero{\sumK \Big( k^iv_k \Big)}.
+            \sumK \ell^{k-1}v_\ell \cdot \kraw{k-(k-1)}{\ell}{n} &= \sumK \ell^{k-1}v_\ell \cdot \kraw{1}{\ell}{n}\\
+            &= \sumK \ell^kv_\ell \cdot (n - 2\ell)\\
+            &= n\sumK \Big( \ell^{k-1}v_\ell \Big) - 2\eqzero{\sumK \Big( \ell^kv_\ell \Big)}.
         \end{split}
     \end{equation*}
-    Finally we have $\sumK k^{i-1}v_k = 0$, for all $i \in [1, t-1]$.
+    Finally we have $\sumK \ell^{k-1}v_\ell = 0$, for all $k \in [1, t-1]$.
 
     The next step is unnecessary to the formality of the proof but we estimate it emphasizes the key relations used in the induction step and might help the reader.
 
-    Let $m = i - 2$, then $\sumK k^{i-2}v_k \cdot K_{i - (i-2)}(k, n) = \sumK k^{i-2}v_k \cdot K_{2}(k, n)$. We apply \cref{eq:fact1} to further develop this to
+    Let $m = k - 2$, then $\sumK \ell^{k-2}v_\ell \cdot \kraw{k-(k-2)}{\ell}{n} = \sumK \ell^{k-2}v_\ell \cdot \kraw{2}{\ell}{n}$.
+    We apply \cref{eq:fact1} to further develop this to
     \begin{equation*}
         \begin{split}
-            \sumK k^{i-2}v_k \cdot K_{2}(k, n) &= \sumK \Big( k^{i-2}v_k \Big( \frac{1}{2}(n - 2k)K_1(k, n) - \frac{1}{2}nK_0(k, n) \Big)\Big)\\
-            &= \frac{n}{2}\sumK \Big( k^{i-2}v_k \cdot K_1(k, n) \Big) - \sumK \Big( k^{i-1}v_k \cdot K_1(k,n) \Big) - \frac{n}{2}\sumK \Big( k^{i-2}v_k \Big),
+            \sumK \ell^{k-2}v_\ell \cdot \kraw{2}{\ell}{n} &= \sumK \Big( \ell^{k-2}v_\ell \Big( \frac{1}{2}(n - 2\ell)\kraw{1}{\ell}{n} - \frac{1}{2}n\kraw{0}{\ell}{n} \Big)\Big)\\
+            &= \frac{n}{2}\sumK \Big( \ell^{k-2}v_\ell \cdot \kraw{1}{\ell}{n} \Big) - \sumK \Big( \ell^{k-1}v_\ell \cdot \kraw{1}{\ell}{n} \Big) - \frac{n}{2}\sumK \Big( \ell^{k-2}v_\ell \Big),
         \end{split}
     \end{equation*}
-    for $i \in [2, t-1]$.
-    From the previous step $m + 1 = i - 1$ we had seen that $\sumK k^{i-1}v_k \cdot K_1(k, n) = 0\text{ for } i \in [1, t-1]$. From the step before where $m + 2 = i$, we also know that $\sumK \Big( k^{i-2}v_k \Big) = 0$. As such, we determine that some quantities nullify and we can rewrite the last expression of our development to
+    for $k \in [2, t-1]$.
+    From the previous step $m + 1 = k - 1$ we had seen that $\sumK \ell^{k-1}v_\ell \cdot \kraw{1}{\ell}{n} = 0\text{ for } k \in [1, t-1]$. From the step before where $m + 2 = k$, we also know that $\sumK \Big( \ell^{k-2}v_\ell \Big) = 0$.
+    As such, we determine that some quantities nullify and we can rewrite the last expression of our development to
 
     \begin{equation*}
     \begin{split}
-        &\sumK k^{i-2}v_k \cdot K_{2}(k, n)\\
-        &= \frac{n}{2}\eqzero{\sumK \Big( k^{i-2}v_k \cdot K_1(k, n) \Big)} - \eqzero{\sumK \Big( k^{i-1}v_k \cdot K_1(k,n) \Big)} - \frac{n}{2}\eqzero{\sumK \Big( k^{i-2}v_k \Big)} = 0.
+        &\sumK \ell^{k-2}v_\ell \cdot \kraw{2}{\ell}{n}\\
+        &= \frac{n}{2}\eqzero{\sumK \Big( \ell^{k-2}v_\ell \cdot \kraw{1}{\ell}{n} \Big)} - \eqzero{\sumK \Big( \ell^{k-1}v_\ell \cdot \kraw{1}{\ell}{n} \Big)} - \frac{n}{2}\eqzero{\sumK \Big( \ell^{k-2}v_\ell \Big)} = 0.
     \end{split}
     \end{equation*}
     The base step is done.
@@ -200,47 +212,49 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
     \underline{Induction.} We want to prove that if the proposition is true for $m$, then it is also true for $m - 1$. Using \cref{eq:fact1}, we develop the relation to
     \begin{equation*}
         \begin{split}
-            & \sumK k^{m-1}v_k \cdot K_{i-(m-1)}(k,n)\\
-            &= \sumK \Big( k^{m-1}v_k \cdot \frac{1}{i-(m-1)}\Big( (n-2k)K_{i-m}(k,n) - (n-i-m)K_{i-(m+1)}(k,n) \Big)\Big)\\
-            &= \sumK \Big( k^{m-1}v_k \cdot \frac{n}{i-(m-1)}K_{i-m}(k,n) - k^m v_k \cdot \frac{2}{i-(m-1)}K_{i-m}(k,n)\\
-            &\quad -k^{m-1}v_k \cdot\frac{n-i-m}{i-(m-1)}K_{i-(m+1)}(k,n) \Big)\\
-            &= \frac{n}{i-(m-1)}\sumK \Big(k^{m-1}v_k\cdot K_{i-m}(k,n) \Big) - \frac{2}{i-(m-1)}\sumK \Big(k^mv_k\cdot K_{i-m}(k,n)\Big)\\
-            &\quad -\frac{n-i-m}{i-(m-1)}\sumK\Big(k^{m-1}v_k\cdot K_{i-(m+1)}(k,n)\Big).
+            & \sumK \ell^{m-1}v_\ell \cdot \kraw{k-(m-1)}{\ell}{n}\\
+            &= \sumK \Big( \ell^{m-1}v_\ell \cdot \frac{1}{k-(m-1)}\Big( (n-2\ell)\kraw{k-m}{\ell}{n} - (n-k-m)\kraw{k-(m+1)}{\ell}{n} \Big)\Big)\\
+            &= \sumK \Big( \ell^{m-1}v_\ell \cdot \frac{n}{k-(m-1)}\kraw{k-m}{\ell}{n} - \ell^m v_\ell \cdot \frac{2}{k-(m-1)}\kraw{k-m}{\ell}{n}\\
+            &\quad -\ell^{m-1}v_\ell \cdot\frac{n-k-m}{k-(m-1)}\kraw{k-(m+1)}{\ell}{n} \Big)\\
+            &= \frac{n}{k-(m-1)}\sumK \Big(\ell^{m-1}v_\ell\cdot \kraw{k-m}{\ell}{n} \Big) - \frac{2}{k-(m-1)}\sumK \Big(\ell^mv_\ell\cdot \kraw{k-m}{\ell}{n}\Big)\\
+            &\quad -\frac{n-k-m}{k-(m-1)}\sumK\Big(\ell^{m-1}v_\ell\cdot \kraw{k-(m+1)}{\ell}{n}\Big).
         \end{split}
     \end{equation*}
-    We know from the previous step $m$ that $\sumK k^{m-1}vk\cdot K_{i-m}(k,n) = 0$ and from the step before $m+1$ that $\sumK k^{m-1}v_k\cdot K_{i-(m+1)}(k,n) = 0$. Using this information and the induction condition, we can determine that some quantities are equal to zero and reformulate the last statement as follows.
+    We know from the previous step $m$ that $\sumK \ell^{m-1}v_\ell\cdot \kraw{k-m}{\ell}{n} = 0$ and from the step before $m+1$ that $\sumK \ell^{m-1}v_\ell\cdot \kraw{k-(m+1)}{\ell}{n} = 0$.
+    Using this information and the induction condition, we can determine that some quantities are equal to zero and reformulate the last statement as follows.
 
     \begin{equation*}
         \begin{split}
-            & \sumK k^{m-1}v_k \cdot K_{i-(m-1)}(k,n)\\
-            &= \frac{n}{i-(m-1)}\eqzero{\sumK \Big(k^{m-1}v_k\cdot K_{i-m}(k,n) \Big)} - \frac{2}{i-(m-1)}\eqzero{\sumK \Big(k^mv_k\cdot K_{i-m}(k,n)\Big)}\\
-            &\quad -\frac{n-i-m}{i-(m-1)}\eqzero{\sumK\Big(k^{m-1}v_k\cdot K_{i-(m+1)}(k,n)\Big)}\\
+            & \sumK \ell^{m-1}v_\ell \cdot \kraw{k-(m-1)}{\ell}{n}\\
+            &= \frac{n}{k-(m-1)}\eqzero{\sumK \Big(\ell^{m-1}v_\ell\cdot \kraw{k-m}{\ell}{n} \Big)} - \frac{2}{k-(m-1)}\eqzero{\sumK \Big(\ell^mv_\ell\cdot \kraw{k-m}{\ell}{n}\Big)}\\
+            &\quad -\frac{n-k-m}{k-(m-1)}\eqzero{\sumK\Big(\ell^{m-1}v_\ell\cdot \kraw{k-(m+1)}{\ell}{n}\Big)}\\
             &= 0.
         \end{split}
     \end{equation*}
     The induction step is done. This concludes the proof that
     \begin{equation*}
         \begin{split}
-            \text{for } i \in [0, t-1], \quad &\sumK k^iv_k = 0\\
+            \text{for } k \in [0, t-1], \quad &\sumK \ell^kv_\ell = 0\\
             \implies\\
-            \text{ for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k\cdot K_{i-m}(k,n) = 0.
+            \text{ for } k \in [0, t-1] \text{ and for } m \in [0, k], \quad &\sumK \ell^mv_\ell\cdot \kraw{k-m}{\ell}{n} = 0.
         \end{split}
     \end{equation*}
-    The right to left implication that $\text{for } i \in [0, t-1] \text{ and for} m \in [0, i], \sumK k^mv_k \cdot K_{i-m}(k, n) = 0 \implies \text{for } i \in [0, t-1], \sumK k^iv_k = 0$ is a trivial instance where $m = i$. As such, we can conclude that
+    The right to left implication that $\text{for } k \in [0, t-1] \text{ and for} m \in [0, k], \sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = 0 \implies \text{for } k \in [0, t-1], \sumK \ell^kv_\ell = 0$ is a trivial instance where $m = k$.
+    As such, we can conclude that
 
     \begin{equation*}
         \begin{split}
-            \text{for } i \in [0, t-1], \quad &\sumK k^iv_k = 0\\
-            \implies\\
-            \text{ for } i \in [0, t-1] \text{ and for } m \in [0, i], \quad &\sumK k^mv_k\cdot K_{i-m}(k,n) = 0.
+            \text{for } k \in [0, t-1], \quad &\sumK \ell^kv_\ell = 0\\
+            \Longleftrightarrow\\
+            \text{ for } k \in [0, t-1] \text{ and for } m \in [0, k], \quad &\sumK \ell^mv_\ell\cdot \kraw{k-m}{\ell}{n} = 0.
         \end{split}
     \end{equation*}
     We use both equivalences proved here to conclude that
     \begin{equation*}
         \begin{split}
-            \text{for } i \in [0, t-1], \quad &\sumK v_kK_i(k,n) = 0\\
+            \text{for } k \in [0, t-1], \quad &\sumK v_\ell \kraw{k}{\ell}{n} = 0\\
             \Longleftrightarrow\\
-            \text{ for } i \in [0, t-1], \quad &\sumK \sumK k^iv_k = 0.
+            \text{ for } k \in [0, t-1], \quad &\sumK \ell^kv_\ell = 0.
         \end{split}
     \end{equation*}
 \end{proof}
@@ -248,31 +262,31 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
 
 As such, we can reformulate the initial condition as
 \begin{equation}\label{eq:general}
-    \text{for } i \in [0, t-1], \quad \sumK k^iv_k = 0.
+    \text{for } k \in [0, t-1], \quad \sumK \ell^kv_\ell = 0.
 \end{equation}
 
-For $i = 0, \ldots t$, we can build the following system using \cref{eq:general} repeatedly.
+For $k = 0, \ldots t$, we can build the following system using \cref{eq:general} repeatedly.
 \begin{equation}
     \begin{cases}
-        \sumK k^0v_k = 0\\
-        \sumK k^1v_k = 0\\
-        \sumK k^2v_k = 0\\
+        \sumK \ell^0v_\ell = 0\\
+        \sumK \ell^1v_\ell = 0\\
+        \sumK \ell^2v_\ell = 0\\
         \ldots\\
-        \sumK k^tv_k = 0.\\
+        \sumK \ell^tv_\ell = 0.\\
     \end{cases}
 \end{equation}
 
-which reformulates our problem as discussing the existence of a vector $(v_{k_1}, \ldots, v_{k_{2^t}})$ such that
+which reformulates our problem as discussing the existence of a vector $(v_{\ell_1}, \ldots, v_{k\ell{2^t}})$ such that
 $$
-(v_{k_1}, \ldots, v_{k_{2^t}})
+(v_{\ell_1}, \ldots, v_{\ell_{2^t}})
 \begin{bmatrix}
     | & | & | & | & \ldots & |\\
-    1 & k & k^2 & k^3 & \ldots & k^t\\
+    1 & \ell & \ell^2 & \ell^3 & \ldots & \ell^t\\
     | & | & | & | & \ldots & |\\
 \end{bmatrix} = 0,
 $$
 
-using a  $2^t \times (t + 1)$ matrix where each column is the vector of all $k \in \mathcal{K}$.
+using a  $2^t \times (t + 1)$ matrix where each column is the vector of all $\ell \in \mathcal{L}$.
 
 Let us take an example for $n = 2^i + 2^j$. We have $t = 2$, the matrix would have the following shape
 $$
@@ -283,4 +297,4 @@ $$
     1 & 2^i + 2^j & (2^i + 2^j)^2\\
 \end{bmatrix}
 $$
-that is a Vandermonde matrix. If the conjecture is true, then $\nexists (v_0, v_{2^i}, v_{2^j}, v_{2^i + 2^j}) \in \{-1, 1\}^4$ that belongs to the left kernel of the vandermonde matrix defined by $\mathcal{K}$.
+that is a Vandermonde matrix. If the conjecture is true, then $\nexists (v_0, v_{2^i}, v_{2^j}, v_{2^i + 2^j}) \in \{-1, 1\}^4$ that belongs to the left kernel of the vandermonde matrix defined by $\mathcal{L}$.
