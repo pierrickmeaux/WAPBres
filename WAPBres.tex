@@ -219,6 +219,10 @@ We use Krawtchouk polynomials and some of their properties to prove one of our r
 \end{definition}
 
 
+\pmnote{add Lucas' theorem}
+
+
+
 \begin{Prop}[Krawtchouk polynomials relation]\label{prop:Kr}
 	Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 \begin{itemize}
@@ -288,7 +292,7 @@ It allows to conclude.
 \subsection{WPB functions are balanced and not $1$-resilient}
 The reformulation of $t$-corrector is sufficient to show that WPB functions are $0$-corrector and not $1$-corrector, which also allows to status on their resilience order.
 
-\begin{theorem}
+\begin{theorem}\label{thm:WPB}
 	Let $m\in \N^*$ and $n=2^m$, if $f$ is an $n$-variable WPB function then $f$ is $0$-corrector, $f$ is not $1$-corrector, $f$ is $0$-resilient and not $1$-resilient.
 \end{theorem}
 \begin{proof}
@@ -311,12 +315,67 @@ We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+
 
 We can extend the bound of the correction order to $\WAPB{n}$ when $\w(n)=2$, using the Krawtchouk polynomials of degree $2$.
 
-\begin{proposition}
+\begin{proposition}\label{prop:WAPB2}
+	Let $k_1<k_2\in \N$ and $n=2^{k_1}+2^{k_2}$, if $f$ is an $n$-variable WAPB function then $f$ is at most $1$-corrector and not $2$-resilient.
 \end{proposition}
 \begin{proof}
-	content...
+	From Proposition~\ref{prop:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
+	\begin{equation}\label{eq:wapb2}
+	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0
+	\end{equation}
+	and $2$ corrector if additionally the same equation holds for $k=2$.
+	
+Using Property~\ref{prop:WAPBWalsh} the only restricted Walsh transform coefficient that are not null are the ones for $k\in\{0,2^{k_1},2^{k_2},2^{k_1}+2^{k_2}=n\}$. It allows to simplify Equation~\ref{eq:wapb2}:
+	\begin{equation}\label{eq:wapb2simple}
+a \kraw{k}{0}{n} + b \kraw{k}{2^{k_1}}{n} + c \kraw{k}{2^{k_2}}{n} + d \kraw{k}{n}{n}=0,
+\end{equation}
+where $a,b,c,d \in \{\pm 1\}^4$.
+
+Since $ \kraw{0}{\ell}{n}=1$ for all $\ell$, Equation~\ref{eq:wapb2simple} for $k=0$ leads to the equation $a+b+c+d=0$, that is two of them equal $-1$ and two of them equal $1$. 
+
+Since $ \kraw{1}{\ell}{n}=n-2\ell$, Equation~\ref{eq:wapb2simple} for $k=1$ leads to the following equation:
+\begin{equation*}
+a n+b (n-2^{k_1+1}) +c (n-2^{k_2+1}) -d n=0,
+\end{equation*}
+equivalent to:
+\begin{equation}\label{eq:wapb2simple2}
+ (a-d+b+c) n= b 2^{k_1+1}) +c 2^{k_2+1}. 
+\end{equation}
+We remark that if $a$ and $d$ have opposite sign, it implies $b$ and $c$ also to satisfy Equation~\ref{eq:wapb2simple}. 
+In this case, Equation~\ref{eq:wapb2simple2} becomes $\pm2n= \pm (2^{k_1+1} - 2^{k_2+1})$ which is impossible. 
+Nevertheless, if $a=d$ it implies $b=c=-a$ and in this case the equation becomes $\pm 2n = \pm (2^{k_1+1} + 2^{k_2+1})=\pm 2n$. 
+This shows that there exist $(2^{k_1}+2^{k_2})$-variable WAPB functions that are $1$-corrector.
+
+
+Since $ \kraw{2}{\ell}{n}=\ell^2 -2 n \ell + \binom{n}{2}$, the solutions satisfying Equation~\ref{eq:wapb2simple2} lead to the following equation:
+\begin{equation}\label{eq:wapb2simple3}
+\pm \binom{n}{2} \mp \left(2^{2k_1} -2n2^{k_1} + \binom{n}{2} \right) \mp \left(2^{2k_2} -2n2^{k_2} + \binom{n}{2} \right) \pm \left(-n^2 + \binom{n}{2}\right)=0.
+\end{equation}
+Equation~\ref{eq:wapb2simple3} simplifies to:
+%\[2^{2k_1} -2n2^{k_1} + 2^{2k_2} -2n2^{k_2} +n^2= 0 \]
+\begin{align*}
+0&=2^{2k_1} -2n2^{k_1} + 2^{2k_2} -2n2^{k_2} +n^2\\
+&=2^{2k_1} + 2^{2k_2} -2n(2^{k_1}+2^{k_2}) +n^2 = 2^{2k_1} + 2^{2k_2} -n^2\\
+&= -2^{k_1+k_2+1}.
+\end{align*}	
+Since $-2^{k_1+k_2+1}$ cannot be null, there is no solution in $\{\pm1\}^4$ satisfying Equation~\ref{eq:wapb2} for all $k\in[0,2]$, hence there exists no $(2^{k_1}+2^{k_2})$-variable WAPB function that is $2$-corrector, nor $2$-resilient.
+
+
+
 \end{proof}
 
+
+\begin{remark}
+We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$. 
+
+Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights. 
+Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$. 
+Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
+
+
+
+
+\end{remark}
 
 
 
