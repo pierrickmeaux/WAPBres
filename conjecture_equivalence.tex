@@ -21,12 +21,14 @@ It follows that $|\mathcal{L}| = 2^t$. Hence the conjecture is equivalent to
 \begin{equation}\label{eq:statement}
     \text{for } i \in [0, t-1], \sumK v_k \cdot \kraw{k}{\ell}{n} = 0.
 \end{equation}
+\pmnote{I think t should be in the proposition statement }
 
-We want to prove an equivalence to the conjecture as formulated in \cref{prop:equivalence} below.
+
+We want to prove an equivalence to the conjecture as formulated in the proposition below:
 \begin{proposition}\label{prop:equivalence}
-    The following two statements are equivalent:
+	For any positive integer $n$    the following two statements are equivalent:
     \begin{itemize}
-        \item For any positive integer $n$ and for $k \in [0, t-1], \sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$.
+        \item For $k \in [0, t-1]$,$ \sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$.
         \item For $k \in [0,t-1], \sumK \ell^kv_\ell= 0$.
     \end{itemize}
 \end{proposition}
@@ -34,9 +36,7 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
 \begin{proof}
     We will conduct this proof in two halves, showing both statements are equivalent to a common third statement.
 
-    \textbf{First part.}
-
-    Let us begin by proving that
+    \textbf{First part.}   Let us begin by proving that
     \begin{equation*}
         \begin{split}
             \text{for } k \in [0, t-1], \quad &\sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0\\
@@ -45,25 +45,25 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
         \end{split}
     \end{equation*}
 
-    To prove the left to right implication, we will proceed by induction.
+    To prove the left to right implication, we will proceed by induction on $m$.
 
-    \underline{Initialization.}
-
-    Let $m = 0$. $\sumK \ell^0v_\ell \cdot \kraw{k-0}{\ell}{n} = \sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$ from the starting condition.
-
-    Let $m = 1$. We know from $m - 1 = 0$ that $\sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$. It follows that
+    \underline{Initialization.} 
+    Let $m = 0$. $\sumK \ell^0v_\ell \cdot \kraw{k-0}{\ell}{n} = \sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$ by hypothesis.
+    Let $m = 1$. 
+    We know from $m - 1 = 0$ that $\sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$. It follows that:
     $$
     0 = \sumK v_\ell \cdot \kraw{k}{\ell}{n} = k\sumK v_\ell \cdot \kraw{k}{\ell}{n} = \sumK v_\ell \cdot k\kraw{k}{\ell}{n}.
     $$
-    From Proposition 4, statement 2 of \cite{DCC:DalMaiSar06}, we know that
+%    From Proposition 4, statement 2 of \cite{DCC:DalMaiSar06}, we know that
+From Property~\ref{prop:KrDMS} we have:
     \begin{equation}\label{eq:fact1}
         (k+1)\kraw{k+1}{\ell}{n} = (n-2\ell)\kraw{k}{\ell}{n} - (n-k+1)\kraw{k-1}{\ell}{n}, \quad k \in [1, n-1].
     \end{equation}
-    We make use of \cref{eq:fact1} to obtain
+    We make use of Equation~\ref{eq:fact1} to obtain:
     \begin{equation*}
     \begin{split}
-        0 &= \sumK v_\ell \cdot \Big( (n - 2\ell)\kraw{k-1}{\ell}{n} - (n - k)\kraw{k-2}{\ell}{n} \Big)\\
-        & = n \eqzero{\sumK \Big( v_\ell \cdot \kraw{k-1}{\ell}{n} \Big)} - 2\sumK \Big( \ell v_\ell \cdot \kraw{k-1}{\ell}{n} \Big)\\& - (n-k)\eqzero{\sumK \Big( v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)}\\
+        0 &= \sumK v_\ell \cdot \Big( (n - 2\ell)\kraw{k-1}{\ell}{n} - (n - k+2)\kraw{k-2}{\ell}{n} \Big)\\
+        & = n \eqzero{\sumK \Big( v_\ell \cdot \kraw{k-1}{\ell}{n} \Big)} - 2\sumK \Big( \ell v_\ell \cdot \kraw{k-1}{\ell}{n} \Big)\\& - (n-k+2)\eqzero{\sumK \Big( v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)}\\
         &= -2\sumK \ell v_\ell \cdot \kraw{k-1}{\ell}{n} = \sumK \ell^1v_\ell \cdot \kraw{k-1}{\ell}{n} = 0,
     \end{split}
     \end{equation*}
@@ -79,11 +79,15 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
     \end{equation*}
     The next step is unnecessary to the formality of the proof but we estimate it emphasizes the key relations used in the induction step and might help the reader.
 
-    Let $m = 2$. We know from $m - 1 = 1$ that $\sumK \ell v_\ell \cdot \kraw{k-1}{\ell}{n} = 0$. It follows that
+    Let $m = 2$. We know from $m - 1 = 1$ that $\sumK \ell v_\ell \cdot \kraw{k-1}{\ell}{n} = 0$. It follows that:
     $$
     0 = (k-1)\sumK \ell v_\ell \cdot \kraw{k-1}{\ell}{n} = \sumK \ell v_\ell \cdot (k-1)\kraw{k-1}{\ell}{n} = 0.
     $$
-    Using \cref{eq:fact1} we obtain
+    Using Equation~\ref{eq:fact1} we obtain:
+    
+\pmnote{@Martin, I think there is a mistake to get the coefficient in front of $\kraw{k-3}{\ell}{n}$. Verify the change of variables when you apply Equation~\ref{eq:fact1} with $k'=k-2$ }    
+    ~
+    
     \begin{equation*}
     \begin{split}
         0 &= \sumK \ell v_\ell \cdot \Big( (n - 2\ell)\kraw{k-2}{\ell}{n} - (n - k - 1)\kraw{k-3}{\ell}{n} \Big)\\
@@ -122,7 +126,7 @@ We want to prove an equivalence to the conjecture as formulated in \cref{prop:eq
     0 = \sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = (k-m)\sumK \ell^mv_\ell \cdot \kraw{k-m}{\ell}{n} = \sumK \ell^mv_\ell \cdot (k-m)\kraw{k-m}{\ell}{n}.
     $$
 
-    Using \cref{eq:fact1}, we develop this further to
+    Using Equation~\ref{eq:fact1}, we develop this further to
 
     \begin{equation*}
     \begin{split}
@@ -298,3 +302,5 @@ $$
 \end{bmatrix}
 $$
 that is a Vandermonde matrix. If the conjecture is true, then $\nexists (v_0, v_{2^i}, v_{2^j}, v_{2^i + 2^j}) \in \{-1, 1\}^4$ that belongs to the left kernel of the vandermonde matrix defined by $\mathcal{L}$.
+
+

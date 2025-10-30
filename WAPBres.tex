@@ -237,6 +237,11 @@ We use Krawtchouk polynomials and some of their properties to prove one of our r
 
 
 
+\begin{Prop}[Krawtchouk polynomials relation ~\cite{DCC:DalMaiSar06} Proposition $4$ Item $2$]\label{prop:KrDMS}
+Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
+\[(k+1)\kraw{k+1}{\ell}{n}=(n-2\ell)\kraw{k}{\ell}{n}-(n-k+1)\kraw{k-1}{\ell}{n}.\]
+\end{Prop}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -311,7 +316,7 @@ We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+
 
 
 
-\subsection{Correction Order of WAPB Functions in $n=2^{k_1} + 2^{k_2}$ Variables}
+\subsection{Correction order of WAPB functions in $n=2^{k_1} + 2^{k_2}$ variables}
 
 We can extend the bound of the correction order to $\WAPB{n}$ when $\w(n)=2$, using the Krawtchouk polynomials of degree $2$.
 
@@ -442,7 +447,7 @@ Let us ave a look on the expression of an integer at the power $r$ when we write
 \[a^r=(\sum_{i=1}^{t} b_i 2^{k_i})^r\]
 If we develop this expression we can rewrite it as a multivariate polynomial in the $b_i$.
 I give the example for $t=2$:
-\[a^0=1, \quad a^1= b_1 2^{k_1}+ b_2 2^{k_2},\quad a^r= b_1 2^{2k_1} + b_1 b_2 2\cdot  2^{k_1+k_2} + b_2 2^{2k_2}.\]
+\[a^0=1, \quad a^1= b_1 2^{k_1}+ b_2 2^{k_2},\quad a^2= b_1 2^{2k_1} + b_1 b_2 2\cdot  2^{k_1+k_2} + b_2 2^{2k_2}.\]
 
 The expression will make appear all combinations of the $b_i$ having between $1$ and $r$ $b_i$s. Each one of these monomials of degree between $1$ and $r$ is associated to a coefficient, say $c_b$.
 
