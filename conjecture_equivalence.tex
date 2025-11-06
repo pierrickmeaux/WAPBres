@@ -47,9 +47,9 @@ We want to prove an equivalence to the conjecture as formulated in the propositi
 
     To prove the left to right implication, we will proceed by induction on $m$.
 
-    \underline{Initialization.} 
+    \underline{Initialization.}
     Let $m = 0$. $\sumK \ell^0v_\ell \cdot \kraw{k-0}{\ell}{n} = \sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$ by hypothesis.
-    Let $m = 1$. 
+    Let $m = 1$.
     We know from $m - 1 = 0$ that $\sumK v_\ell \cdot \kraw{k}{\ell}{n} = 0$. It follows that:
     $$
     0 = \sumK v_\ell \cdot \kraw{k}{\ell}{n} = k\sumK v_\ell \cdot \kraw{k}{\ell}{n} = \sumK v_\ell \cdot k\kraw{k}{\ell}{n}.
@@ -84,14 +84,12 @@ From Property~\ref{prop:KrDMS} we have:
     0 = (k-1)\sumK \ell v_\ell \cdot \kraw{k-1}{\ell}{n} = \sumK \ell v_\ell \cdot (k-1)\kraw{k-1}{\ell}{n} = 0.
     $$
     Using Equation~\ref{eq:fact1} we obtain:
-    
-\pmnote{@Martin, I think there is a mistake to get the coefficient in front of $\kraw{k-3}{\ell}{n}$. Verify the change of variables when you apply Equation~\ref{eq:fact1} with $k'=k-2$ }    
-    ~
-    
+
+\pmnote{@Martin, I think there is a mistake to get the coefficient in front of $\kraw{k-3}{\ell}{n}$. Verify the change of variables when you apply Equation~\ref{eq:fact1} with $k'=k-2$ }
     \begin{equation*}
     \begin{split}
-        0 &= \sumK \ell v_\ell \cdot \Big( (n - 2\ell)\kraw{k-2}{\ell}{n} - (n - k - 1)\kraw{k-3}{\ell}{n} \Big)\\
-        & = n \sumK \Big( \ell v_\ell \cdot \kraw{k-2}{\ell}{n} \Big) - 2\sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)\\& - (n - k - 1)\sumK \Big( \ell v_\ell \cdot \kraw{k-3}{\ell}{n} \Big),
+        0 &= \sumK \ell v_\ell \cdot \Big( (n - 2\ell)\kraw{k-2}{\ell}{n} - (n - k + 3)\kraw{k-3}{\ell}{n} \Big)\\
+        & = n \sumK \Big( \ell v_\ell \cdot \kraw{k-2}{\ell}{n} \Big) - 2\sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)\\& - (n - k + 3)\sumK \Big( \ell v_\ell \cdot \kraw{k-3}{\ell}{n} \Big),
     \end{split}
     \end{equation*}
     for $k \in [3, t - 1]$.
@@ -104,7 +102,7 @@ From Property~\ref{prop:KrDMS} we have:
     Thus it follows that
     \begin{equation*}
         \begin{split}
-            0 &= n \eqzero{\sumK \Big( \ell v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)} - 2\sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)\\& - (n - k - 1)\eqzero{\sumK \Big( \ell v_\ell \cdot \kraw{k-3}{\ell}{n} \Big)}\\
+            0 &= n \eqzero{\sumK \Big( \ell v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)} - 2\sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big)\\& - (n - k + 3)\eqzero{\sumK \Big( \ell v_\ell \cdot \kraw{k-3}{\ell}{n} \Big)}\\
             &= -2\sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big) = \sumK \Big( \ell^2v_\ell \cdot \kraw{k-2}{\ell}{n} \Big) = 0,
         \end{split}
     \end{equation*}
@@ -130,8 +128,8 @@ From Property~\ref{prop:KrDMS} we have:
 
     \begin{equation*}
     \begin{split}
-        0 &= \sumK \ell^mv_\ell \cdot \Big( (n - 2\ell)\kraw{k-(m+1)}{\ell}{n} - (n - k - m)\kraw{k-(m+2)}{\ell}{n} \Big)\\
-        & = n \sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big) - 2\sumK \Big( \ell^{m+1}v_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big)\\& - (n - k - m)\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+2)}{\ell}{n} \Big),
+        0 &= \sumK \ell^mv_\ell \cdot \Big( (n - 2\ell)\kraw{k-(m+1)}{\ell}{n} - (n - k + m + 2)\kraw{k-(m+2)}{\ell}{n} \Big)\\
+        & = n \sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big) - 2\sumK \Big( \ell^{m+1}v_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big)\\& - (n - k + m + 2)\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+2)}{\ell}{n} \Big),
     \end{split}
     \end{equation*}
     for $k \in [m+2, t-1]$.
@@ -144,7 +142,7 @@ From Property~\ref{prop:KrDMS} we have:
     Thus it follows that
     \begin{equation*}
     \begin{split}
-        & = n \eqzero{\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big)} - 2\sumK \Big( \ell^{m+1}v_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big)\\& - (n - k - m)\eqzero{\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+2)}{\ell}{n} \Big)}\\
+        & = n \eqzero{\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big)} - 2\sumK \Big( \ell^{m+1}v_\ell \cdot \kraw{k-(m+1)}{\ell}{n} \Big)\\& - (n - k + m + 2)\eqzero{\sumK \Big( \ell^mv_\ell \cdot \kraw{k-(m+2)}{\ell}{n} \Big)}\\
         &= -2\sumK \ell^{m+1}v_\ell \cdot \kraw{k_(m+1)}{\ell}{n} = \sumK \ell^{m+1}v_\ell \cdot \kraw{k-(m+1)}{\ell}{n} = 0
     \end{split}
     \end{equation*}
@@ -217,11 +215,11 @@ From Property~\ref{prop:KrDMS} we have:
     \begin{equation*}
         \begin{split}
             & \sumK \ell^{m-1}v_\ell \cdot \kraw{k-(m-1)}{\ell}{n}\\
-            &= \sumK \Big( \ell^{m-1}v_\ell \cdot \frac{1}{k-(m-1)}\Big( (n-2\ell)\kraw{k-m}{\ell}{n} - (n-k-m)\kraw{k-(m+1)}{\ell}{n} \Big)\Big)\\
+            &= \sumK \Big( \ell^{m-1}v_\ell \cdot \frac{1}{k-(m-1)}\Big( (n-2\ell)\kraw{k-m}{\ell}{n} - (n-k+m+1)\kraw{k-(m+1)}{\ell}{n} \Big)\Big)\\
             &= \sumK \Big( \ell^{m-1}v_\ell \cdot \frac{n}{k-(m-1)}\kraw{k-m}{\ell}{n} - \ell^m v_\ell \cdot \frac{2}{k-(m-1)}\kraw{k-m}{\ell}{n}\\
-            &\quad -\ell^{m-1}v_\ell \cdot\frac{n-k-m}{k-(m-1)}\kraw{k-(m+1)}{\ell}{n} \Big)\\
+            &\quad -\ell^{m-1}v_\ell \cdot\frac{n-k+m+1}{k-(m-1)}\kraw{k-(m+1)}{\ell}{n} \Big)\\
             &= \frac{n}{k-(m-1)}\sumK \Big(\ell^{m-1}v_\ell\cdot \kraw{k-m}{\ell}{n} \Big) - \frac{2}{k-(m-1)}\sumK \Big(\ell^mv_\ell\cdot \kraw{k-m}{\ell}{n}\Big)\\
-            &\quad -\frac{n-k-m}{k-(m-1)}\sumK\Big(\ell^{m-1}v_\ell\cdot \kraw{k-(m+1)}{\ell}{n}\Big).
+            &\quad -\frac{n-k+m+1}{k-(m-1)}\sumK\Big(\ell^{m-1}v_\ell\cdot \kraw{k-(m+1)}{\ell}{n}\Big).
         \end{split}
     \end{equation*}
     We know from the previous step $m$ that $\sumK \ell^{m-1}v_\ell\cdot \kraw{k-m}{\ell}{n} = 0$ and from the step before $m+1$ that $\sumK \ell^{m-1}v_\ell\cdot \kraw{k-(m+1)}{\ell}{n} = 0$.
@@ -231,7 +229,7 @@ From Property~\ref{prop:KrDMS} we have:
         \begin{split}
             & \sumK \ell^{m-1}v_\ell \cdot \kraw{k-(m-1)}{\ell}{n}\\
             &= \frac{n}{k-(m-1)}\eqzero{\sumK \Big(\ell^{m-1}v_\ell\cdot \kraw{k-m}{\ell}{n} \Big)} - \frac{2}{k-(m-1)}\eqzero{\sumK \Big(\ell^mv_\ell\cdot \kraw{k-m}{\ell}{n}\Big)}\\
-            &\quad -\frac{n-k-m}{k-(m-1)}\eqzero{\sumK\Big(\ell^{m-1}v_\ell\cdot \kraw{k-(m+1)}{\ell}{n}\Big)}\\
+            &\quad -\frac{n-k+m+1}{k-(m-1)}\eqzero{\sumK\Big(\ell^{m-1}v_\ell\cdot \kraw{k-(m+1)}{\ell}{n}\Big)}\\
             &= 0.
         \end{split}
     \end{equation*}
