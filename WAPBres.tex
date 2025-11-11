@@ -471,20 +471,20 @@ I am not sure it allows to conclude they do not exist: we could do another parti
 
 
 
-\newpage 
+\newpage
 
 \subsection*{A note on the problem}
 
-For a positive integer $n$ of Hamming weight $t\geq 2$, we denote by $supp(n)$ the set of nonzero coordinates in the binary expansion of $n$. 
+For a positive integer $n$ of Hamming weight $t\geq 2$, we denote by $supp(n)$ the set of nonzero coordinates in the binary expansion of $n$.
 For two positive integers $n, m$, we denote by $m\preceq n$ when $supp(m) \subseteq supp(n)$, and by $m\prec n$ if $supp(m) \subset supp(n)$.
 
 Given a positive integer $n$ with $supp(n) = \{i_1,\dots, i_t\}$, where $i_1<\dots<i_t$, we need to show that the system of equations
 \[
-\sum_{k \preceq n } v_k k^u = 0, \quad  u=0,\dots, r 
+\sum_{k \preceq n } v_k k^u = 0, \quad  u=0,\dots, r
 \] has solutions $(v_0,\dots, v_n)\in \{\pm 1\}^{2^t}$ for $r=t-1$ and has no solution for $r=t$.
 
-\begin{lemma}\label{Represention_Equations} 
-	For $1\leq u \leq t$, the equation $\sum_{k \preceq n } v_k k^u = 0$ can be re-written as 
+\begin{lemma}\label{Represention_Equations}
+	For $1\leq u \leq t$, the equation $\sum_{k \preceq n } v_k k^u = 0$ can be re-written as
 	\begin{equation}\label{key}
 	\sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ u_{j_1}+\cdots+ u_{j_s}=u \\  u_{j_1},\dots,u_{j_s}\geq 1}}  \frac{u!}{u_1!\cdots u_s!} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(k)   \\ k\preceq n }}  v_k \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}},
 	\end{equation} where $[t]$ denotes the set $\{1,2,\dots, t\}$.
@@ -493,9 +493,9 @@ Given a positive integer $n$ with $supp(n) = \{i_1,\dots, i_t\}$, where $i_1<\do
 \textbf{Proof.} Note that the expansion of $(x_1+\cdots + x_s)^u$ is given by
 \[
 (x_1+\cdots + x_s)^u = \sum\limits_{\substack{u_1+\cdots + u_s = u\\ u_1,\dots, u_s\geq 0}} \frac{u!}{u_1!\cdots u_s!}x_1^{u_1}\dots x_s^{u_s},
-\] where $ \frac{u!}{u_1!\cdots u_s!}$ is the multinomial coefficient. 
-In the above sum $(u_1,\dots, u_s)$ can be seen as a non-negative partition of the integer $u$. For simplicity, we denote by $P_s(u)$ the set of all such partitions of $u$. 
-Observe that for any $(u_1,\dots, u_s)\in P_s(u)$, the integers $u_1,\dots, u_s, 0$ form an $(s+1)$-tuple in $P_{s+1}(u)$. This implies the inclusive relation 
+\] where $ \frac{u!}{u_1!\cdots u_s!}$ is the multinomial coefficient.
+In the above sum $(u_1,\dots, u_s)$ can be seen as a non-negative partition of the integer $u$. For simplicity, we denote by $P_s(u)$ the set of all such partitions of $u$.
+Observe that for any $(u_1,\dots, u_s)\in P_s(u)$, the integers $u_1,\dots, u_s, 0$ form an $(s+1)$-tuple in $P_{s+1}(u)$. This implies the inclusive relation
 $$
 P_s(u) \subset P_{s+1}(u), quad s = 1, 2, \dots.
 $$
@@ -503,11 +503,11 @@ $$
 %are included in the sum $(x_1+\cdots + x_s+x_{s+1})^u = \sum_{(u_1,\dots, u_s,u_{s+1})\in P_{s+1}(u)} x_1^{u_1}\dots x_s^{u_s}x_{s+1}^{u_{s+1}}$.
 %For instance, take $u=2$ and $s=2$, one has $$\begin{array}{c}
 %(x_1+x_2)^2 = {2 \choose 2,0}x_1^2x_2^0 +{2 \choose 0,2}x_1^0x_2^2 + {2 \choose 1,1}x_1^1x_2^1 = x_1^2 + x_2^2 + 2x_1x_2 \end{array}$$
-%and 
+%and
 %$$
 %\begin{aligned}
-%(x_1+x_2+x_3)^2 & = {2 \choose 2,0,0}x_1^2x_2^0x_3^0 + {2 \choose 0,2,0}x_1^0x_2^2x_3^0 + {2 \choose 0,0,2}x_1^0x_2^0x_3^2 
-%\\& + {2 \choose 1,1,0}x_1^1x_2^1x_3^0 + {2 \choose 0,1,1}x_1^0x_2^1x_3^1 + {2 \choose 9,1,1}x_1^0x_2^1x_3^1 
+%(x_1+x_2+x_3)^2 & = {2 \choose 2,0,0}x_1^2x_2^0x_3^0 + {2 \choose 0,2,0}x_1^0x_2^2x_3^0 + {2 \choose 0,0,2}x_1^0x_2^0x_3^2
+%\\& + {2 \choose 1,1,0}x_1^1x_2^1x_3^0 + {2 \choose 0,1,1}x_1^0x_2^1x_3^1 + {2 \choose 9,1,1}x_1^0x_2^1x_3^1
 %\\&= x_1^2+x_2^2 +x_3^2 + 2x_1x_2 + 2x_1x_3 + 2x_2x_3.
 %\end{aligned}$$
 On the other hand, for an $(s+1)$-tuple $(v_1,\dots, v_{s+1})$ in $P_{s+1}(u)$ with (at) least one zero coordinate, it will degenerate to an $s$-tuple in $P_s(u)$ after one zero coordinate is removed.
@@ -528,7 +528,7 @@ Now we consider the expansion of the sum $\sum_{k \preceq n } v_k k^u = 0$ with 
 
 \begin{example} \label{Ex1}
 	Assume $supp(n)=\{i_1,i_2,i_3\}$ with $t= 3$ and $u=2$,
-	we have 
+	we have
 	\begin{equation*}
 	\begin{aligned}
 	\sum_{k \preceq n } v_kk^2 &= \sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P^*_s(u)}} {u \choose u_{j_1},\dots, u_{j_s}} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(k)   \\ k\preceq n }}  v_k \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
@@ -540,13 +540,13 @@ Now we consider the expansion of the sum $\sum_{k \preceq n } v_k k^u = 0$ with 
 	we obtain the following expansion
 	\begin{align*}
 		\sum_{k \preceq n } v_kk^2
-		&= (v_{100}+v_{110}+v_{101}+v_{111}) x_1^2  + (v_{010}+v_{110}+v_{011}+v_{111}) x_2^2  + (v_{001}+v_{101}+v_{011}+v_{111}) x_3^2 
+		&= (v_{100}+v_{110}+v_{101}+v_{111}) x_1^2  + (v_{010}+v_{110}+v_{011}+v_{111}) x_2^2  + (v_{001}+v_{101}+v_{011}+v_{111}) x_3^2
 		\\ & + 2 \left((v_{110}+v_{111}) x_1x_2 + (v_{101}+v_{111})x_1x_3 + (v_{011}+v_{111})x_2x_3 \right)
 	\end{align*}
 	where $x_1 = 2^{i_1}, x_2 = 2^{i_2}, x_3 = 2^{i_3} $.
 \end{example}
 
- 
+
 
 
 
