@@ -223,6 +223,8 @@ We use Krawtchouk polynomials and some of their properties to prove one of our r
 
 
 
+
+
 \begin{Prop}[Krawtchouk polynomials relation]\label{prop:Kr}
 	Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 \begin{itemize}
@@ -252,14 +254,22 @@ Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 
 We rewrite the $t$-corrector property using the notation of restricted Walsh transform.
 
+
 \begin{proposition}\label{prop:WalsCorr}
-	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
-	\begin{itemize}
-		\item If $n$ is odd: for $0\le k \le t$,
-		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
-	\item If $n$ is even: for $0\le k \le t$,
-		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
-	\end{itemize}
+	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if and only if its restricted Walsh transform satisfies
+	\begin{equation}\label{Eq_RWT}
+	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0 \quad \text{ for } k=0,1,\dots, t.
+	\end{equation} 
+	
+
+%\begin{proposition}\label{prop:WalsCorr}
+%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
+%	\begin{itemize}
+%		\item If $n$ is odd: for $0\le k \le t$,
+%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+%	\item If $n$ is even: for $0\le k \le t$,
+%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+%	\end{itemize}
 
 
 
@@ -267,31 +277,135 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 \end{proposition}
 \begin{proof}
 
-We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$.
-From Definition~\ref{def:corr}, $f$ is a $t$-corrector if $A_k=0$ for $k\in [0,t]$.
+%We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$.
+%From Definition~\ref{def:corr}, $f$ is a $t$-corrector if $A_k=0$ for $k\in [0,t]$.
 %\[A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a).\]
-We rewrite $A_k$:
+Note that 
 \begin{align*}
-A_k&=\sum_{a\in \Ekn{k}{n}} \wt{f}(a)\\
-&=\sum_{a\in \Ekn{k}{n}} \sum_{x\in \F_2^n} (-1)^{f(x)+a \cdot x}\\
+\sum_{a\in \Ekn{k}{n}} \wt{f}(a)&=\sum_{a\in \Ekn{k}{n}} \sum_{x\in \F_2^n} (-1)^{f(x)+a \cdot x}\\
 &= \sum_{x\in \F_2^n} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
 &=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
 &=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)} \,  \kraw{k}{\ell}{n}\\
 &=\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}.
-\end{align*}
-Using Property~\ref{prop:Kr}, when $n$ is odd we obtain:
-\[A_k=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell}). \]
-When $n$ is even we obtain:
-\[A_k=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell}). \]
-It allows to conclude.
-
+\end{align*} The desired statement follows directly from Definition~\ref{def:corr}.
 \end{proof}
+
+%Using Property~\ref{prop:Kr}, when $n$ is odd we obtain:
+%\[A_k=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell}). \]
+%When $n$ is even we obtain:
+%\[A_k=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell}). \]
+%It allows to conclude.
+
+
+
+%\begin{corollary}
+%	
+%\end{corollary}
 
 
 
 
 %\section{WPB functions and corrector order}
-\section{Resilience order of WPB Functions}
+\section{Correction order of W(A)PB Functions}
+
+\subsection{Characterizations in terms of Krawtchouk and Vandemonde matrices}
+
+Following from Proposition~\ref{prop:WAPBWalsh}, we reformulate WAPB functions of correction order $t$ in terms of Krawtchouk polynomials.
+
+\begin{definition}\label{def:restWalshVect}
+	Let $n\in \N^*$ and $f\in \BN$, we define its restricted Walsh vector, denoted by $\rwv{f}$, in $\Z^{n+1}$ as:
+	\[\rwv{f}=(\wtk{f}{0},\wtk{f}{1},\cdots,\wtk{f}{n-1},\wtk{f}{n})^\intercal\]
+	
+\end{definition}
+
+
+\begin{definition}\label{def:KrMat}
+	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$, we define the Krawtchouk matrix $\matK$ of order $(n+1)$ as:
+	\[\forall k \in [0,n], \ell \in [0,n], \quad \matK_{k,\ell}=\kraw{k}{\ell}{n},\]
+	and denote by $\matK^{(t)}$ the submatrix formed by the leading $t$ rows of $\matK$.
+	
+	%	$\KrM{n}{k}\in 	\Z^{(n+1)\times (k+1)}$ as:
+	
+	
+\end{definition}
+
+With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
+\begin{equation}\label{Eq_t-corrector}
+\matK^{(t)}\cdot \rwv{f}=\textbf{0}_t^\intercal.
+\end{equation}
+The following theorem provides an interesting connection between the Krawtchouk matrix and the Vandemonde matrix. This connection facilitates the study of the above equation.
+
+\begin{theorem}\label{Th_K_V_matrices}
+	Let $\matK$ be the Krawtchouk matrix and $\matV$ be the Vandemonde matrix given by $V_{k,\ell} =\ell^k$ with $0\leq k,\ell\leq n$ indexing the rows and columns, respectively.
+	For $0\leq k\leq n$, let 
+	\[
+	\alpha_k = -\frac{k}{2}, \beta_k = \frac{n}{2}, \gamma_k = -\frac{n-k}{2},
+	\] 
+	and for $1\leq r\leq n$ define $r\times(r+1)$ matrices $H_r$ as follows:
+	\begin{equation}\label{Eq_H}
+	%         H_1 = \begin{bmatrix}
+	%     \beta_0 & \alpha_1
+	% \end{bmatrix}, 
+	% \quad 
+	% H_2 =  \begin{bmatrix}
+	%            \beta_0 & \alpha_1 \\
+	%            \gamma_0 & \beta_1 & \alpha_2
+	%        \end{bmatrix},
+	% \cdots, 
+	H_{r} = \begin{bmatrix}
+	\beta_0 & \alpha_1 &  & & &\\
+	\gamma_0 & \beta_1 & \alpha_2 & & &\\
+	& \gamma_1 & \beta_2 & \alpha_3 &  &
+	\\ 
+	& & \ddots & \ddots & \ddots &\\ 
+	& & & \gamma_{r-2} &\beta_{r-1} & \alpha_{r}
+	\end{bmatrix}.        
+	\end{equation}
+	Then we have \[ 
+	\matM \cdot \matK = \matV,
+	\] 
+	where $\matM$ is an $(n+1)\times(n+1)$ lower triangular matrix whose rows are given by the following recursion: 
+	\begin{equation}\label{Eq_Matrix_M}
+	% \begin{array}{rcl}
+	%     \matM_{0,0} &=& 1 \\
+	%     \matM_{1,[0,1]} &=& \matM_{0,[0,0]}H_1 \\
+	%     \matM_{2,[0,2]} &=& \matM_{1,[0,1]} H_2\\
+	%     % & \vdots & \\
+	%     % \matM_{r+1,[0,r+1]} &=& \matM_{r,[0,r]} H_r
+	%     \\
+	%     &\vdots & \\
+	%     \matM_{n,[0,n]} & = & \matM_{n-1,[0,n-1]}H_n,
+	% \end{array}
+	\matM_{0,0} = 1,\quad \matM_{r,[0,r]} = \matM_{r-1,[0,r-1]} H_r \text{ for } r = 1, 2,\dots, n,
+	\end{equation} 
+	where $\matM_{r,[0,r]} = [M_{r,0},\dots, M_{r,r}]$ denotes the leading $(r+1)$ entries in the $r$-th row of $M$.
+	
+	
+\end{theorem}
+
+Let $\matM_{[t]}$ be the upper-left block of size $t$ in the matrix $\matM$. 
+It follows from \eqref{Eq_Matrix_M} that $\matM_{[t]}$ is invertible. 
+Then it follows from Theorem~\ref{Th_K_V_matrices} that 
+\[
+\matM_{[t]} \cdot \matK^{(t)} = \matV^{(t)},
+\]where $\matV^{(t)}$ is the submatrix formed by the leading $t$ rows of $\matV$.
+Therefore,  a Boolean function $f$ is a $t$-corrector if and only its restricted Walsh transform $\rwv{f}$ 
+satisfies the following system of equations:
+\begin{equation}\label{Eq_Vandemonde_system}
+\matV^{(t)} \cdot \rwv{f} = \mathbf{0}_t^\intercal.
+\end{equation}
+
+Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the nonzero coefficients in $\rwv{f}$ are the $\ell$-th entries such that $\ell\preceq n$.
+Therefore, we have the following result:
+
+\begin{proposition}
+	Let $\matW$ denote the $t\times 2^t$ submatrix of $\matV^{(t)}$ formed by the $\ell$-th column in $\matV^{(t)}$ with $\ell \preceq n$. 
+	Then there is a one-to-one correspondence between WAPB functions of correction order $t$ and the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following 
+	system of equations: 
+	\[
+	\matW \cdot \mathbf{y} = \mathbf{0}_{t}^{\intercal}.
+	\]
+\end{proposition}	
 
 
 \subsection{WPB functions are balanced and not $1$-resilient}
@@ -304,15 +418,19 @@ The reformulation of $t$-corrector is sufficient to show that WPB functions are 
 	By definition (Definition~\ref{def:WPB}) a WPB function is balanced, hence $0$-corrector and $0$-resilient.
 	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
 
-	Using Proposition~\ref{prop:WalsCorr} we have:
+	Using Proposition~\ref{prop:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
 	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{1}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{1}{\ell}{n} \, ( \wtk{f}{\ell} - \wtk{f}{n-\ell}).\]
 	Since $f$ is WPB, using Property~\ref{prop:WAPBWalsh} we obtain:
 	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=0+2\kraw{1}{0}{n}=2n\ne 0,\]
 	hence $f$ is not $1$-corrector by Proposition~\ref{prop:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
-
 \end{proof}
 
 We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+f$ with $f\in \WPB{m}$, hence all $2^m$-variable WAPB functions are $0$-resilient and not $1$-resilient.
+
+In the subsequent sections we shall discuss the cases where $n$ has higher Hamming weights.
+
+\subsection{WAPB functions of correction order $t\geq 2$}
+
 
 
 
@@ -407,7 +525,7 @@ Let $n\in \N^*$ and $f\in \BN$, we define its restricted Walsh vector, denoted b
 
 
 \begin{definition}\label{def:KrMat}
-	Let $n\in \N^*$ and $k\in \N$ such that $k\le n$, we define the Krawchouk matrix
+	Let $n\in \N^*$ and $k\in \N$ such that $k\le n$, we define the Krawtchouk matrix
 	$\KrM{n}{k}\in 	\Z^{(n+1)\times (k+1)}$ as:
 	\[\forall i \in [0,n], j\in [0,k], \quad \KrM{n}{k}_{i,j}=\kraw{j}{i}{n}.\]
 
