@@ -211,12 +211,20 @@ The $n$-variable symmetric Boolean functions are precisely those that are consta
 
 
 \subsubsection{Krawtchouk polynomials.}
-We use Krawtchouk polynomials and some of their properties to prove one of our results, we give the necessary preliminaries here and refer to \eg ~\cite{book:MacSlo78} for more details.
+We use Krawtchouk polynomials to characterize the correction order of WAPB functions.
+We give the necessary preliminaries here and refer to \eg ~\cite{book:MacSlo78} for more details.
 
 \begin{definition}[Krawtchouk Polynomials]\label{def:Kraw}
-	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j}$.
-	%	Krawtchouk polynomials are characterized by the generating series: $ \displaystyle (1+z)^{n-x} (1-z)^x=\sum_{k=0}^\infty \kraw{k}{x}{n} z^k$.
+	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $$ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j},$$
+	where we take the binomial coefficient ${m\choose r} = 0$ when $m<r$ and $r<0$ by convention. 
+		Krawtchouk polynomials are characterized by the generating series: $$ \displaystyle (1+z)^{n-\ell} (1-z)^\ell=\sum_{k=0}^\infty \kraw{k}{\ell}{n} z^k.$$
 \end{definition}
+There is an interesting connection between Krawtchouk polynomials and linear functions restricted on the slice $\Ekn{k}{n}$: 
+\begin{equation}\label{Eq_K_rwt}
+\kraw{k}{\ell}{n} = \sum_{u\in \Ekn{k}{n}}(-1)^{ u \cdot v}, \quad \forall v\in \Ekn{\ell}{n}.
+\end{equation}
+
+%$\kraw{k}{\ell}{n}$ is the value of the restricted Walsh transform on $\Ekn{k}{n}$ of any $n$ variable linear function $a\cdot \ell$ such that $\w(a)=\ell$,
 
 
 \pmnote{add Lucas' theorem}
@@ -228,7 +236,6 @@ We use Krawtchouk polynomials and some of their properties to prove one of our r
 \begin{Prop}[Krawtchouk polynomials relation]\label{prop:Kr}
 	Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 \begin{itemize}
-	\item $\kraw{k}{\ell}{n}$ is the value of the restricted Walsh transform on $\Ekn{k}{n}$ of any $n$ variable linear function $a\cdot \ell$ such that $\w(a)=\ell$,
 	\item $\kraw{k}{n-\ell}{n}=(-1)^k \kraw{k}{\ell}{n}$,
 	\item $\kraw{n-k}{x}{n}=(-1)^x \kraw{k}{x}{n}$,
 		\item if $n$ is even and $k$ is odd, $\kraw{k}{n/2}{n}=0$,
@@ -286,8 +293,10 @@ Note that
 &= \sum_{x\in \F_2^n} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
 &=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
 &=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)} \,  \kraw{k}{\ell}{n}\\
-&=\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}.
-\end{align*} The desired statement follows directly from Definition~\ref{def:corr}.
+&=\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n},
+\end{align*} 
+where the last second equality follows from \eqref{Eq_K_rwt}.
+The desired statement is then proved by Definition~\ref{def:corr}.
 \end{proof}
 
 %Using Property~\ref{prop:Kr}, when $n$ is odd we obtain:
