@@ -486,8 +486,8 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 
 %We can extend the bound of the correction order to $\WAPB{n}$ when $\w(n)=2$, using the Krawtchouk polynomials of degree $2$.
 
-\begin{proposition} Let $n\in \N^*$ with $\w(n)=2$. Then there exist WAPB functions $f$ with $\corr(f)=1$, and the 
-	restricted Walsh transforms $\rwv{f}$ are uniquely given by 
+\begin{proposition} Let $n\in \N^*$ with $\w(n)=2$. Then there exists a WAPB functions $f$ with $\corr(f)=1$, and the 
+	restricted Walsh vector $\rwv{f}$ is uniquely given by 
 	\[
 	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
 	\] 
@@ -524,8 +524,8 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	Furthermore, these solutions do not satisfy \eqref{Eq_t=2}, which implies that there exists no WAPB function $f$ with $\corr(f) = 2$.
 \end{proof}
 
-\begin{proposition} Let $n\in \N^*$ with $\w(n)=3$. Then there exist WAPB functions $f$ with $\corr(f)=2$, and the 
-	restricted Walsh transforms $\rwv{f}$ are uniquely given by 
+\begin{proposition} Let $n\in \N^*$ with $\w(n)=3$. Then there exist a WAPB functions $f$ with $\corr(f)=2$, and the 
+	restricted Walsh vector $\rwv{f}$ is  given by 
 	\[
 	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
 	\] 
@@ -667,9 +667,12 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \end{example}
 
 \begin{proposition}Let $n\in \N^*$ with $n=2^{i_1}+\cdots + 2^{i_t}$ with $i_1>\cdots > i_t$ and $t>3$.
-	Furthermore, then there exist WAPB functions $f$ with $\corr(f)=t-1$.
-	then the 
-	restricted Walsh transforms $\rwv{f}$ are uniquely given by 
+	Furthermore, 
+	suppose $\lambda_n := \{i_1-i_2, i_2-i_3, dots, i_{t-1}-i_t \}$ satisfies $\lambda_n\geq t$, 
+	then there exists a WAPB function $f$ with $\corr(f)=t-1$,
+	and
+	the 
+	restricted Walsh transforms $\rwv{f}$ is given by 
 	\[
 	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n,
 	\] 
