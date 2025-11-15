@@ -145,11 +145,13 @@ For a vector $v \in \F_2^n$, we denote its Hamming weight by $\w(v)$, defined as
 
 \begin{definition}[Resilience]\label{def:res}
 	A Boolean function $f\in \Bn{n}$ is said to be $t$-resilient if for all $a\in \F_2^n$ such that $0\le \w(a)\le t$ we have $\wt{f}(a)=0$.
+	We denote by $\res(f)$ the maximum $t$ such that $f$ is $t$-resilient but not $(t+1)$-resilient.
 \end{definition}
 
 \begin{definition}[Corrector]\label{def:corr}
 	A Boolean function $f\in \Bn{n}$ is said to be a $t$-corrector if for all $0\le k \le t$ it satisfies:
 	\[\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)=0.\]
+	We denote by $\corr(f)$ the maximum $t$ such that $f$ is a $t$-corrector but not $(t+1)$-corrector.
 \end{definition}
 
 
@@ -225,6 +227,8 @@ We give the necessary preliminaries here and refer to \eg ~\cite{book:MacSlo78} 
 	\end{cases}
 \end{equation*}}
 
+\clnote{ Martin: I believe the comment on ${m\choose r} = 0$ for $r<0$ covers the cases where $k<0$.}
+
 	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $$ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j},$$
 	where we take the binomial coefficient ${m\choose r} = 0$ when $m<r$ and $r<0$ by convention.
 		Krawtchouk polynomials are characterized by the generating series: $$ \displaystyle (1+z)^{n-\ell} (1-z)^\ell=\sum_{k=0}^\infty \kraw{k}{\ell}{n} z^k.$$
@@ -265,9 +269,7 @@ Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{$t$-corrector and Restricted Walsh Transform}\label{sec:corr}
+\section{Characterizations of $t$-correctors}\label{sec:corr}
 
 
 
@@ -278,37 +280,37 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if and only if its restricted Walsh transform satisfies
 	\begin{equation}\label{Eq_RWT}
 	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0 \quad \text{ for } k=0,1,\dots, t.
-	\end{equation}
-
-
-%\begin{proposition}\label{prop:WalsCorr}
-%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
-%	\begin{itemize}
-%		\item If $n$ is odd: for $0\le k \le t$,
-%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
-%	\item If $n$ is even: for $0\le k \le t$,
-%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
-%	\end{itemize}
-
-
-
-
+	\end{equation} 
+	
+	
+	%\begin{proposition}\label{prop:WalsCorr}
+	%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
+	%	\begin{itemize}
+	%		\item If $n$ is odd: for $0\le k \le t$,
+	%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+	%	\item If $n$ is even: for $0\le k \le t$,
+	%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+	%	\end{itemize}
+	
+	
+	
+	
 \end{proposition}
 \begin{proof}
-
-%We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$.
-%From Definition~\ref{def:corr}, $f$ is a $t$-corrector if $A_k=0$ for $k\in [0,t]$.
-%\[A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a).\]
-Note that
-\begin{align*}
-\sum_{a\in \Ekn{k}{n}} \wt{f}(a)&=\sum_{a\in \Ekn{k}{n}} \sum_{x\in \F_2^n} (-1)^{f(x)+a \cdot x}\\
-&= \sum_{x\in \F_2^n} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
-&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
-&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)} \,  \kraw{k}{\ell}{n}\\
-&=\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n},
-\end{align*}
-where the last second equality follows from \eqref{Eq_K_rwt}.
-The desired statement is then proved by Definition~\ref{def:corr}.
+	
+	%We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$.
+	%From Definition~\ref{def:corr}, $f$ is a $t$-corrector if $A_k=0$ for $k\in [0,t]$.
+	%\[A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a).\]
+	Note that 
+	\begin{align*}
+	\sum_{a\in \Ekn{k}{n}} \wt{f}(a)&=\sum_{a\in \Ekn{k}{n}} \sum_{x\in \F_2^n} (-1)^{f(x)+a \cdot x}\\
+	&= \sum_{x\in \F_2^n} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
+	&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
+	&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)} \,  \kraw{k}{\ell}{n}\\
+	&=\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n},
+	\end{align*} 
+	where the last second equality follows from \eqref{Eq_K_rwt}.
+	The desired statement is then proved by Definition~\ref{def:corr}.
 \end{proof}
 
 %Using Property~\ref{prop:Kr}, when $n$ is odd we obtain:
@@ -320,72 +322,64 @@ The desired statement is then proved by Definition~\ref{def:corr}.
 
 
 %\begin{corollary}
-%
+%	
 %\end{corollary}
-
-
-
-
-%\section{WPB functions and corrector order}
-\section{Correction order of W(A)PB Functions}
-
-\subsection{Characterizations in terms of Krawtchouk and Vandemonde matrices}
 
 Following from Proposition~\ref{prop:WAPBWalsh}, we reformulate WAPB functions of correction order $t$ in terms of Krawtchouk polynomials.
 
 \begin{definition}\label{def:restWalshVect}
 	Let $n\in \N^*$ and $f\in \BN$, we define its restricted Walsh vector, denoted by $\rwv{f}$, in $\Z^{n+1}$ as:
 	\[\rwv{f}=(\wtk{f}{0},\wtk{f}{1},\cdots,\wtk{f}{n-1},\wtk{f}{n})^\intercal\]
-
+	
 \end{definition}
 
 
 \begin{definition}\label{def:KrMat}
 	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$, we define the Krawtchouk matrix $\matK$ of order $(n+1)$ as:
-	\[\forall k \in [0,n], \ell \in [0,n], \quad \matK_{k,\ell}=\kraw{k}{\ell}{n},\]
-	and denote by $\matK^{(t)}$ the submatrix formed by the leading $t$ rows of $\matK$.
-
+	\[\forall k \in [0,n], \ell \in [0,n], \quad \matK_{k,\ell}=\kraw{k}{\ell}{n}.\]
+	
 	%	$\KrM{n}{k}\in 	\Z^{(n+1)\times (k+1)}$ as:
-
-
+	
+	
 \end{definition}
 
-With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
+Denote by $\matK^{(t+1)}$ the submatrix formed by the leading $(t+1)$ rows of $\matK$.
+By Proposition~\ref{prop:WalsCorr} we see that $f$ is a $t$-corrector if and only if:
 \begin{equation}\label{Eq_t-corrector}
-\matK^{(t)}\cdot \rwv{f}=\textbf{0}_t^\intercal.
+\matK^{(t+1)}\cdot \rwv{f}=\textbf{0}_{t+1}^\intercal.
 \end{equation}
 The following theorem provides an interesting connection between the Krawtchouk matrix and the Vandemonde matrix. This connection facilitates the study of the above equation.
 
 \begin{theorem}\label{Th_K_V_matrices}
-	Let $\matK$ be the Krawtchouk matrix and $\matV$ be the Vandermonde matrix given by $V_{k,\ell} =\ell^k$ with $0\leq k,\ell\leq n$ indexing the rows and columns, respectively.
-	For $0\leq k\leq n$, let
+	Let $\matK$ be the Krawtchouk matrix with $\matK_{k,\ell} = K_k(\ell, n)$ and $\matV$ be the Vandemonde matrix with $V_{k,\ell} =\ell^k$, where $k,\ell$ with $0\leq k,\ell\leq n$ index the rows and columns, respectively.
+	Let
 	\[
-	\alpha_k = -\frac{k}{2}, \beta_k = \frac{n}{2}, \gamma_k = -\frac{n-k}{2},
-	\]
-	and for $1\leq r\leq n$ define $r\times(r+1)$ matrices $H_r$ as follows:
+	\alpha_k = -\frac{k}{2}, \beta_k = \frac{n}{2}, \gamma_k = -\frac{n-k}{2}, \quad 0\leq k\leq n,
+	\] 
+	and for $1\leq r\leq n$ define $r\times(r+1)$ matrices $\matH_r$ as follows:
 	\begin{equation}\label{Eq_H}
 	%         H_1 = \begin{bmatrix}
 	%     \beta_0 & \alpha_1
-	% \end{bmatrix},
-	% \quad
+	% \end{bmatrix}, 
+	% \quad 
 	% H_2 =  \begin{bmatrix}
 	%            \beta_0 & \alpha_1 \\
 	%            \gamma_0 & \beta_1 & \alpha_2
 	%        \end{bmatrix},
-	% \cdots,
-	H_{r} = \begin{bmatrix}
+	% \cdots, 
+	\matH_{r} = \begin{bmatrix}
 	\beta_0 & \alpha_1 &  & & &\\
 	\gamma_0 & \beta_1 & \alpha_2 & & &\\
 	& \gamma_1 & \beta_2 & \alpha_3 &  &
-	\\
-	& & \ddots & \ddots & \ddots &\\
+	\\ 
+	& & \ddots & \ddots & \ddots &\\ 
 	& & & \gamma_{r-2} &\beta_{r-1} & \alpha_{r}
-	\end{bmatrix}.
+	\end{bmatrix}.        
 	\end{equation}
-	Then we have \[
+	Then we have \[ 
 	\matM \cdot \matK = \matV,
-	\]
-	where $\matM$ is an $(n+1)\times(n+1)$ lower triangular matrix whose rows are given by the following recursion:
+	\] 
+	where $\matM$ is an $(n+1)\times(n+1)$ lower triangular matrix whose rows are given by the following recursion: 
 	\begin{equation}\label{Eq_Matrix_M}
 	% \begin{array}{rcl}
 	%     \matM_{0,0} &=& 1 \\
@@ -397,235 +391,223 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	%     &\vdots & \\
 	%     \matM_{n,[0,n]} & = & \matM_{n-1,[0,n-1]}H_n,
 	% \end{array}
-	\matM_{0,0} = 1,\quad \matM_{r,[0,r]} = \matM_{r-1,[0,r-1]} H_r \text{ for } r = 1, 2,\dots, n,
-	\end{equation}
-	where $\matM_{r,[0,r]} = [M_{r,0},\dots, M_{r,r}]$ denotes the leading $(r+1)$ entries in the $r$-th row of $M$.
-
-
+	\matM_{0,0} = 1,\quad \matM_{r,[0,r]} = \matM_{r-1,[0,r-1]} \matH_r \quad \text{for } r = 1, 2,\dots, n,
+	\end{equation} 
+	where $\matM_{r,[0,r]} = [\matM_{r,0},\dots, \matM_{r,r}]$ denotes the leading $(r+1)$ entries in the $r$-th row of $M$.
+	
+	
 \end{theorem}
-
-Let $\matM_{[t]}$ be the upper-left block of size $t$ in the matrix $\matM$.
-It follows from \eqref{Eq_Matrix_M} that $\matM_{[t]}$ is invertible.
-Then it follows from Theorem~\ref{Th_K_V_matrices} that
+Denote by $\matM_{[0,t],[0,t]}$ the $(t+1)$-order submatrix formed by the leading $(t+1)$ rows and columns of $\matM$. 
+It is clear that $\matM_{[0,t],[0,t]}$ is invertible since the matrix $\matM$ is an invertible lower triangular matrix by Theorem~\ref{Th_K_V_matrices}.
+Then it follows from $\matM \cdot \matK = \matV$ that 
 \[
-\matM_{[t]} \cdot \matK^{(t)} = \matV^{(t)},
-\]where $\matV^{(t)}$ is the submatrix formed by the leading $t$ rows of $\matV$.
-Therefore,  a Boolean function $f$ is a $t$-corrector if and only if its restricted Walsh transform $\rwv{f}$
+\matM_{[0,t],[0,t]} \cdot \matK^{(t+1)} = \matV^{(t+1)},
+\]where $\matV^{(t+1)}$ is the submatrix formed by the leading $(t+1)$ rows of $\matV$.
+Therefore,  a Boolean function $f$ is a $t$-corrector if and only its restricted Walsh transform $\rwv{f}$ 
 satisfies the following system of equations:
 \begin{equation}\label{Eq_Vandemonde_system}
-\matV^{(t)} \cdot \rwv{f} = \mathbf{0}_t^\intercal.
+\matV^{(t+1)} \cdot \rwv{f} = \mathbf{0}_{t+1}^\intercal.
 \end{equation}
 
 Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the nonzero coefficients in $\rwv{f}$ are the $\ell$-th entries such that $\ell\preceq n$.
 Therefore, we have the following result:
 
-\begin{proposition}
-	Let $\matW$ denote the $t\times 2^t$ submatrix of $\matV^{(t)}$ formed by the $\ell$-th column in $\matV^{(t)}$ with $\ell \preceq n$.
-	Then there is a one-to-one correspondence between WAPB functions of correction order $t$ and the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following
-	system of equations:
+\begin{theorem}\label{Th-corrector-by-Vandemonde}
+	Let $\matW$ denote the submatrix of $\matV^{(t+1)}$ formed by the $\ell$-th column in $\matV^{(t+1)}$ with $\ell \preceq n$. 
+	Then for an $n$-variable WAPB function $f$ with $\corr(f)=t$, its restricted Walsh vector $\rwv{f}$ 
+	is determined by the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following 
+	system of equations: 
 	\[
-	\matW \cdot \mathbf{y} = \mathbf{0}_{t}^{\intercal}.
+	\matW \cdot \mathbf{y} = \mathbf{0}_{{t+1}}^{\intercal}.
 	\]
-\end{proposition}
+\end{theorem}	
 
+The characterization of $t$-corrector in terms of the Vandemonde matrix above will be used to study the existence of WPB functions and WAPB functions of certain order $t$ in the next section.
 
-\subsection{WPB functions are balanced and not $1$-resilient}
-The reformulation of $t$-corrector is sufficient to show that WPB functions are $0$-corrector and not $1$-corrector, which also allows to status on their resilience order.
+%\section{WPB functions and corrector order}
+\section{Correction order of W(A)PB Functions}
 
-\begin{theorem}\label{thm:WPB}
-	Let $m\in \N^*$ and $n=2^m$, if $f$ is an $n$-variable WPB function then $f$ is $0$-corrector, $f$ is not $1$-corrector, $f$ is $0$-resilient and not $1$-resilient.
-\end{theorem}
-\begin{proof}
-	By definition (Definition~\ref{def:WPB}) a WPB function is balanced, hence $0$-corrector and $0$-resilient.
-	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
-
-	Using Proposition~\ref{prop:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
-	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{1}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{1}{\ell}{n} \, ( \wtk{f}{\ell} - \wtk{f}{n-\ell}).\]
-	Since $f$ is WPB, using Property~\ref{prop:WAPBWalsh} we obtain:
-	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=0+2\kraw{1}{0}{n}=2n\ne 0,\]
-	hence $f$ is not $1$-corrector by Proposition~\ref{prop:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
-\end{proof}
-
-We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+f$ with $f\in \WPB{m}$, hence all $2^m$-variable WAPB functions are $0$-resilient and not $1$-resilient.
-
-In the subsequent sections we shall discuss the cases where $n$ has higher Hamming weights.
-
-\subsection{WAPB functions of correction order $t\geq 2$}
-
-
-
-
-\subsection{Correction order of WAPB functions in $n=2^{k_1} + 2^{k_2}$ variables}
-
-We can extend the bound of the correction order to $\WAPB{n}$ when $\w(n)=2$, using the Krawtchouk polynomials of degree $2$.
-
-\begin{proposition}\label{prop:WAPB2}
-	Let $k_1<k_2\in \N$ and $n=2^{k_1}+2^{k_2}$, if $f$ is an $n$-variable WAPB function then $f$ is at most $1$-corrector and not $2$-resilient.
-\end{proposition}
-\begin{proof}
-	From Proposition~\ref{prop:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
-	\begin{equation}\label{eq:wapb2}
-	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0
-	\end{equation}
-	and $2$ corrector if additionally the same equation holds for $k=2$.
-
-Using Property~\ref{prop:WAPBWalsh} the only restricted Walsh transform coefficient that are not null are the ones for $k\in\{0,2^{k_1},2^{k_2},2^{k_1}+2^{k_2}=n\}$. It allows to simplify Equation~\ref{eq:wapb2}:
-	\begin{equation}\label{eq:wapb2simple}
-a \kraw{k}{0}{n} + b \kraw{k}{2^{k_1}}{n} + c \kraw{k}{2^{k_2}}{n} + d \kraw{k}{n}{n}=0,
-\end{equation}
-where $a,b,c,d \in \{\pm 1\}^4$.
-
-Since $ \kraw{0}{\ell}{n}=1$ for all $\ell$, Equation~\ref{eq:wapb2simple} for $k=0$ leads to the equation $a+b+c+d=0$, that is two of them equal $-1$ and two of them equal $1$.
-
-Since $ \kraw{1}{\ell}{n}=n-2\ell$, Equation~\ref{eq:wapb2simple} for $k=1$ leads to the following equation:
-\begin{equation*}
-a n+b (n-2^{k_1+1}) +c (n-2^{k_2+1}) -d n=0,
-\end{equation*}
-equivalent to:
-\begin{equation}\label{eq:wapb2simple2}
- (a-d+b+c) n= b 2^{k_1+1}) +c 2^{k_2+1}.
-\end{equation}
-We remark that if $a$ and $d$ have opposite sign, it implies $b$ and $c$ also to satisfy Equation~\ref{eq:wapb2simple}.
-In this case, Equation~\ref{eq:wapb2simple2} becomes $\pm2n= \pm (2^{k_1+1} - 2^{k_2+1})$ which is impossible.
-Nevertheless, if $a=d$ it implies $b=c=-a$ and in this case the equation becomes $\pm 2n = \pm (2^{k_1+1} + 2^{k_2+1})=\pm 2n$.
-This shows that there exist $(2^{k_1}+2^{k_2})$-variable WAPB functions that are $1$-corrector.
-
-
-Since $ \kraw{2}{\ell}{n}=\ell^2 -2 n \ell + \binom{n}{2}$, the solutions satisfying Equation~\ref{eq:wapb2simple2} lead to the following equation:
-\begin{equation}\label{eq:wapb2simple3}
-\pm \binom{n}{2} \mp \left(2^{2k_1} -2n2^{k_1} + \binom{n}{2} \right) \mp \left(2^{2k_2} -2n2^{k_2} + \binom{n}{2} \right) \pm \left(-n^2 + \binom{n}{2}\right)=0.
-\end{equation}
-Equation~\ref{eq:wapb2simple3} simplifies to:
-%\[2^{2k_1} -2n2^{k_1} + 2^{2k_2} -2n2^{k_2} +n^2= 0 \]
-\begin{align*}
-0&=2^{2k_1} -2n2^{k_1} + 2^{2k_2} -2n2^{k_2} +n^2\\
-&=2^{2k_1} + 2^{2k_2} -2n(2^{k_1}+2^{k_2}) +n^2 = 2^{2k_1} + 2^{2k_2} -n^2\\
-&= -2^{k_1+k_2+1}.
-\end{align*}
-Since $-2^{k_1+k_2+1}$ cannot be null, there is no solution in $\{\pm1\}^4$ satisfying Equation~\ref{eq:wapb2} for all $k\in[0,2]$, hence there exists no $(2^{k_1}+2^{k_2})$-variable WAPB function that is $2$-corrector, nor $2$-resilient.
-
-
-
-\end{proof}
-
-
-\begin{remark}
-We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
-
-Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
-Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.
-Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
-
-
-
-
-\end{remark}
-
-
-
-
-
-\section{WAPB Functions and Corrector Order}
-
-\pmnote{proposed roadmap:
-
-\begin{itemize}
-	\item definitions to connect it to the matrix
-	\item from Krawtchouk matrix to the powers
-	\item solution for $\w(n)$-1, add link to PTE problem. add note on the existing WAPB that hare $\w(n)-1$-resilient.
-\end{itemize}
-}
-
-Reformulation.
-
-\begin{definition}\label{def:restWalshVect}
-Let $n\in \N^*$ and $f\in \BN$, we define its restricted Walsh vector, denoted by $\rwv{f}$, in $\Z^{n+1}$ as:
-\[\rwv{f}=(\wtk{f}{0},\wtk{f}{1},\cdots,\wtk{f}{n-1},\wtk{f}{n})\]
-
-\end{definition}
-
-
-\begin{definition}\label{def:KrMat}
-	Let $n\in \N^*$ and $k\in \N$ such that $k\le n$, we define the Krawtchouk matrix
-	$\KrM{n}{k}\in 	\Z^{(n+1)\times (k+1)}$ as:
-	\[\forall i \in [0,n], j\in [0,k], \quad \KrM{n}{k}_{i,j}=\kraw{j}{i}{n}.\]
-
-\end{definition}
-
-With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
-\[\rwv{f} \cdot \KrM{n}{t}=0_t.\]
-
-For a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the non null coefficients are the ones such that $k\preceq n$.
-
-
-We can prove that for $\w(n)=1$ (the case of WPB functions) the WAPB functions cannot be $1$-corrector
-(that is $\rwv{f} \cdot \KrM{n}{1}$
-$\neq 0_2$), and for
- $\w(n)=2$
-  (the case of WAPB functions in $2^r +2^s$ variables) the WAPB functions
- cannot be $2$-corrector (that is $\rwv{f} \cdot \KrM{n}{2} \ne 0_3$).
-We would like to prove or disprove that $n$-variable WAPB functions are not $\w(n)$-corrector.
-
-The results for $\w(n)=1$ and $\w(n)=2$ comes from the value of the matrix $\KrM{n}{n}$, but could we deduce more knowing that the matrix is invertible?
-
-
-
-\pmnote{
-
- WAPB in $n$ variable have $2^\w(n)$ restricted Walsh values that belongs to $\{-1,1\}$.
-
-
-  So far the best resilience order known for a WAPB function is $\w(n)-1$.
-}
-
-
-
-\subsection{Notes on the proposition}
-
-Let us ave a look on the expression of an integer at the power $r$ when we write it in binary:
-\[a^r=(\sum_{i=1}^{t} b_i 2^{k_i})^r\]
-If we develop this expression we can rewrite it as a multivariate polynomial in the $b_i$.
-I give the example for $t=2$:
-\[a^0=1, \quad a^1= b_1 2^{k_1}+ b_2 2^{k_2},\quad a^2= b_1 2^{2k_1} + b_1 b_2 2\cdot  2^{k_1+k_2} + b_2 2^{2k_2}.\]
-
-The expression will make appear all combinations of the $b_i$ having between $1$ and $r$ $b_i$s. Each one of these monomials of degree between $1$ and $r$ is associated to a coefficient, say $c_b$.
-
-Then, when we consider the $-1$ and $+1$ combinations to obtain $0$, it means we split $\F_2^t$ in two sets of size $2^{t-1}$, $S_1$ and $S_2$ such that:
-\[\sum_{b\in S_1} (\sum_{i=1}^{t} b_i 2^{k_i})^r =  \sum_{b\in S_2} (\sum_{i=1}^{t} b_i 2^{k_i})^r.\]
-
-We can verify that when $t<r$, taking $S_1$ as the set of vectors of odd Hamming weight and $S_2$ the set of vectors of even Hamming weight each term $c_b$ appears the same number of times in each sum: the monomials of degree between $1$ and $r$ are equal to $1$ the same number of times over $S_1$ than over $S_2$. It is sufficient to guarantee the equality of the two sums.
-
-When $t=r$, the situation changes: there is the monomial of degree $t$: $\prod_{i=1}^t b_i$, and this one takes the value $1$ only for one element: $1_t$. For all other monomials, they take the value $1$ on the same number of elements in $S_1$ than in $S_2$.
-Accordingly, the two sums differ from a term $c_{1_t}$.
-
-This explain why taking $S_1$ and $S_2$ as odd and even Hamming weight element work to create $t-1$-corrector that are not $t$-corrector.
-I am not sure it allows to conclude they do not exist: we could do another partition of $\F_2^t$ as $S_1$ and $S_2$ such that $|S_1|=|S_2|$ where we compensate the $c_b$s. We have that $c_{1_t}$ will appear only once, so in only one of the two sums, the total number of terms appearing is odd when $r=t$.
-
-
-
-
-
-
-
-
-
-
-\newpage
-
-\subsection*{A note on the problem}
-
-For a positive integer $n$ of Hamming weight $t\geq 2$, we denote by $supp(n)$ the set of nonzero coordinates in the binary expansion of $n$.
-For two positive integers $n, m$, we denote by $m\preceq n$ when $supp(m) \subseteq supp(n)$, and by $m\prec n$ if $supp(m) \subset supp(n)$.
-
-Given a positive integer $n$ with $supp(n) = \{i_1,\dots, i_t\}$, where $i_1<\dots<i_t$, we need to show that the system of equations
+Section \ref{sec:corr} characterizes $t$-corrector in terms of restricted Walsh transforms and Vandemonde matrices. This section will further discuss correction order of W(A)PB functions.
+Note that for any Boolean function $f$ and its complement $f \oplus 1$, their restricted Walsh vectors satisfy 
 \[
-\sum_{k \preceq n } v_k k^u = 0, \quad  u=0,\dots, r
-\] has solutions $(v_0,\dots, v_n)\in \{\pm 1\}^{2^t}$ for $r=t-1$ and has no solution for $r=t$.
+\rwv{f \oplus 1} = (\wtk{f\oplus 1}{0}, \dots, \wtk{f\oplus 1}{n})  =-(\wtk{f\oplus 1}{0}, \dots, \wtk{f\oplus 1}{n})= - \rwv{f}.
+\]
+Without loss of generality, we assume $f(0,\dots, 0)=1$ (equivalently, $\wtk{f}{0} = 1$) throughout what follows.
+
+
+
+\subsection{Non-existence of $1$-resilient WPB functions}
+
+Note that the slice $\Ekn{k}{n}$ has even cardinality if and only ${n\choose k}$ is even, equivalently, $k \not\preceq n$.
+By definition, WPB functions are balanced on each $\Ekn{k}{n}$ for any $k\in [1,n-1]$, indicating that they exist only for the case where $n=2^m$ for certain positive integer $m$.
+The following proposition shows the non-existence of $1$-resilient WPB functions.
+\begin{proposition}\label{thm:WPB}
+	Let $f$ be an $n$-variable WPB function with $n=2^m$ for $m\in \N^{*}$.
+	Then  $\res(f) = \corr(f) = 0$. 
+\end{proposition}
+\begin{proof}
+	By Definition~\ref{def:WPB}, a WPB function is balanced, hence $0$-corrector and $0$-resilient.
+	Below we show a WPB function cannot be $1$-corrector, thus not $1$-resilient.
+	
+	By~\eqref{Eq_Vandemonde_system} we see that $\corr(f) = 1$ if and only if 
+	\[
+	\matV^{(2)}\cdot \rwv{f} = \mathbf{0}_2^{\intercal},
+	\] where the restricted Walsh vector $\rwv{f}$ satisfies that $\wtk{f}{\ell} = 0$ for any $\ell \in [1,n-1]$ since $f$ is balanced on $\Ekn{\ell}{n}$.
+	Excluding these columns in $\matV^{(2)}$ reduces the above system to
+	\[
+	\begin{bmatrix}
+	1 & 1 \\ 0 & n
+	\end{bmatrix} 
+	\cdot \begin{bmatrix}
+	\wtk{f}{0} \\ \wtk{f}{n}
+	\end{bmatrix} = 
+	\begin{bmatrix}
+	0 \\ 0
+	\end{bmatrix},
+	\] 
+	which clearly contradicts the definition of WPB functions in Definition~\ref{def:WPB}.
+	%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
+	%
+	%	Using Proposition~\ref{prop:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
+	%	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{1}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{1}{\ell}{n} \, ( \wtk{f}{\ell} - \wtk{f}{n-\ell}).\]
+	%	Since $f$ is WPB, using Property~\ref{prop:WAPBWalsh} we obtain:
+	%	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=0+2\kraw{1}{0}{n}=2n\ne 0,\]
+	%	hence $f$ is not $1$-corrector by Proposition~\ref{prop:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
+\end{proof}
+
+%We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+f$ with $f\in \WPB{m}$, hence all $2^m$-variable WAPB functions are $0$-resilient and not $1$-resilient.
+%
+%In the subsequent sections we shall discuss the cases where $n$ has higher Hamming weights.
+
+%\subsection{WAPB functions of correction order $t\geq 2$}
+
+
+\subsection{Correction order of $n$-variable WAPB functions when $\w(n)=2$ and $\w(n)=3$}
+
+%We can extend the bound of the correction order to $\WAPB{n}$ when $\w(n)=2$, using the Krawtchouk polynomials of degree $2$.
+
+\begin{proposition} Let $n\in \N^*$ with $\w(n)=2$. Then there exist WAPB functions $f$ with $\corr(f)=1$, and the 
+	restricted Walsh transforms $\rwv{f}$ are uniquely given by 
+	\[
+	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
+	\] 
+	Furthermore, there exists no WAPB function $f$ with $\corr(f)=2$.
+\end{proposition}
+
+\begin{proof}	
+	By Theorem~\ref{Th-corrector-by-Vandemonde} it suffices to consider the solution of the linear system $\matW \cdot \mathbf{y} = \mathbf{0}_{{t+1}}^{\intercal}$ for $t=1$ and $t=2$.
+	More precisely, letting $n=2^{i_1} + 2^{i_2}$ with positive integers $i_1> i_2$, we need to study the following two linear systems: 
+	\begin{equation}\label{Eq_t=1}
+	\begin{bmatrix}
+	1 & 1 & 1 & 1 \\
+	0 & 2^{i_2} & 2^{i_1} & (2^{i_1}+2^{i_2})
+	\end{bmatrix}
+	\mathbf{y} =  \begin{bmatrix}
+	0 \\ 0 
+	\end{bmatrix}, 
+	\end{equation}
+	and 
+	\begin{equation}\label{Eq_t=2}
+	\begin{bmatrix}
+	1 & 1 & 1 & 1 \\
+	0 & 2^{i_2} & 2^{i_1} & (2^{i_1}+2^{i_2}) \\
+	0 & 2^{2i_2} & 2^{2i_1} & (2^{i_1}+2^{i_2})^2
+	\end{bmatrix}
+	\mathbf{y}  =  \begin{bmatrix}
+	0 \\ 0 \\ 0
+	\end{bmatrix},
+	\end{equation} where $\mathbf{y} = (y_{00},y_{01},y_{10},y_{11})\in \{\pm 1\}^4$.
+	It can be easily verified that the solutions of \eqref{Eq_t=1} are given by 
+	\[
+	\mathbf{y} = \pm (1, -1,-1, 1).
+	\] This is equivalent to saying that $\wtk{f}{\ell} = c (-1)^{\w(\ell)}$ for any $\preceq n$, where $c$ equals either $1$ or $-1$.
+	Furthermore, these solutions do not satisfy \eqref{Eq_t=2}, which implies that there exists no WAPB function $f$ with $\corr(f) = 2$.
+\end{proof}
+
+\begin{proposition} Let $n\in \N^*$ with $\w(n)=3$. Then there exist WAPB functions $f$ with $\corr(f)=2$, and the 
+	restricted Walsh transforms $\rwv{f}$ are uniquely given by 
+	\[
+	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
+	\] 
+	Furthermore, there exists no WAPB function $f$ with $\corr(f)=3$.
+\end{proposition}
+\begin{proof}
+	\clnote{Martin: please complete this proof similarly.}
+\end{proof}
+
+%\begin{proposition}\label{prop:WAPB2}
+%	
+%	Let $k_1<k_2\in \N$ and $n=2^{k_1}+2^{k_2}$, if $f$ is an $n$-variable WAPB function then $f$ is at most $1$-corrector and not $2$-resilient.
+%\end{proposition}
+%\begin{proof}
+%	From Proposition~\ref{prop:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
+%	\begin{equation}\label{eq:wapb2}
+%	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0
+%	\end{equation}
+%	and $2$ corrector if additionally the same equation holds for $k=2$.
+%	
+%	Using Property~\ref{prop:WAPBWalsh} the only restricted Walsh transform coefficient that are not null are the ones for $k\in\{0,2^{k_1},2^{k_2},2^{k_1}+2^{k_2}=n\}$. It allows to simplify Equation~\ref{eq:wapb2}:
+%	\begin{equation}\label{eq:wapb2simple}
+%	a \kraw{k}{0}{n} + b \kraw{k}{2^{k_1}}{n} + c \kraw{k}{2^{k_2}}{n} + d \kraw{k}{n}{n}=0,
+%	\end{equation}
+%	where $a,b,c,d \in \{\pm 1\}^4$.
+%	
+%	Since $ \kraw{0}{\ell}{n}=1$ for all $\ell$, Equation~\ref{eq:wapb2simple} for $k=0$ leads to the equation $a+b+c+d=0$, that is two of them equal $-1$ and two of them equal $1$.
+%	
+%	Since $ \kraw{1}{\ell}{n}=n-2\ell$, Equation~\ref{eq:wapb2simple} for $k=1$ leads to the following equation:
+%	\begin{equation*}
+%	a n+b (n-2^{k_1+1}) +c (n-2^{k_2+1}) -d n=0,
+%	\end{equation*}
+%	equivalent to:
+%	\begin{equation}\label{eq:wapb2simple2}
+%	(a-d+b+c) n= b 2^{k_1+1}) +c 2^{k_2+1}.
+%	\end{equation}
+%	We remark that if $a$ and $d$ have opposite sign, it implies $b$ and $c$ also to satisfy Equation~\ref{eq:wapb2simple}.
+%	In this case, Equation~\ref{eq:wapb2simple2} becomes $\pm2n= \pm (2^{k_1+1} - 2^{k_2+1})$ which is impossible.
+%	Nevertheless, if $a=d$ it implies $b=c=-a$ and in this case the equation becomes $\pm 2n = \pm (2^{k_1+1} + 2^{k_2+1})=\pm 2n$.
+%	This shows that there exist $(2^{k_1}+2^{k_2})$-variable WAPB functions that are $1$-corrector.
+%	
+%	
+%	Since $ \kraw{2}{\ell}{n}=\ell^2 -2 n \ell + \binom{n}{2}$, the solutions satisfying Equation~\ref{eq:wapb2simple2} lead to the following equation:
+%	\begin{equation}\label{eq:wapb2simple3}
+%	\pm \binom{n}{2} \mp \left(2^{2k_1} -2n2^{k_1} + \binom{n}{2} \right) \mp \left(2^{2k_2} -2n2^{k_2} + \binom{n}{2} \right) \pm \left(-n^2 + \binom{n}{2}\right)=0.
+%	\end{equation}
+%	Equation~\ref{eq:wapb2simple3} simplifies to:
+%	%\[2^{2k_1} -2n2^{k_1} + 2^{2k_2} -2n2^{k_2} +n^2= 0 \]
+%	\begin{align*}
+%	0&=2^{2k_1} -2n2^{k_1} + 2^{2k_2} -2n2^{k_2} +n^2\\
+%	&=2^{2k_1} + 2^{2k_2} -2n(2^{k_1}+2^{k_2}) +n^2 = 2^{2k_1} + 2^{2k_2} -n^2\\
+%	&= -2^{k_1+k_2+1}.
+%	\end{align*}
+%	Since $-2^{k_1+k_2+1}$ cannot be null, there is no solution in $\{\pm1\}^4$ satisfying Equation~\ref{eq:wapb2} for all $k\in[0,2]$, hence there exists no $(2^{k_1}+2^{k_2})$-variable WAPB function that is $2$-corrector, nor $2$-resilient.
+%	
+%	
+%	
+%\end{proof}
+%
+%
+%\begin{remark}
+%	We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
+%	
+%	Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
+%	Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.
+%	Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
+%	
+%	
+%	
+%	
+%\end{remark}
+
+
+\subsection{Correction order of $n$-variable WAPB functions when $\w(n)>3$}
+
+We shall consider general cases by following the discussion for the cases where $\w(n)=2$ and $\w(n)=3$.
+In order to discuss the linear systems in a unified way, we need the following lemma. 
 
 \begin{lemma}\label{Represention_Equations}
-	For $1\leq u \leq t$, the equation $\sum_{k \preceq n } v_k k^u = 0$ can be re-written as
+	For $1\leq u \leq t$, the equation $\sum_{\ell \preceq n } \ell^uy_{\ell}  = 0$ can be re-written as
 	\begin{equation}\label{key}
-	\sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ u_{j_1}+\cdots+ u_{j_s}=u \\  u_{j_1},\dots,u_{j_s}\geq 1}}  \frac{u!}{u_1!\cdots u_s!} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(k)   \\ k\preceq n }}  v_k \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}},
+	\sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ u_{j_1}+\cdots+ u_{j_s}=u \\  u_{j_1},\dots,u_{j_s}\geq 1}}  \frac{u!}{u_1!\cdots u_s!} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(\ell)   \\ \ell\preceq n }}  y_{\ell} \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}},
 	\end{equation} where $[t]$ denotes the set $\{1,2,\dots, t\}$.
 \end{lemma}
 
@@ -636,7 +618,7 @@ Given a positive integer $n$ with $supp(n) = \{i_1,\dots, i_t\}$, where $i_1<\do
 In the above sum $(u_1,\dots, u_s)$ can be seen as a non-negative partition of the integer $u$. For simplicity, we denote by $P_s(u)$ the set of all such partitions of $u$.
 Observe that for any $(u_1,\dots, u_s)\in P_s(u)$, the integers $u_1,\dots, u_s, 0$ form an $(s+1)$-tuple in $P_{s+1}(u)$. This implies the inclusive relation
 $$
-P_s(u) \subset P_{s+1}(u), quad s = 1, 2, \dots.
+P_s(u) \subset P_{s+1}(u), \quad s = 1, 2, \dots.
 $$
 %This indicates that all terms in the sum $(x_1+\cdots + x_s)^u = \sum_{(u_1,\dots, u_s)\in P_s(u)} x_1^{u_1}\dots x_s^{u_s}$
 %are included in the sum $(x_1+\cdots + x_s+x_{s+1})^u = \sum_{(u_1,\dots, u_s,u_{s+1})\in P_{s+1}(u)} x_1^{u_1}\dots x_s^{u_s}x_{s+1}^{u_{s+1}}$.
@@ -649,19 +631,18 @@ $$
 %\\& + {2 \choose 1,1,0}x_1^1x_2^1x_3^0 + {2 \choose 0,1,1}x_1^0x_2^1x_3^1 + {2 \choose 9,1,1}x_1^0x_2^1x_3^1
 %\\&= x_1^2+x_2^2 +x_3^2 + 2x_1x_2 + 2x_1x_3 + 2x_2x_3.
 %\end{aligned}$$
-On the other hand, for an $(s+1)$-tuple $(v_1,\dots, v_{s+1})$ in $P_{s+1}(u)$ with (at) least one zero coordinate, it will degenerate to an $s$-tuple in $P_s(u)$ after one zero coordinate is removed.
+On the other hand, for an $(s+1)$-tuple $(y_1,\dots, y_{s+1})$ in $P_{s+1}(u)$ with (at) least one zero coordinate, it will degenerate to an $s$-tuple in $P_s(u)$ after one zero coordinate is removed.
 Hence, for $s\leq u$, we can partition the set $P_{s}(u)$ as
 \[
 P_{s}(u) = P^*_{s}(u) \sqcup P^*_{s-1}(u) \sqcup \cdots \sqcup P^*_1(u),
 \] where $P^*_{r}(u)$ contains those $r$-tuples $(u_1,\dots, u_{r})$ with $u_1,\dots, u_{r} \geq 1$.
 
-Now we consider the expansion of the sum $\sum_{k \preceq n } v_k k^u = 0$ with $n=2^{i_1}+\cdots + 2^{i_t}$ and $u>0$. By denoting $x_j=2^{i_j}$ and re-arranging the terms in its expansions, we obtain
+Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u = 0$ with $n=2^{i_1}+\cdots + 2^{i_t}$ and $u>0$. By denoting $x_j=2^{i_j}$ and re-arranging the terms in its expansions, we obtain
 \begin{equation}\label{key}
 \begin{aligned}
-\sum_{k \preceq n } v_kk^u & = \sum_{s=1}^t \sum_{\substack{supp(k) = \{i_{j_1},\dots, i_{j_s}\} \\ \{j_1,\dots, j_s\} \subseteq [t] \\ }} v_k (x_{j_1}+\dots + x_{j_s})^u
-\\&= \sum_{s=1}^t \sum_{\substack{supp(k) = \{i_{j_1},\dots, i_{j_s}\} \\ \{j_1,\dots, j_s\} \subseteq [t] \\ }}  v_k \sum\limits_{(u_1,\dots, u_s) \in P_s(u)} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
-\\& =  \sum_{s=1}^t\sum\limits_{\substack{supp(k) = \{i_{j_1},\dots, i_{j_s}\}  \\ \{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P_s(u)}} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} v_k   x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
-\\& =  \sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P^*_s(u)}} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(k)   \\ k\preceq n }}  v_k \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}},
+\sum_{\ell \preceq n } \ell^u y_{\ell}  & = \sum_{s=1}^t \sum_{\substack{supp(\ell) = \{i_{j_1},\dots, i_{j_s}\} \\ \{j_1,\dots, j_s\} \subseteq [t] \\ }}  (x_{j_1}+\dots + x_{j_s})^u y_\ell
+\\&= \sum_{s=1}^t \sum_{\substack{supp(\ell) = \{i_{j_1},\dots, i_{j_s}\} \\ \{j_1,\dots, j_s\} \subseteq [t] \\ }}  y_\ell \sum\limits_{(u_1,\dots, u_s) \in P_s(u)} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
+\\& =  \sum_{s=1}^t\sum\limits_{\substack{supp(\ell) = \{i_{j_1},\dots, i_{j_s}\}  \\ \{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P_s(u)}} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} y_\ell   x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
 \end{aligned}
 \end{equation} where the last equality is obtained by re-arranging the summands for $s=1,\dots, t$ according to the partition $P_{s}(u) = P^*_{s}(u) \sqcup P^*_{s-1}(u) \sqcup \cdots \sqcup P^*_1(u)$. \hfill$\square$
 
@@ -670,20 +651,463 @@ Now we consider the expansion of the sum $\sum_{k \preceq n } v_k k^u = 0$ with 
 	we have
 	\begin{equation*}
 	\begin{aligned}
-	\sum_{k \preceq n } v_kk^2 &= \sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P^*_s(u)}} {u \choose u_{j_1},\dots, u_{j_s}} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(k)   \\ k\preceq n }}  v_k \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
-	\\&=\sum\limits_{\substack{j\in [3] \\ u_j=2}} {2 \choose u_j}  \left(  \sum_{\substack{ \{i_j\} \subseteq supp(k)\\ k\preceq n}}  v_k \right) x_{j}^2 + \sum\limits_{\substack{{j_1,j_2}\in [3] \\ u_{j_1}=u_{j_2}=1}} {2 \choose u_{j_1},u_{j_2}}  \left(  \sum_{\substack{ \{i_{j_1},i_{j_2}\} \subseteq supp(k)\\ k\preceq n}}   v_k \right) x_{j_1}x_{j_2}
-	\\& = \sum_{j=1}^3 \left(  \sum_{2^{i_j}\preceq k\preceq n}  v_k \right) x_{j}^2  +  2\sum\limits_{{j_1,j_2}\in [3]}  \left(  \sum_{ 2^{i_{j_1}}+2^{i_{j_2}} \subseteq k\preceq n}   v_k \right) x_{j_1}x_{j_2},
+	\sum_{\ell \preceq n } \ell^2 y_\ell &= \sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P^*_s(u)}} {u \choose u_{j_1},\dots, u_{j_s}} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(\ell)   \\ \ell \preceq n }}  y_k \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
+	\\&=\sum\limits_{\substack{j\in [3] \\ u_j=2}} {2 \choose u_j}  \left(  \sum_{\substack{ \{i_j\} \subseteq supp(\ell)\\ \ell\preceq n}}  y_\ell \right) x_{j}^2 + \sum\limits_{\substack{{j_1,j_2}\in [3] \\ u_{j_1}=u_{j_2}=1}} {2 \choose u_{j_1},u_{j_2}}  \left(  \sum_{\substack{ \{i_{j_1},i_{j_2}\} \subseteq supp(\ell)\\ \ell\preceq n}}   y_\ell \right) x_{j_1}x_{j_2}
+	\\& = \sum_{j=1}^3 \left(  \sum_{2^{i_j}\preceq \ell \preceq n}  y_\ell \right) x_{j}^2  +  2\sum\limits_{{j_1,j_2}\in [3]}  \left(  \sum_{ 2^{i_{j_1}}+2^{i_{j_2}} \subseteq \ell\preceq n}   y_\ell \right) x_{j_1}x_{j_2},
 	\end{aligned}
 	\end{equation*}
-	where  the second equality has only two summations due to the fact that $P^*_{t}(u) = \emptyset$ when $t>u$. Denoting $v_k$ for $k = k_12^{i_1}+k_22^{i_2}+k_32^{i_3}$ as $v_{k_1k_2k_3}$,
+	where  the second equality has only two summations due to the fact that $P^*_{t}(u) = \emptyset$ when $t>u$. Denoting $y_\ell$ for $\ell = b_12^{i_1}+b_22^{i_2}+b_32^{i_3}$ as $y_{b_1b_2b_3}$ with $b_1,b_2,b_3\in \{0,1\}$,
 	we obtain the following expansion
 	\begin{align*}
-		\sum_{k \preceq n } v_kk^2
-		&= (v_{100}+v_{110}+v_{101}+v_{111}) x_1^2  + (v_{010}+v_{110}+v_{011}+v_{111}) x_2^2  + (v_{001}+v_{101}+v_{011}+v_{111}) x_3^2
-		\\ & + 2 \left((v_{110}+v_{111}) x_1x_2 + (v_{101}+v_{111})x_1x_3 + (v_{011}+v_{111})x_2x_3 \right)
+	\sum_{k \preceq n } y_kk^2
+	&= (y_{100}+y_{110}+y_{101}+y_{111}) x_1^2  + (y_{010}+y_{110}+y_{011}+y_{111}) x_2^2  + (y_{001}+y_{101}+y_{011}+y_{111}) x_3^2
+	\\ & + 2 \left((y_{110}+y_{111}) x_1x_2 + (y_{101}+y_{111})x_1x_3 + (y_{011}+y_{111})x_2x_3 \right)
 	\end{align*}
 	where $x_1 = 2^{i_1}, x_2 = 2^{i_2}, x_3 = 2^{i_3} $.
 \end{example}
+
+\begin{proposition}Let $n\in \N^*$ with $n=2^{i_1}+\cdots + 2^{i_t}$ with $i_1>\cdots > i_t$ and $t>3$.
+	Furthermore, then there exist WAPB functions $f$ with $\corr(f)=t-1$.
+	then the 
+	restricted Walsh transforms $\rwv{f}$ are uniquely given by 
+	\[
+	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n,
+	\] 
+   and there exists no WAPB function $f$ with $\corr(f)=t$.
+\end{proposition}
+\begin{proof}
+	\clnote{Martin: please try to give a proof by following the proof development for Prop. 4}
+\end{proof}
+
+\begin{conjecture}
+	Let $n\in \N^*$ with $\w(n)=t$. Then 
+	there exist WAPB functions $f$ with $\corr(f)=t-1$ and 
+	restricted Walsh transforms $\rwv{f}$ are uniquely given by 
+	\[
+	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n,
+	\]  Furthermore,	
+	there exists no WAPB function $f$ with $\corr(f)=t$.
+\end{conjecture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{$t$-corrector and Restricted Walsh Transform}\label{sec:corr}
+%
+%
+%
+%We rewrite the $t$-corrector property using the notation of restricted Walsh transform.
+%
+%
+%\begin{proposition}\label{prop:WalsCorr}
+%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if and only if its restricted Walsh transform satisfies
+%	\begin{equation}\label{Eq_RWT}
+%	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0 \quad \text{ for } k=0,1,\dots, t.
+%	\end{equation}
+%
+%
+%%\begin{proposition}\label{prop:WalsCorr}
+%%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
+%%	\begin{itemize}
+%%		\item If $n$ is odd: for $0\le k \le t$,
+%%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+%%	\item If $n$ is even: for $0\le k \le t$,
+%%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+%%	\end{itemize}
+%
+%
+%
+%
+%\end{proposition}
+%\begin{proof}
+%
+%%We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$.
+%%From Definition~\ref{def:corr}, $f$ is a $t$-corrector if $A_k=0$ for $k\in [0,t]$.
+%%\[A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a).\]
+%Note that
+%\begin{align*}
+%\sum_{a\in \Ekn{k}{n}} \wt{f}(a)&=\sum_{a\in \Ekn{k}{n}} \sum_{x\in \F_2^n} (-1)^{f(x)+a \cdot x}\\
+%&= \sum_{x\in \F_2^n} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
+%&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
+%&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)} \,  \kraw{k}{\ell}{n}\\
+%&=\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n},
+%\end{align*}
+%where the last second equality follows from \eqref{Eq_K_rwt}.
+%The desired statement is then proved by Definition~\ref{def:corr}.
+%\end{proof}
+%
+%%Using Property~\ref{prop:Kr}, when $n$ is odd we obtain:
+%%\[A_k=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell}). \]
+%%When $n$ is even we obtain:
+%%\[A_k=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell}). \]
+%%It allows to conclude.
+%
+%
+%
+%%\begin{corollary}
+%%
+%%\end{corollary}
+%
+%
+%
+%
+%%\section{WPB functions and corrector order}
+%\section{Correction order of W(A)PB Functions}
+%
+%\subsection{Characterizations in terms of Krawtchouk and Vandemonde matrices}
+%
+%Following from Proposition~\ref{prop:WAPBWalsh}, we reformulate WAPB functions of correction order $t$ in terms of Krawtchouk polynomials.
+%
+%\begin{definition}\label{def:restWalshVect}
+%	Let $n\in \N^*$ and $f\in \BN$, we define its restricted Walsh vector, denoted by $\rwv{f}$, in $\Z^{n+1}$ as:
+%	\[\rwv{f}=(\wtk{f}{0},\wtk{f}{1},\cdots,\wtk{f}{n-1},\wtk{f}{n})^\intercal\]
+%
+%\end{definition}
+%
+%
+%\begin{definition}\label{def:KrMat}
+%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$, we define the Krawtchouk matrix $\matK$ of order $(n+1)$ as:
+%	\[\forall k \in [0,n], \ell \in [0,n], \quad \matK_{k,\ell}=\kraw{k}{\ell}{n},\]
+%	and denote by $\matK^{(t)}$ the submatrix formed by the leading $t$ rows of $\matK$.
+%
+%	%	$\KrM{n}{k}\in 	\Z^{(n+1)\times (k+1)}$ as:
+%
+%
+%\end{definition}
+%
+%With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
+%\begin{equation}\label{Eq_t-corrector}
+%\matK^{(t)}\cdot \rwv{f}=\textbf{0}_t^\intercal.
+%\end{equation}
+%The following theorem provides an interesting connection between the Krawtchouk matrix and the Vandemonde matrix. This connection facilitates the study of the above equation.
+%
+%\begin{theorem}\label{Th_K_V_matrices}
+%	Let $\matK$ be the Krawtchouk matrix and $\matV$ be the Vandermonde matrix given by $V_{k,\ell} =\ell^k$ with $0\leq k,\ell\leq n$ indexing the rows and columns, respectively.
+%	For $0\leq k\leq n$, let
+%	\[
+%	\alpha_k = -\frac{k}{2}, \beta_k = \frac{n}{2}, \gamma_k = -\frac{n-k}{2},
+%	\]
+%	and for $1\leq r\leq n$ define $r\times(r+1)$ matrices $H_r$ as follows:
+%	\begin{equation}\label{Eq_H}
+%	%         H_1 = \begin{bmatrix}
+%	%     \beta_0 & \alpha_1
+%	% \end{bmatrix},
+%	% \quad
+%	% H_2 =  \begin{bmatrix}
+%	%            \beta_0 & \alpha_1 \\
+%	%            \gamma_0 & \beta_1 & \alpha_2
+%	%        \end{bmatrix},
+%	% \cdots,
+%	H_{r} = \begin{bmatrix}
+%	\beta_0 & \alpha_1 &  & & &\\
+%	\gamma_0 & \beta_1 & \alpha_2 & & &\\
+%	& \gamma_1 & \beta_2 & \alpha_3 &  &
+%	\\
+%	& & \ddots & \ddots & \ddots &\\
+%	& & & \gamma_{r-2} &\beta_{r-1} & \alpha_{r}
+%	\end{bmatrix}.
+%	\end{equation}
+%	Then we have \[
+%	\matM \cdot \matK = \matV,
+%	\]
+%	where $\matM$ is an $(n+1)\times(n+1)$ lower triangular matrix whose rows are given by the following recursion:
+%	\begin{equation}\label{Eq_Matrix_M}
+%	% \begin{array}{rcl}
+%	%     \matM_{0,0} &=& 1 \\
+%	%     \matM_{1,[0,1]} &=& \matM_{0,[0,0]}H_1 \\
+%	%     \matM_{2,[0,2]} &=& \matM_{1,[0,1]} H_2\\
+%	%     % & \vdots & \\
+%	%     % \matM_{r+1,[0,r+1]} &=& \matM_{r,[0,r]} H_r
+%	%     \\
+%	%     &\vdots & \\
+%	%     \matM_{n,[0,n]} & = & \matM_{n-1,[0,n-1]}H_n,
+%	% \end{array}
+%	\matM_{0,0} = 1,\quad \matM_{r,[0,r]} = \matM_{r-1,[0,r-1]} H_r \text{ for } r = 1, 2,\dots, n,
+%	\end{equation}
+%	where $\matM_{r,[0,r]} = [M_{r,0},\dots, M_{r,r}]$ denotes the leading $(r+1)$ entries in the $r$-th row of $M$.
+%
+%
+%\end{theorem}
+%
+%Let $\matM_{[t]}$ be the upper-left block of size $t$ in the matrix $\matM$.
+%It follows from \eqref{Eq_Matrix_M} that $\matM_{[t]}$ is invertible.
+%Then it follows from Theorem~\ref{Th_K_V_matrices} that
+%\[
+%\matM_{[t]} \cdot \matK^{(t)} = \matV^{(t)},
+%\]where $\matV^{(t)}$ is the submatrix formed by the leading $t$ rows of $\matV$.
+%Therefore,  a Boolean function $f$ is a $t$-corrector if and only if its restricted Walsh transform $\rwv{f}$
+%satisfies the following system of equations:
+%\begin{equation}\label{Eq_Vandemonde_system}
+%\matV^{(t)} \cdot \rwv{f} = \mathbf{0}_t^\intercal.
+%\end{equation}
+%
+%Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the nonzero coefficients in $\rwv{f}$ are the $\ell$-th entries such that $\ell\preceq n$.
+%Therefore, we have the following result:
+%
+%\begin{proposition}
+%	Let $\matW$ denote the $t\times 2^t$ submatrix of $\matV^{(t)}$ formed by the $\ell$-th column in $\matV^{(t)}$ with $\ell \preceq n$.
+%	Then there is a one-to-one correspondence between WAPB functions of correction order $t$ and the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following
+%	system of equations:
+%	\[
+%	\matW \cdot \mathbf{y} = \mathbf{0}_{t}^{\intercal}.
+%	\]
+%\end{proposition}
+%
+%
+%\subsection{WPB functions are balanced and not $1$-resilient}
+%The reformulation of $t$-corrector is sufficient to show that WPB functions are $0$-corrector and not $1$-corrector, which also allows to status on their resilience order.
+%
+%\begin{theorem}\label{thm:WPB}
+%	Let $m\in \N^*$ and $n=2^m$, if $f$ is an $n$-variable WPB function then $f$ is $0$-corrector, $f$ is not $1$-corrector, $f$ is $0$-resilient and not $1$-resilient.
+%\end{theorem}
+%\begin{proof}
+%	By definition (Definition~\ref{def:WPB}) a WPB function is balanced, hence $0$-corrector and $0$-resilient.
+%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
+%
+%	Using Proposition~\ref{prop:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
+%	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{1}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{1}{\ell}{n} \, ( \wtk{f}{\ell} - \wtk{f}{n-\ell}).\]
+%	Since $f$ is WPB, using Property~\ref{prop:WAPBWalsh} we obtain:
+%	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=0+2\kraw{1}{0}{n}=2n\ne 0,\]
+%	hence $f$ is not $1$-corrector by Proposition~\ref{prop:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
+%\end{proof}
+%
+%We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+f$ with $f\in \WPB{m}$, hence all $2^m$-variable WAPB functions are $0$-resilient and not $1$-resilient.
+%
+%In the subsequent sections we shall discuss the cases where $n$ has higher Hamming weights.
+%
+%\subsection{WAPB functions of correction order $t\geq 2$}
+%
+%
+%
+%
+%\subsection{Correction order of WAPB functions in $n=2^{k_1} + 2^{k_2}$ variables}
+%
+%We can extend the bound of the correction order to $\WAPB{n}$ when $\w(n)=2$, using the Krawtchouk polynomials of degree $2$.
+%
+%\begin{proposition}\label{prop:WAPB2}
+%	Let $k_1<k_2\in \N$ and $n=2^{k_1}+2^{k_2}$, if $f$ is an $n$-variable WAPB function then $f$ is at most $1$-corrector and not $2$-resilient.
+%\end{proposition}
+%\begin{proof}
+%	From Proposition~\ref{prop:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
+%	\begin{equation}\label{eq:wapb2}
+%	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0
+%	\end{equation}
+%	and $2$ corrector if additionally the same equation holds for $k=2$.
+%
+%Using Property~\ref{prop:WAPBWalsh} the only restricted Walsh transform coefficient that are not null are the ones for $k\in\{0,2^{k_1},2^{k_2},2^{k_1}+2^{k_2}=n\}$. It allows to simplify Equation~\ref{eq:wapb2}:
+%	\begin{equation}\label{eq:wapb2simple}
+%a \kraw{k}{0}{n} + b \kraw{k}{2^{k_1}}{n} + c \kraw{k}{2^{k_2}}{n} + d \kraw{k}{n}{n}=0,
+%\end{equation}
+%where $a,b,c,d \in \{\pm 1\}^4$.
+%
+%Since $ \kraw{0}{\ell}{n}=1$ for all $\ell$, Equation~\ref{eq:wapb2simple} for $k=0$ leads to the equation $a+b+c+d=0$, that is two of them equal $-1$ and two of them equal $1$.
+%
+%Since $ \kraw{1}{\ell}{n}=n-2\ell$, Equation~\ref{eq:wapb2simple} for $k=1$ leads to the following equation:
+%\begin{equation*}
+%a n+b (n-2^{k_1+1}) +c (n-2^{k_2+1}) -d n=0,
+%\end{equation*}
+%equivalent to:
+%\begin{equation}\label{eq:wapb2simple2}
+% (a-d+b+c) n= b 2^{k_1+1}) +c 2^{k_2+1}.
+%\end{equation}
+%We remark that if $a$ and $d$ have opposite sign, it implies $b$ and $c$ also to satisfy Equation~\ref{eq:wapb2simple}.
+%In this case, Equation~\ref{eq:wapb2simple2} becomes $\pm2n= \pm (2^{k_1+1} - 2^{k_2+1})$ which is impossible.
+%Nevertheless, if $a=d$ it implies $b=c=-a$ and in this case the equation becomes $\pm 2n = \pm (2^{k_1+1} + 2^{k_2+1})=\pm 2n$.
+%This shows that there exist $(2^{k_1}+2^{k_2})$-variable WAPB functions that are $1$-corrector.
+%
+%
+%Since $ \kraw{2}{\ell}{n}=\ell^2 -2 n \ell + \binom{n}{2}$, the solutions satisfying Equation~\ref{eq:wapb2simple2} lead to the following equation:
+%\begin{equation}\label{eq:wapb2simple3}
+%\pm \binom{n}{2} \mp \left(2^{2k_1} -2n2^{k_1} + \binom{n}{2} \right) \mp \left(2^{2k_2} -2n2^{k_2} + \binom{n}{2} \right) \pm \left(-n^2 + \binom{n}{2}\right)=0.
+%\end{equation}
+%Equation~\ref{eq:wapb2simple3} simplifies to:
+%%\[2^{2k_1} -2n2^{k_1} + 2^{2k_2} -2n2^{k_2} +n^2= 0 \]
+%\begin{align*}
+%0&=2^{2k_1} -2n2^{k_1} + 2^{2k_2} -2n2^{k_2} +n^2\\
+%&=2^{2k_1} + 2^{2k_2} -2n(2^{k_1}+2^{k_2}) +n^2 = 2^{2k_1} + 2^{2k_2} -n^2\\
+%&= -2^{k_1+k_2+1}.
+%\end{align*}
+%Since $-2^{k_1+k_2+1}$ cannot be null, there is no solution in $\{\pm1\}^4$ satisfying Equation~\ref{eq:wapb2} for all $k\in[0,2]$, hence there exists no $(2^{k_1}+2^{k_2})$-variable WAPB function that is $2$-corrector, nor $2$-resilient.
+%
+%
+%
+%\end{proof}
+%
+%
+%\begin{remark}
+%We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
+%
+%Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
+%Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.
+%Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
+%
+%
+%
+%
+%\end{remark}
+
+
+
+%
+%
+%\section{WAPB Functions and Corrector Order}
+%
+%\pmnote{proposed roadmap:
+%
+%\begin{itemize}
+%	\item definitions to connect it to the matrix
+%	\item from Krawtchouk matrix to the powers
+%	\item solution for $\w(n)$-1, add link to PTE problem. add note on the existing WAPB that hare $\w(n)-1$-resilient.
+%\end{itemize}
+%}
+%
+%Reformulation.
+%
+%\begin{definition}\label{def:restWalshVect}
+%Let $n\in \N^*$ and $f\in \BN$, we define its restricted Walsh vector, denoted by $\rwv{f}$, in $\Z^{n+1}$ as:
+%\[\rwv{f}=(\wtk{f}{0},\wtk{f}{1},\cdots,\wtk{f}{n-1},\wtk{f}{n})\]
+%
+%\end{definition}
+%
+%
+%\begin{definition}\label{def:KrMat}
+%	Let $n\in \N^*$ and $k\in \N$ such that $k\le n$, we define the Krawtchouk matrix
+%	$\KrM{n}{k}\in 	\Z^{(n+1)\times (k+1)}$ as:
+%	\[\forall i \in [0,n], j\in [0,k], \quad \KrM{n}{k}_{i,j}=\kraw{j}{i}{n}.\]
+%
+%\end{definition}
+%
+%With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
+%\[\rwv{f} \cdot \KrM{n}{t}=0_t.\]
+%
+%For a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the non null coefficients are the ones such that $k\preceq n$.
+%
+%
+%We can prove that for $\w(n)=1$ (the case of WPB functions) the WAPB functions cannot be $1$-corrector
+%(that is $\rwv{f} \cdot \KrM{n}{1}$
+%$\neq 0_2$), and for
+% $\w(n)=2$
+%  (the case of WAPB functions in $2^r +2^s$ variables) the WAPB functions
+% cannot be $2$-corrector (that is $\rwv{f} \cdot \KrM{n}{2} \ne 0_3$).
+%We would like to prove or disprove that $n$-variable WAPB functions are not $\w(n)$-corrector.
+%
+%The results for $\w(n)=1$ and $\w(n)=2$ comes from the value of the matrix $\KrM{n}{n}$, but could we deduce more knowing that the matrix is invertible?
+%
+%
+%
+%\pmnote{
+%
+% WAPB in $n$ variable have $2^\w(n)$ restricted Walsh values that belongs to $\{-1,1\}$.
+%
+%
+%  So far the best resilience order known for a WAPB function is $\w(n)-1$.
+%}
+%
+%
+%
+%\subsection{Notes on the proposition}
+%
+%Let us ave a look on the expression of an integer at the power $r$ when we write it in binary:
+%\[a^r=(\sum_{i=1}^{t} b_i 2^{k_i})^r\]
+%If we develop this expression we can rewrite it as a multivariate polynomial in the $b_i$.
+%I give the example for $t=2$:
+%\[a^0=1, \quad a^1= b_1 2^{k_1}+ b_2 2^{k_2},\quad a^2= b_1 2^{2k_1} + b_1 b_2 2\cdot  2^{k_1+k_2} + b_2 2^{2k_2}.\]
+%
+%The expression will make appear all combinations of the $b_i$ having between $1$ and $r$ $b_i$s. Each one of these monomials of degree between $1$ and $r$ is associated to a coefficient, say $c_b$.
+%
+%Then, when we consider the $-1$ and $+1$ combinations to obtain $0$, it means we split $\F_2^t$ in two sets of size $2^{t-1}$, $S_1$ and $S_2$ such that:
+%\[\sum_{b\in S_1} (\sum_{i=1}^{t} b_i 2^{k_i})^r =  \sum_{b\in S_2} (\sum_{i=1}^{t} b_i 2^{k_i})^r.\]
+%
+%We can verify that when $t<r$, taking $S_1$ as the set of vectors of odd Hamming weight and $S_2$ the set of vectors of even Hamming weight each term $c_b$ appears the same number of times in each sum: the monomials of degree between $1$ and $r$ are equal to $1$ the same number of times over $S_1$ than over $S_2$. It is sufficient to guarantee the equality of the two sums.
+%
+%When $t=r$, the situation changes: there is the monomial of degree $t$: $\prod_{i=1}^t b_i$, and this one takes the value $1$ only for one element: $1_t$. For all other monomials, they take the value $1$ on the same number of elements in $S_1$ than in $S_2$.
+%Accordingly, the two sums differ from a term $c_{1_t}$.
+%
+%This explain why taking $S_1$ and $S_2$ as odd and even Hamming weight element work to create $t-1$-corrector that are not $t$-corrector.
+%I am not sure it allows to conclude they do not exist: we could do another partition of $\F_2^t$ as $S_1$ and $S_2$ such that $|S_1|=|S_2|$ where we compensate the $c_b$s. We have that $c_{1_t}$ will appear only once, so in only one of the two sums, the total number of terms appearing is odd when $r=t$.
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%\newpage
+%
+%\subsection*{A note on the problem}
+%
+%For a positive integer $n$ of Hamming weight $t\geq 2$, we denote by $supp(n)$ the set of nonzero coordinates in the binary expansion of $n$.
+%For two positive integers $n, m$, we denote by $m\preceq n$ when $supp(m) \subseteq supp(n)$, and by $m\prec n$ if $supp(m) \subset supp(n)$.
+%
+%Given a positive integer $n$ with $supp(n) = \{i_1,\dots, i_t\}$, where $i_1<\dots<i_t$, we need to show that the system of equations
+%\[
+%\sum_{k \preceq n } v_k k^u = 0, \quad  u=0,\dots, r
+%\] has solutions $(v_0,\dots, v_n)\in \{\pm 1\}^{2^t}$ for $r=t-1$ and has no solution for $r=t$.
+%
+%\begin{lemma}\label{Represention_Equations}
+%	For $1\leq u \leq t$, the equation $\sum_{k \preceq n } v_k k^u = 0$ can be re-written as
+%	\begin{equation}\label{key}
+%	\sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ u_{j_1}+\cdots+ u_{j_s}=u \\  u_{j_1},\dots,u_{j_s}\geq 1}}  \frac{u!}{u_1!\cdots u_s!} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(k)   \\ k\preceq n }}  v_k \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}},
+%	\end{equation} where $[t]$ denotes the set $\{1,2,\dots, t\}$.
+%\end{lemma}
+%
+%\textbf{Proof.} Note that the expansion of $(x_1+\cdots + x_s)^u$ is given by
+%\[
+%(x_1+\cdots + x_s)^u = \sum\limits_{\substack{u_1+\cdots + u_s = u\\ u_1,\dots, u_s\geq 0}} \frac{u!}{u_1!\cdots u_s!}x_1^{u_1}\dots x_s^{u_s},
+%\] where $ \frac{u!}{u_1!\cdots u_s!}$ is the multinomial coefficient.
+%In the above sum $(u_1,\dots, u_s)$ can be seen as a non-negative partition of the integer $u$. For simplicity, we denote by $P_s(u)$ the set of all such partitions of $u$.
+%Observe that for any $(u_1,\dots, u_s)\in P_s(u)$, the integers $u_1,\dots, u_s, 0$ form an $(s+1)$-tuple in $P_{s+1}(u)$. This implies the inclusive relation
+%$$
+%P_s(u) \subset P_{s+1}(u), quad s = 1, 2, \dots.
+%$$
+%%This indicates that all terms in the sum $(x_1+\cdots + x_s)^u = \sum_{(u_1,\dots, u_s)\in P_s(u)} x_1^{u_1}\dots x_s^{u_s}$
+%%are included in the sum $(x_1+\cdots + x_s+x_{s+1})^u = \sum_{(u_1,\dots, u_s,u_{s+1})\in P_{s+1}(u)} x_1^{u_1}\dots x_s^{u_s}x_{s+1}^{u_{s+1}}$.
+%%For instance, take $u=2$ and $s=2$, one has $$\begin{array}{c}
+%%(x_1+x_2)^2 = {2 \choose 2,0}x_1^2x_2^0 +{2 \choose 0,2}x_1^0x_2^2 + {2 \choose 1,1}x_1^1x_2^1 = x_1^2 + x_2^2 + 2x_1x_2 \end{array}$$
+%%and
+%%$$
+%%\begin{aligned}
+%%(x_1+x_2+x_3)^2 & = {2 \choose 2,0,0}x_1^2x_2^0x_3^0 + {2 \choose 0,2,0}x_1^0x_2^2x_3^0 + {2 \choose 0,0,2}x_1^0x_2^0x_3^2
+%%\\& + {2 \choose 1,1,0}x_1^1x_2^1x_3^0 + {2 \choose 0,1,1}x_1^0x_2^1x_3^1 + {2 \choose 9,1,1}x_1^0x_2^1x_3^1
+%%\\&= x_1^2+x_2^2 +x_3^2 + 2x_1x_2 + 2x_1x_3 + 2x_2x_3.
+%%\end{aligned}$$
+%On the other hand, for an $(s+1)$-tuple $(v_1,\dots, v_{s+1})$ in $P_{s+1}(u)$ with (at) least one zero coordinate, it will degenerate to an $s$-tuple in $P_s(u)$ after one zero coordinate is removed.
+%Hence, for $s\leq u$, we can partition the set $P_{s}(u)$ as
+%\[
+%P_{s}(u) = P^*_{s}(u) \sqcup P^*_{s-1}(u) \sqcup \cdots \sqcup P^*_1(u),
+%\] where $P^*_{r}(u)$ contains those $r$-tuples $(u_1,\dots, u_{r})$ with $u_1,\dots, u_{r} \geq 1$.
+%
+%Now we consider the expansion of the sum $\sum_{k \preceq n } v_k k^u = 0$ with $n=2^{i_1}+\cdots + 2^{i_t}$ and $u>0$. By denoting $x_j=2^{i_j}$ and re-arranging the terms in its expansions, we obtain
+%\begin{equation}\label{key}
+%\begin{aligned}
+%\sum_{k \preceq n } v_kk^u & = \sum_{s=1}^t \sum_{\substack{supp(k) = \{i_{j_1},\dots, i_{j_s}\} \\ \{j_1,\dots, j_s\} \subseteq [t] \\ }} v_k (x_{j_1}+\dots + x_{j_s})^u
+%\\&= \sum_{s=1}^t \sum_{\substack{supp(k) = \{i_{j_1},\dots, i_{j_s}\} \\ \{j_1,\dots, j_s\} \subseteq [t] \\ }}  v_k \sum\limits_{(u_1,\dots, u_s) \in P_s(u)} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
+%\\& =  \sum_{s=1}^t\sum\limits_{\substack{supp(k) = \{i_{j_1},\dots, i_{j_s}\}  \\ \{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P_s(u)}} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} v_k   x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
+%\\& =  \sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P^*_s(u)}} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(k)   \\ k\preceq n }}  v_k \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}},
+%\end{aligned}
+%\end{equation} where the last equality is obtained by re-arranging the summands for $s=1,\dots, t$ according to the partition $P_{s}(u) = P^*_{s}(u) \sqcup P^*_{s-1}(u) \sqcup \cdots \sqcup P^*_1(u)$. \hfill$\square$
+%
+%\begin{example} \label{Ex1}
+%	Assume $supp(n)=\{i_1,i_2,i_3\}$ with $t= 3$ and $u=2$,
+%	we have
+%	\begin{equation*}
+%	\begin{aligned}
+%	\sum_{k \preceq n } v_kk^2 &= \sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P^*_s(u)}} {u \choose u_{j_1},\dots, u_{j_s}} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(k)   \\ k\preceq n }}  v_k \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
+%	\\&=\sum\limits_{\substack{j\in [3] \\ u_j=2}} {2 \choose u_j}  \left(  \sum_{\substack{ \{i_j\} \subseteq supp(k)\\ k\preceq n}}  v_k \right) x_{j}^2 + \sum\limits_{\substack{{j_1,j_2}\in [3] \\ u_{j_1}=u_{j_2}=1}} {2 \choose u_{j_1},u_{j_2}}  \left(  \sum_{\substack{ \{i_{j_1},i_{j_2}\} \subseteq supp(k)\\ k\preceq n}}   v_k \right) x_{j_1}x_{j_2}
+%	\\& = \sum_{j=1}^3 \left(  \sum_{2^{i_j}\preceq k\preceq n}  v_k \right) x_{j}^2  +  2\sum\limits_{{j_1,j_2}\in [3]}  \left(  \sum_{ 2^{i_{j_1}}+2^{i_{j_2}} \subseteq k\preceq n}   v_k \right) x_{j_1}x_{j_2},
+%	\end{aligned}
+%	\end{equation*}
+%	where  the second equality has only two summations due to the fact that $P^*_{t}(u) = \emptyset$ when $t>u$. Denoting $v_k$ for $k = k_12^{i_1}+k_22^{i_2}+k_32^{i_3}$ as $v_{k_1k_2k_3}$,
+%	we obtain the following expansion
+%	\begin{align*}
+%		\sum_{k \preceq n } v_kk^2
+%		&= (v_{100}+v_{110}+v_{101}+v_{111}) x_1^2  + (v_{010}+v_{110}+v_{011}+v_{111}) x_2^2  + (v_{001}+v_{101}+v_{011}+v_{111}) x_3^2
+%		\\ & + 2 \left((v_{110}+v_{111}) x_1x_2 + (v_{101}+v_{111})x_1x_3 + (v_{011}+v_{111})x_2x_3 \right)
+%	\end{align*}
+%	where $x_1 = 2^{i_1}, x_2 = 2^{i_2}, x_3 = 2^{i_3} $.
+%\end{example}
 
 
 
