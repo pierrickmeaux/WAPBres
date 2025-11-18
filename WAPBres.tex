@@ -280,9 +280,9 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if and only if its restricted Walsh transform satisfies
 	\begin{equation}\label{Eq_RWT}
 	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0 \quad \text{ for } k=0,1,\dots, t.
-	\end{equation} 
-	
-	
+	\end{equation}
+
+
 	%\begin{proposition}\label{prop:WalsCorr}
 	%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
 	%	\begin{itemize}
@@ -291,24 +291,24 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 	%	\item If $n$ is even: for $0\le k \le t$,
 	%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
 	%	\end{itemize}
-	
-	
-	
-	
+
+
+
+
 \end{proposition}
 \begin{proof}
-	
+
 	%We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$.
 	%From Definition~\ref{def:corr}, $f$ is a $t$-corrector if $A_k=0$ for $k\in [0,t]$.
 	%\[A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a).\]
-	Note that 
+	Note that
 	\begin{align*}
 	\sum_{a\in \Ekn{k}{n}} \wt{f}(a)&=\sum_{a\in \Ekn{k}{n}} \sum_{x\in \F_2^n} (-1)^{f(x)+a \cdot x}\\
 	&= \sum_{x\in \F_2^n} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
 	&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)}  \left(\sum_{a\in \Ekn{k}{n}}(-1)^{a \cdot x}\right)\\
 	&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)} \,  \kraw{k}{\ell}{n}\\
 	&=\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n},
-	\end{align*} 
+	\end{align*}
 	where the last second equality follows from \eqref{Eq_K_rwt}.
 	The desired statement is then proved by Definition~\ref{def:corr}.
 \end{proof}
@@ -322,7 +322,7 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 
 
 %\begin{corollary}
-%	
+%
 %\end{corollary}
 
 Following from Proposition~\ref{prop:WAPBWalsh}, we reformulate WAPB functions of correction order $t$ in terms of Krawtchouk polynomials.
@@ -330,17 +330,17 @@ Following from Proposition~\ref{prop:WAPBWalsh}, we reformulate WAPB functions o
 \begin{definition}\label{def:restWalshVect}
 	Let $n\in \N^*$ and $f\in \BN$, we define its restricted Walsh vector, denoted by $\rwv{f}$, in $\Z^{n+1}$ as:
 	\[\rwv{f}=(\wtk{f}{0},\wtk{f}{1},\cdots,\wtk{f}{n-1},\wtk{f}{n})^\intercal\]
-	
+
 \end{definition}
 
 
 \begin{definition}\label{def:KrMat}
 	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$, we define the Krawtchouk matrix $\matK$ of order $(n+1)$ as:
 	\[\forall k \in [0,n], \ell \in [0,n], \quad \matK_{k,\ell}=\kraw{k}{\ell}{n}.\]
-	
+
 	%	$\KrM{n}{k}\in 	\Z^{(n+1)\times (k+1)}$ as:
-	
-	
+
+\mgnote{Don't you think there is ambiguity between the Krawtchouk matrix defined here and its transposed used in Theorem \ref{Th_K_V_matrices}?}
 \end{definition}
 
 Denote by $\matK^{(t+1)}$ the submatrix formed by the leading $(t+1)$ rows of $\matK$.
@@ -351,35 +351,35 @@ By Proposition~\ref{prop:WalsCorr} we see that $f$ is a $t$-corrector if and onl
 The following theorem provides an interesting connection between the Krawtchouk matrix and the Vandemonde matrix. This connection facilitates the study of the above equation.
 
 \begin{theorem}\label{Th_K_V_matrices}
-	Let $\matK$ be the Krawtchouk matrix with $\matK_{k,\ell} = K_k(\ell, n)$ and $\matV$ be the Vandemonde matrix with $V_{k,\ell} =\ell^k$, where $k,\ell$ with $0\leq k,\ell\leq n$ index the rows and columns, respectively.
+	Let $\matK$ be the Krawtchouk matrix with $\matK_{k,\ell} = \kraw{k}{\ell}{n}$ and $\matV$ be the Vandemonde matrix with $V_{k,\ell} =\ell^k$, where $k,\ell$ with $0\leq k,\ell\leq n$ index the rows and columns, respectively.
 	Let
 	\[
 	\alpha_k = -\frac{k}{2}, \beta_k = \frac{n}{2}, \gamma_k = -\frac{n-k}{2}, \quad 0\leq k\leq n,
-	\] 
+	\]
 	and for $1\leq r\leq n$ define $r\times(r+1)$ matrices $\matH_r$ as follows:
 	\begin{equation}\label{Eq_H}
 	%         H_1 = \begin{bmatrix}
 	%     \beta_0 & \alpha_1
-	% \end{bmatrix}, 
-	% \quad 
+	% \end{bmatrix},
+	% \quad
 	% H_2 =  \begin{bmatrix}
 	%            \beta_0 & \alpha_1 \\
 	%            \gamma_0 & \beta_1 & \alpha_2
 	%        \end{bmatrix},
-	% \cdots, 
+	% \cdots,
 	\matH_{r} = \begin{bmatrix}
 	\beta_0 & \alpha_1 &  & & &\\
 	\gamma_0 & \beta_1 & \alpha_2 & & &\\
 	& \gamma_1 & \beta_2 & \alpha_3 &  &
-	\\ 
-	& & \ddots & \ddots & \ddots &\\ 
+	\\
+	& & \ddots & \ddots & \ddots &\\
 	& & & \gamma_{r-2} &\beta_{r-1} & \alpha_{r}
-	\end{bmatrix}.        
+	\end{bmatrix}.
 	\end{equation}
-	Then we have \[ 
+	Then we have \[
 	\matM \cdot \matK = \matV,
-	\] 
-	where $\matM$ is an $(n+1)\times(n+1)$ lower triangular matrix whose rows are given by the following recursion: 
+	\]
+	where $\matM$ is an $(n+1)\times(n+1)$ lower triangular matrix whose rows are given by the following recursion:
 	\begin{equation}\label{Eq_Matrix_M}
 	% \begin{array}{rcl}
 	%     \matM_{0,0} &=& 1 \\
@@ -392,18 +392,18 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	%     \matM_{n,[0,n]} & = & \matM_{n-1,[0,n-1]}H_n,
 	% \end{array}
 	\matM_{0,0} = 1,\quad \matM_{r,[0,r]} = \matM_{r-1,[0,r-1]} \matH_r \quad \text{for } r = 1, 2,\dots, n,
-	\end{equation} 
+	\end{equation}
 	where $\matM_{r,[0,r]} = [\matM_{r,0},\dots, \matM_{r,r}]$ denotes the leading $(r+1)$ entries in the $r$-th row of $M$.
-	
-	
+
+
 \end{theorem}
-Denote by $\matM_{[0,t],[0,t]}$ the $(t+1)$-order submatrix formed by the leading $(t+1)$ rows and columns of $\matM$. 
+Denote by $\matM_{[0,t],[0,t]}$ the $(t+1)$-order submatrix formed by the leading $(t+1)$ rows and columns of $\matM$.
 It is clear that $\matM_{[0,t],[0,t]}$ is invertible since the matrix $\matM$ is an invertible lower triangular matrix by Theorem~\ref{Th_K_V_matrices}.
-Then it follows from $\matM \cdot \matK = \matV$ that 
+Then it follows from $\matM \cdot \matK = \matV$ that
 \[
 \matM_{[0,t],[0,t]} \cdot \matK^{(t+1)} = \matV^{(t+1)},
 \]where $\matV^{(t+1)}$ is the submatrix formed by the leading $(t+1)$ rows of $\matV$.
-Therefore,  a Boolean function $f$ is a $t$-corrector if and only its restricted Walsh transform $\rwv{f}$ 
+Therefore,  a Boolean function $f$ is a $t$-corrector if and only its restricted Walsh transform $\rwv{f}$
 satisfies the following system of equations:
 \begin{equation}\label{Eq_Vandemonde_system}
 \matV^{(t+1)} \cdot \rwv{f} = \mathbf{0}_{t+1}^\intercal.
@@ -413,14 +413,14 @@ Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from
 Therefore, we have the following result:
 
 \begin{theorem}\label{Th-corrector-by-Vandemonde}
-	Let $\matW$ denote the submatrix of $\matV^{(t+1)}$ formed by the $\ell$-th column in $\matV^{(t+1)}$ with $\ell \preceq n$. 
-	Then for an $n$-variable WAPB function $f$ with $\corr(f)=t$, its restricted Walsh vector $\rwv{f}$ 
-	is determined by the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following 
-	system of equations: 
+	Let $\matW$ denote the submatrix of $\matV^{(t+1)}$ formed by the $\ell$-th column in $\matV^{(t+1)}$ with $\ell \preceq n$.
+	Then for an $n$-variable WAPB function $f$ with $\corr(f)=t$, its restricted Walsh vector $\rwv{f}$
+	is determined by the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following
+	system of equations:
 	\[
 	\matW \cdot \mathbf{y} = \mathbf{0}_{{t+1}}^{\intercal}.
 	\]
-\end{theorem}	
+\end{theorem}
 
 The characterization of $t$-corrector in terms of the Vandemonde matrix above will be used to study the existence of WPB functions and WAPB functions of certain order $t$ in the next section.
 
@@ -428,7 +428,7 @@ The characterization of $t$-corrector in terms of the Vandemonde matrix above wi
 \section{Correction order of W(A)PB Functions}
 
 Section \ref{sec:corr} characterizes $t$-corrector in terms of restricted Walsh transforms and Vandemonde matrices. This section will further discuss correction order of W(A)PB functions.
-Note that for any Boolean function $f$ and its complement $f \oplus 1$, their restricted Walsh vectors satisfy 
+Note that for any Boolean function $f$ and its complement $f \oplus 1$, their restricted Walsh vectors satisfy
 \[
 \rwv{f \oplus 1} = (\wtk{f\oplus 1}{0}, \dots, \wtk{f\oplus 1}{n})  =-(\wtk{f\oplus 1}{0}, \dots, \wtk{f\oplus 1}{n})= - \rwv{f}.
 \]
@@ -443,13 +443,13 @@ By definition, WPB functions are balanced on each $\Ekn{k}{n}$ for any $k\in [1,
 The following proposition shows the non-existence of $1$-resilient WPB functions.
 \begin{proposition}\label{thm:WPB}
 	Let $f$ be an $n$-variable WPB function with $n=2^m$ for $m\in \N^{*}$.
-	Then  $\res(f) = \corr(f) = 0$. 
+	Then  $\res(f) = \corr(f) = 0$.
 \end{proposition}
 \begin{proof}
 	By Definition~\ref{def:WPB}, a WPB function is balanced, hence $0$-corrector and $0$-resilient.
 	Below we show a WPB function cannot be $1$-corrector, thus not $1$-resilient.
-	
-	By~\eqref{Eq_Vandemonde_system} we see that $\corr(f) = 1$ if and only if 
+
+	By~\eqref{Eq_Vandemonde_system} we see that $\corr(f) = 1$ if and only if
 	\[
 	\matV^{(2)}\cdot \rwv{f} = \mathbf{0}_2^{\intercal},
 	\] where the restricted Walsh vector $\rwv{f}$ satisfies that $\wtk{f}{\ell} = 0$ for any $\ell \in [1,n-1]$ since $f$ is balanced on $\Ekn{\ell}{n}$.
@@ -457,14 +457,14 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	\[
 	\begin{bmatrix}
 	1 & 1 \\ 0 & n
-	\end{bmatrix} 
+	\end{bmatrix}
 	\cdot \begin{bmatrix}
 	\wtk{f}{0} \\ \wtk{f}{n}
-	\end{bmatrix} = 
+	\end{bmatrix} =
 	\begin{bmatrix}
 	0 \\ 0
 	\end{bmatrix},
-	\] 
+	\]
 	which clearly contradicts the definition of WPB functions in Definition~\ref{def:WPB}.
 	%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
 	%
@@ -486,27 +486,27 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 
 %We can extend the bound of the correction order to $\WAPB{n}$ when $\w(n)=2$, using the Krawtchouk polynomials of degree $2$.
 
-\begin{proposition} Let $n\in \N^*$ with $\w(n)=2$. Then there exists a WAPB functions $f$ with $\corr(f)=1$, and the 
-	restricted Walsh vector $\rwv{f}$ is uniquely given by 
+\begin{proposition} Let $n\in \N^*$ with $\w(n)=2$. Then there exists a WAPB functions $f$ with $\corr(f)=1$, and the
+	restricted Walsh vector $\rwv{f}$ is uniquely given by
 	\[
 	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
-	\] 
+	\]
 	Furthermore, there exists no WAPB function $f$ with $\corr(f)=2$.
 \end{proposition}
 
-\begin{proof}	
+\begin{proof}
 	By Theorem~\ref{Th-corrector-by-Vandemonde} it suffices to consider the solution of the linear system $\matW \cdot \mathbf{y} = \mathbf{0}_{{t+1}}^{\intercal}$ for $t=1$ and $t=2$.
-	More precisely, letting $n=2^{i_1} + 2^{i_2}$ with positive integers $i_1> i_2$, we need to study the following two linear systems: 
+	More precisely, letting $n=2^{i_1} + 2^{i_2}$ with positive integers $i_1> i_2$, we need to study the following two linear systems:
 	\begin{equation}\label{Eq_t=1}
 	\begin{bmatrix}
 	1 & 1 & 1 & 1 \\
 	0 & 2^{i_2} & 2^{i_1} & (2^{i_1}+2^{i_2})
 	\end{bmatrix}
 	\mathbf{y} =  \begin{bmatrix}
-	0 \\ 0 
-	\end{bmatrix}, 
+	0 \\ 0
+	\end{bmatrix},
 	\end{equation}
-	and 
+	and
 	\begin{equation}\label{Eq_t=2}
 	\begin{bmatrix}
 	1 & 1 & 1 & 1 \\
@@ -517,18 +517,18 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	0 \\ 0 \\ 0
 	\end{bmatrix},
 	\end{equation} where $\mathbf{y} = (y_{00},y_{01},y_{10},y_{11})\in \{\pm 1\}^4$.
-	It can be easily verified that the solutions of \eqref{Eq_t=1} are given by 
+	It can be easily verified that the solutions of \eqref{Eq_t=1} are given by
 	\[
 	\mathbf{y} = \pm (1, -1,-1, 1).
 	\] This is equivalent to saying that $\wtk{f}{\ell} = c (-1)^{\w(\ell)}$ for any $\preceq n$, where $c$ equals either $1$ or $-1$.
 	Furthermore, these solutions do not satisfy \eqref{Eq_t=2}, which implies that there exists no WAPB function $f$ with $\corr(f) = 2$.
 \end{proof}
 
-\begin{proposition} Let $n\in \N^*$ with $\w(n)=3$. Then there exist a WAPB functions $f$ with $\corr(f)=2$, and the 
-	restricted Walsh vector $\rwv{f}$ is  given by 
+\begin{proposition} Let $n\in \N^*$ with $\w(n)=3$. Then there exist a WAPB functions $f$ with $\corr(f)=2$, and the
+	restricted Walsh vector $\rwv{f}$ is  given by
 	\[
 	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
-	\] 
+	\]
 	Furthermore, there exists no WAPB function $f$ with $\corr(f)=3$.
 \end{proposition}
 \begin{proof}
@@ -536,7 +536,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 \end{proof}
 
 %\begin{proposition}\label{prop:WAPB2}
-%	
+%
 %	Let $k_1<k_2\in \N$ and $n=2^{k_1}+2^{k_2}$, if $f$ is an $n$-variable WAPB function then $f$ is at most $1$-corrector and not $2$-resilient.
 %\end{proposition}
 %\begin{proof}
@@ -545,15 +545,15 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 %	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0
 %	\end{equation}
 %	and $2$ corrector if additionally the same equation holds for $k=2$.
-%	
+%
 %	Using Property~\ref{prop:WAPBWalsh} the only restricted Walsh transform coefficient that are not null are the ones for $k\in\{0,2^{k_1},2^{k_2},2^{k_1}+2^{k_2}=n\}$. It allows to simplify Equation~\ref{eq:wapb2}:
 %	\begin{equation}\label{eq:wapb2simple}
 %	a \kraw{k}{0}{n} + b \kraw{k}{2^{k_1}}{n} + c \kraw{k}{2^{k_2}}{n} + d \kraw{k}{n}{n}=0,
 %	\end{equation}
 %	where $a,b,c,d \in \{\pm 1\}^4$.
-%	
+%
 %	Since $ \kraw{0}{\ell}{n}=1$ for all $\ell$, Equation~\ref{eq:wapb2simple} for $k=0$ leads to the equation $a+b+c+d=0$, that is two of them equal $-1$ and two of them equal $1$.
-%	
+%
 %	Since $ \kraw{1}{\ell}{n}=n-2\ell$, Equation~\ref{eq:wapb2simple} for $k=1$ leads to the following equation:
 %	\begin{equation*}
 %	a n+b (n-2^{k_1+1}) +c (n-2^{k_2+1}) -d n=0,
@@ -566,8 +566,8 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 %	In this case, Equation~\ref{eq:wapb2simple2} becomes $\pm2n= \pm (2^{k_1+1} - 2^{k_2+1})$ which is impossible.
 %	Nevertheless, if $a=d$ it implies $b=c=-a$ and in this case the equation becomes $\pm 2n = \pm (2^{k_1+1} + 2^{k_2+1})=\pm 2n$.
 %	This shows that there exist $(2^{k_1}+2^{k_2})$-variable WAPB functions that are $1$-corrector.
-%	
-%	
+%
+%
 %	Since $ \kraw{2}{\ell}{n}=\ell^2 -2 n \ell + \binom{n}{2}$, the solutions satisfying Equation~\ref{eq:wapb2simple2} lead to the following equation:
 %	\begin{equation}\label{eq:wapb2simple3}
 %	\pm \binom{n}{2} \mp \left(2^{2k_1} -2n2^{k_1} + \binom{n}{2} \right) \mp \left(2^{2k_2} -2n2^{k_2} + \binom{n}{2} \right) \pm \left(-n^2 + \binom{n}{2}\right)=0.
@@ -580,29 +580,29 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 %	&= -2^{k_1+k_2+1}.
 %	\end{align*}
 %	Since $-2^{k_1+k_2+1}$ cannot be null, there is no solution in $\{\pm1\}^4$ satisfying Equation~\ref{eq:wapb2} for all $k\in[0,2]$, hence there exists no $(2^{k_1}+2^{k_2})$-variable WAPB function that is $2$-corrector, nor $2$-resilient.
-%	
-%	
-%	
+%
+%
+%
 %\end{proof}
 %
 %
 %\begin{remark}
 %	We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
-%	
+%
 %	Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
 %	Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.
 %	Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
-%	
-%	
-%	
-%	
+%
+%
+%
+%
 %\end{remark}
 
 
 \subsection{Correction order of $n$-variable WAPB functions when $\w(n)>3$}
 
 We shall consider general cases by following the discussion for the cases where $\w(n)=2$ and $\w(n)=3$.
-In order to discuss the linear systems in a unified way, we need the following lemma. 
+In order to discuss the linear systems in a unified way, we need the following lemma.
 
 \begin{lemma}\label{Represention_Equations}
 	For $1\leq u \leq t$, the equation $\sum_{\ell \preceq n } \ell^uy_{\ell}  = 0$ can be re-written as
@@ -667,15 +667,15 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \end{example}
 
 \begin{proposition}Let $n\in \N^*$ with $n=2^{i_1}+\cdots + 2^{i_t}$ with $i_1>\cdots > i_t$ and $t>3$.
-	Furthermore, 
-	suppose $\lambda_n := \{i_1-i_2, i_2-i_3, dots, i_{t-1}-i_t \}$ satisfies $\lambda_n\geq t$, 
+	Furthermore,
+	suppose $\lambda_n := \{i_1-i_2, i_2-i_3, dots, i_{t-1}-i_t \}$ satisfies $\lambda_n\geq t$,
 	then there exists a WAPB function $f$ with $\corr(f)=t-1$,
 	and
-	the 
-	restricted Walsh transforms $\rwv{f}$ is given by 
+	the
+	restricted Walsh transforms $\rwv{f}$ is given by
 	\[
 	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n,
-	\] 
+	\]
    and there exists no WAPB function $f$ with $\corr(f)=t$.
 \end{proposition}
 \begin{proof}
@@ -683,12 +683,12 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \end{proof}
 
 \begin{conjecture}
-	Let $n\in \N^*$ with $\w(n)=t$. Then 
-	there exist WAPB functions $f$ with $\corr(f)=t-1$ and 
-	restricted Walsh transforms $\rwv{f}$ are uniquely given by 
+	Let $n\in \N^*$ with $\w(n)=t$. Then
+	there exist WAPB functions $f$ with $\corr(f)=t-1$ and
+	restricted Walsh transforms $\rwv{f}$ are uniquely given by
 	\[
 	\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n,
-	\]  Furthermore,	
+	\]  Furthermore,
 	there exists no WAPB function $f$ with $\corr(f)=t$.
 \end{conjecture}
 
