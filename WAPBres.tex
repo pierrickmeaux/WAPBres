@@ -354,26 +354,26 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	Let $\matK$ be the Krawtchouk matrix with $\matK_{k,\ell} = \kraw{k}{\ell}{n}$ and $\matV$ be the Vandemonde matrix with $V_{k,\ell} =\ell^k$, where $k,\ell$ with $0\leq k,\ell\leq n$ index the rows and columns, respectively.
 	Let
 	\[
-	\alpha_k = -\frac{k}{2}, \beta_k = \frac{n}{2}, \gamma_k = -\frac{n-k}{2}, \quad 0\leq k\leq n,
+\alpha_k = -\frac{n-k}{2}, \beta_k = \frac{n}{2}, 	\gamma_k = -\frac{k}{2}, \quad 0\leq k\leq n,
 	\]
 	and for $1\leq r\leq n$ define $r\times(r+1)$ matrices $\matH_r$ as follows:
 	\begin{equation}\label{Eq_H}
 	%         H_1 = \begin{bmatrix}
-	%     \beta_0 & \alpha_1
+	%     \beta_0 & \gamma_1
 	% \end{bmatrix},
 	% \quad
 	% H_2 =  \begin{bmatrix}
-	%            \beta_0 & \alpha_1 \\
-	%            \gamma_0 & \beta_1 & \alpha_2
+	%            \beta_0 & \gamma_1 \\
+	%            \alpha_0 & \beta_1 & \gamma_2
 	%        \end{bmatrix},
 	% \cdots,
 	\matH_{r} = \begin{bmatrix}
-	\beta_0 & \alpha_1 &  & & &\\
-	\gamma_0 & \beta_1 & \alpha_2 & & &\\
-	& \gamma_1 & \beta_2 & \alpha_3 &  &
+	\beta_0 & \gamma_1 &  & & &\\
+	\alpha_0 & \beta_1 & \gamma_2 & & &\\
+	& \alpha_1 & \beta_2 & \gamma_3 &  &
 	\\
 	& & \ddots & \ddots & \ddots &\\
-	& & & \gamma_{r-2} &\beta_{r-1} & \alpha_{r}
+	& & & \alpha_{r-2} &\beta_{r-1} & \gamma_{r}
 	\end{bmatrix}.
 	\end{equation}
 	Then we have \[
@@ -1148,8 +1148,8 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \input{proof_loose_ubound.tex}
 
 \mgnote{I add our work with Chunlei here. The proof covers only half of the statement for now: From left to a middle statement.\\ I believe the same middle statement can be reached from the right hand side of the equivalence to complete the proof.}
-\section{Equivalence to the conjecture.}
-\input{conjecture_equivalence.tex}
+%\section{Equivalence to the conjecture.}
+%\input{conjecture_equivalence.tex}
 
 \mgnote{I propose the proof for the relation between $\mathbf{K}$ and $\mathbf{V}$ below. Every feedback is welcome.}
 \section{Relation between the Krawtchouk matrix and the Vandermonde matrix.}
