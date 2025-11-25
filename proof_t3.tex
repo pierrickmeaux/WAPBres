@@ -1,0 +1,84 @@
+\begin{proof}
+    Similarly as in the proof for Proposition \ref{prop:t=2}, we consider the
+    solutions to $\mathbf{W\cdot y = 0}^\intercal_{t+1}$ for $t=2$ and $t=3$.
+
+    Let $n = 2^{i_1} + 2^{i_2} + 2^{i_3}$ with positive integers $i_1 < i_2 < i_3$, this reduces to studying the solutions for
+    \begin{equation}\label{eq:vand_t=2}
+        \begin{bmatrix}
+            1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+            0 &  2^{i_1} & 2^{i_2} & (2^{i_1} + 2^{i_2}) & 2^{i_3} & (2^{i_1} + 2^{i_3}) & (2^{i_2} + 2^{i_3}) & (2^{i_1} + 2^{i_2} + 2^{i_3})\\
+            0 & 2^{2i_1} & 2^{2i_2} & (2^{i_1} + 2^{i_2})^2 & 2^{2i_3} & (2^{i_1} + 2^{i_3})^2 & (2^{i_2} + 2^{i_3})^2 & (2^{i_1} + 2^{i_2} + 2^{i_3})^2\\
+        \end{bmatrix}
+        \cdot \mathbf{y} = \begin{bmatrix}
+            0\\0\\0
+        \end{bmatrix}
+    \end{equation}
+    and
+    \begin{equation}\label{eq:vand_t=3}
+        \begin{bmatrix}
+            1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+            0 &  2^{i_1} & 2^{i_2} & (2^{i_1} + 2^{i_2}) & 2^{i_3} & (2^{i_1} + 2^{i_3}) & (2^{i_2} + 2^{i_3}) & (2^{i_1} + 2^{i_2} + 2^{i_3})\\
+            0 & 2^{2i_1} & 2^{2i_2} & (2^{i_1} + 2^{i_2})^2 & 2^{2i_3} & (2^{i_1} + 2^{i_3})^2 & (2^{i_2} + 2^{i_3})^2 & (2^{i_1} + 2^{i_2} + 2^{i_3})^2\\
+            0 & 2^{3i_1} & 2^{3i_2} & (2^{i_1} + 2^{i_2})^3 & 2^{3i_3} & (2^{i_1} + 2^{i_3})^3 & (2^{i_2} + 2^{i_3})^3 & (2^{i_1} + 2^{i_2} + 2^{i_3})^3\\
+        \end{bmatrix}
+        \cdot \mathbf{y} = \begin{bmatrix}
+            0\\0\\0\\0
+        \end{bmatrix}
+    \end{equation}
+    where $\mathbf{y} = (y_{000}, y_{001}, y_{010}, y_{011}, y_{100}, y_{101}, y_{110}, y_{111}) \in \{\pm1\}^8$.
+    Let us first study the solutions of Equation \ref{eq:vand_t=2}: we will
+    iterate through the rows of the matrix to gradually build necessary
+    conditions on its solutions.
+
+    Row 1 indicates that $\mathbf{y}$ must be a balanced vector.
+    For the condition on row 2, the dot product between $\mathbf{y}$ and the
+    second row of the matrix yields the following equation:
+    \begin{equation}\label{eq:lin_t=3_row2}
+        \begin{split}
+            (y_{001} + y_{011} + y_{101} + y_{111}) &\cdot 2^{i_1} +\\
+            (y_{010} + y_{011} + y_{110} + y_{111}) &\cdot 2^{i_2} +\\
+            (y_{100} + y_{101} + y_{110} + y_{111}) &\cdot 2^{i_3} = 0\\
+            \Longleftrightarrow\\
+            s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + s_3 &\cdot 2^{i_3} = 0.\\
+        \end{split}
+    \end{equation}
+    It is clear that $s_1, s_2, s_3$ can only take for value any $\pm 4, \pm 2$
+    or 0 but by applying the constraint of balancedness from row 0, all possible
+    $\binom{8}{4}$ balanced $\mathbf{y}$ exhibit only five possible multisets of
+    values for $s_1, s_2$ and $s_3$ i.e.:
+    \mgnote{We have five and not four multisets of values as I re-verified the results. This doesn't change the proof.}
+    \begin{itemize}
+        \item $\{0, 0, 0\}$
+        \item $\{0, 0, \pm2\}$
+        \item $\{0, \pm2, \pm2\}$
+        \item $\{\pm2, \pm2, \pm2\}$
+        \item $\{0, 0, \pm4\}$
+    \end{itemize}
+    It is trivial that any multiset with identical non-zero values can't satisfy
+    Equation \ref{eq:lin_t=3_row2} since $i_1 < i_2 < i_3$. Therefore, the condition
+    to satisfy the relation on row 1 is that $s_1 = s_2 = s_3 = 0$.
+    For the condition on row 3, the dot product between $\mathbf{y}$ and the
+    third row of the matrix yields the following equation:
+    \begin{equation}\label{eq:lin_t=3_row3}
+        \begin{split}
+            (y_{001} + y_{011} + y_{101} + y_{111}) &\cdot 2^{i_1} +\\
+            (y_{010} + y_{011} + y_{110} + y_{111}) &\cdot 2^{i_2} +\\
+            (y_{100} + y_{101} + y_{110} + y_{111}) &\cdot 2^{i_3} +\\
+            (y_{011} + y_{111}) &\cdot 2 \cdot 2^{i_1 + i_2} +\\
+            (y_{101} + y_{111}) &\cdot 2 \cdot 2^{i_1 + i_3} +\\
+            (y_{110} + y_{111}) &\cdot 2 \cdot 2^{i_2 + i_3} = 0\\
+            \Longleftrightarrow\\
+            s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + s_3 \cdot 2^{i_3} + 2s_{12} \cdot 2^{i_1 + i_2} + 2s_{13} &\cdot 2^{i_1 + i_3} + 2s_{23} \cdot 2^{i_2 + i_3} = 0.\\
+        \end{split}
+    \end{equation}
+    We determine the value of $s_{12}, s_{13}$ and $s_{23}$. Assume $s_{12} = \pm 2$,
+    then $y_{011} = y_{111} = \pm 1$. By considering both the condition of balancedness
+    and that $s_1 = s_2 = s_3 = 0$, we necessarily have $y_{101} = y_{110} = -y_{011} = -y_{111}$.
+    This doesn't satisfy Equation \ref{eq:lin_t=3_row3}. The same logic applies
+    if $y_{101} = y_{111}$ or if $y_{110} = y_{111}$. The only combination that
+    works is $y_{011} = y_{101} = y_{110} = -y_{111}$. The solutions that verify Equation \ref{eq:lin_t=3_row3} are given by
+    $$
+    \mathbf{y} = \pm(1, -1, -1, -1, 1, 1, 1, -1).
+    $$
+    Furthermore, these solutions do not satisfy Equation \ref{eq:vand_t=3}, which implies there is not WAPB function $f$ with $\corr(f) = 3$.
+\end{proof}
