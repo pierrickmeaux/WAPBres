@@ -231,11 +231,9 @@ We give the necessary preliminaries here and refer to \eg ~\cite{book:MacSlo78} 
 
 	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $$ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j},$$
 	where we take the binomial coefficient ${m\choose r} = 0$ when $m<r$ and $r<0$ by convention.
-		Krawtchouk polynomials are characterized by the generating series: $$ \displaystyle (1+z)^{n-\ell} (1-z)^\ell=\sum_{k=0}^\infty \kraw{k}{\ell}{n} z^k.$$
 \end{definition}
-
-
-There is an interesting connection between Krawtchouk polynomials and linear functions restricted on the slice $\Ekn{k}{n}$:
+Krawtchouk polynomials can be characterized by the generating series: $$ \displaystyle (1+z)^{n-\ell} (1-z)^\ell=\sum_{k=0}^\infty \kraw{k}{\ell}{n} z^k.$$ In addition,
+there is an interesting connection between Krawtchouk polynomials and linear functions restricted on the slice $\Ekn{k}{n}$:
 \begin{equation}\label{Eq_K_rwt}
 \kraw{k}{\ell}{n} = \sum_{u\in \Ekn{k}{n}}(-1)^{ u \cdot v}, \quad \forall v\in \Ekn{\ell}{n}.
 \end{equation}
@@ -243,7 +241,7 @@ There is an interesting connection between Krawtchouk polynomials and linear fun
 %$\kraw{k}{\ell}{n}$ is the value of the restricted Walsh transform on $\Ekn{k}{n}$ of any $n$ variable linear function $a\cdot \ell$ such that $\w(a)=\ell$,
 
 
-\pmnote{add Lucas' theorem}
+
 
 
 
@@ -267,7 +265,22 @@ Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 \[(k+1)\kraw{k+1}{\ell}{n}=(n-2\ell)\kraw{k}{\ell}{n}-(n-k+1)\kraw{k-1}{\ell}{n}.\]
 \end{Prop}
 
+%\pmnote{add Lucas' theorem}
+Below we recall Lucas's Theorem.
 
+\begin{lemma}For a prime \( p \) and non-negative integers $n, k $ with $n \geq k $, the following congruence relation holds:
+	\[
+	\binom{n}{k} \equiv \prod_{i=0}^{r} \binom{n_i}{k_i} \pmod{p},
+	\]
+	where
+		$
+	n = n_r p^r + \cdots + n_1 p + n_0
+	$ and
+	$
+   k = k_r p^r + \cdots + k_1 p + k_0
+	$
+	are the \( p \)-ary expansions of \( n\) and \( k \), respectively.
+\end{lemma}
 
 \section{Characterizations of $t$-correctors}\label{sec:corr}
 
@@ -393,8 +406,10 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	% \end{array}
 	\matM_{0,0} = 1,\quad \matM_{r,[0,r]} = \matM_{r-1,[0,r-1]} \matH_r \quad \text{for } r = 1, 2,\dots, n,
 	\end{equation}
-	where $\matM_{r,[0,r]} = [\matM_{r,0},\dots, \matM_{r,r}]$ denotes the leading $(r+1)$ entries in the $r$-th row of $M$.
-
+	where $\matM_{r,[0,r]} = [\matM_{r,0},\dots, \matM_{r,r}]$ denotes the leading $(r+1)$ entries in the $r$-th row of $M$; in other words, 
+  \[
+  \matM_{r,[0,r]} = [1] \matH_1\cdot\matH_2 \cdots \matH_r, \quad r=2,\dots, n.
+  \]
 
 \end{theorem}
 \begin{proof}
