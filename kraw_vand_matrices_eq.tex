@@ -1,57 +1,69 @@
 \begin{proof}
-    We want to determine $\mathbf{M}$ such that $\mathbf{M} \cdot \mathbf{K} = \mathbf{V}$.
+    The Property~\ref{prop:KrDMS} is crucial for us to derive the low-triangular matrix $M$ satisfying $\mathbf{M} \cdot \mathbf{K} = \mathbf{V}$.
 
     We will proceed by induction on $r$ to gradually determine the non-zero entries
     in each row of $\mathbf{M}$ denoted as the vector $\matLead{M}{r}{r+1}$.
-    We also make use of an equivalent form to Property \ref{prop:KrDMS} give by
+    It is straightward that Property~\ref{prop:KrDMS} is equivalent to 
     \begin{equation*}
-        \ell\cdot\kraw{k}{\ell}{n} = -\frac{k+1}{2}\kraw{k+1}{\ell}{n} + \frac{n}{2}\kraw{k}{\ell}{n} -\frac{n - (k - 1)}{2}\kraw{k-1}{\ell}{n},
+        \ell\cdot\kraw{k}{\ell}{n} = -\frac{n - (k - 1)}{2}\kraw{k-1}{\ell}{n} + \frac{n}{2}\kraw{k}{\ell}{n}  -\frac{k+1}{2}\kraw{k+1}{\ell}{n} ,
     \end{equation*}
-
-    and to which we identify $\alpha_{k+1} = -\frac{k+1}{2}$, $\beta_k = \frac{n}{2}$ and $\gamma_{k-1} = -\frac{n - (k - 1)}{2}$. As such we will rewrite it as
+    which can be rewritten as 
     \begin{equation}\label{eq:prop3sym}
-        \ell\cdot\kraw{k}{\ell}{n} = \alpha_{k+1}\kraw{k+1}{\ell}{n} + \beta_k\kraw{k}{\ell}{n} + \gamma_{k-1}\kraw{k-1}{\ell}{n}.
+        \ell\cdot\kraw{k}{\ell}{n} = \alpha_{k-1}\kraw{k-1}{\ell}{n} + \beta_k\kraw{i}{\ell}{n} + \gamma_{k+1}\kraw{k+1}{\ell}{n}= \begin{bmatrix}
+         \alpha_{k-1} & \beta_k & \gamma_{k+1}
+        \end{bmatrix} \cdot \begin{bmatrix*}[l]
+         \kraw{k-1}{\ell}{n} \\ \kraw{k}{\ell}{n} \\ \kraw{k+1}{\ell}{n}
+        \end{bmatrix*},
     \end{equation}
+    where  $\alpha_{k-1} = -\frac{n - (k - 1)}{2}$, $\beta_k = \frac{n}{2}$ and $\gamma_{k+1} = -\frac{k+1}{2}$ as defined in Theorem~\ref{Th_K_V_matrices}. 
 
-    \underline{Initialization:}
+    \underline{Initialization:} Let $r = 0$. Since $\kraw{0}{\ell}{n} = 1$ for all $\ell, n$, it follows
+    that $\matLead{M}{0}{n} = \begin{bmatrix}1 & 0 & \cdots & 0\end{bmatrix}$ and that $\matLead{M}{0}{n}\cdot \matK = \matLead{V}{0}{n}.$
 
-    Let $r = 0$. Since $\kraw{0}{\ell}{n} = 1$ for all $\ell, n$, it follows
-    that $\matLead{M}{0}{n} = \begin{bmatrix}1 & 0 & \ldots & 0\end{bmatrix}$.
-
-    Let $r = 1$. We want to determine $\matLead{M}{1}{2}$ that yields $\ell^1$ in $\mathbf{V}$.
-    To do so, weexpand $\ell^1$ using Equation \ref{eq:prop3sym}.
+    Let $r = 1$. We want to determine $\matLead{M}{1}{2}$ that yields $\ell^1$, which corresponds to Row 1 in $\mathbf{V}$.
+    To do so, we expand $\ell^1$ using Eq.~\eqref{eq:prop3sym}.
     \begin{equation*}
         \begin{split}
             \ell^1 &= \ell \cdot \kraw{0}{\ell}{n}\\
-            &= \alpha_1 \kraw{1}{\ell}{n} + \beta_0 \kraw{0}{\ell}{n}\\
-            &= \eqX{\begin{bmatrix}1\end{bmatrix}}{\matLead{M}{0}{1}} \cdot \eqX{\begin{bmatrix}\beta_0 & \alpha_1\end{bmatrix}}{\mathbf{H}_1} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\end{bmatrix}
+            &= \beta_0 \kraw{0}{\ell}{n} + \gamma_1 \kraw{1}{\ell}{n} \\
+            &= \eqX{\begin{bmatrix}1\end{bmatrix}}{\matLead{M}{0}{1}} \cdot \eqX{\begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix}}{\mathbf{H}_1} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\end{bmatrix}
         \end{split}
     \end{equation*}
-    As such, $\matLead{M}{1}{2} = \begin{bmatrix}\beta_0 & \alpha_1\end{bmatrix}$.
+    As such, $\matLead{M}{1}{2} = \begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix}$ and $\matLead{M}{1}{n}\cdot \matK = \matLead{V}{1}{n}.$
 
     Let $r = 2$. We want to determine $\matLead{M}{2}{3}$ that yields $\ell^2$ in $\mathbf{V}$.
-    To do so, we expand $\ell^2$ using Equation \ref{eq:prop3sym}.
+    Similarly, we expand $\ell^2$ using Eq.~\eqref{eq:prop3sym}.
     \begin{equation*}
         \begin{split}
-            \ell^2 = \ell \cdot \ell &= \ell \Big(\alpha_1 \kraw{1}{\ell}{n} + \beta_0 \kraw{0}{\ell}{n}\Big)\\
-            &= (\beta_0^2 + \alpha_1\gamma_0)\kraw{0}{\ell}{n} + (\alpha_1\beta_0 + \alpha_1\beta_1)\kraw{1}{\ell}{n} + (\alpha_1\alpha_2)\kraw{2}{\ell}{n}\\
-            &= \begin{bmatrix}(\beta_0^2 + \alpha_1\gamma_0) & (\alpha_1\beta_0 + \alpha_1\beta_1) & (\alpha_1\alpha_2)\end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix}\\
-            &= \eqX{\begin{bmatrix}\beta_0 & \alpha_1\end{bmatrix}}{\matLead{M}{1}{2}} \cdot \eqX{\begin{bmatrix}\beta_0 & \alpha_1 & 0\\\gamma_0 & \beta_1 & \alpha_2\end{bmatrix}}{\mathbf{H}_2}\cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix}
+            \ell^2 = \ell \cdot \ell &= \ell \Big(\gamma_1 \kraw{1}{\ell}{n} + \beta_0 \kraw{0}{\ell}{n}\Big)\\
+              & = \beta_0 \ell  \kraw{0}{\ell}{n} + \gamma_1 \ell \kraw{1}{\ell}{n} \\
+%            &= (\beta_0^2 + \gamma_1\alpha_0)\kraw{0}{\ell}{n} + (\gamma_1\beta_0 + \gamma_1\beta_1)\kraw{1}{\ell}{n} + (\gamma_1\gamma_2)\kraw{2}{\ell}{n}\\
+%            &= \begin{bmatrix}(\beta_0^2 + \gamma_1\alpha_0) & (\gamma_1\beta_0 + \gamma_1\beta_1) & (\gamma_1\gamma_2)\end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix}\\
+			& = \beta_0  \begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\end{bmatrix} + \gamma_1 \begin{bmatrix}\alpha_0 & \beta_1 & \gamma_2 \end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix}  \\
+            &= \eqX{\begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix}}{\matLead{M}{1}{2}} \cdot \eqX{\begin{bmatrix}\beta_0 & \gamma_1 & 0\\\alpha_0 & \beta_1 & \gamma_2\end{bmatrix}}{\mathbf{H}_2}\cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix}
         \end{split}
     \end{equation*}
-    As such, $\matLead{M}{2}{3} = \begin{bmatrix}(\beta_0^2 + \alpha_1\gamma_0) & (\alpha_1\beta_0 + \alpha_1\beta_1) & (\alpha_1\alpha_2)\end{bmatrix}$.
+    As such, $\matLead{M}{2}{3} = \matLead{M}{1}{2}\cdot \matH_2 =\begin{bmatrix}(\beta_0^2 + \gamma_1\alpha_0) & (\gamma_1\beta_0 + \gamma_1\beta_1) & (\gamma_1\gamma_2)\end{bmatrix}$. 
+    Thus, 
+    we have 
+    \[
+     \matLead{M}{2}{n}\cdot \matK = \matLead{M}{2}{3} \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix} = \matLead{V}{2}{n}.
+    \]
 
-    The base step is done.
 
-    \underline{Induction:} we want to prove that if the relation is true for $r$, then it is true for $r + 1$.
+	\bigskip
 
-    We expand $\ell^{r+1}$  using Equation \ref{eq:prop3sym}.
+    \underline{Induction:} we shall prove that if the statement is true for $r-1$, then it is true for $r$.
+
+    Again, we use Eq.~\eqref{eq:prop3sym} to expand $\ell^{r}$ as follows:
     \begin{equation*}
         \begin{split}
-        \ell^{r+1} = \ell \cdot \ell^r &= \ell \Big( \sum_{i=0}^r \mathbf{M}_{r,i} \cdot \kraw{i}{\ell}{n}\Big)\\
-        &= \sum_{i=0}^r \Big( \mathbf{M}_{r,i} \cdot \big[ \alpha_{i+1}\kraw{i+1}{\ell}{n} + \beta_i\kraw{i}{\ell}{n} + \gamma_{i-1}\kraw{i-1}{\ell}{n} \big] \Big)\\
-        &= \begin{bmatrix}\mathbf{M}_{r,0} & \mathbf{M}_{r,1} & \ldots & \mathbf{M}_{r,r+1}\end{bmatrix} \cdot \begin{bmatrix}\beta_0 & \alpha_1\\\gamma_0 & \beta_1 & \alpha_2 & & \\ & \ddots & \ddots & \ddots\\ & & \gamma_{r-1} & \beta_r & \alpha_{r+1}\end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\vdots\\\kraw{r+1}{\ell}{n}\end{bmatrix}
+        \ell^{r} = \ell \cdot \ell^{r-1} &= \ell \Big( \sum_{k=0}^{r-1}\mathbf{M}_{r-1,i} \cdot \kraw{k}{\ell}{n}\Big)
+%        \\&=  \sum_{i=0}^{r-1}\mathbf{M}_{r-1,i} \ell \kraw{k}{\ell}{n}
+        \\& = \begin{bmatrix}\mathbf{M}_{r-1,0} & \mathbf{M}_{r-1,1} & \ldots & \mathbf{M}_{r-1,r-1}\end{bmatrix} \cdot \begin{bmatrix}\ell \kraw{0}{\ell}{n}\\ \ell  \kraw{1}{\ell}{n}\\\vdots\\ \ell \kraw{r-1}{\ell}{n}\end{bmatrix}
+%        \\&= \sum_{k=0}^{r-1} \Big( \mathbf{M}_{r-1,k} \cdot \big[ \alpha_{k-1}\kraw{k-1}{\ell}{n} + \beta_k\kraw{i}{\ell}{n} + \gamma_{k+1}\kraw{k+1}{\ell}{n} \big] \Big)
+      \\  &= \begin{bmatrix}\mathbf{M}_{r-1,0} & \mathbf{M}_{r-1,1} & \ldots & \mathbf{M}_{r-1,r-1}\end{bmatrix} \cdot \begin{bmatrix}\beta_0 & \gamma_1\\\alpha_0 & \beta_1 & \gamma_2 & & \\ & \ddots & \ddots & \ddots\\ & & \alpha_{r-2} & \beta_{r-1} & \gamma_{r}\end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\vdots\\\kraw{r}{\ell}{n}\end{bmatrix}
+        \\&= \matM_{r-1,[0,r]}\cdot \matH_r \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\vdots\\\kraw{r}{\ell}{n}\end{bmatrix}
         \end{split}
-    \end{equation*}
-    QED
+    \end{equation*} which implies $\matM_{r,[0,r]} = \matM_{r-1,[0,r]}\cdot \matH_r$ and $\matLead{M}{r}{n} \cdot \matK = \matLead{V}{r}{n}$. The desired statement follows.    
 \end{proof}
