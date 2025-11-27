@@ -39,9 +39,7 @@
         \begin{split}
             (y_{001} + y_{011} + y_{101} + y_{111}) &\cdot 2^{i_1} +\\
             (y_{010} + y_{011} + y_{110} + y_{111}) &\cdot 2^{i_2} +\\
-            (y_{100} + y_{101} + y_{110} + y_{111}) &\cdot 2^{i_3} = 0\\
-%            \Longleftrightarrow\\
-%            s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + s_3 &\cdot 2^{i_3} = 0.\\
+            (y_{100} + y_{101} + y_{110} + y_{111}) &\cdot 2^{i_3} = 0
         \end{split}
     \end{equation*}
     For ease of presentation we denote the sum coefficients of $2^{i_1},2^{i_2},2^{i_3}$ by $s_1, s_2,s_3$, respectively. Then the equation from Row $1$ becomes
@@ -63,8 +61,8 @@
 %        \item $\{\pm2, \pm2, \pm2\}$
 %        \item $\{0, 0, \pm4\}$
 %    \end{itemize}
-   This means that each term on the left hand of ~\eqref{eq:lin_t=3_row2} is either zero or a power of $2$. 
-	Since $i_1 < i_2 < i_3$, it can be easily verified that the equation~\eqref{eq:lin_t=3_row2} can be true only 
+   This means that each term on the left hand of Eq.~\eqref{eq:lin_t=3_row2} is either zero or a power of $2$. 
+	Since $i_1 < i_2 < i_3$, it can be easily verified that Eq.~\eqref{eq:lin_t=3_row2} can be true only 
 	when $s_1=s_2=s_3=0$. 
 %	
 %	any multiset with identical nonzero values can't satisfy 
@@ -79,8 +77,6 @@
             (y_{011} + y_{111}) &\cdot 2 \cdot 2^{i_1 + i_2} +\\
             (y_{101} + y_{111}) &\cdot 2 \cdot 2^{i_1 + i_3} +\\
             (y_{110} + y_{111}) &\cdot 2 \cdot 2^{i_2 + i_3} = 0.\\
-%            \Longleftrightarrow\\
-%            s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + s_3 \cdot 2^{i_3} + 2s_{12} \cdot 2^{i_1 + i_2} + 2s_{13} &\cdot 2^{i_1 + i_3} + 2s_{23} \cdot 2^{i_2 + i_3} = 0.\\
         \end{split}
     \end{equation}
     After applying the preceding constraints, namely, balancedness of $\mathbf{y}$ from Row 0 and $s_1=s_2=s_3=0$ from Row 1, we obtain 
@@ -90,7 +86,7 @@
     We now discuss the values of $s_{12}, s_{13}$ and $s_{23}$. Assume $s_{12} = \pm 2$.
     Then $y_{011} = y_{111} = \pm 1$. By considering both the condition of balancedness
     and that $s_1 = s_2 = s_3 = 0$, we necessarily have $y_{101} = y_{110} = -y_{011} = -y_{111}$.
-    This doesn't satisfy Eq.~\ref{eq:lin_t=3_row3}. The same logic applies
+    This doesn't satisfy Eq.~\eqref{eq:lin_t=3_row3}. The same logic applies
     if $y_{101} = y_{111}$ or if $y_{110} = y_{111}$. The only combination that
     works is $y_{011} = y_{101} = y_{110} = -y_{111}$, thereby giving the following solutions to Eq.~\eqref{eq:lin_t=3_row3} 
     $$

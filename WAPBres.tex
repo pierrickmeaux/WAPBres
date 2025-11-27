@@ -256,7 +256,7 @@ there is an interesting connection between Krawtchouk polynomials and linear fun
 	\item $\kraw{n-k}{x}{n}=(-1)^x \kraw{k}{x}{n}$,
 		\item if $n$ is even and $k$ is odd, $\kraw{k}{n/2}{n}=0$,
 	\item if $n$ is even, $\kraw{n/2}{1}{n}=0$.
-	\item $\binom{n}{\ell}\kraw{k}{x}{n}=\binom{n}{k}\kraw{\ell}{k}{n}$.
+	\item $\binom{n}{\ell}\kraw{k}{\ell}{n}=\binom{n}{k}\kraw{\ell}{k}{n}$.
 	\end{itemize}
 \end{Prop}
 
@@ -392,7 +392,7 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	\end{equation}
 	where $\matM_{r,[0,r]} = [\matM_{r,0},\dots, \matM_{r,r}]$ denotes the leading $(r+1)$ entries in the $r$-th row of $M$; in other words,
   \[
-  \matM_{r,[0,r]} = [1] \matH_1\cdot\matH_2 \cdots \matH_r, \quad r=2,\dots, n.
+  \matM_{r,[0,r]} = [1] \cdot \matH_1\cdot\matH_2 \cdots \matH_r, \quad r=2,\dots, n.
   \]
 
 \end{theorem}
@@ -407,7 +407,7 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	\end{equation*}
 	which can be rewritten as
 	\begin{equation}\label{eq:prop3sym}
-	\ell\cdot\kraw{k}{\ell}{n} = \alpha_{k-1}\kraw{k-1}{\ell}{n} + \beta_k\kraw{i}{\ell}{n} + \gamma_{k+1}\kraw{k+1}{\ell}{n}= \begin{bmatrix}
+	\ell\cdot\kraw{k}{\ell}{n} = \alpha_{k-1}\kraw{k-1}{\ell}{n} + \beta_k\kraw{k}{\ell}{n} + \gamma_{k+1}\kraw{k+1}{\ell}{n}= \begin{bmatrix}
 	\alpha_{k-1} & \beta_k & \gamma_{k+1}
 	\end{bmatrix} \cdot \begin{bmatrix*}[l]
 	\kraw{k-1}{\ell}{n} \\ \kraw{k}{\ell}{n} \\ \kraw{k+1}{\ell}{n}
@@ -472,10 +472,10 @@ Then it follows from $\matM \cdot \matK = \matV$ that
 \[
 \matM_{[0,t],[0,t]} \cdot \matK^{(t+1)} = \matV^{(t+1)},
 \]where $\matV^{(t+1)}$ is the submatrix formed by the leading $(t+1)$ rows of $\matV$.
-Therefore,  Theorem~\ref{prop:WalsCorr} can be reformulated as follows. 
+Therefore,  Theorem~\ref{prop:WalsCorr} can be reformulated as follows.
 
 \begin{theorem}\label{prop_t_corrector_Vandemonde_matrix}
-	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. 
+	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
 	A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if $t$ is the maximum integer such that the restricted Walsh transform vector $\rwv{f}$ satisfies
 \begin{equation}\label{Eq_RWT}
  \begin{bmatrix}
@@ -483,7 +483,7 @@ Therefore,  Theorem~\ref{prop:WalsCorr} can be reformulated as follows.
 0 & 1 & 2 & \cdots & n \\
 &  &  \cdots &\cdots &  \\
 0 & 1 & 2^{t} & \cdots & n^{t}
-\end{bmatrix}\cdot 
+\end{bmatrix}\cdot
 \begin{bmatrix}
 \wtk{f}{0} \\ \wtk{f}{1} \\ \vdots \\ \wtk{f}{n}
 \end{bmatrix} = \textbf{0}_{t+1}^\intercal.
@@ -510,7 +510,7 @@ Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from
 Therefore, we have the following result:
 
 \begin{corollary}\label{Th-corrector-by-Vandemonde}
-		Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. 
+		Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
 	Let $\matW$ denote the submatrix formed by the $\ell$-th column in $\matV^{(t+1)}$ with $\ell \preceq n$.
 	Then for an $n$-variable WAPB function $f$ with $\corr(f)=t$, its restricted Walsh vector $\rwv{f}$
 	is determined by the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following
@@ -644,7 +644,6 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	\]
 	%	Furthermore, there exists no WAPB function $f$ with $\corr(f)=2$.
 \end{proposition}
-\clnote{Martin: please complete this proof similarly.}
 \input{proof_t3.tex}
 
 %\begin{proposition}\label{prop:WAPB2}
@@ -794,14 +793,14 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 
 \begin{remark}
 	We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
-	
+
 	Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
 	Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.
 	Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
-	
-	
-	
-	
+
+
+
+
 \end{remark}
 
 \clnote{Add experimental results}
