@@ -37,16 +37,19 @@
         \begin{split}
             (y_{001} + y_{011} + y_{101} + y_{111}) &\cdot 2^{i_1} +\\
             (y_{010} + y_{011} + y_{110} + y_{111}) &\cdot 2^{i_2} +\\
-            (y_{100} + y_{101} + y_{110} + y_{111}) &\cdot 2^{i_3} = 0\\
-            \Longleftrightarrow\\
-            s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + s_3 &\cdot 2^{i_3} = 0.\\
+            (y_{100} + y_{101} + y_{110} + y_{111}) &\cdot 2^{i_3} = 0
         \end{split}
     \end{equation}
-    It is clear that $s_1, s_2, s_3$ can only take for value any $\pm 4, \pm 2$
-    or 0 but by applying the constraint of balancedness from row 0, all possible
-    $\binom{8}{4}$ balanced $\mathbf{y}$ exhibit only five possible multisets of
-    values for $s_1, s_2$ and $s_3$ i.e.:
-    \mgnote{We have five and not four multisets of values as I re-verified the results. This doesn't change the proof.}
+    We denote the coefficient sums as $s_1 = y_{001} + y_{011} + y_{101} + y_{111}$,
+    $s_2 = y_{010} + y_{011} + y_{110} + y_{111}$ and $s_3 = y_{100} + y_{101} + y_{110} + y_{111}$.
+    As such, we can rewrite the above relation as
+    \begin{equation*}
+        s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + s_3 \cdot 2^{i_3} = 0
+    \end{equation*}
+    In fact, $s_1, s_2, s_3$ can only take for value any $\pm 4, \pm 2$ or 0 but
+    by applying the constraint of balancedness from row 0, all possible $\binom{8}{4}$
+    balanced $\mathbf{y}$ exhibit only five possible multisets of values for
+    $s_1, s_2$ and $s_3$ i.e.:
     \begin{itemize}
         \item $\{0, 0, 0\}$
         \item $\{0, 0, \pm2\}$
@@ -54,8 +57,8 @@
         \item $\{\pm2, \pm2, \pm2\}$
         \item $\{0, 0, \pm4\}$
     \end{itemize}
-    It is trivial that any multiset with identical non-zero values can't satisfy
-    Equation \ref{eq:lin_t=3_row2} since $i_1 < i_2 < i_3$. Therefore, the condition
+    Indeed, any multiset with identical non-zero values can't satisfy Equation
+    \ref{eq:lin_t=3_row2} since $i_1 < i_2 < i_3$. Therefore, the condition
     to satisfy the relation on row 1 is that $s_1 = s_2 = s_3 = 0$.
     For the condition on row 3, the dot product between $\mathbf{y}$ and the
     third row of the matrix yields the following equation:
@@ -66,17 +69,22 @@
             (y_{100} + y_{101} + y_{110} + y_{111}) &\cdot 2^{i_3} +\\
             (y_{011} + y_{111}) &\cdot 2 \cdot 2^{i_1 + i_2} +\\
             (y_{101} + y_{111}) &\cdot 2 \cdot 2^{i_1 + i_3} +\\
-            (y_{110} + y_{111}) &\cdot 2 \cdot 2^{i_2 + i_3} = 0\\
-            \Longleftrightarrow\\
-            s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + s_3 \cdot 2^{i_3} + 2s_{12} \cdot 2^{i_1 + i_2} + 2s_{13} &\cdot 2^{i_1 + i_3} + 2s_{23} \cdot 2^{i_2 + i_3} = 0.\\
+            (y_{110} + y_{111}) &\cdot 2 \cdot 2^{i_2 + i_3} = 0.
         \end{split}
     \end{equation}
+    Similarly, we denote the last three coefficient sums as $s_{12} = y_{011} + y_{111}$,
+    $s_{13} = y_{101} + y_{111}$ and $s_{23} = y_{110} + y_{111}$.
+    As such, we can rewrite the above relation as
+    \begin{equation*}
+        s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + s_3 \cdot 2^{i_3} + 2s_{12} \cdot 2^{i_1 + i_2} + 2s_{13} \cdot 2^{i_1 + i_3} + 2s_{23} \cdot 2^{i_2 + i_3} = 0
+    \end{equation*}
     We determine the value of $s_{12}, s_{13}$ and $s_{23}$. Assume $s_{12} = \pm 2$,
     then $y_{011} = y_{111} = \pm 1$. By considering both the condition of balancedness
     and that $s_1 = s_2 = s_3 = 0$, we necessarily have $y_{101} = y_{110} = -y_{011} = -y_{111}$.
     This doesn't satisfy Equation \ref{eq:lin_t=3_row3}. The same logic applies
     if $y_{101} = y_{111}$ or if $y_{110} = y_{111}$. The only combination that
-    works is $y_{011} = y_{101} = y_{110} = -y_{111}$. The solutions that verify Equation \ref{eq:lin_t=3_row3} are given by
+    works is $y_{011} = y_{101} = y_{110} = -y_{111}$. The solutions that verify
+    Equation \ref{eq:lin_t=3_row3} are given by
     $$
     \mathbf{y} = \pm(1, -1, -1, -1, 1, 1, 1, -1).
     $$
