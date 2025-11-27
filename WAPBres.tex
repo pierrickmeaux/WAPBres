@@ -211,32 +211,47 @@ The $n$-variable symmetric Boolean functions are precisely those that are consta
 
 \end{Prop}
 
+Below we recall Lucas's Theorem.
+
+\begin{lemma}For a prime \( p \) and non-negative integers $n, k $ with $n \geq k $, the following congruence relation holds:
+	\[
+	\binom{n}{k} \equiv \prod_{i=0}^{r} \binom{n_i}{k_i} \pmod{p},
+	\]
+	where
+	$
+	n = n_r p^r + \cdots + n_1 p + n_0
+	$ and
+	$
+	k = k_r p^r + \cdots + k_1 p + k_0
+	$
+	are the \( p \)-ary expansions of \( n\) and \( k \), respectively.
+\end{lemma}
 
 \subsubsection{Krawtchouk polynomials.}
 We use Krawtchouk polynomials to characterize the correction order of WAPB functions.
 We give the necessary preliminaries here and refer to \eg ~\cite{book:MacSlo78} for more details.
 
-\begin{definition}[Krawtchouk Polynomials]\label{def:Kraw}
-
-\mgnote{We should define Krawtchouk polynomials to take value 0 when $k < 0$.
-\begin{equation*}
-	\kraw{k}{\ell}{n} =
-	\begin{cases}
-		\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j} & 0 \leq k \leq n\\
-		0 & k < 0\\
-	\end{cases}
-\end{equation*}}
-
-\clnote{ Martin: I believe the comment on ${m\choose r} = 0$ for $r<0$ covers the cases where $k<0$.}
-
-	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $$ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j},$$
-	where we take the binomial coefficient ${m\choose r} = 0$ when $m<r$ and $r<0$ by convention.
-\end{definition}
-Krawtchouk polynomials can be characterized by the generating series: $$ \displaystyle (1+z)^{n-\ell} (1-z)^\ell=\sum_{k=0}^\infty \kraw{k}{\ell}{n} z^k.$$ In addition,
-there is an interesting connection between Krawtchouk polynomials and linear functions restricted on the slice $\Ekn{k}{n}$:
-\begin{equation}\label{Eq_K_rwt}
-\kraw{k}{\ell}{n} = \sum_{u\in \Ekn{k}{n}}(-1)^{ u \cdot v}, \quad \forall v\in \Ekn{\ell}{n}.
-\end{equation}
+%\begin{definition}[Krawtchouk Polynomials]\label{def:Kraw}
+%
+%\mgnote{We should define Krawtchouk polynomials to take value 0 when $k < 0$.
+%\begin{equation*}
+%	\kraw{k}{\ell}{n} =
+%	\begin{cases}
+%		\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j} & 0 \leq k \leq n\\
+%		0 & k < 0\\
+%	\end{cases}
+%\end{equation*}}
+%
+%\clnote{ Martin: I believe the comment on ${m\choose r} = 0$ for $r<0$ covers the cases where $k<0$.}
+%
+%	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $$ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j},$$
+%	where we take the binomial coefficient ${m\choose r} = 0$ when $m<r$ and $r<0$ by convention.
+%\end{definition}
+%Krawtchouk polynomials can be characterized by the generating series: $$ \displaystyle (1+z)^{n-\ell} (1-z)^\ell=\sum_{k=0}^\infty \kraw{k}{\ell}{n} z^k.$$ In addition,
+%there is an interesting connection between Krawtchouk polynomials and linear functions restricted on the slice $\Ekn{k}{n}$:
+%\begin{equation}\label{Eq_K_rwt}
+%\kraw{k}{\ell}{n} = \sum_{u\in \Ekn{k}{n}}(-1)^{ u \cdot v}, \quad \forall v\in \Ekn{\ell}{n}.
+%\end{equation}
 
 %$\kraw{k}{\ell}{n}$ is the value of the restricted Walsh transform on $\Ekn{k}{n}$ of any $n$ variable linear function $a\cdot \ell$ such that $\w(a)=\ell$,
 
@@ -266,21 +281,7 @@ Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 \end{Prop}
 
 %\pmnote{add Lucas' theorem}
-Below we recall Lucas's Theorem.
 
-\begin{lemma}For a prime \( p \) and non-negative integers $n, k $ with $n \geq k $, the following congruence relation holds:
-	\[
-	\binom{n}{k} \equiv \prod_{i=0}^{r} \binom{n_i}{k_i} \pmod{p},
-	\]
-	where
-		$
-	n = n_r p^r + \cdots + n_1 p + n_0
-	$ and
-	$
-   k = k_r p^r + \cdots + k_1 p + k_0
-	$
-	are the \( p \)-ary expansions of \( n\) and \( k \), respectively.
-\end{lemma}
 
 \section{Characterizations of $t$-correctors}\label{sec:corr}
 
@@ -413,7 +414,7 @@ The following theorem provides an interesting connection between the Krawtchouk 
 
 \end{theorem}
 \begin{proof}
-	The Property~\ref{prop:KrDMS} is crucial for us to derive the low-triangular matrix $M$ satisfying $\mathbf{M} \cdot \mathbf{K} = \mathbf{V}$.
+	The Property~\ref{prop:KrDMS} is crucial for us to derive the lower triangular matrix $\matM$ satisfying $\mathbf{M} \cdot \mathbf{K} = \mathbf{V}$.
 
 	We will proceed by induction on $r$ to gradually determine the non-zero entries
 	in each row of $\mathbf{M}$ denoted as the vector $\matLead{M}{r}{r+1}$.
@@ -495,7 +496,7 @@ Therefore,  Prop.~\ref{prop:WalsCorr} can be transformed as follows.
 	A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if its restricted Walsh transform vector $\rwv{f}$ satisfies
 \begin{equation}\label{Eq_RWT}
 \matV^{(t+1)}
-\rwv{f} = \textbf{0}_{n}^\intercal \text{ and } \matV^{(t+2)}\rwv{f} \neq  \textbf{0}_{n}^\intercal,
+\rwv{f} = \textbf{0}_{t+1}^\intercal \text{ and } \matV^{(t+2)}\rwv{f} \neq  \textbf{0}_{t+2}^\intercal,
 \end{equation}
 where $\matV^{(r)}$ for $r\in \{t+1, t+2\}$ is the submatrix formed by the leading $r$-rows of the Vandemonde matrix $\matV$, namely, 
 \[
@@ -714,17 +715,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 %\end{proof}
 %
 %
-%\begin{remark}
-%	We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
-%
-%	Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
-%	Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.
-%	Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
-%
-%
-%
-%
-%\end{remark}
+
 
 
 \subsection{Correction order of $n$-variable WAPB functions when $\w(n)>3$}
@@ -817,6 +808,20 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 	\]  Furthermore,
 	there exists no WAPB function $f$ with $\corr(f)=t$.
 \end{conjecture}
+
+\begin{remark}
+	We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
+	
+	Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
+	Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.
+	Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
+	
+	
+	
+	
+\end{remark}
+
+\clnote{Add experimental results}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
