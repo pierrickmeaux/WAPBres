@@ -488,16 +488,16 @@ Then it follows from $\matM \cdot \matK = \matV$ that
 \[
 \matM_{[0,t],[0,t]} \cdot \matK^{(t+1)} = \matV^{(t+1)},
 \]where $\matV^{(t+1)}$ is the submatrix formed by the leading $(t+1)$ rows of $\matV$.
-Therefore,  Prop.~\ref{prop:WalsCorr} can be transformed as follows. 
+Therefore,  Prop.~\ref{prop:WalsCorr} can be transformed as follows.
 
 \begin{proposition}\label{prop_t_corrector_Vandemonde_matrix}
-	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. 
+	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
 	A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if its restricted Walsh transform vector $\rwv{f}$ satisfies
 \begin{equation}\label{Eq_RWT}
 \matV^{(t+1)}
 \rwv{f} = \textbf{0}_{n}^\intercal \text{ and } \matV^{(t+2)}\rwv{f} \neq  \textbf{0}_{n}^\intercal,
 \end{equation}
-where $\matV^{(r)}$ for $r\in \{t+1, t+2\}$ is the submatrix formed by the leading $r$-rows of the Vandemonde matrix $\matV$, namely, 
+where $\matV^{(r)}$ for $r\in \{t+1, t+2\}$ is the submatrix formed by the leading $r$-rows of the Vandemonde matrix $\matV$, namely,
 \[
 \matV^{(r)} = \begin{bmatrix}
 1 & 1 & 1 & \cdots & 1 \\
@@ -526,7 +526,7 @@ Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from
 Therefore, we have the following result:
 
 \begin{corollary}\label{Th-corrector-by-Vandemonde}
-		Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. 
+		Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
 	Let $\matW$ denote the submatrix formed by the $\ell$-th column in $\matV^{(t+1)}$ with $\ell \preceq n$.
 	Then for an $n$-variable WAPB function $f$ with $\corr(f)=t$, its restricted Walsh vector $\rwv{f}$
 	is determined by the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following
@@ -1267,19 +1267,4 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \bibliography{add}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fi
-
-\appendix
-\mgnote{I propose this proof for the (very) loose upper bound on $t$-correctness.}
-\section{A loose upper bound.}
-\input{proof_loose_ubound.tex}
-
-%\mgnote{I add our work with Chunlei here. The proof covers only half of the statement for now: From left to a middle statement.\\ I believe the same middle statement can be reached from the right hand side of the equivalence to complete the proof.}
-%\section{Equivalence to the conjecture.}
-%\input{conjecture_equivalence.tex}
-
-%\mgnote{I propose the proof for the relation between $\mathbf{K}$ and $\mathbf{V}$ below. Every feedback is welcome.}
-%\section{Relation between the Krawtchouk matrix and the Vandermonde matrix.}
-%\input{kraw_vand_matrices_eq.tex}
-
-
 \end{document}
