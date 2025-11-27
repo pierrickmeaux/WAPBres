@@ -488,16 +488,45 @@ Then it follows from $\matM \cdot \matK = \matV$ that
 \[
 \matM_{[0,t],[0,t]} \cdot \matK^{(t+1)} = \matV^{(t+1)},
 \]where $\matV^{(t+1)}$ is the submatrix formed by the leading $(t+1)$ rows of $\matV$.
-Therefore,  a Boolean function $f$ is a $t$-corrector if and only its restricted Walsh transform $\rwv{f}$
-satisfies the following system of equations:
-\begin{equation}\label{Eq_Vandemonde_system}
-\matV^{(t+1)} \cdot \rwv{f} = \mathbf{0}_{t+1}^\intercal.
+Therefore,  Prop.~\ref{prop:WalsCorr} can be transformed as follows. 
+
+\begin{proposition}\label{prop_t_corrector_Vandemonde_matrix}
+	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. 
+	A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if its restricted Walsh transform vector $\rwv{f}$ satisfies
+\begin{equation}\label{Eq_RWT}
+\matV^{(t+1)}
+\rwv{f} = \textbf{0}_{n}^\intercal \text{ and } \matV^{(t+2)}\rwv{f} \neq  \textbf{0}_{n}^\intercal,
 \end{equation}
+where $\matV^{(r)}$ for $r\in \{t+1, t+2\}$ is the submatrix formed by the leading $r$-rows of the Vandemonde matrix $\matV$, namely, 
+\[
+\matV^{(r)} = \begin{bmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+0 & 1 & 2 & \cdots & n \\
+&  &  \vdots & & \vdots  \\
+0 & 1 & 2^{r-1} & \cdots & n^{r-1}
+\end{bmatrix}.
+\]
+
+
+%\begin{proposition}\label{prop:WalsCorr}
+%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
+%	\begin{itemize}
+%		\item If $n$ is odd: for $0\le k \le t$,
+%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+%	\item If $n$ is even: for $0\le k \le t$,
+%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+%	\end{itemize}
+
+
+
+
+\end{proposition}
 
 Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the nonzero coefficients in $\rwv{f}$ are the $\ell$-th entries such that $\ell\preceq n$.
 Therefore, we have the following result:
 
-\begin{theorem}\label{Th-corrector-by-Vandemonde}
+\begin{corollary}\label{Th-corrector-by-Vandemonde}
+		Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. 
 	Let $\matW$ denote the submatrix formed by the $\ell$-th column in $\matV^{(t+1)}$ with $\ell \preceq n$.
 	Then for an $n$-variable WAPB function $f$ with $\corr(f)=t$, its restricted Walsh vector $\rwv{f}$
 	is determined by the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following
@@ -505,7 +534,7 @@ Therefore, we have the following result:
 	\[
 	\matW \cdot \mathbf{y} = \mathbf{0}_{{t+1}}^{\intercal}.
 	\]
-\end{theorem}
+\end{corollary}
 
 The characterization of $t$-corrector in terms of the Vandemonde matrix above will be used to study the existence of WPB functions and WAPB functions of certain order $t$ in the next section.
 
