@@ -24,6 +24,7 @@ It follows that $|\mathcal{L}| = 2^t$. Hence the conjecture is equivalent to
 \pmnote{I think t should be in the proposition statement }
 
 
+
 We want to prove an equivalence to the conjecture as formulated in the proposition below:
 \begin{proposition}\label{prop:equivalence}
 	For any positive integer $n$    the following two statements are equivalent:
@@ -260,45 +261,3 @@ From Property~\ref{prop:KrDMS} we have:
         \end{split}
     \end{equation*}
 \end{proof}
-
-
-As such, we can reformulate the initial condition as
-\begin{equation}\label{eq:general}
-    \text{for } k \in [0, t-1], \quad \sumK \ell^kv_\ell = 0.
-\end{equation}
-
-For $k = 0, \ldots t$, we can build the following system using \cref{eq:general} repeatedly.
-\begin{equation}
-    \begin{cases}
-        \sumK \ell^0v_\ell = 0\\
-        \sumK \ell^1v_\ell = 0\\
-        \sumK \ell^2v_\ell = 0\\
-        \ldots\\
-        \sumK \ell^tv_\ell = 0.\\
-    \end{cases}
-\end{equation}
-
-which reformulates our problem as discussing the existence of a vector $(v_{\ell_1}, \ldots, v_{k\ell{2^t}})$ such that
-$$
-(v_{\ell_1}, \ldots, v_{\ell_{2^t}})
-\begin{bmatrix}
-    | & | & | & | & \ldots & |\\
-    1 & \ell & \ell^2 & \ell^3 & \ldots & \ell^t\\
-    | & | & | & | & \ldots & |\\
-\end{bmatrix} = 0,
-$$
-
-using a  $2^t \times (t + 1)$ matrix where each column is the vector of all $\ell \in \mathcal{L}$.
-
-Let us take an example for $n = 2^i + 2^j$. We have $t = 2$, the matrix would have the following shape
-$$
-\begin{bmatrix}
-    1 & 0 & 0\\
-    1 & 2^i & 2^{2i}\\
-    1 & 2^j & 2^{2j}\\
-    1 & 2^i + 2^j & (2^i + 2^j)^2\\
-\end{bmatrix}
-$$
-that is a Vandermonde matrix. If the conjecture is true, then $\nexists (v_0, v_{2^i}, v_{2^j}, v_{2^i + 2^j}) \in \{-1, 1\}^4$ that belongs to the left kernel of the vandermonde matrix defined by $\mathcal{L}$.
-
-

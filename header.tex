@@ -98,6 +98,7 @@
 \newcommand{\matI}{\mathbf{I}}
 \newcommand{\matK}{\mathbf{K}}
 \newcommand{\matM}{\mathbf{M}}
+\newcommand{\matH}{\mathbf{H}}
 \newcommand{\matP}{\mathbf{P}}
 \newcommand{\matR}{\mathbf{R}}
 \newcommand{\matS}{\mathbf{S}}
@@ -154,7 +155,6 @@
 \newcommand{\NL}{\mathsf{NL}}
 \newcommand{\NLk}[1]{\mathsf{NL}_{#1}}
 %\newcommand{\NLd}{\mathsf{NL_d}}
-\newcommand{\res}{\mathsf{res}}
 \newcommand{\bal}{\mathsf{bal}}
 \newcommand{\gnlk}{\mathsf{GWNL}}
 
@@ -194,6 +194,8 @@
 \newcommand{\wdeg}{\mathsf{wdeg}}
 \newcommand{\Span}{\mathsf{Span}}
 \newcommand{\rank}{\mathsf{rank}}
+\newcommand{\res}{\mathsf{res}}
+\newcommand{\corr}{\mathsf{corr}}
 %Walsh transform
 %\newcommand{\wt}[1]{W_{#1}}
 %\newcommand{\wtmf}[1]{W_f({#1})}
@@ -270,5 +272,11 @@
 %\newcommand{\eqzero}[1]{\underset{=0}{\underline{#1}}}
 % Writes a horizontal bracket with label "= 0" under #1
 \newcommand{\eqzero}[1]{\underbrace{#1}_{=0}}
+% General macro to write something under a term in a brace.
+\newcommand{\eqX}[2]{\underbrace{#1}_{#2}}
+
 % Macro for sum of k in K for the proof to gain readability.
 \newcommand{\sumK}{\sum_{\ell \in \mathcal{L}}}
+
+% Macro to denote the first `r`' elements of the i_th row in the matrix M.
+\newcommand{\matLead}[3]{\mathbf{#1}_{#2,[0,#3]}}
