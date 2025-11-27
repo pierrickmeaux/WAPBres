@@ -227,33 +227,21 @@ Below we recall Lucas's Theorem.
 	are the \( p \)-ary expansions of \( n\) and \( k \), respectively.
 \end{lemma}
 
-\subsubsection{Krawtchouk polynomials.}
+%\subsubsection{Krawtchouk polynomials.}
 We use Krawtchouk polynomials to characterize the correction order of WAPB functions.
 We give the necessary preliminaries here and refer to \eg ~\cite{book:MacSlo78} for more details.
 
-%\begin{definition}[Krawtchouk Polynomials]\label{def:Kraw}
-%
-%\mgnote{We should define Krawtchouk polynomials to take value 0 when $k < 0$.
-%\begin{equation*}
-%	\kraw{k}{\ell}{n} =
-%	\begin{cases}
-%		\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j} & 0 \leq k \leq n\\
-%		0 & k < 0\\
-%	\end{cases}
-%\end{equation*}}
-%
-%\clnote{ Martin: I believe the comment on ${m\choose r} = 0$ for $r<0$ covers the cases where $k<0$.}
-%
-%	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $$ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j},$$
-%	where we take the binomial coefficient ${m\choose r} = 0$ when $m<r$ and $r<0$ by convention.
-%\end{definition}
-%Krawtchouk polynomials can be characterized by the generating series: $$ \displaystyle (1+z)^{n-\ell} (1-z)^\ell=\sum_{k=0}^\infty \kraw{k}{\ell}{n} z^k.$$ In addition,
-%there is an interesting connection between Krawtchouk polynomials and linear functions restricted on the slice $\Ekn{k}{n}$:
-%\begin{equation}\label{Eq_K_rwt}
-%\kraw{k}{\ell}{n} = \sum_{u\in \Ekn{k}{n}}(-1)^{ u \cdot v}, \quad \forall v\in \Ekn{\ell}{n}.
-%\end{equation}
+\begin{definition}[Krawtchouk Polynomials]\label{def:Kraw}
+	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $$ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j},$$
+	where we take the binomial coefficient ${m\choose r} = 0$ when $m<r$ and $r<0$ by convention.
+\end{definition}
+Krawtchouk polynomials can be characterized by the generating series: $$ \displaystyle (1+z)^{n-\ell} (1-z)^\ell=\sum_{k=0}^\infty \kraw{k}{\ell}{n} z^k.$$ In addition,
+there is an interesting connection between Krawtchouk polynomials and linear functions restricted on the slice $\Ekn{k}{n}$:
+\begin{equation}\label{Eq_K_rwt}
+\kraw{k}{\ell}{n} = \sum_{u\in \Ekn{k}{n}}(-1)^{ u \cdot v}, \quad \forall v\in \Ekn{\ell}{n}.
+\end{equation}
 
-%$\kraw{k}{\ell}{n}$ is the value of the restricted Walsh transform on $\Ekn{k}{n}$ of any $n$ variable linear function $a\cdot \ell$ such that $\w(a)=\ell$,
+$\kraw{k}{\ell}{n}$ is the value of the restricted Walsh transform on $\Ekn{k}{n}$ of any $n$ variable linear function $a\cdot \ell$ such that $\w(a)=\ell$,
 
 
 
@@ -290,8 +278,8 @@ Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 We rewrite the $t$-corrector property using the notation of restricted Walsh transform.
 
 
-\begin{proposition}\label{prop:WalsCorr}
-	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if and only if its restricted Walsh transform satisfies
+\begin{theorem}\label{prop:WalsCorr}
+	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if $t$ is the maximum integer such that the restricted Walsh transform satisfies
 	\begin{equation}\label{Eq_RWT}
 	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0 \quad \text{ for } k=0,1,\dots, t.
 	\end{equation}
@@ -305,11 +293,7 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 	%	\item If $n$ is even: for $0\le k \le t$,
 	%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
 	%	\end{itemize}
-
-
-
-
-\end{proposition}
+\end{theorem}
 \begin{proof}
 
 	%We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$.
@@ -323,7 +307,7 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 	&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)} \,  \kraw{k}{\ell}{n}\\
 	&=\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n},
 	\end{align*}
-	where the last second equality follows from \eqref{Eq_K_rwt}.
+	where the last second equality follows from~\eqref{Eq_K_rwt}.
 	The desired statement is then proved by Definition~\ref{def:corr}.
 \end{proof}
 
@@ -489,24 +473,24 @@ Then it follows from $\matM \cdot \matK = \matV$ that
 \[
 \matM_{[0,t],[0,t]} \cdot \matK^{(t+1)} = \matV^{(t+1)},
 \]where $\matV^{(t+1)}$ is the submatrix formed by the leading $(t+1)$ rows of $\matV$.
-Therefore,  Prop.~\ref{prop:WalsCorr} can be transformed as follows.
+Therefore,  Theorem~\ref{prop:WalsCorr} can be reformulated as follows. 
 
-\begin{proposition}\label{prop_t_corrector_Vandemonde_matrix}
-	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
-	A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if its restricted Walsh transform vector $\rwv{f}$ satisfies
+\begin{theorem}\label{prop_t_corrector_Vandemonde_matrix}
+	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. 
+	A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if $t$ is the maximum integer such that the restricted Walsh transform vector $\rwv{f}$ satisfies
 \begin{equation}\label{Eq_RWT}
-\matV^{(t+1)}
-\rwv{f} = \textbf{0}_{t+1}^\intercal \text{ and } \matV^{(t+2)}\rwv{f} \neq  \textbf{0}_{t+2}^\intercal,
-\end{equation}
-where $\matV^{(r)}$ for $r\in \{t+1, t+2\}$ is the submatrix formed by the leading $r$-rows of the Vandemonde matrix $\matV$, namely,
-\[
-\matV^{(r)} = \begin{bmatrix}
+ \begin{bmatrix}
 1 & 1 & 1 & \cdots & 1 \\
 0 & 1 & 2 & \cdots & n \\
-&  &  \vdots & & \vdots  \\
-0 & 1 & 2^{r-1} & \cdots & n^{r-1}
-\end{bmatrix}.
-\]
+&  &  \cdots &\cdots &  \\
+0 & 1 & 2^{t} & \cdots & n^{t}
+\end{bmatrix}\cdot 
+\begin{bmatrix}
+\wtk{f}{0} \\ \wtk{f}{1} \\ \vdots \\ \wtk{f}{n}
+\end{bmatrix} = \textbf{0}_{t+1}^\intercal.
+\end{equation}
+
+
 
 
 %\begin{proposition}\label{prop:WalsCorr}
@@ -521,13 +505,13 @@ where $\matV^{(r)}$ for $r\in \{t+1, t+2\}$ is the submatrix formed by the leadi
 
 
 
-\end{proposition}
+\end{theorem}
 
 Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the nonzero coefficients in $\rwv{f}$ are the $\ell$-th entries such that $\ell\preceq n$.
 Therefore, we have the following result:
 
 \begin{corollary}\label{Th-corrector-by-Vandemonde}
-		Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
+		Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. 
 	Let $\matW$ denote the submatrix formed by the $\ell$-th column in $\matV^{(t+1)}$ with $\ell \preceq n$.
 	Then for an $n$-variable WAPB function $f$ with $\corr(f)=t$, its restricted Walsh vector $\rwv{f}$
 	is determined by the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following
@@ -564,7 +548,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	By Definition~\ref{def:WPB}, a WPB function is balanced, hence $0$-corrector and $0$-resilient.
 	Below we show a WPB function cannot be $1$-corrector, thus not $1$-resilient.
 
-	By~\eqref{Eq_Vandemonde_system} we see that $\corr(f) = 1$ if and only if
+	By Theorem~\ref{prop_t_corrector_Vandemonde_matrix} we see that $\corr(f) = 1$ if and only if
 	\[
 	\matV^{(2)}\cdot \rwv{f} = \mathbf{0}_2^{\intercal},
 	\] where the restricted Walsh vector $\rwv{f}$ satisfies that $\wtk{f}{\ell} = 0$ for any $\ell \in [1,n-1]$ since $f$ is balanced on $\Ekn{\ell}{n}$.
@@ -1272,4 +1256,7 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \bibliography{add}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fi
+
+
+
 \end{document}
