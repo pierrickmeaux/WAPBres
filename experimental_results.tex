@@ -4,13 +4,18 @@ main results in SageMath \cite{sagemath} available at \texttt{https://www.github
 We give a basis of code to test Theorems~\ref{thm:WalsCorr}, \ref{Th_K_V_matrices}
 and \ref{thm:t_corrector_Vandemonde_matrix} for small spaces; especially
 constructors for Krawtchouk and Vandermonde matrices of different orders as well
-as an implementation of Theorem~\ref{thm:WalsCorr}. We also verified that
-Conjecture~\ref{conj:wapb-corr} holds for all dimensions $n$ up to $n = 62$. Our
-approach consists in exhausting all balanced vectors $\vecy \in \{\pm1\}^{\w(n)}$
-and computing $t$ as in Theorem~\ref{thm:t_corrector_Vandemonde_matrix}. We keep
-track of the the largest $t$ for all possible $\binom{2^{\w(n)}}{2^{\w(n) - 1}}$
-vectors. We give a brief summary of the performance of our method in
-Table~\ref{tab:execution_times}. All execution times are in seconds and performed on a single core 13th Gen Intel(R) Core(TM) i5-1345U 4.7 GHz.
+as an implementation of Theorem~\ref{thm:WalsCorr}.
+
+We also verified that Conjecture~\ref{conj:wapb-corr} holds for all dimensions
+$n$ up to $n = 62$. Our approach consists in exhausting all balanced vectors
+$\vecy \in \{\pm1\}^{\w(n)}$ and computing $t$ as in Theorem~\ref{thm:t_corrector_Vandemonde_matrix}.
+This has the advantage of involving smaller vectors and matrices to work with,
+directly reducing the number of computations from $O(2^n)$ to $O(2^{2^{\w(n)}})$.
+Precisely there are $\binom{2^{\w(n)}}{2^{\w(n) - 1}}$ such vectors for which we
+keep track of the the largest $t$-correction. We give a brief summary of the
+performance of our method in Table~\ref{tab:execution_times}. All execution
+times are in seconds and performed on a single core 13th Gen Intel(R) Core(TM)
+i5-1345U 4.7 GHz.
 
 \begin{table}[ht]
     \centering
