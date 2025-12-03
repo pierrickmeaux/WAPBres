@@ -277,14 +277,14 @@ Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 We rewrite the $t$-corrector property using the notation of restricted Walsh transform.
 
 
-\begin{theorem}\label{prop:WalsCorr}
+\begin{theorem}\label{thm:WalsCorr}
 	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if $t$ is the maximum integer such that the restricted Walsh transform satisfies
 	\begin{equation}\label{Eq_RWT}
 	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0 \quad \text{ for } k=0,1,\dots, t.
 	\end{equation}
 
 
-	%\begin{proposition}\label{prop:WalsCorr}
+	%\begin{proposition}\label{thm:WalsCorr}
 	%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
 	%	\begin{itemize}
 	%		\item If $n$ is odd: for $0\le k \le t$,
@@ -341,7 +341,7 @@ Following from Proposition~\ref{prop:WAPBWalsh}, we reformulate WAPB functions o
 \end{definition}
 
 Denote by $\matK^{(t+1)}$ the submatrix formed by the leading $(t+1)$ rows of $\matK$.
-By Proposition~\ref{prop:WalsCorr} we see that $f$ is a $t$-corrector if and only if:
+By Theorem~\ref{thm:WalsCorr} we see that $f$ is a $t$-corrector if and only if:
 \begin{equation}\label{Eq_t-corrector}
 \matK^{(t+1)}\cdot \rwv{f}=\textbf{0}_{t+1}^\intercal.
 \end{equation}
@@ -472,9 +472,9 @@ Then it follows from $\matM \cdot \matK = \matV$ that
 \[
 \matM_{[0,t],[0,t]} \cdot \matK^{(t+1)} = \matV^{(t+1)},
 \]where $\matV^{(t+1)}$ is the submatrix formed by the leading $(t+1)$ rows of $\matV$.
-Therefore,  Theorem~\ref{prop:WalsCorr} can be reformulated as follows.
+Therefore,  Theorem~\ref{thm:WalsCorr} can be reformulated as follows.
 
-\begin{theorem}\label{prop_t_corrector_Vandemonde_matrix}
+\begin{theorem}\label{thm:t_corrector_Vandemonde_matrix}
 	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
 	A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if $t$ is the maximum integer such that the restricted Walsh transform vector $\rwv{f}$ satisfies
 \begin{equation}\label{Eq_RWT}
@@ -492,7 +492,7 @@ Therefore,  Theorem~\ref{prop:WalsCorr} can be reformulated as follows.
 
 
 
-%\begin{proposition}\label{prop:WalsCorr}
+%\begin{proposition}\label{thm:WalsCorr}
 %	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
 %	\begin{itemize}
 %		\item If $n$ is odd: for $0\le k \le t$,
@@ -547,7 +547,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	By Definition~\ref{def:WPB}, a WPB function is balanced, hence $0$-corrector and $0$-resilient.
 	Below we show a WPB function cannot be $1$-corrector, thus not $1$-resilient.
 
-	By Theorem~\ref{prop_t_corrector_Vandemonde_matrix} we see that $\corr(f) = 1$ if and only if
+	By Theorem~\ref{thm:t_corrector_Vandemonde_matrix} we see that $\corr(f) = 1$ if and only if
 	\[
 	\matV^{(2)}\cdot \rwv{f} = \mathbf{0}_2^{\intercal},
 	\] where the restricted Walsh vector $\rwv{f}$ satisfies that $\wtk{f}{\ell} = 0$ for any $\ell \in [1,n-1]$ since $f$ is balanced on $\Ekn{\ell}{n}$.
@@ -564,13 +564,13 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	\end{bmatrix},
 	\]
 	which clearly contradicts the definition of WPB functions in Definition~\ref{def:WPB}.
-	%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
+	%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{thm:WalsCorr}.
 	%
-	%	Using Proposition~\ref{prop:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
+	%	Using Proposition~\ref{thm:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
 	%	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{1}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{1}{\ell}{n} \, ( \wtk{f}{\ell} - \wtk{f}{n-\ell}).\]
 	%	Since $f$ is WPB, using Property~\ref{prop:WAPBWalsh} we obtain:
 	%	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=0+2\kraw{1}{0}{n}=2n\ne 0,\]
-	%	hence $f$ is not $1$-corrector by Proposition~\ref{prop:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
+	%	hence $f$ is not $1$-corrector by Proposition~\ref{thm:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
 \end{proof}
 
 %We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+f$ with $f\in \WPB{m}$, hence all $2^m$-variable WAPB functions are $0$-resilient and not $1$-resilient.
@@ -651,7 +651,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 %	Let $k_1<k_2\in \N$ and $n=2^{k_1}+2^{k_2}$, if $f$ is an $n$-variable WAPB function then $f$ is at most $1$-corrector and not $2$-resilient.
 %\end{proposition}
 %\begin{proof}
-%	From Proposition~\ref{prop:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
+%	From Proposition~\ref{thm:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
 %	\begin{equation}\label{eq:wapb2}
 %	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0
 %	\end{equation}
@@ -781,7 +781,7 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 	\clnote{Martin: please try to give a proof by following the proof development for Prop. 4}
 \end{proof}
 
-\begin{conjecture}
+\begin{conjecture}\label{conj:wapb-corr}
 	Let $n\in \N^*$ with $\w(n)=t$. Then
 	there exist WAPB functions $f$ with $\corr(f)=t-1$ and
 	restricted Walsh transforms $\rwv{f}$ are uniquely given by
@@ -804,6 +804,7 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \end{remark}
 
 \clnote{Add experimental results}
+\input{experimental_results.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -814,14 +815,14 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %We rewrite the $t$-corrector property using the notation of restricted Walsh transform.
 %
 %
-%\begin{proposition}\label{prop:WalsCorr}
+%\begin{proposition}\label{thm:WalsCorr}
 %	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if and only if its restricted Walsh transform satisfies
 %	\begin{equation}\label{Eq_RWT}
 %	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0 \quad \text{ for } k=0,1,\dots, t.
 %	\end{equation}
 %
 %
-%%\begin{proposition}\label{prop:WalsCorr}
+%%\begin{proposition}\label{thm:WalsCorr}
 %%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
 %%	\begin{itemize}
 %%		\item If $n$ is odd: for $0\le k \le t$,
@@ -890,7 +891,7 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %
 %\end{definition}
 %
-%With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
+%With these notations, using the development of Proposition~\ref{thm:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
 %\begin{equation}\label{Eq_t-corrector}
 %\matK^{(t)}\cdot \rwv{f}=\textbf{0}_t^\intercal.
 %\end{equation}
@@ -977,13 +978,13 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %\end{theorem}
 %\begin{proof}
 %	By definition (Definition~\ref{def:WPB}) a WPB function is balanced, hence $0$-corrector and $0$-resilient.
-%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
+%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{thm:WalsCorr}.
 %
-%	Using Proposition~\ref{prop:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
+%	Using Proposition~\ref{thm:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
 %	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{1}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{1}{\ell}{n} \, ( \wtk{f}{\ell} - \wtk{f}{n-\ell}).\]
 %	Since $f$ is WPB, using Property~\ref{prop:WAPBWalsh} we obtain:
 %	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=0+2\kraw{1}{0}{n}=2n\ne 0,\]
-%	hence $f$ is not $1$-corrector by Proposition~\ref{prop:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
+%	hence $f$ is not $1$-corrector by Proposition~\ref{thm:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
 %\end{proof}
 %
 %We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+f$ with $f\in \WPB{m}$, hence all $2^m$-variable WAPB functions are $0$-resilient and not $1$-resilient.
@@ -1003,7 +1004,7 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %	Let $k_1<k_2\in \N$ and $n=2^{k_1}+2^{k_2}$, if $f$ is an $n$-variable WAPB function then $f$ is at most $1$-corrector and not $2$-resilient.
 %\end{proposition}
 %\begin{proof}
-%	From Proposition~\ref{prop:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
+%	From Proposition~\ref{thm:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
 %	\begin{equation}\label{eq:wapb2}
 %	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0
 %	\end{equation}
@@ -1092,7 +1093,7 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %
 %\end{definition}
 %
-%With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
+%With these notations, using the development of Proposition~\ref{thm:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
 %\[\rwv{f} \cdot \KrM{n}{t}=0_t.\]
 %
 %For a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the non null coefficients are the ones such that $k\preceq n$.
