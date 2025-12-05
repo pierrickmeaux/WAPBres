@@ -712,7 +712,8 @@ In order to discuss the linear systems in a unified way, we need the following l
 	\end{equation} where $[t]$ denotes the set $\{1,2,\dots, t\}$.
 \end{lemma}
 
-\textbf{Proof.} Note that the expansion of $(x_1+\cdots + x_s)^u$ is given by
+\begin{proof}
+Note that the expansion of $(x_1+\cdots + x_s)^u$ is given by
 \[
 (x_1+\cdots + x_s)^u = \sum\limits_{\substack{u_1+\cdots + u_s = u\\ u_1,\dots, u_s\geq 0}} \frac{u!}{u_1!\cdots u_s!}x_1^{u_1}\dots x_s^{u_s},
 \] where $ \frac{u!}{u_1!\cdots u_s!}$ is the multinomial coefficient.
@@ -745,7 +746,8 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \\&= \sum_{s=1}^t \sum_{\substack{supp(\ell) = \{i_{j_1},\dots, i_{j_s}\} \\ \{j_1,\dots, j_s\} \subseteq [t] \\ }}  y_\ell \sum\limits_{(u_1,\dots, u_s) \in P_s(u)} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
 \\& =  \sum_{s=1}^t\sum\limits_{\substack{supp(\ell) = \{i_{j_1},\dots, i_{j_s}\}  \\ \{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P_s(u)}} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} y_\ell   x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
 \end{aligned}
-\end{equation} where the last equality is obtained by re-arranging the summands for $s=1,\dots, t$ according to the partition $P_{s}(u) = P^*_{s}(u) \sqcup P^*_{s-1}(u) \sqcup \cdots \sqcup P^*_1(u)$. \hfill$\square$
+\end{equation} where the last equality is obtained by re-arranging the summands for $s=1,\dots, t$ according to the partition $P_{s}(u) = P^*_{s}(u) \sqcup P^*_{s-1}(u) \sqcup \cdots \sqcup P^*_1(u)$.
+\end{proof}
 
 \begin{example} \label{Ex1}
 	Assume $supp(n)=\{i_1,i_2,i_3\}$ with $t= 3$ and $u=2$,
@@ -769,17 +771,16 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 
 \begin{proposition}Let $n\in \N^*$ with $n=2^{i_1}+2^{i_2}+\cdots +2^{i_t}$ with $i_1<i_2<\cdots i_t$ and $t>3$.
 	Suppose $\lambda_n := \{i_t-i_{t-1}, \dots, i_{3}-i_2, i_2-i_1 \}$ satisfies $\lambda_n\geq t$.
-	Then any WAPB function $f$ has $\corr(f)\leq t-1$.
-    Furthermore, the equality is reached if and only
-	the
-	restricted Walsh transforms $\rwv{f}$ is given by
-	\[
-	\wtk{f}{\ell} =\wtk{f}{0} \cdot (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
-	\]
+	Then any WAPB function $f$ has $\corr(f)\leq t-1$. Furthermore, the equality
+	is reached if and only if the restricted Walsh transforms $\rwv{f}$ is given
+	by
+
+	\mgnote{Shouldn't it be "... any WAPB function \textbf{in n variables} $f$ has $\corr(f)\leq t-1$..." or is it implicit? }
+	$$
+	\wtk{f}{\ell} = \wtk{f}{0} \cdot (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
+	$$
 \end{proposition}
-\begin{proof}
-	\clnote{Martin: please try to give a proof by following the proof development for Prop. 4}
-\end{proof}
+\input{proof_inf_family.tex}
 
 \begin{conjecture}\label{conj:wapb-corr}
 	Let $n\in \N^*$ with $\w(n)=t$. Then
