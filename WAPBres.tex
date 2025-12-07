@@ -705,7 +705,8 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 We shall consider general cases by following the discussion for the cases where $\w(n)=2$ and $\w(n)=3$.
 In order to discuss the linear systems in a unified way, we need the following lemma.
 
-\begin{lemma}\label{Represention_Equations}
+\mgnote{Isn't there a notation inconsistency in Lemma 2? It seems the multinomial coefficient should be $\frac{u!}{u_{j_1}!\ldots u_{j_s}!}$. Same in the expansion of $x_{j_1}^{u_{j_1}}\ldots$}
+\begin{lemma}\label{lem:Represention_Equations}
 	For $1\leq u \leq t$, the equation $\sum_{\ell \preceq n } \ell^uy_{\ell}  = 0$ can be re-written as
 	\begin{equation}\label{key}
 	\sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ u_{j_1}+\cdots+ u_{j_s}=u \\  u_{j_1},\dots,u_{j_s}\geq 1}}  \frac{u!}{u_1!\cdots u_s!} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(\ell)   \\ \ell\preceq n }}  y_{\ell} \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}},
