@@ -34,7 +34,7 @@ Then the equation from Row $1$ becomes
 \begin{equation}\label{eq:lin_t_row1}
     s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + \ldots + s_t \cdot 2^{i_t} = 0.
 \end{equation}
-It is clear that any $s_j$ can take for values any even number or its opposite
+Because $\vecy$ is balanced, it is clear that any $s_j$ can take for values any even number or its opposite
 in the range $[0, 2^{t-1}]$ because $|\vecy_B| = 2^{t-|B|}$. Since $\lambda_n \geq t$,
 there doesn't exist any $s_j \neq 0$ to satisfy Equation~\ref{eq:lin_t_row1}.
 
@@ -43,15 +43,15 @@ terms
 \begin{equation*}
     \begin{split}
         &\sum_{y_i \in \vecy_{\{1\}}} (y_i) \cdot 2^{i_1} + \sum_{y_i \in \vecy_{\{2\}}} (y_i) \cdot 2^{i_2} + \ldots + \sum_{y_i \in \vecy_{\{t\}}} (y_i) \cdot 2^{i_t} +\\
-        &2\sum_{y_i \in \vecy_{\{1,2\}}} (y_i) \cdot 2^{i_1 + i_2} + 2\sum_{y_i \in \vecy_{\{1,3\}}} (y_i) \cdot 2^{i_1 + i_3} + \ldots + 2\sum_{y_i \in \vecy_{\{t-2, t-1\}}} (y_i) \cdot 2^{i_{t-2} + i_{t-1}} = 0.
+        &2\sum_{y_i \in \vecy_{\{1,2\}}} (y_i) \cdot 2^{i_1 + i_2} + 2\sum_{y_i \in \vecy_{\{1,3\}}} (y_i) \cdot 2^{i_1 + i_3} + \ldots + 2\sum_{y_i \in \vecy_{\{t-1, t\}}} (y_i) \cdot 2^{i_{t-1} + i_{t}} = 0.
     \end{split}
 \end{equation*}
 We use the previously defined notations and knowledge that $s_1 = s_2 = \ldots = s_t = 0$
 to simplify it into
 \begin{equation}\label{eq:lin_t_row2}
-    2s_{12} \cdot 2^{i_1 + i_2} + 2s_{13} \cdot 2^{i_1 + i_3} + \ldots + 2s_{(t-2)(t-1)} \cdot 2^{i_{t-2} + i_{t-1}} = 0.
+    2s_{12} \cdot 2^{i_1 + i_2} + 2s_{13} \cdot 2^{i_1 + i_3} + \ldots + 2s_{(t-1)(t)} \cdot 2^{i_{t-2} + i_{t-1}} = 0.
 \end{equation}
-It is clear that any $s_j$ can take for values any even number or its opposite
+Because $\vecy$ is balanced, it is clear that any $s_j$ can take for values any even number or its opposite
 in the range $[0, 2^{t-2}]$ because $|\vecy_B| = 2^{t-|B|}$. Since $i_j + i_k - i_l - i_m \geq t$
 for all $j < k < l < m \leq t$, there doesn't exist any $s_j \neq 0$ to satisfy
 Equation~\ref{eq:lin_t_row2}. The base step is done.
@@ -61,6 +61,15 @@ then it is true for $r$. From Row $r$ and using Lemma~\ref{lem:Represention_Equa
 \begin{equation*}
     \sum_{\ell \preceq n} \ell^r y_\ell = \sum_{m=1}^t\sum\limits_{\substack{\{j_1,\dots, j_m\}\subseteq[t]\\ r_{j_1}+\cdots+ r_{j_m}=r\\ r_{j_1}, \dots, r_{j_m} \geq 1}} \frac{r!}{r_{j_1}!\cdots r_{j_m}!} \left(\sum_{\substack{\{i_{j_1},\dots, i_{j_m}\} \subseteq supp(\ell)\\ \ell\preceq n}} y_{\ell} \right) x_{j_1}^{r_{j_1}}\dots x_{j_m}^{r_{j_m}} = 0.
 \end{equation*}
+
+\begin{equation*}
+    s_1
+\end{equation*}
+We know from Row $r-1$ that $s_1, \ldots, s_t, s_{12}, \ldots, s_{(t-1)(t)}, \ldots, s_{(t-(r-1))\ldots(t-1)(t)} = 0$.
+We then reformulate the above equation into
+\begin{equation}\label{eq:lin_t_rowr}
+    s_{12\ldots r} \cdot 2^{i_1 + i_2 + \ldots + i_r} + \ldots + s_{(t-r)(t-r+1)\ldots(t)} \cdot 2^{i_{t-r} + i_{t-r+1} + \ldots + i_{t}} = 0.
+\end{equation}
 
 
 \end{proof}
