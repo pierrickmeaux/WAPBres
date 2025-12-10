@@ -211,24 +211,27 @@ The $n$-variable symmetric Boolean functions are precisely those that are consta
 
 \end{Prop}
 
+Below we recall Lucas's Theorem.
 
-\subsubsection{Krawtchouk polynomials.}
+\begin{lemma}For a prime \( p \) and non-negative integers $n, k $ with $n \geq k $, the following congruence relation holds:
+	\[
+	\binom{n}{k} \equiv \prod_{i=0}^{r} \binom{n_i}{k_i} \pmod{p},
+	\]
+	where
+	$
+	n = n_r p^r + \cdots + n_1 p + n_0
+	$ and
+	$
+	k = k_r p^r + \cdots + k_1 p + k_0
+	$
+	are the \( p \)-ary expansions of \( n\) and \( k \), respectively.
+\end{lemma}
+
+%\subsubsection{Krawtchouk polynomials.}
 We use Krawtchouk polynomials to characterize the correction order of WAPB functions.
 We give the necessary preliminaries here and refer to \eg ~\cite{book:MacSlo78} for more details.
 
 \begin{definition}[Krawtchouk Polynomials]\label{def:Kraw}
-
-\mgnote{We should define Krawtchouk polynomials to take value 0 when $k < 0$.
-\begin{equation*}
-	\kraw{k}{\ell}{n} =
-	\begin{cases}
-		\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j} & 0 \leq k \leq n\\
-		0 & k < 0\\
-	\end{cases}
-\end{equation*}}
-
-\clnote{ Martin: I believe the comment on ${m\choose r} = 0$ for $r<0$ covers the cases where $k<0$.}
-
 	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $$ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j},$$
 	where we take the binomial coefficient ${m\choose r} = 0$ when $m<r$ and $r<0$ by convention.
 \end{definition}
@@ -237,7 +240,6 @@ there is an interesting connection between Krawtchouk polynomials and linear fun
 \begin{equation}\label{Eq_K_rwt}
 \kraw{k}{\ell}{n} = \sum_{u\in \Ekn{k}{n}}(-1)^{ u \cdot v}, \quad \forall v\in \Ekn{\ell}{n}.
 \end{equation}
-
 %$\kraw{k}{\ell}{n}$ is the value of the restricted Walsh transform on $\Ekn{k}{n}$ of any $n$ variable linear function $a\cdot \ell$ such that $\w(a)=\ell$,
 
 
@@ -248,39 +250,25 @@ there is an interesting connection between Krawtchouk polynomials and linear fun
 
 
 \begin{Prop}[Krawtchouk polynomials relation]\label{prop:Kr}
-	Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
+	Let $n\in \N^*$ and $k\in [0,n]$. The following relations hold:
 \begin{itemize}
 	\item $\kraw{k}{n-\ell}{n}=(-1)^k \kraw{k}{\ell}{n}$,
 	\item $\kraw{n-k}{x}{n}=(-1)^x \kraw{k}{x}{n}$,
 		\item if $n$ is even and $k$ is odd, $\kraw{k}{n/2}{n}=0$,
 	\item if $n$ is even, $\kraw{n/2}{1}{n}=0$.
-	\item $\binom{n}{\ell}\kraw{k}{x}{n}=\binom{n}{k}\kraw{\ell}{k}{n}$.
+	\item $\binom{n}{\ell}\kraw{k}{\ell}{n}=\binom{n}{k}\kraw{\ell}{k}{n}$.
 	\end{itemize}
 \end{Prop}
 
 
 
-\begin{Prop}[Krawtchouk polynomials relation ~\cite{DCC:DalMaiSar06} Proposition $4$ Item $2$]\label{prop:KrDMS}
+\begin{Prop}[{~\cite[Prop.4]{DCC:DalMaiSar06}}]\label{prop:KrDMS}
 Let $n\in \N^*$ and $k\in [0,n]$, the following hold:
 \[(k+1)\kraw{k+1}{\ell}{n}=(n-2\ell)\kraw{k}{\ell}{n}-(n-k+1)\kraw{k-1}{\ell}{n}.\]
 \end{Prop}
 
 %\pmnote{add Lucas' theorem}
-Below we recall Lucas's Theorem.
 
-\begin{lemma}For a prime \( p \) and non-negative integers $n, k $ with $n \geq k $, the following congruence relation holds:
-	\[
-	\binom{n}{k} \equiv \prod_{i=0}^{r} \binom{n_i}{k_i} \pmod{p},
-	\]
-	where
-		$
-	n = n_r p^r + \cdots + n_1 p + n_0
-	$ and
-	$
-   k = k_r p^r + \cdots + k_1 p + k_0
-	$
-	are the \( p \)-ary expansions of \( n\) and \( k \), respectively.
-\end{lemma}
 
 \section{Characterizations of $t$-correctors}\label{sec:corr}
 
@@ -289,14 +277,14 @@ Below we recall Lucas's Theorem.
 We rewrite the $t$-corrector property using the notation of restricted Walsh transform.
 
 
-\begin{proposition}\label{prop:WalsCorr}
-	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if and only if its restricted Walsh transform satisfies
+\begin{theorem}\label{thm:WalsCorr}
+	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if $t$ is the maximum integer such that the restricted Walsh transform satisfies
 	\begin{equation}\label{Eq_RWT}
 	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0 \quad \text{ for } k=0,1,\dots, t.
 	\end{equation}
 
 
-	%\begin{proposition}\label{prop:WalsCorr}
+	%\begin{proposition}\label{thm:WalsCorr}
 	%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
 	%	\begin{itemize}
 	%		\item If $n$ is odd: for $0\le k \le t$,
@@ -304,11 +292,7 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 	%	\item If $n$ is even: for $0\le k \le t$,
 	%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
 	%	\end{itemize}
-
-
-
-
-\end{proposition}
+\end{theorem}
 \begin{proof}
 
 	%We denote by $A_k$ the quantity $A_k=\sum_{a\in \F_2^n \atop{\w(a)=k}} \wt{f}(a)$.
@@ -322,7 +306,7 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 	&=\sum_{\ell=0}^{n} \sum_{x\in \Ekn{\ell}{n}} (-1)^{f(x)} \,  \kraw{k}{\ell}{n}\\
 	&=\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n},
 	\end{align*}
-	where the last second equality follows from \eqref{Eq_K_rwt}.
+	where the last second equality follows from~\eqref{Eq_K_rwt}.
 	The desired statement is then proved by Definition~\ref{def:corr}.
 \end{proof}
 
@@ -357,7 +341,7 @@ Following from Proposition~\ref{prop:WAPBWalsh}, we reformulate WAPB functions o
 \end{definition}
 
 Denote by $\matK^{(t+1)}$ the submatrix formed by the leading $(t+1)$ rows of $\matK$.
-By Proposition~\ref{prop:WalsCorr} we see that $f$ is a $t$-corrector if and only if:
+By Theorem~\ref{thm:WalsCorr} we see that $f$ is a $t$-corrector if and only if:
 \begin{equation}\label{Eq_t-corrector}
 \matK^{(t+1)}\cdot \rwv{f}=\textbf{0}_{t+1}^\intercal.
 \end{equation}
@@ -408,12 +392,12 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	\end{equation}
 	where $\matM_{r,[0,r]} = [\matM_{r,0},\dots, \matM_{r,r}]$ denotes the leading $(r+1)$ entries in the $r$-th row of $M$; in other words,
   \[
-  \matM_{r,[0,r]} = [1] \matH_1\cdot\matH_2 \cdots \matH_r, \quad r=2,\dots, n.
+  \matM_{r,[0,r]} = [1] \cdot \matH_1\cdot\matH_2 \cdots \matH_r, \quad r=2,\dots, n.
   \]
 
 \end{theorem}
 \begin{proof}
-	The Property~\ref{prop:KrDMS} is crucial for us to derive the low-triangular matrix $M$ satisfying $\mathbf{M} \cdot \mathbf{K} = \mathbf{V}$.
+	The Property~\ref{prop:KrDMS} is crucial for us to derive the lower triangular matrix $\matM$ satisfying $\mathbf{M} \cdot \mathbf{K} = \mathbf{V}$.
 
 	We will proceed by induction on $r$ to gradually determine the non-zero entries
 	in each row of $\mathbf{M}$ denoted as the vector $\matLead{M}{r}{r+1}$.
@@ -423,7 +407,7 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	\end{equation*}
 	which can be rewritten as
 	\begin{equation}\label{eq:prop3sym}
-	\ell\cdot\kraw{k}{\ell}{n} = \alpha_{k-1}\kraw{k-1}{\ell}{n} + \beta_k\kraw{i}{\ell}{n} + \gamma_{k+1}\kraw{k+1}{\ell}{n}= \begin{bmatrix}
+	\ell\cdot\kraw{k}{\ell}{n} = \alpha_{k-1}\kraw{k-1}{\ell}{n} + \beta_k\kraw{k}{\ell}{n} + \gamma_{k+1}\kraw{k+1}{\ell}{n}= \begin{bmatrix}
 	\alpha_{k-1} & \beta_k & \gamma_{k+1}
 	\end{bmatrix} \cdot \begin{bmatrix*}[l]
 	\kraw{k-1}{\ell}{n} \\ \kraw{k}{\ell}{n} \\ \kraw{k+1}{\ell}{n}
@@ -488,16 +472,45 @@ Then it follows from $\matM \cdot \matK = \matV$ that
 \[
 \matM_{[0,t],[0,t]} \cdot \matK^{(t+1)} = \matV^{(t+1)},
 \]where $\matV^{(t+1)}$ is the submatrix formed by the leading $(t+1)$ rows of $\matV$.
-Therefore,  a Boolean function $f$ is a $t$-corrector if and only its restricted Walsh transform $\rwv{f}$
-satisfies the following system of equations:
-\begin{equation}\label{Eq_Vandemonde_system}
-\matV^{(t+1)} \cdot \rwv{f} = \mathbf{0}_{t+1}^\intercal.
+Therefore,  Theorem~\ref{thm:WalsCorr} can be reformulated as follows.
+
+\begin{theorem}\label{thm:t_corrector_Vandemonde_matrix}
+	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
+	A Boolean function $f\in \Bn{n}$ has $\corr(f) = t$ if and only if $t$ is the maximum integer such that the restricted Walsh transform vector $\rwv{f}$ satisfies
+\begin{equation}\label{Eq_RWT}
+ \begin{bmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+0 & 1 & 2 & \cdots & n \\
+&  &  \cdots &\cdots &  \\
+0 & 1 & 2^{t} & \cdots & n^{t}
+\end{bmatrix}\cdot
+\begin{bmatrix}
+\wtk{f}{0} \\ \wtk{f}{1} \\ \vdots \\ \wtk{f}{n}
+\end{bmatrix} = \textbf{0}_{t+1}^\intercal.
 \end{equation}
+
+
+
+
+%\begin{proposition}\label{thm:WalsCorr}
+%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
+%	\begin{itemize}
+%		\item If $n$ is odd: for $0\le k \le t$,
+%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+%	\item If $n$ is even: for $0\le k \le t$,
+%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
+%	\end{itemize}
+
+
+
+
+\end{theorem}
 
 Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the nonzero coefficients in $\rwv{f}$ are the $\ell$-th entries such that $\ell\preceq n$.
 Therefore, we have the following result:
 
-\begin{theorem}\label{Th-corrector-by-Vandemonde}
+\begin{corollary}\label{Th-corrector-by-Vandemonde}
+		Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
 	Let $\matW$ denote the submatrix formed by the $\ell$-th column in $\matV^{(t+1)}$ with $\ell \preceq n$.
 	Then for an $n$-variable WAPB function $f$ with $\corr(f)=t$, its restricted Walsh vector $\rwv{f}$
 	is determined by the solutions $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$ of the following
@@ -505,7 +518,7 @@ Therefore, we have the following result:
 	\[
 	\matW \cdot \mathbf{y} = \mathbf{0}_{{t+1}}^{\intercal}.
 	\]
-\end{theorem}
+\end{corollary}
 
 The characterization of $t$-corrector in terms of the Vandemonde matrix above will be used to study the existence of WPB functions and WAPB functions of certain order $t$ in the next section.
 
@@ -534,7 +547,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	By Definition~\ref{def:WPB}, a WPB function is balanced, hence $0$-corrector and $0$-resilient.
 	Below we show a WPB function cannot be $1$-corrector, thus not $1$-resilient.
 
-	By~\eqref{Eq_Vandemonde_system} we see that $\corr(f) = 1$ if and only if
+	By Theorem~\ref{thm:t_corrector_Vandemonde_matrix} we see that $\corr(f) = 1$ if and only if
 	\[
 	\matV^{(2)}\cdot \rwv{f} = \mathbf{0}_2^{\intercal},
 	\] where the restricted Walsh vector $\rwv{f}$ satisfies that $\wtk{f}{\ell} = 0$ for any $\ell \in [1,n-1]$ since $f$ is balanced on $\Ekn{\ell}{n}$.
@@ -551,13 +564,13 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	\end{bmatrix},
 	\]
 	which clearly contradicts the definition of WPB functions in Definition~\ref{def:WPB}.
-	%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
+	%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{thm:WalsCorr}.
 	%
-	%	Using Proposition~\ref{prop:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
+	%	Using Proposition~\ref{thm:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
 	%	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{1}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{1}{\ell}{n} \, ( \wtk{f}{\ell} - \wtk{f}{n-\ell}).\]
 	%	Since $f$ is WPB, using Property~\ref{prop:WAPBWalsh} we obtain:
 	%	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=0+2\kraw{1}{0}{n}=2n\ne 0,\]
-	%	hence $f$ is not $1$-corrector by Proposition~\ref{prop:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
+	%	hence $f$ is not $1$-corrector by Proposition~\ref{thm:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
 \end{proof}
 
 %We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+f$ with $f\in \WPB{m}$, hence all $2^m$-variable WAPB functions are $0$-resilient and not $1$-resilient.
@@ -631,7 +644,6 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	\]
 	%	Furthermore, there exists no WAPB function $f$ with $\corr(f)=2$.
 \end{proposition}
-\clnote{Martin: please complete this proof similarly.}
 \input{proof_t3.tex}
 
 %\begin{proposition}\label{prop:WAPB2}
@@ -639,7 +651,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 %	Let $k_1<k_2\in \N$ and $n=2^{k_1}+2^{k_2}$, if $f$ is an $n$-variable WAPB function then $f$ is at most $1$-corrector and not $2$-resilient.
 %\end{proposition}
 %\begin{proof}
-%	From Proposition~\ref{prop:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
+%	From Proposition~\ref{thm:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
 %	\begin{equation}\label{eq:wapb2}
 %	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0
 %	\end{equation}
@@ -685,17 +697,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 %\end{proof}
 %
 %
-%\begin{remark}
-%	We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
-%
-%	Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
-%	Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.
-%	Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
-%
-%
-%
-%
-%\end{remark}
+
 
 
 \subsection{Correction order of $n$-variable WAPB functions when $\w(n)>3$}
@@ -703,14 +705,16 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 We shall consider general cases by following the discussion for the cases where $\w(n)=2$ and $\w(n)=3$.
 In order to discuss the linear systems in a unified way, we need the following lemma.
 
-\begin{lemma}\label{Represention_Equations}
+\mgnote{Isn't there a notation inconsistency in Lemma 2? It seems the multinomial coefficient should be $\frac{u!}{u_{j_1}!\ldots u_{j_s}!}$. Same in the expansion of $x_{j_1}^{u_{j_1}}\ldots$}
+\begin{lemma}\label{lem:Represention_Equations}
 	For $1\leq u \leq t$, the equation $\sum_{\ell \preceq n } \ell^uy_{\ell}  = 0$ can be re-written as
 	\begin{equation}\label{key}
 	\sum_{s=1}^t\sum\limits_{\substack{\{j_1,\dots, j_s\} \subseteq [t] \\ u_{j_1}+\cdots+ u_{j_s}=u \\  u_{j_1},\dots,u_{j_s}\geq 1}}  \frac{u!}{u_1!\cdots u_s!} \left(  \sum_{\substack{\{i_{j_1},\dots, i_{j_s}\} \subseteq supp(\ell)   \\ \ell\preceq n }}  y_{\ell} \right)  x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}},
 	\end{equation} where $[t]$ denotes the set $\{1,2,\dots, t\}$.
 \end{lemma}
 
-\textbf{Proof.} Note that the expansion of $(x_1+\cdots + x_s)^u$ is given by
+\begin{proof}
+Note that the expansion of $(x_1+\cdots + x_s)^u$ is given by
 \[
 (x_1+\cdots + x_s)^u = \sum\limits_{\substack{u_1+\cdots + u_s = u\\ u_1,\dots, u_s\geq 0}} \frac{u!}{u_1!\cdots u_s!}x_1^{u_1}\dots x_s^{u_s},
 \] where $ \frac{u!}{u_1!\cdots u_s!}$ is the multinomial coefficient.
@@ -743,7 +747,8 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \\&= \sum_{s=1}^t \sum_{\substack{supp(\ell) = \{i_{j_1},\dots, i_{j_s}\} \\ \{j_1,\dots, j_s\} \subseteq [t] \\ }}  y_\ell \sum\limits_{(u_1,\dots, u_s) \in P_s(u)} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
 \\& =  \sum_{s=1}^t\sum\limits_{\substack{supp(\ell) = \{i_{j_1},\dots, i_{j_s}\}  \\ \{j_1,\dots, j_s\} \subseteq [t] \\ (u_{j_1},\dots, u_{j_s})\in P_s(u)}} \frac{u!}{u_{j_1}!\cdots u_{j_s}!} y_\ell   x_{j_1}^{u_1}\dots x_{j_s}^{u_{j_s}}
 \end{aligned}
-\end{equation} where the last equality is obtained by re-arranging the summands for $s=1,\dots, t$ according to the partition $P_{s}(u) = P^*_{s}(u) \sqcup P^*_{s-1}(u) \sqcup \cdots \sqcup P^*_1(u)$. \hfill$\square$
+\end{equation} where the last equality is obtained by re-arranging the summands for $s=1,\dots, t$ according to the partition $P_{s}(u) = P^*_{s}(u) \sqcup P^*_{s-1}(u) \sqcup \cdots \sqcup P^*_1(u)$.
+\end{proof}
 
 \begin{example} \label{Ex1}
 	Assume $supp(n)=\{i_1,i_2,i_3\}$ with $t= 3$ and $u=2$,
@@ -767,19 +772,18 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 
 \begin{proposition}Let $n\in \N^*$ with $n=2^{i_1}+2^{i_2}+\cdots +2^{i_t}$ with $i_1<i_2<\cdots i_t$ and $t>3$.
 	Suppose $\lambda_n := \{i_t-i_{t-1}, \dots, i_{3}-i_2, i_2-i_1 \}$ satisfies $\lambda_n\geq t$.
-	Then any WAPB function $f$ has $\corr(f)\leq t-1$.
-    Furthermore, the equality is reached if and only
-	the
-	restricted Walsh transforms $\rwv{f}$ is given by
-	\[
-	\wtk{f}{\ell} =\wtk{f}{0} \cdot (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
-	\]
-\end{proposition}
-\begin{proof}
-	\clnote{Martin: please try to give a proof by following the proof development for Prop. 4}
-\end{proof}
+	Then any WAPB function $f$ has $\corr(f)\leq t-1$. Furthermore, the equality
+	is reached if and only if the restricted Walsh transforms $\rwv{f}$ is given
+	by
 
-\begin{conjecture}
+	\mgnote{Shouldn't it be "... any WAPB function \textbf{in n variables} $f$ has $\corr(f)\leq t-1$..." or is it implicit? }
+	$$
+	\wtk{f}{\ell} = \wtk{f}{0} \cdot (-1)^{\w(\ell)}, \forall \, \ell \preceq n.
+	$$
+\end{proposition}
+\input{proof_inf_family.tex}
+
+\begin{conjecture}\label{conj:wapb-corr}
 	Let $n\in \N^*$ with $\w(n)=t$. Then
 	there exist WAPB functions $f$ with $\corr(f)=t-1$ and
 	restricted Walsh transforms $\rwv{f}$ are uniquely given by
@@ -788,6 +792,21 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 	\]  Furthermore,
 	there exists no WAPB function $f$ with $\corr(f)=t$.
 \end{conjecture}
+
+\begin{remark}
+	We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
+
+	Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
+	Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.
+	Since these functions are the direct sum of $\w(n)$ balanced functions their resilience order is at least $\w(n)-1$.
+
+
+
+
+\end{remark}
+
+\clnote{Add experimental results}
+\input{experimental_results.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -798,14 +817,14 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %We rewrite the $t$-corrector property using the notation of restricted Walsh transform.
 %
 %
-%\begin{proposition}\label{prop:WalsCorr}
+%\begin{proposition}\label{thm:WalsCorr}
 %	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if and only if its restricted Walsh transform satisfies
 %	\begin{equation}\label{Eq_RWT}
 %	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0 \quad \text{ for } k=0,1,\dots, t.
 %	\end{equation}
 %
 %
-%%\begin{proposition}\label{prop:WalsCorr}
+%%\begin{proposition}\label{thm:WalsCorr}
 %%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
 %%	\begin{itemize}
 %%		\item If $n$ is odd: for $0\le k \le t$,
@@ -874,7 +893,7 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %
 %\end{definition}
 %
-%With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
+%With these notations, using the development of Proposition~\ref{thm:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
 %\begin{equation}\label{Eq_t-corrector}
 %\matK^{(t)}\cdot \rwv{f}=\textbf{0}_t^\intercal.
 %\end{equation}
@@ -961,13 +980,13 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %\end{theorem}
 %\begin{proof}
 %	By definition (Definition~\ref{def:WPB}) a WPB function is balanced, hence $0$-corrector and $0$-resilient.
-%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{prop:WalsCorr}.
+%	To show that $f$ is not $1$-corrector we show the values of its restricted Walsh transform do not satisfy the characterization of Proposition~\ref{thm:WalsCorr}.
 %
-%	Using Proposition~\ref{prop:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
+%	Using Proposition~\ref{thm:WalsCorr} and Property~\ref{prop:Kr}, for $n=2^m$ we have:
 %	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{1}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{1}{\ell}{n} \, ( \wtk{f}{\ell} - \wtk{f}{n-\ell}).\]
 %	Since $f$ is WPB, using Property~\ref{prop:WAPBWalsh} we obtain:
 %	\[\sum_{a\in \Ekn{1}{n}} \wt{f}(a)=0+2\kraw{1}{0}{n}=2n\ne 0,\]
-%	hence $f$ is not $1$-corrector by Proposition~\ref{prop:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
+%	hence $f$ is not $1$-corrector by Proposition~\ref{thm:WalsCorr}. Since $f$ is not $1$-corrector it implies $f$ is not $1$-resilient.
 %\end{proof}
 %
 %We recall that the WAPB functions when $n=2^m$ are either of the form $f$ or $1+f$ with $f\in \WPB{m}$, hence all $2^m$-variable WAPB functions are $0$-resilient and not $1$-resilient.
@@ -987,7 +1006,7 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %	Let $k_1<k_2\in \N$ and $n=2^{k_1}+2^{k_2}$, if $f$ is an $n$-variable WAPB function then $f$ is at most $1$-corrector and not $2$-resilient.
 %\end{proposition}
 %\begin{proof}
-%	From Proposition~\ref{prop:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
+%	From Proposition~\ref{thm:WalsCorr} $f$ is $1$-corrector if for $k=0$ and $k=1$:
 %	\begin{equation}\label{eq:wapb2}
 %	\sum_{\ell=0}^{n} \wtk{f}{\ell} \, \kraw{k}{\ell}{n}=0
 %	\end{equation}
@@ -1076,7 +1095,7 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %
 %\end{definition}
 %
-%With these notations, using the development of Proposition~\ref{prop:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
+%With these notations, using the development of Proposition~\ref{thm:WalsCorr} we get that $f$ is a $t$-corrector if and only if:
 %\[\rwv{f} \cdot \KrM{n}{t}=0_t.\]
 %
 %For a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the non null coefficients are the ones such that $k\preceq n$.
@@ -1239,18 +1258,6 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fi
 
-\appendix
-\mgnote{I propose this proof for the (very) loose upper bound on $t$-correctness.}
-\section{A loose upper bound.}
-\input{proof_loose_ubound.tex}
-
-%\mgnote{I add our work with Chunlei here. The proof covers only half of the statement for now: From left to a middle statement.\\ I believe the same middle statement can be reached from the right hand side of the equivalence to complete the proof.}
-%\section{Equivalence to the conjecture.}
-%\input{conjecture_equivalence.tex}
-
-%\mgnote{I propose the proof for the relation between $\mathbf{K}$ and $\mathbf{V}$ below. Every feedback is welcome.}
-%\section{Relation between the Krawtchouk matrix and the Vandermonde matrix.}
-%\input{kraw_vand_matrices_eq.tex}
 
 
 \end{document}

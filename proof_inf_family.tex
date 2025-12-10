@@ -1,0 +1,83 @@
+\begin{proof}
+We consider solutions to the linear systems $\matW \cdot \vecy = \mathbf{0}^\intercal_t$
+and $\matW \cdot \vecy = \mathbf{0}^\intercal_{t+1}$ where
+$\vecy = (y_{0\ldots00}, y_{0\ldots01}, y_{0\ldots10}, \ldots, y_{1\ldots10}, y_{1\ldots11}) \in \{\pm1\}^{2^t}$.
+\begin{equation}\label{eq:vand_t}
+        \begin{bmatrix}
+            1 & 1 & 1 & 1 & \ldots & 1\\
+            0 &  2^{i_1} & 2^{i_2} & (2^{i_1} + 2^{i_2}) & \ldots & (2^{i_1} + \ldots + 2^{i_t})\\
+            \vdots & \vdots & \vdots & \vdots &  & \vdots\\
+            0 & 2^{(t-1)i_1} & 2^{(t-1)i_2} & (2^{i_1} + 2^{i_2})^{t-1} & \ldots & (2^{i_1} + \ldots + 2^{i_t})^{t-1}\\
+        \end{bmatrix}
+        \cdot \mathbf{y} = \begin{bmatrix}
+            0\\0\\\vdots\\0
+        \end{bmatrix}.
+    \end{equation}
+For each $y_i$ we can write $i = \sum_{\delta=0}^{t-1}i_\delta 2^\delta$.
+Let us introduce the notation $\vecy_B = \{y_i \mid i_\delta = 1, \forall \delta \in B\}$
+for some $B \subseteq \{0, 1, \ldots, t-1\}$.
+
+We will proceed by induction on Rows $1$ to $t-1$ of $\matW$ where Row $r$ is
+the row which all coefficients of $\matW$ are exponentiated by $r$. We want to
+prove that all sum coefficient must be null for each linear relation induced by
+the first $r$ rows. Row $0$ forces $\vecy$ to be a balanced vector with
+coefficients in $\{\pm 1\}$.
+
+\underline{Initialization.}
+
+Let $r = 1$. Row $1$ induces the equation below
+\begin{equation*}
+    \sum_{y_i \in \vecy_{\{1\}}} (y_i) \cdot 2^{i_1} + \sum_{y_i \in \vecy_{\{2\}}} (y_i) \cdot 2^{i_2} + \ldots + \sum_{y_i \in \vecy_{\{t\}}} (y_i) \cdot 2^{i_t} = 0.
+\end{equation*}
+For ease of presentation we denote the sum coefficients of $2^{i_j}$ by $s_j$.
+Then the equation from Row $1$ becomes
+\begin{equation}\label{eq:lin_t_row1}
+    s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + \ldots + s_t \cdot 2^{i_t} = 0.
+\end{equation}
+Because $\vecy$ is balanced, it is clear that any $s_j$ can take for values any even number or its opposite
+in the range $[0, 2^{t-1}]$ because $|\vecy_B| = 2^{t-|B|}$. Since $\lambda_n \geq t$,
+there doesn't exist any $s_j \neq 0$ to satisfy Equation~\ref{eq:lin_t_row1}.
+
+Let $r = 2$. From Row 2 one gets the following equation after re-arranging the
+terms
+\begin{equation*}
+    \begin{split}
+        &\sum_{y_i \in \vecy_{\{1\}}} (y_i) \cdot 2^{i_1} + \sum_{y_i \in \vecy_{\{2\}}} (y_i) \cdot 2^{i_2} + \ldots + \sum_{y_i \in \vecy_{\{t\}}} (y_i) \cdot 2^{i_t} +\\
+        &2\sum_{y_i \in \vecy_{\{1,2\}}} (y_i) \cdot 2^{i_1 + i_2} + 2\sum_{y_i \in \vecy_{\{1,3\}}} (y_i) \cdot 2^{i_1 + i_3} + \ldots + 2\sum_{y_i \in \vecy_{\{t-1, t\}}} (y_i) \cdot 2^{i_{t-1} + i_{t}} = 0.
+    \end{split}
+\end{equation*}
+We use the previously defined notations and knowledge that $s_1 = s_2 = \ldots = s_t = 0$
+to simplify it into
+\begin{equation}\label{eq:lin_t_row2}
+    2s_{12} \cdot 2^{i_1 + i_2} + 2s_{13} \cdot 2^{i_1 + i_3} + \ldots + 2s_{(t-1)(t)} \cdot 2^{i_{t-2} + i_{t-1}} = 0.
+\end{equation}
+Because $\vecy$ is balanced, it is clear that any $s_j$ can take for values any even number or its opposite
+in the range $[0, 2^{t-2}]$ because $|\vecy_B| = 2^{t-|B|}$. Since $i_j + i_k - i_l - i_m \geq t$
+for all $j < k < l < m \leq t$, there doesn't exist any $s_j \neq 0$ to satisfy
+Equation~\ref{eq:lin_t_row2}. The base step is done.
+
+\underline{Induction:} we shall prove that if the statement is true for $r-1$,
+then it is true for $r$. From Row $r$ and using Lemma~\ref{lem:Represention_Equations} one gets the following equation
+\begin{equation*}
+    \sum_{\ell \preceq n} \ell^r y_\ell = \sum_{m=1}^t\sum\limits_{\substack{\{j_1,\dots, j_m\}\subseteq[t]\\ r_{j_1}+\cdots+ r_{j_m}=r\\ r_{j_1}, \dots, r_{j_m} \geq 1}} \frac{r!}{r_{j_1}!\cdots r_{j_m}!} \left(\sum_{\substack{\{i_{j_1},\dots, i_{j_m}\} \subseteq supp(\ell)\\ \ell\preceq n}} y_{\ell} \right) x_{j_1}^{r_{j_1}}\dots x_{j_m}^{r_{j_m}} = 0.
+\end{equation*}
+
+Let us denote the multinomial coefficient by $\mu_{1\ldots m} = \frac{r!}{r_{j_1}!\cdots r_{j_m}!}$
+and the previously defined notations $s_{1\ldots m} = \sum (y_\ell)$. We rewrite
+the above equation into its rearranged form
+
+\begin{equation*}
+    \begin{split}
+        \mu_1 s_1 2^{i_1} + \ldots + \mu_t s_t 2^t &+\\
+        \mu_{12} s_{12} 2^{i_1 + i_2} + \ldots + \mu_{(t-1)(t)} s_{(t-1)(t)}+ 2^{i_{t-1} + i_{t}} &+\\
+        \ldots &+\\
+        \mu_{12\ldots r} s_{12\ldots r} 2^{i_1 + i_2 + \ldots + i_r} + \ldots + \mu_{(t-r)(t-r+1)\ldots(t)} s_{(t-r)(t-r+1)\ldots(t)} \cdot 2^{i_{t-r} + i_{t-r+1} + \ldots + i_{t}} &= 0
+    \end{split}
+\end{equation*}
+
+We know from Row $r-1$ that $s_1, \ldots, s_t, s_{12}, \ldots, s_{(t-1)(t)}, \ldots, s_{(t-(r-1))\ldots(t-1)(t)} = 0$.
+We then reformulate the above equation into
+\begin{equation}\label{eq:lin_t_rowr}
+    \mu_{12\ldots r} s_{12\ldots r} 2^{i_1 + i_2 + \ldots + i_r} + \ldots + \mu_{(t-r)(t-r+1)\ldots(t)} s_{(t-r)(t-r+1)\ldots(t)} \cdot 2^{i_{t-r} + i_{t-r+1} + \ldots + i_{t}} = 0.
+\end{equation}
+\end{proof}
