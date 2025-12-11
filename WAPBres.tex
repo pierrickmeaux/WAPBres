@@ -768,10 +768,21 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 	where $x_1 = 2^{i_1}, x_2 = 2^{i_2}, x_3 = 2^{i_3} $.
 \end{example}
 
-\clnote{Recall the definition of the generalized Siden sequence $B_{k}[1]$}
 
-\begin{proposition}Let $n\in \N^*$ with $n=2^{i_1}+2^{i_2}+\cdots +2^{i_t}$ with $i_1<i_2<\cdots i_t$ and $t>3$.
-	Suppose $\lambda_n := \{i_t-i_{t-1}, \dots, i_{3}-i_2, i_2-i_1 \}$ satisfies $\lambda_n\geq t$.
+Recall that a sequence of integers $A$ is said to be a $B_h$ sequence if the sums of $h$ integers from $A$, i.e.,
+\[
+s =a_1 + \cdots + a_h, a_1\leq \cdots \leq a_h, a_k \in A
+\] are all distinct \cite{cilleruelo2017}. From the definition of $B_h$ sequence, we see that a $B_h$ sequence is also a $B_k$ set for integers $k$ with $2\leq k<h$
+(since any two sums of $k$ elements can be seen as two sums of $h$ elements where the last $h-k$ terms are exactly the same).
+
+Furthermore, we shall call a sequence $A$ an $m$-gap $B_h$ sequence if $A$ is a $B_h$ sequence and 
+\begin{equation}\label{Eq_m-gap_sidon}
+\min \left\{ |\sum_{i=1}^ha_i - \sum_{i=1}^ha'_i|\,:\, (a_1,\dots, a_h)\neq (a'_1,\dots, a'_h) \in A^h,  a_1\leq \cdots \leq a_h, a'_1\leq \cdots \leq a'_h \right\} =m.
+\end{equation}
+Given a $B_h$ sequence $A$, it is easily seen that the set $tA = \{ m \cdot a : a \in A \}$ is an $m$-gap $B_h$ sequence.
+\clnote{Martin: pls refine the proof with the new condition and provide an example and remark of $B_t$ sets based on the algorithm in \cite{cilleruelo2017}. }
+\begin{proposition}Let $n\in \N^*$ with $n=2^{i_1}+2^{i_2}+\cdots +2^{i_t}$ with $t>3$ and $i_1<\dots < i_t$.
+	 Suppose $[i_1,\dots, i_t]$ forms a $t$-gap $B_{t-1}$ sequence.
 	Then any $n$-variable WAPB function $f$ has $\corr(f)\leq t-1$. Furthermore,
 	the equality is reached if and only if the restricted Walsh transforms
 	$\rwv{f}$ is given by
