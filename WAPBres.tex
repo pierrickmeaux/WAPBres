@@ -83,21 +83,24 @@ Notably, Hamming weight is also a widely used leakage model in side-channel atta
 A fundamental security requirement for Boolean functions used in stream ciphers is balancedness: the output must take each value equally often to avoid exploitable statistical biases. 
 In the context of slices, \cite{TOSC:CarMeaRot17} introduced functions that are balanced on every slice, called Weightwise (Almost) Perfectly Balanced (WAPB) functions. 
 The qualifier “almost” accounts for the case where $n$ is not a power of two, so other slices than the ones of index $0$ and $n$ have odd cardinality and perfect balancedness is impossible. 
-Since 2017, many works have introduced new constructions of WPB or WAPB functions, studying their global parameters—algebraic degree, Algebraic Immunity (AI), nonlinearity—as well as restricted parameters such as weightwise nonlinearity and weightwise algebraic immunity.
+Since 2017, many works have introduced new constructions of WPB or WAPB functions, studying their global and restricted cryptographic parameters.
+%—algebraic degree, Algebraic Immunity (AI), nonlinearity—as well as restricted parameters such as weightwise nonlinearity and weightwise algebraic immunity.
 
 A large variety of constructions has been proposed. 
 Recursive families and secondary constructions were first presented in~\cite{TOSC:CarMeaRot17}. 
-Constructions based on field representations yield $2$-rotation symmetric WPB functions with high weightwise nonlinearity~\cite{DCC:LiuMes19,CC:MSLZ22}, and recently $2-\pi$ symmetric WAPB functions for all $n$~\cite{eprint:DalMalMea24}. 
-Functions obtained by comparing the weights of two halves of the input achieve optimal AI~\cite{CC:TangLiu19,BFA:MesSuLi21}. 
+Constructions based on field representations yield $2$-rotation symmetric WPB functions with high weightwise nonlinearity~\cite{DCC:LiuMes19,CC:MSLZ22}, and recently $2$-$\pi$ symmetric WAPB functions for all $n$~\cite{eprint:DalMalMea24}. 
+WPB Functions obtained by comparing the weights of two halves of the input achieve optimal AI~\cite{CC:TangLiu19,BFA:MesSuLi21}. Comparing the two halves using total orders lead to WAPB functions for all $n$~\cite{SAC:Meaux24}.
 Other approaches modify near-WPB linear or quadratic functions to impose balancedness on all slices~\cite{CC:MesSu21}, an idea later generalized to obtain WAPB functions from low-degree functions~\cite{DAM:LiSu20,DAM:GuoSu22,AMC:ZhangSu23,Mat:ZJZQ23,DAM:ZLCQZ23}. 
 Secondary constructions have also been explored, such as direct sums~\cite{DAM:ZhuSu22}, Siegenthaler-type constructions combined with symmetric functions~\cite{INDO:GinMea22} and $t$-concatenation~\cite{eprint:IsiAldSeh25}. 
-Moreover, several works have modified the support of non-WPB functions to analyze the distribution of cryptographic parameters—weightwise nonlinearity~\cite{DAM:GinMea22}, global nonlinearity~\cite{C2SI:GinMea23}, or algebraic immunity~\cite{Latin:GinMea23}. 
+Moreover, several works have modified the support of non-WPB functions to %analyze the distribution of cryptographic parameters
+provide W(A)PB functions with bounded parameters for 
+the weightwise nonlinearity~\cite{DAM:GinMea22}, the global nonlinearity~\cite{C2SI:GinMea23}, or the algebraic immunity~\cite{Latin:GinMea23}. 
 Heuristic search approaches, notably evolutionary algorithms, have been applied as well~\cite{CEC:MPJDL22,ASIACCS:YCL+23,ACI:ManKuLar22}. 
-Additional constructions or studies of restricted criteria appear in~\cite{CC:MesZhoDin19,BFA:DalMal23,eprint:GinMea23,AMC:DalMal23}.
+Additional constructions appear in~\cite{BFA:DalMal23,AMC:DalMal23,eprint:IsiAldSeh25}.
 
 
 Despite this growing body of work, one central cryptographic parameter has remained largely unexplored for WAPB functions: resilience. 
-Previous studies have characterized their nonlinearity, restricted nonlinearity, algebraic immunity (both global and weightwise), yet no general result on the resilience of WAPB functions had been established. 
+Previous studies have characterized their nonlinearity~\cite{C2SI:GinMea23}, restricted nonlinearity~\cite{DAM:GinMea22}, algebraic immunity (both global~\cite{LATIN:GinMea23} and weightwise~\cite{CANS:BonMea25}), algebraic degree~\cite{CCDS:GinMea24}, yet no general result on the resilience of WAPB functions had been established. 
 This is particularly intriguing since WAPB functions are globally balanced by definition. 
 One might expect them to behave, with respect to correlation immunity, similarly to random balanced functions on slices. 
 However, our results show that this is not the case. 
