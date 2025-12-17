@@ -62,10 +62,6 @@ University of Luxembourg, Luxembourg\\	\email{pierrick.meaux@uni.lu}
 
 \pmnote{draft}
 
-\pmnote{Add the paper on S0 equivalence, the order based function, the articles from Deepak and Krishna, the 2 recent articles on WAPB constructions. 
-}
-
-\pmnote{correct reference eprint:IsiAldSeh25}
 
 
 
@@ -91,20 +87,29 @@ Recursive families and secondary constructions were first presented in~\cite{TOS
 Constructions based on field representations yield $2$-rotation symmetric WPB functions with high weightwise nonlinearity~\cite{DCC:LiuMes19,CC:MSLZ22}, and recently $2$-$\pi$ symmetric WAPB functions for all $n$~\cite{eprint:DalMalMea24}. 
 WPB Functions obtained by comparing the weights of two halves of the input achieve optimal AI~\cite{CC:TangLiu19,BFA:MesSuLi21}. Comparing the two halves using total orders lead to WAPB functions for all $n$~\cite{SAC:Meaux24}.
 Other approaches modify near-WPB linear or quadratic functions to impose balancedness on all slices~\cite{CC:MesSu21}, an idea later generalized to obtain WAPB functions from low-degree functions~\cite{DAM:LiSu20,DAM:GuoSu22,AMC:ZhangSu23,Mat:ZJZQ23,DAM:ZLCQZ23}. 
-Secondary constructions have also been explored, such as direct sums~\cite{DAM:ZhuSu22}, Siegenthaler-type constructions combined with symmetric functions~\cite{INDO:GinMea22} and $t$-concatenation~\cite{eprint:IsiAldSeh25}. 
+Secondary constructions have also been explored, such as direct sums~\cite{DAM:ZhuSu22}, Siegenthaler constructions combined with symmetric functions~\cite{INDO:GinMea22} and $t$-concatenation~\cite{eprint:IsiRodSeh25}. 
 Moreover, several works have modified the support of non-WPB functions to %analyze the distribution of cryptographic parameters
 provide W(A)PB functions with bounded parameters for 
-the weightwise nonlinearity~\cite{DAM:GinMea22}, the global nonlinearity~\cite{C2SI:GinMea23}, or the algebraic immunity~\cite{Latin:GinMea23}. 
+the weightwise nonlinearity~\cite{DAM:GinMea22}, the global nonlinearity~\cite{C2SI:GinMea23}, or the algebraic immunity~\cite{LC:GinMea23}. 
 Heuristic search approaches, notably evolutionary algorithms, have been applied as well~\cite{CEC:MPJDL22,ASIACCS:YCL+23,ACI:ManKuLar22}. 
-Additional constructions appear in~\cite{BFA:DalMal23,AMC:DalMal23,eprint:IsiAldSeh25}.
+Additional constructions appear in~\cite{BFA:DalMal23,AMC:DalMal23,eprint:IsiRodSeh25}.
+
+
+\pmnote{Modify after here}
 
 
 Despite this growing body of work, one central cryptographic parameter has remained largely unexplored for WAPB functions: resilience. 
-Previous studies have characterized their nonlinearity~\cite{C2SI:GinMea23}, restricted nonlinearity~\cite{DAM:GinMea22}, algebraic immunity (both global~\cite{LATIN:GinMea23} and weightwise~\cite{CANS:BonMea25}), algebraic degree~\cite{CCDS:GinMea24}, yet no general result on the resilience of WAPB functions had been established. 
-This is particularly intriguing since WAPB functions are globally balanced by definition. 
-One might expect them to behave, with respect to correlation immunity, similarly to random balanced functions on slices. 
+Generalizing the notion of balancedness, a function is said $t$-resilient if it is uncorrelated to all affine functions combining at most $t$ variables. 
+The resilience has been introduced to estimate the complexity of correlation attacks on streamciphers~\cite{Siegenthaler84}.
+Previous studies on WAPB functions have characterized their nonlinearity~\cite{C2SI:GinMea23}, restricted nonlinearity~\cite{DAM:GinMea22}, algebraic immunity (both global~\cite{LC:GinMea23} and weightwise~\cite{CANS:BonMea25}), algebraic degree~\cite{CCDS:GinMea24}, yet no general result on the resilience of WAPB functions had been established. 
+
+This is particularly intriguing since what characterize a WAPB function is related to the balancedness, and balancedness on all the parts of a particular partition. 
+Since the slices and the hyperplanes corresponding to affine relations are not related, one might expect the WAPB function to behave like random balanced functions relatively to the the resilience. 
 However, our results show that this is not the case. 
 Even the simplest case—WPB functions—provides a stark example: although they are balanced on every slice, they are never $1$-resilient. 
+More generally, WAPB functions have a low resilience order (the maximum value of $t$ such that the function is $t$-resilient). We can exhibit $n$-variable WAPB functions with a resilient order no more than logarithmic in $n$, and 
+
+
 More generally, for all WAPB functions we obtain strong upper bounds on the resilience order, well below what one would predict from a random-function heuristic.
 
 To analyse the resilience of WAPB functions, we adopt a perspective that is uncommon in Boolean function cryptanalysis: we study their behaviour as correctors on slices. 
