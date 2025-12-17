@@ -65,26 +65,26 @@ University of Luxembourg, Luxembourg\\	\email{pierrick.meaux@uni.lu}
 
 
 
-With the design of FLIP~\cite{EC:MJSC16}, established cryptographic criteria for Boolean functions—traditionally used to assess the security of filtered Linear Feedback Shift Registers (LFSRs), combined LFSRs, or more general stream ciphers—no longer directly apply. 
-In this cipher, the relevant properties of the filtering Boolean function are not defined on the entire $\F_2^n$ but instead on a specific, publicly known subset of inputs. 
-This shift has triggered a generalization of standard attacks and the development of new criteria for Boolean functions restricted to subsets or partitions of $\F_2^n$, beginning with the study of restricted cryptographic criteria~\cite{TOSC:CarMeaRot17}. 
+With the design of FLIP~\cite{EC:MJSC16}, established cryptographic criteria for Boolean functions—traditionally used to assess the security of filtered Linear Feedback Shift Registers (LFSRs), combined LFSRs, or more general stream ciphers—no longer directly apply.
+In this cipher, the relevant properties of the filtering Boolean function are not defined on the entire $\F_2^n$ but instead on a specific, publicly known subset of inputs.
+This shift has triggered a generalization of standard attacks and the development of new criteria for Boolean functions restricted to subsets or partitions of $\F_2^n$, beginning with the study of restricted cryptographic criteria~\cite{TOSC:CarMeaRot17}.
 So far these criteria have been regarded for general subsets~\cite{TOSC:CarMeaRot17,CANS:BonMea25}, subsets of fixed Hamming weight \eg \cite{IC:MMMRS18,Mesnager2018,DAM:GinMea22}, and affine spaces~\cite{DCC:CarFeuSal25}.
 
 
-In FLIP, the input to the filtering function always has a fixed and known Hamming weight, and tailoring attacks to this constraint strengthens them considerably. 
-This phenomenon reflects a broader trend: additional information about a cipher’s internal values may dramatically simplify attacks, as observed in algebraic side-channel cryptanalysis~\cite{INS:RenSta09} or lattice reduction with side information~\cite{C:DDGR20}. 
-From the FLIP analysis emerged a systematic study of the partition of $\F_2^n$ into $n+1$ slices, the sets of all vectors of a given Hamming weight $\Ekn{k}{n}=\{x \in \F_2^n \mid \w(x)=k\}$ for $k\in[0,n]$. 
+In FLIP, the input to the filtering function always has a fixed and known Hamming weight, and tailoring attacks to this constraint strengthens them considerably.
+This phenomenon reflects a broader trend: additional information about a cipher’s internal values may dramatically simplify attacks, as observed in algebraic side-channel cryptanalysis~\cite{INS:RenSta09} or lattice reduction with side information~\cite{C:DDGR20}.
+From the FLIP analysis emerged a systematic study of the partition of $\F_2^n$ into $n+1$ slices, the sets of all vectors of a given Hamming weight $\Ekn{k}{n}=\{x \in \F_2^n \mid \w(x)=k\}$ for $k\in[0,n]$.
 Notably, Hamming weight is also a widely used leakage model in side-channel attacks~\cite{book:JoyOli05,book:Standaert10,TCHES:DMMS20}, even though in practice approximate weight leakages are often considered more realistic~\cite{CHES:ORSW12,AC:BFG14,C:HMMRSU23}.
 
-A fundamental security requirement for Boolean functions used in stream ciphers is balancedness: the output must take each value equally often to avoid exploitable statistical biases. 
-In the context of slices, \cite{TOSC:CarMeaRot17} introduced functions that are balanced on every slice, called Weightwise (Almost) Perfectly Balanced (WAPB) functions. 
-The qualifier “almost” accounts for the case where $n$ is not a power of two, so other slices than the ones of index $0$ and $n$ have odd cardinality and perfect balancedness is impossible. 
+A fundamental security requirement for Boolean functions used in stream ciphers is balancedness: the output must take each value equally often to avoid exploitable statistical biases.
+In the context of slices, \cite{TOSC:CarMeaRot17} introduced functions that are balanced on every slice, called Weightwise (Almost) Perfectly Balanced (WAPB) functions.
+The qualifier “almost” accounts for the case where $n$ is not a power of two, so other slices than the ones of index $0$ and $n$ have odd cardinality and perfect balancedness is impossible.
 Since 2017, many works have introduced new constructions of WPB or WAPB functions, studying their global and restricted cryptographic parameters.
 %—algebraic degree, Algebraic Immunity (AI), nonlinearity—as well as restricted parameters such as weightwise nonlinearity and weightwise algebraic immunity.
 
-A large variety of constructions has been proposed. 
-Recursive families and secondary constructions were first presented in~\cite{TOSC:CarMeaRot17}. 
-Constructions based on field representations yield $2$-rotation symmetric WPB functions with high weightwise nonlinearity~\cite{DCC:LiuMes19,CC:MSLZ22}, and recently $2$-$\pi$ symmetric WAPB functions for all $n$~\cite{eprint:DalMalMea24}. 
+A large variety of constructions has been proposed.
+Recursive families and secondary constructions were first presented in~\cite{TOSC:CarMeaRot17}.
+Constructions based on field representations yield $2$-rotation symmetric WPB functions with high weightwise nonlinearity~\cite{DCC:LiuMes19,CC:MSLZ22}, and recently $2$-$\pi$ symmetric WAPB functions for all $n$~\cite{eprint:DalMalMea24}.
 WPB Functions obtained by comparing the weights of two halves of the input achieve optimal AI~\cite{CC:TangLiu19,BFA:MesSuLi21}. Comparing the two halves using total orders lead to WAPB functions for all $n$~\cite{SAC:Meaux24}.
 Other approaches modify near-WPB linear or quadratic functions to impose balancedness on all slices~\cite{CC:MesSu21}, an idea later generalized to obtain WAPB functions from low-degree functions~\cite{DAM:LiSu20,DAM:GuoSu22,AMC:ZhangSu23,Mat:ZJZQ23,DAM:ZLCQZ23}. 
 Secondary constructions have also been explored, such as direct sums~\cite{DAM:ZhuSu22}, Siegenthaler constructions combined with symmetric functions~\cite{INDO:GinMea22} and $t$-concatenation~\cite{eprint:IsiRodSeh25}. 
@@ -109,35 +109,34 @@ However, our results show that this is not the case.
 Even the simplest case—WPB functions—provides a stark example: although they are balanced on every slice, they are never $1$-resilient. 
 More generally, WAPB functions have a low resilience order (the maximum value of $t$ such that the function is $t$-resilient). We can exhibit $n$-variable WAPB functions with a resilient order no more than logarithmic in $n$, and 
 
-
 More generally, for all WAPB functions we obtain strong upper bounds on the resilience order, well below what one would predict from a random-function heuristic.
 
-To analyse the resilience of WAPB functions, we adopt a perspective that is uncommon in Boolean function cryptanalysis: we study their behaviour as correctors on slices. 
-A $t$-corrector is a function whose restricted Walsh coefficients vanish on all subsets of variables of size at most $t$. 
-We show that the correction order of a Boolean function on slices is tightly connected to a system of linear equations involving restricted Walsh transforms of the function. 
-For WAPB functions, the structure of these equations becomes remarkably rigid due to their slice-balancedness. 
+To analyse the resilience of WAPB functions, we adopt a perspective that is uncommon in Boolean function cryptanalysis: we study their behaviour as correctors on slices.
+A $t$-corrector is a function whose restricted Walsh coefficients vanish on all subsets of variables of size at most $t$.
+We show that the correction order of a Boolean function on slices is tightly connected to a system of linear equations involving restricted Walsh transforms of the function.
+For WAPB functions, the structure of these equations becomes remarkably rigid due to their slice-balancedness.
 This link provides a general framework to study resilience through corrector properties, and is of independent interest for understanding the number and structure of $t$-corrector or $t$-resilient Boolean functions.
 
-A key component of our analysis is an unexpected algebraic connection between Krawtchouk matrices and Vandermonde matrices. 
-By analysing the restricted Walsh equations satisfied by WAPB functions, we show that determining the maximum correction (and hence resilience) order of such functions reduces to a problem closely related to the classical Prouhet--Tarry--Escott problem. 
+A key component of our analysis is an unexpected algebraic connection between Krawtchouk matrices and Vandermonde matrices.
+By analysing the restricted Walsh equations satisfied by WAPB functions, we show that determining the maximum correction (and hence resilience) order of such functions reduces to a problem closely related to the classical Prouhet--Tarry--Escott problem.
 This connection allows us to derive tight bounds on the correction order of WAPB functions.
 
-Our main result is that for infinitely many values of $n$, no WAPB function has correction order greater than the Hamming weight of $n$. 
-We conjecture that this upper bound holds for all $n$. 
-On the other hand, for every $n$ we construct WAPB functions with correction order exactly $\w(n)-1$, thus achieving an upper bound that is tight up to one unit. 
+Our main result is that for infinitely many values of $n$, no WAPB function has correction order greater than the Hamming weight of $n$.
+We conjecture that this upper bound holds for all $n$.
+On the other hand, for every $n$ we construct WAPB functions with correction order exactly $\w(n)-1$, thus achieving an upper bound that is tight up to one unit.
 We verify experimentally that our conjecture holds for all $n\le 62$.
 
 
 
-\subsection{Contributions.} 
-In summary, this article provides: 
-(i) the first general bounds on the resilience of WAPB functions, showing in particular that WPB functions are never $1$-resilient; 
-(ii) a framework relating resilience to the correction order of Boolean functions on slices; 
-(iii) a characterization of correction order in terms of restricted Walsh equations; 
-(iv) a new algebraic link between Krawtchouk matrices and Vandermonde matrices; 
-(v) the reduction of maximal correction order to a problem related to Prouhet--Tarry--Escott; 
-(vi) tight asymptotic bounds and explicit constructions of WAPB functions reaching correction order $\w(n)-1$; 
-(vii) experimental verification of our conjecture for all $n\le 62$. 
+\subsection{Contributions.}
+In summary, this article provides:
+(i) the first general bounds on the resilience of WAPB functions, showing in particular that WPB functions are never $1$-resilient;
+(ii) a framework relating resilience to the correction order of Boolean functions on slices;
+(iii) a characterization of correction order in terms of restricted Walsh equations;
+(iv) a new algebraic link between Krawtchouk matrices and Vandermonde matrices;
+(v) the reduction of maximal correction order to a problem related to Prouhet--Tarry--Escott;
+(vi) tight asymptotic bounds and explicit constructions of WAPB functions reaching correction order $\w(n)-1$;
+(vii) experimental verification of our conjecture for all $n\le 62$.
 This study shows that, unlike other cryptographic parameters where WAPB functions mimic random behaviour, their resilience is subject to strict structural limitations imposed by slice-balancedness, revealing a new dimension of the algebraic theory of weightwise balanced Boolean functions.
 
 
@@ -888,7 +887,7 @@ Given a $B_h$ sequence $A$, it is easily seen that the set $mA = \{ m \cdot a : 
 
 \mgnote{Broken reference below. Didn't find which one you refered to.}
 \begin{remark}
-	We can see the proofs of Theorem~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
+	We can see the proofs of Proposition~\ref{thm:WPB} and Proposition~\ref{prop:WAPB2} as particular cases of a more general result: \textit{Let $f$ be an $n$-variable WAPB function, then $f$ is at most $(\w(n)-1)$-corrector and cannot be $(\w(n))$-corrector}, where we prove it by considering relations on Krawtchouk polynomials of degree at most $\w(n)$.
 
 	Increasing the Hamming weight of one doubles the number of non null restricted Walsh transform coefficients and increases by one the degree of the last polynomial to consider, that is why we do not extend the proof strategy for $n$ of higher Hamming weights.
 	Regarding the resilience bound, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$: for example the ones obtained by direct sum of WPB functions in $2^{k_i}$ variables~\cite{DAM:ZhuSu22} when we write $n$ as $n=\sum_{i=1}^{\w(n)} 2^{k_i}$ where $k_1<\dots<k_{\w(n)}$.

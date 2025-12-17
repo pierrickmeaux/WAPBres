@@ -7,9 +7,9 @@ $\vecy = (y_{0\ldots00}, y_{0\ldots01}, y_{0\ldots10}, \ldots, y_{1\ldots10}, y_
 \begin{equation}\label{eq:vand_t}
         \begin{bmatrix}
             1 & 1 & 1 & 1 & \ldots & 1\\
-            0 &  2^{i_1} & 2^{i_2} & (2^{i_1} + 2^{i_2}) & \ldots & (2^{i_1} + \ldots + 2^{i_t})\\
+            0 &  2^{i_1} & 2^{i_2} & (2^{i_1} + 2^{i_2}) & \ldots & (2^{i_1} + \cdots + 2^{i_t})\\
             \vdots & \vdots & \vdots & \vdots &  & \vdots\\
-            0 & 2^{(t-1)i_1} & 2^{(t-1)i_2} & (2^{i_1} + 2^{i_2})^{t-1} & \ldots & (2^{i_1} + \ldots + 2^{i_t})^{t-1}\\
+            0 & 2^{(t-1)i_1} & 2^{(t-1)i_2} & (2^{i_1} + 2^{i_2})^{t-1} & \ldots & (2^{i_1} + \cdots + 2^{i_t})^{t-1}\\
         \end{bmatrix}
         \cdot \mathbf{y} = \begin{bmatrix}
             0\\0\\\vdots\\0
@@ -41,7 +41,7 @@ even number or its opposite in the range $[0, 2^{t-1}]$ because
 $|\vecy_\Delta| = 2^{t-|\Delta|}$. From the initial condition,
 $[i_1, \ldots, i_t]$ is a $t$-gap $B_{t-1}$ sequence and since $s_i < 2^{t}$ and
 because the gap between two any two $i_j$ is at least $t$, there doesn't exist
-any $s_i \neq 0$ satisfying Equation~\ref{eq:lin_t_row1}.
+any $s_j \neq 0$ satisfying Equation~\ref{eq:lin_t_row1}.
 
 Let $r = 2$. From Row 2 one gets the following equation after re-arranging the
 terms
@@ -59,7 +59,7 @@ $s_1 = s_2 = \cdots = s_t = 0$ to simplify it into
 Similarly as above, we see that any $s_j$ can take for values any even number or
 its opposite in the range $[0, 2^{t-2}]$ and we make use of the initial
 condition that $[i_1, \ldots, i_t]$ is a $t$-gap $B_{t-1}$ sequence and bring
-the same argument to prove there doesn't exist any $s_i \neq 0$ satisfying
+the same argument to prove there doesn't exist any $s_j \neq 0$ satisfying
 Equation~\ref{eq:lin_t_row2}.
 
 \underline{Induction:} we shall prove that if the statement is true for $r-1$,
@@ -89,6 +89,6 @@ We then reformulate the above equation into
 In a similar fashion, we see that any $s_j$ can take for values any even number
 or its opposite in the range $[0, 2^{t-r}]$ and we make use of the initial
 condition that $[i_1, \ldots, i_t]$ is a $t$-gap $B_{t-1}$ sequence and bring
-the same argument to prove there doesn't exist any $s_i \neq 0$ satisfying
+the same argument to prove there doesn't exist any $s_j \neq 0$ satisfying
 Equation~\ref{eq:lin_t_rowr}. This concludes the proof.
 \end{proof}
