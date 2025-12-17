@@ -93,6 +93,7 @@ provide W(A)PB functions with bounded parameters for
 the weightwise nonlinearity~\cite{DAM:GinMea22}, the global nonlinearity~\cite{C2SI:GinMea23}, or the algebraic immunity~\cite{LC:GinMea23}. 
 Heuristic search approaches, notably evolutionary algorithms, have been applied as well~\cite{CEC:MPJDL22,ASIACCS:YCL+23,ACI:ManKuLar22}. 
 Additional constructions appear in~\cite{BFA:DalMal23,AMC:DalMal23,eprint:IsiRodSeh25}.
+V
 
 
 \pmnote{Modify after here}
@@ -104,30 +105,34 @@ The resilience has been introduced to estimate the complexity of correlation att
 Previous studies on WAPB functions have characterized their nonlinearity~\cite{C2SI:GinMea23}, restricted nonlinearity~\cite{DAM:GinMea22}, algebraic immunity (both global~\cite{LC:GinMea23} and weightwise~\cite{CANS:BonMea25}), algebraic degree~\cite{CCDS:GinMea24}, yet no general result on the resilience of WAPB functions had been established. 
 
 This is particularly intriguing since what characterize a WAPB function is related to the balancedness, and balancedness on all the parts of a particular partition. 
-Since the slices and the hyperplanes corresponding to affine relations are not related, one might expect the WAPB function to behave like random balanced functions relatively to the the resilience. 
+Since the slices and the hyperplanes corresponding to affine relations are not related, one might expect the WAPB function to behave like random balanced functions relatively to the resilience. 
 However, our results show that this is not the case. 
 Even the simplest case—WPB functions—provides a stark example: although they are balanced on every slice, they are never $1$-resilient. 
-More generally, WAPB functions have a low resilience order (the maximum value of $t$ such that the function is $t$-resilient). We can exhibit $n$-variable WAPB functions with a resilient order no more than logarithmic in $n$, and 
+More generally, WAPB functions have a low resilience order (the maximum value of $t$ such that the function is $t$-resilient). 
+We can exhibit $n$-variable WAPB functions with a resilient order no more than logarithmic in $n$, and 
+demonstrate for infinite values of $n$ that no WAPB function can be $\log_2(n)$-resilient. 
 
-More generally, for all WAPB functions we obtain strong upper bounds on the resilience order, well below what one would predict from a random-function heuristic.
 
-To analyse the resilience of WAPB functions, we adopt a perspective that is uncommon in Boolean function cryptanalysis: we study their behaviour as correctors on slices.
-A $t$-corrector is a function whose restricted Walsh coefficients vanish on all subsets of variables of size at most $t$.
-We show that the correction order of a Boolean function on slices is tightly connected to a system of linear equations involving restricted Walsh transforms of the function.
-For WAPB functions, the structure of these equations becomes remarkably rigid due to their slice-balancedness.
-This link provides a general framework to study resilience through corrector properties, and is of independent interest for understanding the number and structure of $t$-corrector or $t$-resilient Boolean functions.
+\pmnote{add reference to correctors}
 
-A key component of our analysis is an unexpected algebraic connection between Krawtchouk matrices and Vandermonde matrices.
-By analysing the restricted Walsh equations satisfied by WAPB functions, we show that determining the maximum correction (and hence resilience) order of such functions reduces to a problem closely related to the classical Prouhet--Tarry--Escott problem.
-This connection allows us to derive tight bounds on the correction order of WAPB functions.
+To analyze the resilience of WAPB functions, we adopt a perspective that is uncommon in Boolean function used for cryptography, we study their properties as correctors. 
+A $t$-corrector is a function whose sum over a slice of Walsh coefficients is null, for all slice of index from $0$ to $t$.
+We show that the correction order of a Boolean function is tightly connected to a system of linear equations involving the restricted Walsh transforms on the slices of the function.
+For WAPB functions, these equations are highly simplified since the restricted Walsh transform of these functions takes only the value $-1$, $0$ or $1$. 
+The link between correctors and restricted Walsh transform provides a general framework to study resilience through corrector properties, and is of independent interest for understanding the number and structure of $t$-corrector or $t$-resilient Boolean functions.
+
+A key component of our analysis is an algebraic connection between Krawtchouk matrices and Vandermonde matrices.
+By analysing the restricted Walsh equations satisfied by WAPB functions, we show that determining the maximum correction (and hence an upper bound on the resilience) order of such functions reduces to a problem closely related to the classical Prouhet-Tarry-Escott problem.
+%This connection allows us to derive tight bounds on the correction order of WAPB functions.
 
 Our main result is that for infinitely many values of $n$, no WAPB function has correction order greater than the Hamming weight of $n$.
 We conjecture that this upper bound holds for all $n$.
-On the other hand, for every $n$ we construct WAPB functions with correction order exactly $\w(n)-1$, thus achieving an upper bound that is tight up to one unit.
-We verify experimentally that our conjecture holds for all $n\le 62$.
+%On the other hand, for every $n$ we construct WAPB functions with correction order exactly $\w(n)-1$, thus achieving an upper bound that is tight up to one unit.
+We verify experimentally that our conjecture holds for all $n\le 62$. 
+Since there exist WAPB functions with resilience $\w(n)-1$, our bound is tight for the infinite families of $n$ where we could prove it, and for all $n$ general if the conjecture is true.
 
 
-
+\pmnote{Re-build a more detailed contribution part with links to the sections}
 \subsection{Contributions.}
 In summary, this article provides:
 (i) the first general bounds on the resilience of WAPB functions, showing in particular that WPB functions are never $1$-resilient;
