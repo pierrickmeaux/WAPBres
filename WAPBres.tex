@@ -86,12 +86,12 @@ A large variety of constructions has been proposed.
 Recursive families and secondary constructions were first presented in~\cite{TOSC:CarMeaRot17}.
 Constructions based on field representations yield $2$-rotation symmetric WPB functions with high weightwise nonlinearity~\cite{DCC:LiuMes19,CC:MSLZ22}, and recently $2$-$\pi$ symmetric WAPB functions for all $n$~\cite{eprint:DalMalMea24}.
 WPB Functions obtained by comparing the weights of two halves of the input achieve optimal AI~\cite{CC:TangLiu19,BFA:MesSuLi21}. Comparing the two halves using total orders lead to WAPB functions for all $n$~\cite{SAC:Meaux24}.
-Other approaches modify near-WPB linear or quadratic functions to impose balancedness on all slices~\cite{CC:MesSu21}, an idea later generalized to obtain WAPB functions from low-degree functions~\cite{DAM:LiSu20,DAM:GuoSu22,AMC:ZhangSu23,Mat:ZJZQ23,DAM:ZLCQZ23}. 
-Secondary constructions have also been explored, such as direct sums~\cite{DAM:ZhuSu22}, Siegenthaler constructions combined with symmetric functions~\cite{INDO:GinMea22} and $t$-concatenation~\cite{eprint:IsiRodSeh25}. 
+Other approaches modify near-WPB linear or quadratic functions to impose balancedness on all slices~\cite{CC:MesSu21}, an idea later generalized to obtain WAPB functions from low-degree functions~\cite{DAM:LiSu20,DAM:GuoSu22,AMC:ZhangSu23,Mat:ZJZQ23,DAM:ZLCQZ23}.
+Secondary constructions have also been explored, such as direct sums~\cite{DAM:ZhuSu22}, Siegenthaler constructions combined with symmetric functions~\cite{INDO:GinMea22} and $t$-concatenation~\cite{eprint:IsiRodSeh25}.
 Moreover, several works have modified the support of non-WPB functions to %analyze the distribution of cryptographic parameters
-provide W(A)PB functions with bounded parameters for 
-the weightwise nonlinearity~\cite{DAM:GinMea22}, the global nonlinearity~\cite{C2SI:GinMea23}, or the algebraic immunity~\cite{LC:GinMea23}. 
-Heuristic search approaches, notably evolutionary algorithms, have been applied as well~\cite{CEC:MPJDL22,ASIACCS:YCL+23,ACI:ManKuLar22}. 
+provide W(A)PB functions with bounded parameters for
+the weightwise nonlinearity~\cite{DAM:GinMea22}, the global nonlinearity~\cite{C2SI:GinMea23}, or the algebraic immunity~\cite{LC:GinMea23}.
+Heuristic search approaches, notably evolutionary algorithms, have been applied as well~\cite{CEC:MPJDL22,ASIACCS:YCL+23,ACI:ManKuLar22}.
 Additional constructions appear in~\cite{BFA:DalMal23,AMC:DalMal23,eprint:IsiRodSeh25}.
 
 
@@ -99,26 +99,26 @@ Additional constructions appear in~\cite{BFA:DalMal23,AMC:DalMal23,eprint:IsiRod
 \pmnote{Modify after here}
 
 
-Despite this growing body of work, one central cryptographic parameter has remained largely unexplored for WAPB functions: resilience. 
-Generalizing the notion of balancedness, a function is said $t$-resilient if it is uncorrelated to all affine functions combining at most $t$ variables. 
+Despite this growing body of work, one central cryptographic parameter has remained largely unexplored for WAPB functions: resilience.
+Generalizing the notion of balancedness, a function is said $t$-resilient if it is uncorrelated to all affine functions combining at most $t$ variables.
 The resilience has been introduced to estimate the complexity of correlation attacks on streamciphers~\cite{Siegenthaler84}.
-Previous studies on WAPB functions have characterized their nonlinearity~\cite{C2SI:GinMea23}, restricted nonlinearity~\cite{DAM:GinMea22}, algebraic immunity (both global~\cite{LC:GinMea23} and weightwise~\cite{CANS:BonMea25}), algebraic degree~\cite{CCDS:GinMea24}, yet no general result on the resilience of WAPB functions had been established. 
+Previous studies on WAPB functions have characterized their nonlinearity~\cite{C2SI:GinMea23}, restricted nonlinearity~\cite{DAM:GinMea22}, algebraic immunity (both global~\cite{LC:GinMea23} and weightwise~\cite{CANS:BonMea25}), algebraic degree~\cite{CCDS:GinMea24}, yet no general result on the resilience of WAPB functions had been established.
 
-This is particularly intriguing since what characterize a WAPB function is related to the balancedness, and balancedness on all the parts of a particular partition. 
-Since the slices and the hyperplanes corresponding to affine relations are not related, one might expect the WAPB function to behave like random balanced functions relatively to the resilience. 
-However, our results show that this is not the case. 
-Even the simplest case—WPB functions—provides a stark example: although they are balanced on every slice, they are never $1$-resilient. 
-More generally, WAPB functions have a low resilience order (the maximum value of $t$ such that the function is $t$-resilient). 
-We can exhibit $n$-variable WAPB functions with a resilient order no more than logarithmic in $n$, and 
-demonstrate for infinite values of $n$ that no WAPB function can be $\log_2(n)$-resilient. 
+This is particularly intriguing since what characterize a WAPB function is related to the balancedness, and balancedness on all the parts of a particular partition.
+Since the slices and the hyperplanes corresponding to affine relations are not related, one might expect the WAPB function to behave like random balanced functions relatively to the resilience.
+However, our results show that this is not the case.
+Even the simplest case—WPB functions—provides a stark example: although they are balanced on every slice, they are never $1$-resilient.
+More generally, WAPB functions have a low resilience order (the maximum value of $t$ such that the function is $t$-resilient).
+We can exhibit $n$-variable WAPB functions with a resilient order no more than logarithmic in $n$, and
+demonstrate for infinite values of $n$ that no WAPB function can be $\log_2(n)$-resilient.
 
 
 \pmnote{add reference to correctors}
 
-To analyze the resilience of WAPB functions, we adopt a perspective that is uncommon in Boolean function used for cryptography, we study their properties as correctors. 
+To analyze the resilience of WAPB functions, we adopt a perspective that is uncommon in Boolean function used for cryptography, we study their properties as correctors.
 A $t$-corrector is a function whose sum over a slice of Walsh coefficients is null, for all slice of index from $0$ to $t$.
 We show that the correction order of a Boolean function is tightly connected to a system of linear equations involving the restricted Walsh transforms on the slices of the function.
-For WAPB functions, these equations are highly simplified since the restricted Walsh transform of these functions takes only the value $-1$, $0$ or $1$. 
+For WAPB functions, these equations are highly simplified since the restricted Walsh transform of these functions takes only the value $-1$, $0$ or $1$.
 The link between correctors and restricted Walsh transform provides a general framework to study resilience through corrector properties, and is of independent interest for understanding the number and structure of $t$-corrector or $t$-resilient Boolean functions.
 
 A key component of our analysis is an algebraic connection between Krawtchouk matrices and Vandermonde matrices.
@@ -128,7 +128,7 @@ By analysing the restricted Walsh equations satisfied by WAPB functions, we show
 Our main result is that for infinitely many values of $n$, no WAPB function has correction order greater than the Hamming weight of $n$.
 We conjecture that this upper bound holds for all $n$.
 %On the other hand, for every $n$ we construct WAPB functions with correction order exactly $\w(n)-1$, thus achieving an upper bound that is tight up to one unit.
-We verify experimentally that our conjecture holds for all $n\le 62$. 
+We verify experimentally that our conjecture holds for all $n\le 62$.
 Since there exist WAPB functions with resilience $\w(n)-1$, our bound is tight for the infinite families of $n$ where we could prove it, and for all $n$ general if the conjecture is true.
 
 
@@ -225,7 +225,7 @@ For a vector $v \in \F_2^n$, we denote its Hamming weight by $\w(v)$, defined as
 \end{definition}
 
 
-\begin{definition}[Walsh transform ]\label{def:walsh_transform}
+\begin{definition}[Walsh transform]\label{def:walsh_transform}
 	Let $f\in \Bn{n}$ be a Boolean function, its Walsh transform $\wt{f}$ at $a \in \F_2^n$ is defined as:
 	\[  \wt{f} (a) = \sum_{x \in \F_2^n} (-1)^{f(x) +  a \cdot x },\]
 	where $a \cdot x$ denotes the inner product.
