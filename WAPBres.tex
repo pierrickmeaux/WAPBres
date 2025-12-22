@@ -857,9 +857,28 @@ Now we consider the expansion of the sum $\sum_{\ell \preceq n } y_{\ell} \ell^u
 \end{example}
 
 
+\mgnote{
+Recall that a set of integers $A$ is said to be a \emph{Sidon set} if all sums
+$a_1 + a_2,~ a_i \in A$. are all distinct (up to commutativity). The work of
+\cite{genralized_sidon_sets} defines a set $A$ to be a $g$-Sidon set if $r(x) \leq g$
+for all $x$, with $r(x)$ the representation function of $A$ with $r(x) = |\{(a_1, a_2): a_i \in A, a_1 + a_2 = x\}|$.
+From the definition of $g$-Sidon set, we see that a $g$-Sidon set is also a
+$k$-Sidon set for $2 \leq k \leq g$ (since any two sums of $k$ elements can be
+seen as two sums of $h$ elements where the last $h-k$ terms are exactly the same).
+
+Proceeds on to $m$-gap.
+
+Recall that a superincreasing sequence $s_1, s_2, \ldots$ satisfies
+$$
+s_{n+1} > \sum_{i=1}^n s_i
+$$
+for all $n$. A direct property that follows is the uniqueness of every subset
+sum of this sequence. As such, any superincreasing sequence of $g$ elements
+constitutes a $g$-Sidon set.
+}
 Recall that a sequence of integers $A$ is said to be a $B_h$ sequence if the sums of $h$ integers from $A$, i.e.,
 \[
-s =a_1 + \cdots + a_h, a_1\leq \cdots \leq a_h, a_k \in A
+s = a_1 + \cdots + a_h, a_1\leq \cdots \leq a_h, a_k \in A
 \] are all distinct \cite{cilleruelo2017}. From the definition of $B_h$ sequence, we see that a $B_h$ sequence is also a $B_k$ set for integers $k$ with $2\leq k<h$
 (since any two sums of $k$ elements can be seen as two sums of $h$ elements where the last $h-k$ terms are exactly the same).
 
