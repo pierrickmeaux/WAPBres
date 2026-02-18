@@ -435,6 +435,9 @@ By Theorem~\ref{thm:WalsCorr} we see that $f$ is a $t$-corrector if and only if:
 \end{equation}
 The following theorem provides an interesting connection between the Krawtchouk matrix and the Vandemonde matrix. This connection facilitates the study of the above equation.
 
+	\pmnote{Suggestion: In the proof, add the "M is triangular" argument at the initialization step and induction.}
+
+
 \begin{theorem}\label{Th_K_V_matrices}
 	Let $\matK$ be the Krawtchouk matrix with $\matK_{k,\ell} = \kraw{k}{\ell}{n}$ and $\matV$ be the Vandemonde matrix with $V_{k,\ell} =\ell^k$, where $k,\ell$ with $0\leq k,\ell\leq n$ index the rows and columns, respectively.
 	Let
@@ -461,7 +464,11 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	& & & \alpha_{r-2} &\beta_{r-1} & \gamma_{r}
 	\end{bmatrix}.
 	\end{equation}
-	Then we have \[
+	Then we have 
+	
+	\pmnote{Suggestion: we could write $V_{n+1}$ in the following equation or mention somewhere its size (for easy checking)}
+	
+	\[
 	\matM \cdot \matK = \matV,
 	\]
 	where $\matM$ is an $(n+1)\times(n+1)$ lower triangular matrix whose rows are given by the following recursion:
@@ -485,11 +492,11 @@ The following theorem provides an interesting connection between the Krawtchouk 
 
 \end{theorem}
 \begin{proof}
-	The Property~\ref{prop:KrDMS} is crucial for us to derive the lower triangular matrix $\matM$ satisfying $\mathbf{M} \cdot \mathbf{K} = \mathbf{V}$.
+	Property~\ref{prop:KrDMS} is crucial for us to derive the lower triangular matrix $\matM$ satisfying $\mathbf{M} \cdot \mathbf{K} = \mathbf{V}$.
 
 	We will proceed by induction on $r$ to gradually determine the non-zero entries
 	in each row of $\mathbf{M}$ denoted as the vector $\matLead{M}{r}{r+1}$.
-	It is straightward that Property~\ref{prop:KrDMS} is equivalent to
+	Property~\ref{prop:KrDMS} can be equivalent stated as
 	\begin{equation*}
 	\ell\cdot\kraw{k}{\ell}{n} = -\frac{n - (k - 1)}{2}\kraw{k-1}{\ell}{n} + \frac{n}{2}\kraw{k}{\ell}{n}  -\frac{k+1}{2}\kraw{k+1}{\ell}{n} ,
 	\end{equation*}
@@ -555,12 +562,12 @@ The following theorem provides an interesting connection between the Krawtchouk 
 \end{proof}
 
 Denote by $\matM_{[0,t],[0,t]}$ the $(t+1)$-order submatrix formed by the leading $(t+1)$ rows and columns of $\matM$.
-It is clear that $\matM_{[0,t],[0,t]}$ is invertible since the matrix $\matM$ is an invertible lower triangular matrix by Theorem~\ref{Th_K_V_matrices}.
+The matrix $\matM_{[0,t],[0,t]}$ is invertible since the matrix $\matM$ is an invertible lower triangular matrix by Theorem~\ref{Th_K_V_matrices}.
 Then it follows from $\matM \cdot \matK = \matV$ that
 \[
 \matM_{[0,t],[0,t]} \cdot \matK^{(t+1)} = \matV^{(t+1)},
 \]where $\matV^{(t+1)}$ is the submatrix formed by the leading $(t+1)$ rows of $\matV$.
-Therefore,  Theorem~\ref{thm:WalsCorr} can be reformulated as follows.
+Therefore, Theorem~\ref{thm:WalsCorr} can be reformulated as follows.
 
 \begin{theorem}\label{thm:t_corrector_Vandemonde_matrix}
 	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
@@ -613,7 +620,7 @@ The characterization of $t$-corrector in terms of the Vandemonde matrix above wi
 %\section{WPB functions and corrector order}
 \section{Correction order of W(A)PB Functions}
 
-Section \ref{sec:corr} characterizes $t$-corrector in terms of restricted Walsh transforms and Vandemonde matrices. This section will further discuss correction order of W(A)PB functions.
+Section~\ref{sec:corr} characterizes $t$-corrector in terms of restricted Walsh transforms and Vandemonde matrices. This section will further discuss correction order of W(A)PB functions.
 %Note that for any Boolean function $f$ and its complement $f \oplus 1$, their restricted Walsh vectors satisfy
 %\[
 %\rwv{f \oplus 1} = (\wtk{f\oplus 1}{0}, \dots, \wtk{f\oplus 1}{n})  =-(\wtk{f\oplus 1}{0}, \dots, \wtk{f\oplus 1}{n})= - \rwv{f}.
@@ -711,7 +718,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	0 \\ 0 \\ 0
 	\end{bmatrix},
 	\end{equation} where $\mathbf{y} = (y_{00},y_{01},y_{10},y_{11})\in \{\pm 1\}^4$.
-	It can be easily verified that the solutions of \eqref{Eq_t=1} are given by
+	It can be verified that the solutions of \eqref{Eq_t=1} are given by
 	\[
 	\mathbf{y} = \pm (1, -1,-1, 1).
 	\] This is equivalent to saying that $\wtk{f}{\ell} = \wtk{f}{0} \cdot (-1)^{\w(\ell)}$ for any $\ell \preceq n$.
