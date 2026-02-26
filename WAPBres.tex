@@ -30,15 +30,15 @@
 
 	\titlerunning{On the Resilience Order of W(A)PB Functions}
 	\author{
-			\mbox{Martin Grenouilloux \orcidID{}}, 
-			\mbox{Chunlei Li \orcidID{0000-0002-3792-769X}}, 
+			\mbox{Martin Grenouilloux \orcidID{0009-0003-1998-6092}},
+			\mbox{Chunlei Li \orcidID{0000-0002-3792-769X}},
 		\mbox{Pierrick M\'eaux\orcidID{0000-0001-5733-4341}}
 	}
 
 	\authorrunning{ M. Grenouilloux, C. Li, P. M\'eaux}
 
 	\institute{University of Bergen, Bergen, Norway\\
-	\email{Martin.Grenouilloux@uib.no,Chunlei.Li@uib.no}\\				
+	\email{martin.grenouilloux@uib.no,Chunlei.Li@uib.no}\\
 University of Luxembourg, Luxembourg\\	\email{pierrick.meaux@uni.lu}
 }
 
@@ -56,16 +56,10 @@ University of Luxembourg, Luxembourg\\	\email{pierrick.meaux@uni.lu}
 
 \begin{abstract}
 
-
-
 %\keywords{Boolean functions, algebraic immunity, symmetric functions, HWBF}
 \end{abstract}
 
 \section{Introduction.}
-
-
-
-
 
 With the design of FLIP~\cite{EC:MJSC16}, established cryptographic criteria for Boolean functions, traditionally used to assess the security of filtered Linear Feedback Shift Registers (LFSRs), combined LFSRs, or more general stream ciphers no longer directly apply.
 In this cipher, the relevant properties of the filtering Boolean function are not defined on the entire $\F_2^n$ but instead on a specific, publicly known subset of inputs.
@@ -86,7 +80,7 @@ Since $2017$, many works have introduced new constructions of WPB or WAPB functi
 %A large variety of constructions has been proposed.
 Recursive families and secondary constructions were first presented in~\cite{TOSC:CarMeaRot17}.
 Constructions based on field representations yield $2$-rotation symmetric WPB functions with high weightwise nonlinearity~\cite{DCC:LiuMes19,CC:MSLZ22}, and recently $2$-$\pi$ symmetric WAPB functions for all $n$~\cite{eprint:DalMalMea24}.
-WPB Functions obtained by comparing the weights of two halves of the input achieve optimal algebraic immunity~\cite{CC:TangLiu19,BFA:MesSuLi21}. 
+WPB Functions obtained by comparing the weights of two halves of the input achieve optimal algebraic immunity~\cite{CC:TangLiu19,BFA:MesSuLi21}.
 Comparing the two halves using total orders lead to WAPB functions for all $n$~\cite{SAC:Meaux24}.
 Other approaches modify near-WPB linear or quadratic functions to impose balancedness on all slices~\cite{CC:MesSu21}, an idea later generalized to obtain WAPB functions from low-degree functions~\cite{DAM:LiSu20,DAM:GuoSu22,AMC:ZhangSu23,Mat:ZJZQ23,DAM:ZLCQZ23}.
 Secondary constructions have also been explored, such as direct sums~\cite{DAM:ZhuSu22}, Siegenthaler constructions combined with symmetric functions~\cite{INDO:GinMea22} and $t$-concatenation~\cite{eprint:IsiRodSeh25}.
@@ -95,9 +89,6 @@ provide W(A)PB functions with bounded parameters for
 the weightwise nonlinearity~\cite{DAM:GinMea22}, the global nonlinearity~\cite{C2SI:GinMea23}, or the algebraic immunity~\cite{LC:GinMea23}.
 Heuristic search approaches, notably evolutionary algorithms, have been applied as well~\cite{CEC:MPJDL22,ASIACCS:YCL+23,ACI:ManKuLar22}.
 Additional constructions appear in~\cite{BFA:DalMal23,AMC:DalMal23,eprint:IsiRodSeh25}.
-
-
-
 
 
 Despite this growing body of work, one central cryptographic parameter has remained largely unexplored for WAPB functions: resilience.
@@ -123,7 +114,7 @@ For WAPB functions, these equations are highly simplified since the restricted W
 The link between correctors and restricted Walsh transform provides a general framework to study resilience through corrector properties, and is of independent interest for understanding the number and structure of $t$-corrector or $t$-resilient Boolean functions.
 
 
-A key component of our analysis is an algebraic connection between Krawtchouk matrices and Vandermonde matrices (Theorem~\ref{Th_K_V_matrices}). 
+A key component of our analysis is an algebraic connection between Krawtchouk matrices and Vandermonde matrices (Theorem~\ref{Th_K_V_matrices}).
 It allows us to rewrite the problem of maximum corrector order based on properties of a Krawtchouk matrix as a problem on properties of a, simpler to study, Vandermonde matrix.
 By analyzing the restricted Walsh equations satisfied by WAPB functions, we show (Theorem~\ref{thm:t_corrector_Vandemonde_matrix}) that determining the maximum correction (and hence an upper bound on the resilience) order of such functions reduces to a problem closely related to the Prouhet-Tarry-Escott problem \eg \cite{Borwein2002}.
 
@@ -229,7 +220,7 @@ For a vector $v \in \F_2^n$, we denote its Hamming weight by $\w(v)$, defined as
 
 
 \begin{definition}[Walsh transform]\label{def:walsh_transform}
-	Let $f\in \Bn{n}$ be a Boolean function, its Walsh transform $\wt{f}$ at $a \in \F_2^n$ is defined as:
+	Let $f\in \Bn{n}$ be a Boolean function. Its Walsh transform $\wt{f}$ at $a \in \F_2^n$ is defined as:
 	\[  \wt{f} (a) = \sum_{x \in \F_2^n} (-1)^{f(x) +  a \cdot x },\]
 	where $a \cdot x$ denotes the inner product.
 \end{definition}
@@ -320,7 +311,7 @@ Below we recall Lucas's Theorem.
 
 %\subsubsection{Krawtchouk polynomials.}
 We use Krawtchouk polynomials to characterize the correction order of WAPB functions.
-We give the necessary preliminaries here and refer to \eg ~\cite{book:MacSlo78} for more details.
+We give the necessary preliminaries here and refer to \eg ~\cite[Ch.5, \S 7]{book:MacSlo78} for more details.
 
 \begin{definition}[Krawtchouk Polynomials]\label{def:Kraw}
 	The Krawtchouk polynomial of degree $k$, with $0\leq k\leq n$ is given by: $$ \displaystyle \kraw{k}{\ell}{n}=\sum_{j=0}^{k} (-1)^j \binom{\ell}{j} \binom{n-\ell}{k-j},$$
@@ -413,11 +404,11 @@ We rewrite the $t$-corrector property using the notation of restricted Walsh tra
 %
 %\end{corollary}
 
-Following from Proposition~\ref{prop:WAPBWalsh}, we reformulate WAPB functions of correction order $t$ in terms of Krawtchouk polynomials.
+Following from Property~\ref{prop:WAPBWalsh}, we reformulate WAPB functions of correction order $t$ in terms of Krawtchouk polynomials.
 
 \begin{definition}\label{def:restWalshVect}
 	Let $n\in \N^*$ and $f\in \BN$, we define its restricted Walsh vector, denoted by $\rwv{f}$, in $\Z^{n+1}$ as:
-	\[\rwv{f}=(\wtk{f}{0},\wtk{f}{1},\cdots,\wtk{f}{n-1},\wtk{f}{n})^\intercal\]
+	\[\rwv{f}=(\wtk{f}{0},\wtk{f}{1},\cdots,\wtk{f}{n-1},\wtk{f}{n})^\intercal.\]
 
 \end{definition}
 
@@ -466,10 +457,10 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	& & & \alpha_{r-2} &\beta_{r-1} & \gamma_{r}
 	\end{bmatrix}.
 	\end{equation}
-	Then we have 
-	
+	Then we have
+
 	\pmnote{Suggestion: we could write $V_{n+1}$ in the following equation or mention somewhere its size (for easy checking)}
-	
+
 	\[
 	\matM \cdot \matK = \matV,
 	\]
@@ -516,26 +507,24 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	that $\matLead{M}{0}{n} = \begin{bmatrix}1 & 0 & \cdots & 0\end{bmatrix}$ and that $\matLead{M}{0}{n}\cdot \matK = \matLead{V}{0}{n}.$
 
 	Let $r = 1$. We want to determine $\matLead{M}{1}{2}$ that yields $\ell^1$, which corresponds to Row 1 in $\mathbf{V}$.
-	To do so, we expand $\ell^1$ using Eq.~\eqref{eq:prop3sym}.
+	To do so, we expand $\ell^1$ using Eq.~\eqref{eq:prop3sym} as follows:
 	\begin{equation*}
 	\begin{split}
 	\ell^1 &= \ell \cdot \kraw{0}{\ell}{n}\\
 	&= \beta_0 \kraw{0}{\ell}{n} + \gamma_1 \kraw{1}{\ell}{n} \\
-	&= \eqX{\begin{bmatrix}1\end{bmatrix}}{\matLead{M}{0}{1}} \cdot \eqX{\begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix}}{\mathbf{H}_1} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\end{bmatrix}
+	&= \eqX{\begin{bmatrix}1\end{bmatrix}}{\matLead{M}{0}{1}} \cdot \eqX{\begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix}}{\mathbf{H}_1} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\end{bmatrix}.
 	\end{split}
 	\end{equation*}
 	As such, $\matLead{M}{1}{2} = \begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix}$ and $\matLead{M}{1}{n}\cdot \matK = \matLead{V}{1}{n}.$
 
 	Let $r = 2$. We want to determine $\matLead{M}{2}{3}$ that yields $\ell^2$ in $\mathbf{V}$.
-	Similarly, we expand $\ell^2$ using Eq.~\eqref{eq:prop3sym}.
+	Similarly, we expand $\ell^2$ using Eq.~\eqref{eq:prop3sym} as follows:
 	\begin{equation*}
 	\begin{split}
 	\ell^2 = \ell \cdot \ell &= \ell \Big(\gamma_1 \kraw{1}{\ell}{n} + \beta_0 \kraw{0}{\ell}{n}\Big)\\
 	& = \beta_0 \ell  \kraw{0}{\ell}{n} + \gamma_1 \ell \kraw{1}{\ell}{n} \\
-	%            &= (\beta_0^2 + \gamma_1\alpha_0)\kraw{0}{\ell}{n} + (\gamma_1\beta_0 + \gamma_1\beta_1)\kraw{1}{\ell}{n} + (\gamma_1\gamma_2)\kraw{2}{\ell}{n}\\
-	%            &= \begin{bmatrix}(\beta_0^2 + \gamma_1\alpha_0) & (\gamma_1\beta_0 + \gamma_1\beta_1) & (\gamma_1\gamma_2)\end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix}\\
 	& = \beta_0  \begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\end{bmatrix} + \gamma_1 \begin{bmatrix}\alpha_0 & \beta_1 & \gamma_2 \end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix}  \\
-	&= \eqX{\begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix}}{\matLead{M}{1}{2}} \cdot \eqX{\begin{bmatrix}\beta_0 & \gamma_1 & 0\\\alpha_0 & \beta_1 & \gamma_2\end{bmatrix}}{\mathbf{H}_2}\cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix}
+	&= \eqX{\begin{bmatrix}\beta_0 & \gamma_1\end{bmatrix}}{\matLead{M}{1}{2}} \cdot \eqX{\begin{bmatrix}\beta_0 & \gamma_1 & 0\\\alpha_0 & \beta_1 & \gamma_2\end{bmatrix}}{\mathbf{H}_2}\cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\kraw{2}{\ell}{n}\end{bmatrix}.
 	\end{split}
 	\end{equation*}
 	As such, $\matLead{M}{2}{3} = \matLead{M}{1}{2}\cdot \matH_2 =\begin{bmatrix}(\beta_0^2 + \gamma_1\alpha_0) & (\gamma_1\beta_0 + \gamma_1\beta_1) & (\gamma_1\gamma_2)\end{bmatrix}$.
@@ -558,9 +547,10 @@ The following theorem provides an interesting connection between the Krawtchouk 
 	\\& = \begin{bmatrix}\mathbf{M}_{r-1,0} & \mathbf{M}_{r-1,1} & \ldots & \mathbf{M}_{r-1,r-1}\end{bmatrix} \cdot \begin{bmatrix}\ell \kraw{0}{\ell}{n}\\ \ell  \kraw{1}{\ell}{n}\\\vdots\\ \ell \kraw{r-1}{\ell}{n}\end{bmatrix}
 	%        \\&= \sum_{k=0}^{r-1} \Big( \mathbf{M}_{r-1,k} \cdot \big[ \alpha_{k-1}\kraw{k-1}{\ell}{n} + \beta_k\kraw{i}{\ell}{n} + \gamma_{k+1}\kraw{k+1}{\ell}{n} \big] \Big)
 	\\  &= \begin{bmatrix}\mathbf{M}_{r-1,0} & \mathbf{M}_{r-1,1} & \ldots & \mathbf{M}_{r-1,r-1}\end{bmatrix} \cdot \begin{bmatrix}\beta_0 & \gamma_1\\\alpha_0 & \beta_1 & \gamma_2 & & \\ & \ddots & \ddots & \ddots\\ & & \alpha_{r-2} & \beta_{r-1} & \gamma_{r}\end{bmatrix} \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\vdots\\\kraw{r}{\ell}{n}\end{bmatrix}
-	\\&= \matM_{r-1,[0,r]}\cdot \matH_r \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\vdots\\\kraw{r}{\ell}{n}\end{bmatrix}
+	\\&= \matM_{r-1,[0,r]}\cdot \matH_r \cdot \begin{bmatrix}\kraw{0}{\ell}{n}\\\kraw{1}{\ell}{n}\\\vdots\\\kraw{r}{\ell}{n}\end{bmatrix},
 	\end{split}
-	\end{equation*} which implies $\matM_{r,[0,r]} = \matM_{r-1,[0,r]}\cdot \matH_r$ and $\matLead{M}{r}{n} \cdot \matK = \matLead{V}{r}{n}$. The desired statement follows.
+	\end{equation*}
+	which implies $\matM_{r,[0,r]} = \matM_{r-1,[0,r]}\cdot \matH_r$ and $\matLead{M}{r}{n} \cdot \matK = \matLead{V}{r}{n}$. The desired statement follows.
 \end{proof}
 
 Denote by $\matM_{[0,t],[0,t]}$ the $(t+1)$-order submatrix formed by the leading $(t+1)$ rows and columns of $\matM$.
@@ -585,26 +575,10 @@ Therefore, Theorem~\ref{thm:WalsCorr} can be reformulated as follows.
 \wtk{f}{0} \\ \wtk{f}{1} \\ \vdots \\ \wtk{f}{n}
 \end{bmatrix} = \textbf{0}_{t+1}^\intercal.
 \end{equation}
-
-
-
-
-%\begin{proposition}\label{thm:WalsCorr}
-%	Let $n\in \N^*$ and $t\in \N$ such that $t\le n$. A Boolean function $f\in \Bn{n}$ is a $t$-corrector if the following holds on its restricted Walsh transform:
-%	\begin{itemize}
-%		\item If $n$ is odd: for $0\le k \le t$,
-%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\sum_{\ell=0}^{(n-1)/2} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
-%	\item If $n$ is even: for $0\le k \le t$,
-%		\[\sum_{a\in \Ekn{k}{n}} \wt{f}(a)=\wtk{f}{n/2} \, \kraw{k}{n/2}{n}+ \sum_{\ell=0}^{n/2-1} \kraw{k}{\ell}{n} \, ( \wtk{f}{\ell} + (-1)^k \wtk{f}{n-\ell})=0.\]
-%	\end{itemize}
-
-
-
-
 \end{theorem}
 
 Furthermore, for a WAPB function $f$, we have $\rwv{f}\in \{-1,0,1\}^{n+1}$ from Property~\ref{prop:WAPBWalsh}. Moreover, since the number of nonzero values corresponds to the odd parity of the associate binary coefficient, we have $\w(\rwv{f})=2^{\w(n)}$, and the nonzero coefficients in $\rwv{f}$ are the $\ell$-th entries such that $\ell\preceq n$.
-Therefore, we have the following result:
+Therefore, we have the following result.
 
 \begin{corollary}\label{Th-corrector-by-Vandemonde}
 		Let $n\in \N^*$ and $t\in \N$ such that $t\le n$.
@@ -617,7 +591,9 @@ Therefore, we have the following result:
 	\]
 \end{corollary}
 
-The characterization of $t$-corrector in terms of the Vandemonde matrix above will be used to study the existence of WPB functions and WAPB functions of certain order $t$ in the next section.
+The characterization of $t$-corrector in terms of the Vandemonde matrix above
+will be used to study the existence of WPB functions and WAPB functions of
+certain order $t$ in the next section.
 
 \pmnote{Here add the connection with the PTE problem}
 
@@ -709,7 +685,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	1 & 1 & 1 & 1 \\
 	0 & 2^{i_1} & 2^{i_2} & (2^{i_1}+2^{i_2})
 	\end{bmatrix}
-	\mathbf{y} =  \begin{bmatrix}
+	\cdot \mathbf{y} =  \begin{bmatrix}
 	0 \\ 0
 	\end{bmatrix},
 	\end{equation}
@@ -720,7 +696,7 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	0 & 2^{i_1} & 2^{i_2} & (2^{i_1}+2^{i_2}) \\
 	0 & 2^{2i_1} & 2^{2i_2} & (2^{i_1}+2^{i_2})^2
 	\end{bmatrix}
-	\mathbf{y}  =  \begin{bmatrix}
+	\cdot \mathbf{y}  =  \begin{bmatrix}
 	0 \\ 0 \\ 0
 	\end{bmatrix},
 	\end{equation} where $\mathbf{y} = (y_{00},y_{01},y_{10},y_{11})\in \{\pm 1\}^4$.
@@ -728,7 +704,8 @@ The following proposition shows the non-existence of $1$-resilient WPB functions
 	\[
 	\mathbf{y} = \pm (1, -1,-1, 1).
 	\] This is equivalent to saying that $\wtk{f}{\ell} = \wtk{f}{0} \cdot (-1)^{\w(\ell)}$ for any $\ell \preceq n$.
-	Furthermore, these solutions do not satisfy \eqref{Eq_t=2}, which implies that there exists no WAPB function $f$ with $\corr(f) = 2$.
+	Furthermore, these solutions do not satisfy \eqref{Eq_t=2}, which implies
+	that there exists no WAPB function $f$ with $\corr(f) = 2$ when $\w(n) = 2$.
 \end{proof}
 
 %\begin{proposition} Let $n\in \N^*$ with $\w(n)=3$. Then there exist WAPB functions $f$ with $\corr(f)=2$, and the
@@ -881,7 +858,7 @@ we see that a $B_h$ sequence is also a $B_k$ set for integers $k$ with
 $2 \leq k < h$ (since any two sums of $k$ elements can be seen as two sums of
 $h$ elements where the last $h-k$ terms are exactly the same).
 
-\pmnote{I think I am missing some constraints in the definition, $A= \{1,2,3,4,5\}$ is a $B_5$ sequence, also a $B_1$ and $B_4$ set but not $B_2$ or $B_3$. 
+\pmnote{I think I am missing some constraints in the definition, $A= \{1,2,3,4,5\}$ is a $B_5$ sequence, also a $B_1$ and $B_4$ set but not $B_2$ or $B_3$.
 This example is a counterexample of the part in parenthesis.
 
 }
@@ -910,14 +887,14 @@ also constitutes a $B_h$ sequence.
 
 
 \pmnote{For this (very elegant) result, I think it would benefit the paper to present it as a theorem.
-	
-Regarding the proof, for me it shows that the coefficients $s_i$ need all to be $0$, but it misses the parts showing that: 
 
-1) it gives an impossibility for $t$-correction, 
+Regarding the proof, for me it shows that the coefficients $s_i$ need all to be $0$, but it misses the parts showing that:
+
+1) it gives an impossibility for $t$-correction,
 
 2) the $\wtk{f}{0} (-1)^\w(\ell)$ are the only one satisfying it.
-	
-}	
+
+}
 
 
 

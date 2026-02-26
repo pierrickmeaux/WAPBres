@@ -31,7 +31,7 @@
 
     Let us first study the solutions of \eqref{eq:vand_t=2}. We will
     iterate through the rows of the matrix to gradually build necessary
-    conditions on its solutions. We will refer Row $k$ to as the row indexed by the exponent $k$ for $0\leq k <3$ in $\matW$.
+    conditions on its solutions. We refer to Row $k$ as the row indexed by the exponent $k$ for $0\leq k <3$ in $\matW$.
 
     Row $0$ indicates that $\mathbf{y}$ must be a balanced vector, namely, half of its entries equal $1$ and the other half equal $-1$.
     Row $1$ yields the following equation:
@@ -46,28 +46,17 @@
     \begin{equation}\label{eq:lin_t=3_row2}
     s_1 \cdot 2^{i_1} + s_2 \cdot 2^{i_2} + s_3 \cdot 2^{i_3} = 0.
     \end{equation}
-  By construction,the sums $s_1, s_2, s_3$ can only take for value any $\pm 4, \pm 2$
+    By construction, the sums $s_1, s_2, s_3$ can only take for value any $\pm 4, \pm 2$
     or 0. By further applying the constraint of balancedness from Row $0$, all possible
     $\binom{8}{4}$ balanced $\mathbf{y}$ exhibit only the following possible options for the multiset
      (that allows for same elements) $\{s_1,s_2,s_3\}$:
     \[
     \{0, 0, 0\},  \{0, 0, \pm 2\}, \{0, \pm2, \pm2\}, \{\pm2, \pm2, \pm2\}, \{0, 0, \pm4\}.
     \]
-%    \mgnote{We have five and not four multisets of values as I re-verified the results. This doesn't change the proof.}
-%    \begin{itemize}
-%        \item $\{0, 0, 0\}$
-%        \item $\{0, 0, \pm2\}$
-%        \item $\{0, \pm2, \pm2\}$
-%        \item $\{\pm2, \pm2, \pm2\}$
-%        \item $\{0, 0, \pm4\}$
-%    \end{itemize}
-   This means that each term on the left hand of Eq.~\eqref{eq:lin_t=3_row2} is either zero or a power of $2$.
+    This means that each term on the left hand of Eq.~\eqref{eq:lin_t=3_row2} is either zero or a power of $2$.
 	Since $i_1 < i_2 < i_3$, it implies that Eq.~\eqref{eq:lin_t=3_row2} can be true only
 	when $s_1=s_2=s_3=0$.
-%
-%	any multiset with identical nonzero values can't satisfy
-%    Equation \ref{eq:lin_t=3_row2} since . Therefore, the condition
-%    to satisfy the relation on row 1 is that $s_1 = s_2 = s_3 = 0$.
+
     From Row 2 one gets the following equation (after re-arranging the terms):
     \begin{equation}\label{eq:lin_t=3_row3}
         \begin{split}
@@ -83,12 +72,12 @@
     \[
      2s_{1,2} \cdot 2^{i_1 + i_2} + 2s_{1,3} \cdot 2^{i_1 + i_3} + 2s_{2,3} \cdot 2^{i_2 + i_3} = 0,
     \] where $s_{1,2}, s_{1,3},s_{2,3}$ correspond to the sum coefficient of $2^{i_{1}+i_2}, 2^{i_{2}+i_3}$ and $2^{i_{1}+i_3}$, respectively.
-    We now discuss the values of $s_{1,2}, s_{1,3}$ and $s_{2,3}$. 
+    We now discuss the values of $s_{1,2}, s_{1,3}$ and $s_{2,3}$.
     Assume $s_{1,2} = \pm 2$.
-    Then $y_{011} = y_{111} = \pm 1$. 
-    
+    Then $y_{011} = y_{111} = \pm 1$.
+
     \pmnote{For the sentence below why not only "Since $s_1=0$, we necessarily ..."?}
-    
+
     By considering both the condition of balancedness
     and that $s_1 = s_2 = s_3 = 0$, we necessarily have $y_{101} = y_{110} = -y_{011} = -y_{111}$.
     This doesn't satisfy Eq.~\eqref{eq:lin_t=3_row3}. The same logic applies
