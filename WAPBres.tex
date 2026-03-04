@@ -58,22 +58,24 @@ University of Luxembourg, Luxembourg\\	\email{pierrick.meaux@uni.lu}
 The recent development of Fully Homomorphic Encryption (FHE)
 witnessed the emergence of a new generation of tailored cryptographic primitives
 designed to meet its specific criteria. Among promising candidates for such
-constructions stand Linear Feedback Shift Registers (LFSR) with a filtering
-Boolean function defined on specific subsets of $\mathbb{F}_2^n$. In this
-article, we study a specific family of such functions called Weightwise (Almost)
+constructions stand out the FLIP cipher that employs Boolean functions defined on specific subsets of $\mathbb{F}_2^n$. In this
+article, we study a family of such functions called Weightwise (Almost)
 Perfectly Balanced (W(A)PB) functions, that have the property of being balanced
 on each of the considered subsets. While W(A)PB functions have been of great
 interest for new constructions recently, some of their aspects like resilience
 remain uncertain. As such, we take a first step at characterizing the resilience
-of W(A)PB functions, through their properties as correctors. We highlight a
-close connection with the (restricted) Walsh transform and uncover algebraic
-relations between Krawtchouk and Vandermonde matrices. We also reduce the
-problem of determining the $t$-correction of a W(A)PB function to a weak
-instance of the Prouhet-Tarry-Escott problem. Furthermore, we prove the
-existence of an infinite family of W(A)PB functions in $n$ variables with
-$t$-correction less than the Hamming weight of $n$. We generalize this
-observation into a conjecture that it holds for all $n$, that we verified until
-$n \leq 62$.
+of W(A)PB functions, through their properties as correctors. We highlight its
+close connection with the (restricted) Walsh transform and uncover an algebraic
+relation between Krawtchouk matrices and Vandermonde matrices, which 
+reduces the problem of determining the correction order of a W(A)PB function to a weak 
+instance of the Prouhet-Tarry-Escott problem. 
+%We also reduce the
+%problem of determining the correction order of a W(A)PB function to a weak
+%instance of the Prouhet-Tarry-Escott problem. 
+This reduction helps us show that
+for infinitely many integers $n$, W(A)PB functions in $n$ variables can have correction order at most the Hamming weight of $n$ minus one. 
+We make a conjecture that this observation holds for any positive integer $n$, which is verified for $n$ up to $62$. 
+
 \end{abstract}
 
 %\keywords{Boolean functions, algebraic immunity, symmetric functions, HWBF}
