@@ -1,0 +1,78 @@
+\def\anon{1} %% set to 1 for anonymous submissions, hides acknowledgements and author names
+\def\full{1} %% set to 0 for springer proceedings
+
+
+\ifnum\full=1
+\documentclass[11pt]{llncs}
+
+
+\addtolength{\parskip}{1pt}
+\else
+\documentclass[10pt, runningheads]{llncs}
+\usepackage{times}
+\fi
+
+
+\input{../header.tex}
+
+
+\begin{document}
+
+
+%\title{Notes: On the Resilience Order of Weightwise Almost Perfectly Balanced Functions}
+\title{On the Resilience Order of W(A)PB Functions}
+
+
+%\subtitle{}
+
+
+
+	\titlerunning{On the Resilience Order of W(A)PB Functions}
+	\author{
+			\mbox{Martin Grenouilloux \orcidID{0009-0003-1998-6092}},
+			\mbox{Chunlei Li \orcidID{0000-0002-3792-769X}},
+		\mbox{Pierrick M\'eaux\orcidID{0000-0001-5733-4341}}
+	}
+
+	\authorrunning{ M. Grenouilloux, C. Li, P. M\'eaux}
+
+	\institute{University of Bergen, Bergen, Norway\\
+	\email{martin.grenouilloux@uib.no,Chunlei.Li@uib.no}\\
+University of Luxembourg, Luxembourg\\	\email{pierrick.meaux@uni.lu}
+}
+
+
+
+
+
+
+	%----------------------------------------------------------------
+	\maketitle
+
+
+
+ \setcounter{page}{1}
+
+\begin{abstract}
+The recent development of Fully Homomorphic Encryption (FHE)
+witnessed the emergence of a new generation of tailored cryptographic primitives
+designed to meet its specific criteria. Among promising candidates for FHE
+constructions stands out the FLIP cipher, which employs Boolean functions that
+are evaluated only on specific subsets of $\mathbb{F}_2^n$.
+In this article, we study Weightwise (Almost) Perfectly Balanced (W(A)PB) Boolean functions, which are balanced on each of these subsets. While W(A)PB functions have been of great
+interest for new constructions recently, some of their aspects like resilience
+remain uncertain. As such, we take a first step at characterizing the resilience
+of W(A)PB functions, through their properties as correctors. We highlight its
+close connection with the (restricted) Walsh transform and uncover an algebraic
+relation between Krawtchouk matrices and Vandermonde matrices, which
+reduces the problem of determining the correction order of a W(A)PB function to a weak
+instance of the Prouhet-Tarry-Escott problem.
+This reduction helps us show that
+for infinitely many integers $n$, W(A)PB functions in $n$ variables can have correction order at most the Hamming weight of $n$ minus one.
+We make a conjecture that this observation holds for any positive integer $n$, which is verified for $n$ up to $62$.
+
+\end{abstract}
+
+\keywords{WAPB functions, resilience order, correction order, Krawtchouk polynomials}
+
+\end{document}
