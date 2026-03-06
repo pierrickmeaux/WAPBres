@@ -57,24 +57,20 @@ University of Luxembourg, Luxembourg\\	\email{pierrick.meaux@uni.lu}
 \begin{abstract}
 The recent development of Fully Homomorphic Encryption (FHE)
 witnessed the emergence of a new generation of tailored cryptographic primitives
-designed to meet its specific criteria. Among promising candidates for such
-constructions stand out the FLIP cipher that employs Boolean functions defined on specific subsets of $\mathbb{F}_2^n$. In this
-article, we study a family of such functions called Weightwise (Almost)
-Perfectly Balanced (W(A)PB) functions, that have the property of being balanced
-on each of the considered subsets. While W(A)PB functions have been of great
+designed to meet its specific criteria. Among promising candidates for FHE
+constructions stands out the FLIP cipher, which employs Boolean functions that
+are evaluated only on specific subsets of $\mathbb{F}_2^n$.
+In this article, we study Weightwise (Almost) Perfectly Balanced (W(A)PB) Boolean functions, which are balanced on each of these subsets. While W(A)PB functions have been of great
 interest for new constructions recently, some of their aspects like resilience
 remain uncertain. As such, we take a first step at characterizing the resilience
 of W(A)PB functions, through their properties as correctors. We highlight its
 close connection with the (restricted) Walsh transform and uncover an algebraic
-relation between Krawtchouk matrices and Vandermonde matrices, which 
-reduces the problem of determining the correction order of a W(A)PB function to a weak 
-instance of the Prouhet-Tarry-Escott problem. 
-%We also reduce the
-%problem of determining the correction order of a W(A)PB function to a weak
-%instance of the Prouhet-Tarry-Escott problem. 
+relation between Krawtchouk matrices and Vandermonde matrices, which
+reduces the problem of determining the correction order of a W(A)PB function to a weak
+instance of the Prouhet-Tarry-Escott problem.
 This reduction helps us show that
-for infinitely many integers $n$, W(A)PB functions in $n$ variables can have correction order at most the Hamming weight of $n$ minus one. 
-We make a conjecture that this observation holds for any positive integer $n$, which is verified for $n$ up to $62$. 
+for infinitely many integers $n$, W(A)PB functions in $n$ variables can have correction order at most the Hamming weight of $n$ minus one.
+We make a conjecture that this observation holds for any positive integer $n$, which is verified for $n$ up to $62$.
 
 \end{abstract}
 
@@ -963,42 +959,42 @@ Based on the different theoretic results of this section such as Proposition~\re
 	Regarding the resilience upper bound of $\w(n)-1$, we know that for all $n$ there exist WAPB functions with resilience order $\w(n)-1$:
 	when we write $n$ as $n=2^{i_1}+2^{i_2}+\dots + 2^{i_t}$ where $i_1<\dots<i_{t}$,
 	the direct sum of WPB functions in $2^{i_s}$ variables~\cite{DAM:ZhuSu22} have resilience order exactly $\w(n)-1$.
-	Such WAPB functions are exactly characterized in the conjecture, namely, their Walsh transforms $\rwv{f}$ are given by 
-	\(\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n\). 
+	Such WAPB functions are exactly characterized in the conjecture, namely, their Walsh transforms $\rwv{f}$ are given by
+	\(\wtk{f}{\ell} = (-1)^{\w(\ell)}, \forall \, \ell \preceq n\).
 \end{remark}
 
 \begin{remark}
 	Recall that the Prouhet-Tarry-Escott problem~\cite{wright_prouhets_1959}
 	asks for two disjoint multi-sets $S_1$ and $S_2$ of the same number of integers
-	satisfying 
+	satisfying
 	\[
 	\sum_{a\in S_0} a^s = 	\sum_{b\in S_1}b^s, \quad  s = 0, 1, \dots, r.
 	\]
-	The Prouhet-Tarry-Escott problem can be phrased as a $r$-regular partition of an integer set ~\cite{bolker_prouhettarryescott_2016}. 
+	The Prouhet-Tarry-Escott problem can be phrased as a $r$-regular partition of an integer set ~\cite{bolker_prouhettarryescott_2016}.
 	More concretely, for a set $S$ of even number of integers, a partition $\{S_0,S_1\}$ of
-	$S$, i.e., $S_0\cap S_1 = \emptyset$ and $S_0\cup S_1=S$, is $r$-regular  if 
+	$S$, i.e., $S_0\cap S_1 = \emptyset$ and $S_0\cup S_1=S$, is $r$-regular  if
 	\[
 	\sum_{a\in S_0} a^s = 	\sum_{b\in S_1}b^s, \quad  s = 0, 1, \dots, r.
 	\]
-	 When the set $S=\{0,1,\dots, 2^{t}-1\}$, the Prouhet-Thue–Morse sequence~\cite{allouche_ubiquitous_1999} gives 
-	 a $(t-1)$-regular partition of $S$ as  
-	$$S_i = \{ 0\leq a<2^{t}-1: \w(a)\equiv i \mod{2}\}, i= 1,2.$$ 
-	Furthermore, it was conjectured in~\cite[Conjecture 5.3]{bolker_prouhettarryescott_2016} that 
+	 When the set $S=\{0,1,\dots, 2^{t}-1\}$, the Prouhet-Thue–Morse sequence~\cite{allouche_ubiquitous_1999} gives
+	 a $(t-1)$-regular partition of $S$ as
+	$$S_i = \{ 0\leq a<2^{t}-1: \w(a)\equiv i \mod{2}\}, i= 1,2.$$
+	Furthermore, it was conjectured in~\cite[Conjecture 5.3]{bolker_prouhettarryescott_2016} that
 	the above partition $\{S_0, S_1\}$ is the unique $(t-1)$-regular partition of $S=\{0,1,\dots, 2^{t}-1\}$.
 	One can easily verify that this partition is not $t$-regular.
-	
+
 	Observe that Conjecture~\ref{conj:wapb-corr} is a generalized version of the second part of Conjecture 5.3 in~\cite{bolker_prouhettarryescott_2016}.
 	For a positive integer $n$ of the form $n=2^{i_1}+2^{i_2}+\dots + 2^{i_t}$ with $i_1<\dots<i_{t}$,  if in Corollary~\ref{Th-corrector-by-Vandemonde}
-	the system of equations \(	\matW \cdot \mathbf{y} = \mathbf{0}_{{t+1}}^{\intercal}\) 
-	has a solution $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$, then it 
-	can be used to derive 
-	a partition $\{S_0,S_1\}$ of the set 
+	the system of equations \(	\matW \cdot \mathbf{y} = \mathbf{0}_{{t+1}}^{\intercal}\)
+	has a solution $\mathbf{y}=(y_0,y_1,\dots, y_{2^t-1})^\intercal \in \{\pm 1\}^{2^t}$, then it
+	can be used to derive
+	a partition $\{S_0,S_1\}$ of the set
 	$$
 	S= \{a_12^{i_1} + a_22^{i_2} + \cdots + a_t2^{i_t}: a_1,a_2,\dots, a_t \in \F_2\},
 	$$
-%	$$S=\left\{ 0\leq k <n :  k \preceq n \right\} = \left\{\sum_{i=1}^{t} a_i2^{k_i}: a_i \in \F_2\right\}$$ 
+%	$$S=\left\{ 0\leq k <n :  k \preceq n \right\} = \left\{\sum_{i=1}^{t} a_i2^{k_i}: a_i \in \F_2\right\}$$
 	where $S_0,S_1$ is derived based on the sign of $y_a$, where $a=a_1+2a_2+\cdots + 2^{t-1}a_t$.
-	In other words, the existence of a WAPB function $f$ with $\corr(f)=t$ implies 
+	In other words, the existence of a WAPB function $f$ with $\corr(f)=t$ implies
 	that the existence of a $t$-regular partition of the set $S$, which appears unlikely to occur.
 
 \end{remark}
